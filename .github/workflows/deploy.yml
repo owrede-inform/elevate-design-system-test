@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'yarn'
 
       - name: Install dependencies
@@ -34,6 +34,8 @@ jobs:
         run: yarn build --prefix-paths
         env:
           NODE_ENV: production
+          CI: true
+          GATSBY_CPU_COUNT: 2
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
