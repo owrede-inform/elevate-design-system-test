@@ -18,6 +18,15 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          quietDeps: true,
+          silenceDeprecations: ['mixed-decls', 'legacy-js-api'],
+        },
+      },
+    },
+    {
       resolve: 'gatsby-theme-carbon',
       options: {
         mediumAccount: 'carbondesign',
