@@ -5,7 +5,7 @@ module.exports = {
     description: 'A Gatsby theme for the carbon design system',
     keywords: 'gatsby,theme,carbon',
   },
-  pathPrefix: `/gtc`,
+  pathPrefix: `/elevate-gatsby-test`,
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',
@@ -17,15 +17,15 @@ module.exports = {
         display: 'browser',
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-sass',
-    //   options: {
-    //     sassOptions: {
-    //       quietDeps: true,
-    //       silenceDeprecations: ['mixed-decls', 'legacy-js-api'],
-    //     },
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          quietDeps: true,
+          silenceDeprecations: ['mixed-decls', 'legacy-js-api'],
+        },
+      },
+    },
     {
       resolve: 'gatsby-theme-carbon',
       options: {
