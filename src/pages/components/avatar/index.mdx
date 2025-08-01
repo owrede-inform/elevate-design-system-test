@@ -1,0 +1,169 @@
+---
+title: Avatar
+description: Avatars represent users or entities with profile images, initials, or icons. They provide visual identification in interfaces and support various sizes and states.
+---
+
+<PageDescription>
+
+Avatars are visual representations of users, teams, or entities within interfaces. The ELEVATE Avatar component provides consistent styling for profile images, fallback initials, and placeholder states across all INFORM applications.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Image Avatar
+Standard avatar displaying user's profile photo or uploaded image.
+
+### Initials Avatar
+Fallback avatar showing user's initials when no image is available.
+
+### Icon Avatar
+Generic avatar using system icons for placeholder or anonymous users.
+
+### Group Avatar
+Avatar representing multiple users or team entities.
+
+### Status Avatar
+Avatar with status indicators showing online, offline, or activity states.
+
+### Bordered Avatar
+Avatar with border treatment for emphasis or grouping.
+
+## Design Guidelines
+
+### When to Use
+- **User identification**: Profile areas, user lists, comments
+- **Team representation**: Member lists, collaboration interfaces
+- **Entity representation**: Organizations, projects, groups
+- **Navigation**: User menus, account switching
+
+### When Not to Use
+- **Decorative images**: Use Image component for non-representative visuals
+- **Large portraits**: Use dedicated image layouts for hero content
+- **Complex graphics**: Use appropriate media components
+
+### Sizing Guidelines
+- **Extra Small (16px)**: Dense lists, inline mentions
+- **Small (24px)**: Comments, compact layouts
+- **Medium (32px)**: Standard interface elements
+- **Large (48px)**: Profile headers, primary identification
+- **Extra Large (64px+)**: Hero sections, detailed profiles
+
+### Content Guidelines
+- Use high-quality, clear images when available
+- Ensure initials are derived consistently (first + last name)
+- Provide meaningful alt text for screen readers
+- Maintain consistent aspect ratios (1:1 square)
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-avatar 
+  src="/path/to/image.jpg" 
+  alt="John Doe"
+  initials="JD">
+</elvt-avatar>
+```
+
+### With Fallback Initials
+
+```html
+<elvt-avatar 
+  initials="JD" 
+  name="John Doe">
+</elvt-avatar>
+```
+
+### With Status Indicator
+
+```html
+<elvt-avatar 
+  src="/path/to/image.jpg" 
+  alt="John Doe"
+  status="online">
+</elvt-avatar>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `src` | `string` | - | URL of the avatar image |
+| `alt` | `string` | - | Alternative text for the image |
+| `initials` | `string` | - | Fallback initials to display |
+| `name` | `string` | - | Full name for generating initials |
+| `size` | `string` | `medium` | Avatar size: `xs`, `small`, `medium`, `large`, `xl` |
+| `variant` | `string` | `circular` | Shape variant: `circular`, `rounded`, `square` |
+| `status` | `string` | - | Status indicator: `online`, `offline`, `away`, `busy` |
+| `bordered` | `boolean` | `false` | Whether to show border around avatar |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `click` | Fired when avatar is clicked |
+| `error` | Fired when image fails to load |
+| `load` | Fired when image loads successfully |
+
+## Accessibility
+
+### Screen Reader Support
+- Images have descriptive alt text based on user name
+- Initials avatars announce the full name
+- Status indicators are communicated to assistive technology
+- Group avatars describe the entity represented
+
+### Keyboard Support
+- **Tab**: Moves focus to interactive avatars
+- **Enter/Space**: Activates clickable avatars
+- **Arrow keys**: Navigate between avatars in groups
+
+### Focus Management
+- Clear focus indicators when avatars are interactive
+- Focus is managed appropriately in avatar groups
+- Status changes are announced to screen readers
+
+### Best Practices
+- Always provide meaningful alt text or names
+- Ensure sufficient contrast for initials and backgrounds
+- Use semantic markup for interactive avatars
+- Don't rely solely on color for status indication
+- Maintain minimum touch target size for interactive avatars
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced status indicators
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced image loading states
+- Improved group avatar handling
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional size variants
+- Better fallback mechanisms
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic avatar functionality
+- Core image and initials support

@@ -1,0 +1,200 @@
+---
+title: Breadcrumb Item
+description: Individual items within breadcrumb navigation that represent specific levels in the site hierarchy. They provide clickable links to parent pages.
+---
+
+<PageDescription>
+
+Breadcrumb Items are the individual elements that make up breadcrumb navigation. The ELEVATE Breadcrumb Item component provides consistent styling and behavior for each level in the navigation hierarchy, supporting various states and content types.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Link Item
+Standard clickable breadcrumb item that navigates to a parent page.
+
+### Current Item
+Non-clickable item representing the current page location.
+
+### Icon Item
+Breadcrumb item with an icon to enhance visual recognition.
+
+### Disabled Item
+Non-interactive item that appears disabled but remains visible for context.
+
+### Dropdown Item
+Interactive item that reveals a dropdown menu with sibling or child pages.
+
+## Design Guidelines
+
+### When to Use
+- **Hierarchical navigation**: Each level in a multi-tier structure
+- **Page identification**: Showing the current location context
+- **Quick navigation**: Providing shortcuts to parent levels
+- **Path visualization**: Making site structure clear to users
+
+### Item States
+- **Default**: Standard clickable breadcrumb link
+- **Current**: Active page (non-clickable, visually distinct)
+- **Hover**: Interactive feedback for clickable items
+- **Focus**: Clear keyboard navigation indicators
+- **Disabled**: Contextual but non-interactive items
+
+### Content Guidelines
+- Use page titles as they appear in main navigation
+- Keep text concise but descriptive
+- Maintain consistency with site's information architecture
+- Use sentence case for better readability
+- Avoid technical jargon or abbreviations
+
+### Visual Hierarchy
+- Current page should be visually distinct but not dominant
+- Clickable items should have clear interactive affordances
+- Use consistent spacing and typography
+- Maintain appropriate contrast ratios
+- Consider mobile touch target sizes
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-breadcrumb-item href="/dashboard">
+  Dashboard
+</elvt-breadcrumb-item>
+```
+
+### Current Page Item
+
+```html
+<elvt-breadcrumb-item current>
+  Current Page
+</elvt-breadcrumb-item>
+```
+
+### With Icon
+
+```html
+<elvt-breadcrumb-item href="/">
+  <elvt-icon name="home"></elvt-icon>
+  Home
+</elvt-breadcrumb-item>
+```
+
+### Disabled Item
+
+```html
+<elvt-breadcrumb-item disabled>
+  Restricted Section
+</elvt-breadcrumb-item>
+```
+
+### With Dropdown
+
+```html
+<elvt-breadcrumb-item dropdown>
+  Categories
+  <elvt-menu slot="dropdown">
+    <elvt-menu-item href="/electronics">Electronics</elvt-menu-item>
+    <elvt-menu-item href="/clothing">Clothing</elvt-menu-item>
+    <elvt-menu-item href="/books">Books</elvt-menu-item>
+  </elvt-menu>
+</elvt-breadcrumb-item>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `href` | `string` | - | URL for the breadcrumb link |
+| `current` | `boolean` | `false` | Whether this represents the current page |
+| `disabled` | `boolean` | `false` | Whether the item is disabled |
+| `dropdown` | `boolean` | `false` | Whether item has dropdown functionality |
+| `target` | `string` | - | Link target (e.g., `_blank` for new window) |
+| `rel` | `string` | - | Link relationship attribute |
+
+### Slots
+
+| Slot | Description |
+|------|-------------|
+| `default` | Main content (text and icons) |
+| `dropdown` | Dropdown menu content |
+| `icon` | Icon content area |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `click` | Fired when item is clicked (if not current or disabled) |
+| `dropdown-open` | Fired when dropdown menu opens |
+| `dropdown-close` | Fired when dropdown menu closes |
+
+## Accessibility
+
+### Semantic Structure
+- Uses appropriate link semantics for navigation
+- Current page marked with `aria-current="page"`
+- Disabled items have proper `aria-disabled` state
+- Dropdown items have appropriate ARIA attributes
+
+### Keyboard Support
+- **Tab**: Moves focus to the breadcrumb item
+- **Enter/Space**: Activates links or opens dropdowns
+- **Escape**: Closes open dropdowns
+- **Arrow keys**: Navigate within dropdown menus
+
+### Screen Reader Support
+- Link text is descriptive and meaningful
+- Current page status is announced
+- Disabled state is communicated
+- Dropdown states and options are properly announced
+
+### Focus Management
+- Clear focus indicators on all interactive elements
+- Focus moves logically through breadcrumb items
+- Focus is managed appropriately in dropdown interactions
+- Focus returns to trigger after dropdown closes
+
+### Best Practices
+- Provide meaningful link text that works out of context
+- Ensure sufficient color contrast for all states
+- Don't rely solely on color to indicate current page
+- Use semantic HTML elements (links, buttons)
+- Maintain consistent interaction patterns
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced dropdown functionality
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced interaction states
+- Improved keyboard navigation
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional item variants
+- Better dropdown integration
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic breadcrumb item functionality
+- Core link and current states

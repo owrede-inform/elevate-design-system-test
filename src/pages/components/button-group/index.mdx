@@ -1,0 +1,193 @@
+---
+title: Button Group
+description: Button Groups organize related actions together with consistent spacing and visual treatment. They provide clear action hierarchy and improved user experience.
+---
+
+<PageDescription>
+
+Button Groups combine multiple related buttons into a cohesive unit with consistent spacing, alignment, and visual treatment. The ELEVATE Button Group component helps organize actions logically and creates clear visual hierarchy in interfaces.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Horizontal Group
+Standard horizontal arrangement of buttons with consistent spacing.
+
+### Vertical Group
+Vertical stacking of buttons for narrow layouts or mobile interfaces.
+
+### Segmented Group
+Connected buttons that appear as a single unit with shared borders.
+
+### Split Button Group
+Primary action button combined with a dropdown for secondary actions.
+
+### Icon Button Group
+Group of icon-only buttons for compact toolbars and action sets.
+
+### Mixed Button Group
+Combination of different button variants organized together.
+
+## Design Guidelines
+
+### When to Use
+- **Related actions**: Buttons that perform similar or complementary functions
+- **Action sets**: Save/Cancel, Previous/Next, Accept/Decline pairs
+- **Toolbars**: Sets of tools or commands in applications
+- **Bulk actions**: Multiple operations on selected content
+- **Workflow steps**: Sequential actions in a process
+
+### When Not to Use
+- **Unrelated actions**: Buttons that serve different purposes
+- **Primary navigation**: Use appropriate navigation components
+- **Single actions**: Individual buttons don't need grouping
+- **Complex forms**: Use proper form layout patterns
+
+### Button Hierarchy
+- Place primary action first (left in LTR languages)
+- Use consistent button variants within groups
+- Limit primary buttons to one per group
+- Order actions by frequency of use
+- Consider cultural reading patterns
+
+### Spacing and Layout
+- Use consistent spacing between buttons
+- Align buttons based on text baseline
+- Maintain visual balance in mixed-size groups
+- Consider responsive behavior for mobile
+- Provide adequate touch targets
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-button-group>
+  <elvt-button variant="primary">Save</elvt-button>
+  <elvt-button variant="secondary">Cancel</elvt-button>
+</elvt-button-group>
+```
+
+### Vertical Group
+
+```html
+<elvt-button-group orientation="vertical">
+  <elvt-button>Option 1</elvt-button>
+  <elvt-button>Option 2</elvt-button>
+  <elvt-button>Option 3</elvt-button>
+</elvt-button-group>
+```
+
+### Segmented Group
+
+```html
+<elvt-button-group variant="segmented">
+  <elvt-button>Day</elvt-button>
+  <elvt-button>Week</elvt-button>
+  <elvt-button>Month</elvt-button>
+</elvt-button-group>
+```
+
+### Icon Button Group
+
+```html
+<elvt-button-group>
+  <elvt-button variant="ghost">
+    <elvt-icon name="bold"></elvt-icon>
+  </elvt-button>
+  <elvt-button variant="ghost">
+    <elvt-icon name="italic"></elvt-icon>
+  </elvt-button>
+  <elvt-button variant="ghost">
+    <elvt-icon name="underline"></elvt-icon>
+  </elvt-button>
+</elvt-button-group>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `orientation` | `string` | `horizontal` | Group layout: `horizontal`, `vertical` |
+| `variant` | `string` | `default` | Visual treatment: `default`, `segmented`, `toolbar` |
+| `spacing` | `string` | `medium` | Space between buttons: `small`, `medium`, `large` |
+| `alignment` | `string` | `start` | Button alignment: `start`, `center`, `end`, `stretch` |
+| `wrap` | `boolean` | `false` | Whether buttons can wrap to new lines |
+| `full-width` | `boolean` | `false` | Whether group takes full container width |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `button-click` | Fired when any button in the group is clicked |
+| `selection-change` | Fired when selection changes in segmented groups |
+
+## Accessibility
+
+### Keyboard Support
+- **Tab**: Moves focus between buttons in the group
+- **Arrow keys**: Navigate between buttons in segmented groups
+- **Enter/Space**: Activates the focused button
+- **Home/End**: Move to first/last button in arrow key navigation
+
+### Screen Reader Support
+- Button groups are announced as a cohesive unit when appropriate
+- Individual buttons maintain their semantic meaning
+- Selected states in segmented groups are communicated
+- Button relationships are clear through proper grouping
+
+### Focus Management
+- Clear focus indicators on all buttons
+- Focus moves logically through the button sequence
+- Focus is trapped appropriately in modal contexts
+- Initial focus placement follows expected patterns
+
+### ARIA Support
+- Uses `role="group"` with appropriate `aria-label` when needed
+- Segmented groups use `role="radiogroup"` for single selection
+- Selected states use `aria-pressed` or `aria-selected`
+- Buttons maintain individual accessible names
+
+### Best Practices
+- Provide clear, descriptive labels for all buttons
+- Ensure sufficient color contrast for all button states
+- Maintain consistent interaction patterns within groups
+- Use appropriate roles for different group types
+- Don't rely solely on visual grouping for meaning
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced grouping patterns
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced responsive behavior
+- Improved keyboard navigation
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional group variants
+- Better spacing controls
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic button grouping functionality
+- Core horizontal and vertical layouts

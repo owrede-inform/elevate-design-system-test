@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(yarn dev)",
+      "Bash(yarn dev:*)",
+      "Bash(yarn clean)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:gatsby.carbondesignsystem.com)",
+      "Bash(ren:*)",
+      "Bash(mv:*)",
+      "Bash(tasklist:*)",
+      "Bash(taskkill:*)",
+      "WebFetch(domain:elevate-core-ui.inform-cloud.io)",
+      "WebFetch(domain:confluence.inform-software.com)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(git add:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": []
+  }
+}

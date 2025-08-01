@@ -1,0 +1,176 @@
+---
+title: Badge
+description: Badges highlight important information with small, prominent labels. They indicate status, counts, categories, or draw attention to specific content.
+---
+
+<PageDescription>
+
+Badges are small visual indicators used to highlight important information, show status, or display counts. The ELEVATE Badge component provides consistent styling for notifications, labels, and metadata across all INFORM applications.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Status Badge
+Indicates current state or condition with semantic colors and clear labels.
+
+### Count Badge
+Displays numeric values like notifications, messages, or item quantities.
+
+### Category Badge
+Labels content with categorical information like tags or classifications.
+
+### Dot Badge
+Minimal indicator using color alone to show presence or status.
+
+### Icon Badge
+Combines icons with text for enhanced visual communication.
+
+### Dismissible Badge
+Interactive badge that can be removed by users.
+
+## Design Guidelines
+
+### When to Use
+- **Status indication**: Online/offline, active/inactive states
+- **Notifications**: Unread counts, new items, alerts
+- **Categorization**: Tags, labels, content classification
+- **Metadata**: Version numbers, types, properties
+- **Highlighting**: Important or featured content
+
+### When Not to Use
+- **Primary actions**: Use Button component for main interactions
+- **Navigation**: Use appropriate navigation components
+- **Large amounts of text**: Use appropriate text components
+- **Complex information**: Use Cards or other layout components
+
+### Color Usage
+- **Default**: Neutral information or general labels
+- **Success**: Positive status, completed states
+- **Warning**: Caution, pending states
+- **Error**: Problems, failed states, urgent attention
+- **Info**: Informational content, neutral status
+
+### Content Guidelines
+- Keep text concise (1-3 words maximum)
+- Use sentence case for readability
+- Avoid redundancy with surrounding content
+- Use clear, descriptive language
+- Consider internationalization for text badges
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-badge>New</elvt-badge>
+<elvt-badge variant="success">Active</elvt-badge>
+<elvt-badge variant="warning">Pending</elvt-badge>
+<elvt-badge variant="error">Failed</elvt-badge>
+```
+
+### Count Badge
+
+```html
+<elvt-badge variant="info" count="5">
+  Messages
+</elvt-badge>
+```
+
+### With Icon
+
+```html
+<elvt-badge variant="success">
+  <elvt-icon name="check"></elvt-icon>
+  Verified
+</elvt-badge>
+```
+
+### Dismissible Badge
+
+```html
+<elvt-badge dismissible>
+  Category Name
+</elvt-badge>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `variant` | `string` | `default` | Visual variant: `default`, `success`, `warning`, `error`, `info` |
+| `size` | `string` | `medium` | Badge size: `small`, `medium`, `large` |
+| `count` | `number` | - | Numeric value to display |
+| `max-count` | `number` | `99` | Maximum count before showing "+" indicator |
+| `dismissible` | `boolean` | `false` | Whether the badge can be dismissed |
+| `dot` | `boolean` | `false` | Show as dot indicator only |
+| `outline` | `boolean` | `false` | Use outline style instead of filled |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `dismiss` | Fired when dismissible badge is closed |
+| `click` | Fired when badge is clicked |
+
+## Accessibility
+
+### Screen Reader Support
+- Badge content is announced to screen readers
+- Count badges announce numeric values appropriately
+- Status badges communicate state information
+- Dismissible badges have proper button semantics
+
+### Keyboard Support
+- **Tab**: Moves focus to interactive badges
+- **Enter/Space**: Activates dismissible badges
+- **Escape**: Closes dismissible badges (when focused)
+
+### Color and Contrast
+- All badge variants meet WCAG contrast requirements
+- Status is not conveyed by color alone
+- Text remains readable across all variants
+- Focus indicators are clearly visible
+
+### Best Practices
+- Provide meaningful text content, not just color
+- Use appropriate semantic markup for interactive badges
+- Ensure badges don't interfere with surrounding content flow
+- Consider screen reader users when using count badges
+- Don't use badges as primary interactive elements
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced badge animations
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced interactive states
+- Improved count formatting
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional badge variants
+- Better dismissible functionality
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic badge variants
+- Core status indication

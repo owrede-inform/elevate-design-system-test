@@ -1,0 +1,215 @@
+---
+title: Card
+description: Cards are flexible containers that group related content and actions. They provide visual hierarchy and structure to complex interfaces.
+---
+
+<PageDescription>
+
+Cards are versatile containers that organize related information and actions into digestible sections. The ELEVATE Card component provides consistent styling and flexible layouts for displaying content in INFORM applications.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Border Variations
+- **All** (default) - Card with complete border around all edges
+- **Rounded** - Card with rounded corners only
+- **None** - Borderless card for seamless integration
+
+### Layer Variations
+- **Default** - Standard card appearance
+- **Elevated** - Card with shadow elevation effect
+- **Overlay** - Card designed to overlay other content
+- **Sunken** - Card with inset/recessed appearance
+
+### Layout Variations
+- **Basic Card** - Simple content container
+- **Card with Header** - Includes dedicated header slot
+- **Card with Footer** - Includes dedicated footer slot
+- **Full Card** - Uses header, content, and footer slots
+
+### Custom Padding
+Cards support flexible padding using the design token system for consistent spacing.
+
+## Design Guidelines
+
+### When to Use
+- **Content grouping**: Related information that belongs together
+- **Data display**: Metrics, statistics, or summary information
+- **Navigation**: Category links, feature highlights
+- **Product listings**: Items in a catalog or dashboard
+- **Notifications**: Alerts, messages, or updates
+
+### When Not to Use
+- **Single pieces of content**: Use appropriate semantic elements instead
+- **Complex layouts**: Consider dedicated page layouts
+- **Linear content**: Use standard content flow
+- **Data tables**: Use Table component for structured data
+
+### Content Guidelines
+Keep card content focused and scannable:
+- **Clear hierarchy**: Use headings and consistent spacing
+- **Concise text**: Summarize key information effectively
+- **Logical actions**: Include relevant actions for the content
+- **Visual balance**: Maintain appropriate white space
+
+### Layout Patterns
+- **Grid layouts**: Consistent card sizing in responsive grids
+- **List layouts**: Variable-width cards in linear arrangements
+- **Mixed layouts**: Combine different card types thoughtfully
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-card>
+  <h3>Card Title</h3>
+  <p>Card content goes here with relevant information and details.</p>
+</elvt-card>
+```
+
+### With Header and Footer
+
+```html
+<elvt-card>
+  <div slot="header">
+    <h3>Card Title</h3>
+    <elvt-button tone="subtle" size="small">Action</elvt-button>
+  </div>
+  
+  <p>Main card content with detailed information.</p>
+  
+  <div slot="footer">
+    <elvt-button tone="primary">Primary Action</elvt-button>
+    <elvt-button tone="secondary">Secondary</elvt-button>
+  </div>
+</elvt-card>
+```
+
+### Different Border Styles
+
+```html
+<elvt-card border="rounded">
+  <p>Card with rounded corners only</p>
+</elvt-card>
+
+<elvt-card border="none">
+  <p>Borderless card</p>
+</elvt-card>
+```
+
+### Layer Variations
+
+```html
+<elvt-card layer="elevated">
+  <h3>Elevated Card</h3>
+  <p>This card appears raised with shadow.</p>
+</elvt-card>
+
+<elvt-card layer="overlay">
+  <h3>Overlay Card</h3>
+  <p>Card designed to overlay other content.</p>
+</elvt-card>
+```
+
+### With Custom Padding
+
+```html
+<elvt-card padding="xl">
+  <h3>Large Padding Card</h3>
+  <p>This card has extra large padding.</p>
+</elvt-card>
+
+<elvt-card padding="sm md">
+  <p>Card with small vertical, medium horizontal padding.</p>
+</elvt-card>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `border` | `CardBorder` | `all` | Border style: `all`, `rounded`, `none` |
+| `layer` | `CardLayer` | `default` | Visual layer: `default`, `elevated`, `overlay`, `sunken` |
+| `padding` | `Padding` | `0` | Custom padding using design token values |
+
+### Slots
+
+| Slot | Description |
+|------|-------------|
+| `default` | Main card content |
+| `header` | Header content area (automatically detected) |
+| `footer` | Footer content area (automatically detected) |
+
+### Data Attributes
+
+The component automatically sets data attributes based on slot usage:
+- `data-has-header="true/false"` - Indicates if header slot is filled
+- `data-has-footer="true/false"` - Indicates if footer slot is filled
+
+These attributes can be used for styling purposes in CSS.
+
+## Accessibility
+
+### Semantic Structure
+- Cards use appropriate landmark roles when needed
+- Interactive cards have proper link or button semantics
+- Content hierarchy is maintained with proper heading levels
+
+### Keyboard Support
+- **Tab**: Moves focus to interactive elements within the card
+- **Enter/Space**: Activates interactive cards
+- **Arrow keys**: Navigate between cards in a grid (when implemented)
+
+### Screen Reader Support
+- Card content is announced in logical reading order
+- Interactive cards have appropriate accessible names
+- Related content is grouped appropriately
+
+### Focus Management
+- Clear focus indicators on interactive elements
+- Focus moves logically through card content
+- Focus is trapped appropriately in modal card contexts
+
+### Best Practices
+- Ensure sufficient color contrast for all text and borders
+- Provide alternative text for images within cards
+- Use semantic heading hierarchy within cards
+- Make interactive areas sufficiently large (44px minimum)
+- Don't nest interactive elements within interactive cards
+
+## Changelog
+
+### Version 0.0.26-alpha (July 16, 2025)
+- Current version in active development
+
+### Version 0.0.22-alpha (June 25, 2025)
+- Add Card Border and Layer Properties
+- Enhanced visual customization options
+- Improved design token integration
+
+### Version 0.0.2-alpha (March 19, 2025)
+- Add Card Component
+- Initial implementation with slot support
+- Status: Unstable (as noted in component comments)
+
+### Since Version 0.0.2-alpha
+- Component has been available since March 2025
+- Continuous improvements to visual variants
+- Enhanced padding system using design tokens
+- Automatic slot detection for header/footer

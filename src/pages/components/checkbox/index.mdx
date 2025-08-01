@@ -1,0 +1,196 @@
+---
+title: Checkbox
+description: Checkboxes allow users to select one or more options from a set. They provide clear visual feedback and support various states for form interactions.
+---
+
+<PageDescription>
+
+Checkboxes are form controls that allow users to select one or multiple options from a list. The ELEVATE Checkbox component provides consistent styling, clear states, and accessibility features for all selection interfaces in INFORM applications.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Standard Checkbox
+Basic checkbox for single option selection with label.
+
+### Indeterminate Checkbox
+Checkbox showing partial selection state for grouped options.
+
+### Disabled Checkbox
+Non-interactive checkbox that maintains visual context.
+
+### Checkbox with Description
+Checkbox with additional helper text for complex options.
+
+### Checkbox Group
+Multiple related checkboxes organized together.
+
+### Icon Checkbox
+Checkbox with custom icons instead of standard checkmarks.
+
+## Design Guidelines
+
+### When to Use
+- **Multiple selections**: When users can choose several options
+- **Optional settings**: Features that can be enabled or disabled
+- **Agreement confirmations**: Terms, conditions, privacy policies
+- **Filter controls**: Narrowing down search results or content
+- **Bulk actions**: Selecting multiple items for operations
+
+### When Not to Use
+- **Single selection**: Use Radio buttons for exclusive choices
+- **Binary toggles**: Use Switch component for on/off states
+- **Primary actions**: Use Button component for main interactions
+- **Navigation**: Use appropriate navigation components
+
+### Checkbox vs Radio vs Switch
+- **Checkbox**: Multiple selections possible
+- **Radio**: Single selection from group
+- **Switch**: Binary on/off state with immediate effect
+
+### Label Guidelines
+- Place labels to the right of checkboxes (in LTR languages)
+- Use clear, concise language
+- Make labels clickable to improve usability
+- Provide context when needed with helper text
+- Group related options logically
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-checkbox 
+  name="newsletter" 
+  value="subscribe">
+  Subscribe to newsletter
+</elvt-checkbox>
+```
+
+### With Helper Text
+
+```html
+<elvt-checkbox 
+  name="notifications" 
+  value="email"
+  helper-text="Receive important updates via email">
+  Email notifications
+</elvt-checkbox>
+```
+
+### Indeterminate State
+
+```html
+<elvt-checkbox 
+  name="select-all" 
+  indeterminate="true">
+  Select all items
+</elvt-checkbox>
+```
+
+### Checkbox Group
+
+```html
+<elvt-checkbox-group 
+  label="Preferred contact methods"
+  name="contact">
+  <elvt-checkbox value="email">Email</elvt-checkbox>
+  <elvt-checkbox value="phone">Phone</elvt-checkbox>
+  <elvt-checkbox value="sms">SMS</elvt-checkbox>
+</elvt-checkbox-group>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `checked` | `boolean` | `false` | Whether the checkbox is checked |
+| `indeterminate` | `boolean` | `false` | Whether checkbox shows indeterminate state |
+| `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
+| `required` | `boolean` | `false` | Whether the checkbox is required |
+| `name` | `string` | - | Form field name |
+| `value` | `string` | - | Form field value |
+| `helper-text` | `string` | - | Additional descriptive text |
+| `error-message` | `string` | - | Error message to display |
+| `validation-state` | `string` | - | Validation state: `error`, `warning`, `success` |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `change` | Fired when checkbox state changes |
+| `focus` | Fired when checkbox receives focus |
+| `blur` | Fired when checkbox loses focus |
+
+## Accessibility
+
+### Keyboard Support
+- **Space**: Toggles checkbox state
+- **Tab**: Moves focus to the checkbox
+- **Shift + Tab**: Moves focus away from checkbox
+- **Arrow keys**: Navigate between checkboxes in groups
+
+### Screen Reader Support
+- Checkboxes have proper `role="checkbox"` semantics
+- Labels are properly associated using `for` attribute
+- Checked/unchecked states are announced
+- Indeterminate state is communicated
+- Required fields are identified
+- Error messages are announced when they appear
+
+### Focus Management
+- Clear focus indicators that meet WCAG contrast requirements
+- Focus remains on checkbox during state changes
+- Focus moves logically through checkbox groups
+- Focus is managed appropriately in form contexts
+
+### ARIA Support
+- Uses appropriate `aria-checked` values (true/false/mixed)
+- Error states use `aria-describedby` for messages
+- Required fields use `aria-required="true"`
+- Groups use proper `role="group"` with `aria-labelledby`
+
+### Best Practices
+- Always provide clear, descriptive labels
+- Ensure labels are clickable for better usability
+- Use helper text for complex or ambiguous options
+- Maintain sufficient color contrast (4.5:1 minimum)
+- Don't rely solely on color to indicate states
+- Provide clear error messages that explain how to fix issues
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced validation patterns
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced group functionality
+- Improved error handling
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional checkbox variants
+- Better indeterminate state handling
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic checkbox functionality
+- Core checked/unchecked states
