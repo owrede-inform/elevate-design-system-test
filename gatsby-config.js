@@ -5,7 +5,7 @@ module.exports = {
     description: 'Documentation and guidelines for the ELEVATE Design System',
     keywords: 'design,system,elevate,components,guidelines',
   },
-  pathPrefix: `/elevate-gatsby-test`,
+  pathPrefix: `/elevate-design-system-test`,
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',
