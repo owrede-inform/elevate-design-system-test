@@ -13,6 +13,7 @@ Buttons are interactive elements that trigger actions when activated. The ELEVAT
   <AnchorLink>Variations</AnchorLink>
   <AnchorLink>Design Guidelines</AnchorLink>  
   <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
   <AnchorLink>Accessibility</AnchorLink>
   <AnchorLink>Changelog</AnchorLink>
 </AnchorLinks>
@@ -22,22 +23,113 @@ Buttons are interactive elements that trigger actions when activated. The ELEVAT
 The Button component supports multiple visual tones and shapes to establish clear hierarchy and communicate different action types.
 
 ### Tone Variations
-- **Neutral** - Default button for standard actions
-- **Primary** - Main action on a page or workflow (use sparingly)
-- **Success** - Positive actions like save, confirm, or complete
-- **Warning** - Caution actions that need attention
-- **Danger** - Destructive actions like delete or remove
-- **Emphasized** - High-emphasis actions with strong visual weight
-- **Subtle** - Low-emphasis actions with minimal visual treatment
+
+<Tabs>
+
+<Tab label="Primary">
+
+Primary buttons represent the main action on a page. Use only one primary button per view.
+
+<Code className="language-html" metaData="path=/components/button/primary.html">
+<elevate-button tone="primary" size="medium">
+  Save Changes
+</elevate-button>
+</Code>
+
+</Tab>
+
+<Tab label="Success">
+
+Success buttons indicate positive actions like confirmation or completion.
+
+<Code className="language-html" metaData="path=/components/button/success.html">
+<elevate-button tone="success" size="medium">
+  Confirm Order
+</elevate-button>
+</Code>
+
+</Tab>
+
+<Tab label="Danger">
+
+Danger buttons are used for destructive actions that require careful consideration.
+
+<Code className="language-html" metaData="path=/components/button/danger.html">
+<elevate-button tone="danger" size="medium">
+  Delete Account
+</elevate-button>
+</Code>
+
+</Tab>
+
+<Tab label="All Tones">
+
+<Code className="language-html" metaData="path=/components/button/all-tones.html">
+<!-- Neutral (default) -->
+<elevate-button>Default Action</elevate-button>
+
+<!-- Primary -->
+<elevate-button tone="primary">Primary Action</elevate-button>
+
+<!-- Success -->
+<elevate-button tone="success">Success Action</elevate-button>
+
+<!-- Warning -->
+<elevate-button tone="warning">Warning Action</elevate-button>
+
+<!-- Danger -->
+<elevate-button tone="danger">Danger Action</elevate-button>
+
+<!-- Emphasized -->
+<elevate-button tone="emphasized">Emphasized Action</elevate-button>
+
+<!-- Subtle -->
+<elevate-button tone="subtle">Subtle Action</elevate-button>
+</Code>
+
+</Tab>
+
+</Tabs>
 
 ### Shape Variations
-- **Box** (default) - Standard rectangular button
-- **Pill** - Rounded button with full corner radius
+
+<Row>
+<Column colMd={4} colLg={6}>
+
+<Title>Box Shape (Default)</Title>
+
+Standard rectangular button with square corners for professional interfaces.
+
+<Code className="language-html">
+<elevate-button shape="box">Box Button</elevate-button>
+</Code>
+
+</Column>
+<Column colMd={4} colLg={6}>
+
+<Title>Pill Shape</Title>
+
+Rounded button with full corner radius for softer, more modern interfaces.
+
+<Code className="language-html">
+<elevate-button shape="pill">Pill Button</elevate-button>
+</Code>
+
+</Column>
+</Row>
 
 ### Size Variations
-- **Small** - Compact buttons for dense layouts
-- **Medium** - Default size for most use cases
-- **Large** - Prominent buttons for hero sections
+
+<Code className="language-html" metaData="path=/components/button/sizes.html">
+<!-- Small -->
+<elevate-button size="small">Small Button</elevate-button>
+
+<!-- Medium (default) -->
+<elevate-button size="medium">Medium Button</elevate-button>
+
+<!-- Large -->
+<elevate-button size="large">Large Button</elevate-button>
+</Code>
 
 ## Design Guidelines
 
@@ -53,76 +145,140 @@ The Button component supports multiple visual tones and shapes to establish clea
 - **Selection**: Use Checkbox or Radio for multiple choice
 
 ### Button Hierarchy
-Establish clear visual hierarchy using button variants:
-1. **Primary**: Most important action (1 per page)
-2. **Secondary**: Supporting actions (2-3 per page)
-3. **Tertiary**: Least important actions
 
-### Sizing Guidelines
-- **Large**: Hero sections, primary CTAs
-- **Medium**: Default size for most use cases  
-- **Small**: Compact layouts, data tables
+<DoDontRow>
+<DoDontExample type="do" caption="Use one primary button per page for the main action">
+
+<Code className="language-html">
+<elevate-button tone="primary">Save Changes</elevate-button>
+<elevate-button>Cancel</elevate-button>
+</Code>
+
+</DoDontExample>
+<DoDontExample type="dont" caption="Don't use multiple primary buttons, it creates confusion">
+
+<Code className="language-html">
+<elevate-button tone="primary">Save Changes</elevate-button>
+<elevate-button tone="primary">Submit Form</elevate-button>
+</Code>
+
+</DoDontExample>
+</DoDontRow>
+
+### Button Labels
+
+<DoDontRow>
+<DoDontExample type="do" caption="Use clear, action-oriented labels that describe what will happen">
+
+<Code className="language-html">
+<elevate-button tone="danger">Delete Account</elevate-button>
+<elevate-button tone="success">Confirm Order</elevate-button>
+<elevate-button>Save Draft</elevate-button>
+</Code>
+
+</DoDontExample>
+<DoDontExample type="dont" caption="Don't use vague or generic labels that don't describe the action">
+
+<Code className="language-html">
+<elevate-button tone="danger">OK</elevate-button>
+<elevate-button tone="success">Yes</elevate-button>
+<elevate-button>Click Here</elevate-button>
+</Code>
+
+</DoDontExample>
+</DoDontRow>
+
+### Destructive Actions
+
+<DoDontRow>
+<DoDontExample type="do" caption="Use danger tone for destructive actions with clear consequences">
+
+<Code className="language-html">
+<elevate-button tone="danger">Delete 3 selected items</elevate-button>
+<elevate-button tone="danger">Remove user access</elevate-button>
+</Code>
+
+</DoDontExample>
+<DoDontExample type="dont" caption="Don't use danger tone for non-destructive actions or reversible operations">
+
+<Code className="language-html">
+<elevate-button tone="danger">Log Out</elevate-button>
+<elevate-button tone="danger">Hide Notification</elevate-button>
+</Code>
+
+</DoDontExample>
+</DoDontRow>
 
 ## Code Reference
 
 ### Installation
 
-```bash
+<Code className="language-bash" metaData="path=/package.json">
 npm install @inform-elevate/elevate-core-ui
-```
+</Code>
+
+<Code className="language-javascript" metaData="path=/main.js">
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components
+import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
+</Code>
 
 ### Basic Usage
 
-```html
-<elvt-button>Default Button</elvt-button>
-<elvt-button tone="primary">Primary Button</elvt-button>
-<elvt-button tone="success">Success Button</elvt-button>
-<elvt-button tone="danger">Danger Button</elvt-button>
-```
+<Code className="language-html" metaData="path=/examples/basic-buttons.html">
+<elevate-button>Default Button</elevate-button>
+<elevate-button tone="primary">Primary Button</elevate-button>
+<elevate-button tone="success">Success Button</elevate-button>
+<elevate-button tone="danger">Danger Button</elevate-button>
+</Code>
 
 ### With Icons (Prefix/Suffix Slots)
 
-```html
-<elvt-button tone="primary">
-  <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+<Code className="language-html" metaData="path=/examples/buttons-with-icons.html">
+<elevate-button tone="primary">
+  <elevate-icon slot="prefix" icon="mdi:plus"></elevate-icon>
   Add Item
-</elvt-button>
+</elevate-button>
 
-<elvt-button tone="secondary">
+<elevate-button tone="secondary">
   Continue
-  <elvt-icon slot="suffix" icon="mdi:chevron-right"></elvt-icon>
-</elvt-button>
-```
+  <elevate-icon slot="suffix" icon="mdi:chevron-right"></elevate-icon>
+</elevate-button>
+</Code>
 
 ### Different Shapes and Sizes
 
-```html
-<elvt-button shape="pill" size="large" tone="primary">Pill Button</elvt-button>
-<elvt-button size="small" tone="subtle">Small Button</elvt-button>
-```
+<Code className="language-html" metaData="path=/examples/button-variations.html">
+<elevate-button shape="pill" size="large" tone="primary">Pill Button</elevate-button>
+<elevate-button size="small" tone="subtle">Small Button</elevate-button>
+</Code>
 
 ### As Link
 
-```html
-<elvt-button href="https://example.com" target="_blank">
+<Code className="language-html" metaData="path=/examples/button-links.html">
+<elevate-button href="https://example.com" target="_blank">
   External Link
-</elvt-button>
-```
+</elevate-button>
+</Code>
 
 ### Form Integration
 
-```html
-<elvt-button type="submit" tone="primary">Submit Form</elvt-button>
-<elvt-button type="reset" tone="secondary">Reset Form</elvt-button>
-```
+<Code className="language-html" metaData="path=/examples/form-buttons.html">
+<elevate-button type="submit" tone="primary">Submit Form</elevate-button>
+<elevate-button type="reset" tone="secondary">Reset Form</elevate-button>
+</Code>
 
 ### With Custom Padding
 
-```html
-<elvt-button padding="0 xl">Custom Padding</elvt-button>
-```
+<Code className="language-html" metaData="path=/examples/custom-padding.html">
+<elevate-button padding="0 xl">Custom Padding</elevate-button>
+</Code>
 
 ### Properties
+
+<PageTable>
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -139,6 +295,8 @@ npm install @inform-elevate/elevate-core-ui
 | `name` | `string` | - | Form field name |
 | `value` | `string` | - | Form field value |
 | `padding` | `Padding` | - | Custom padding using design token values |
+
+</PageTable>
 
 ### Slots
 
@@ -161,6 +319,96 @@ npm install @inform-elevate/elevate-core-ui
 | Method | Description |
 |--------|-------------|
 | `focus(options?: FocusOptions)` | Programmatically focus the button |
+
+## Interactive Examples
+
+### Button Playground
+
+<Tabs>
+
+<Tab label="Tone Examples">
+
+Test different button tones to see their visual hierarchy:
+
+<Code className="language-html" metaData="path=/examples/tone-examples.html">
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <elevate-button>Neutral</elevate-button>
+  <elevate-button tone="primary">Primary</elevate-button>  
+  <elevate-button tone="success">Success</elevate-button>
+  <elevate-button tone="warning">Warning</elevate-button>
+  <elevate-button tone="danger">Danger</elevate-button>
+  <elevate-button tone="emphasized">Emphasized</elevate-button>
+  <elevate-button tone="subtle">Subtle</elevate-button>
+</div>
+</Code>
+
+</Tab>
+
+<Tab label="Size Comparison">
+
+Compare different button sizes in context:
+
+<Code className="language-html" metaData="path=/examples/size-comparison.html">
+<div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+  <elevate-button size="small" tone="primary">Small</elevate-button>
+  <elevate-button size="medium" tone="primary">Medium</elevate-button>
+  <elevate-button size="large" tone="primary">Large</elevate-button>
+</div>
+</Code>
+
+</Tab>
+
+<Tab label="Form Example">
+
+See buttons in a realistic form context:
+
+<Code className="language-html" metaData="path=/examples/form-example.html">
+<form style="max-width: 400px; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 8px;">
+  <h3>Contact Form</h3>
+  
+  <div style="margin-bottom: 1rem;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;">
+  </div>
+  
+  <div style="margin-bottom: 1rem;">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;">
+  </div>
+  
+  <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+    <elevate-button type="reset">Reset</elevate-button>
+    <elevate-button type="submit" tone="primary">Submit</elevate-button>
+  </div>
+</form>
+</Code>
+
+</Tab>
+
+<Tab label="States Demo">
+
+Explore different button states:
+
+<Code className="language-html" metaData="path=/examples/button-states.html">
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+  <elevate-button tone="primary">Normal</elevate-button>
+  <elevate-button tone="primary" disabled>Disabled</elevate-button>
+  <elevate-button tone="primary" selected>Selected</elevate-button>
+  
+  <elevate-button shape="pill" tone="success">Pill Shape</elevate-button>
+  <elevate-button href="#" tone="primary">As Link</elevate-button>
+</div>
+</Code>
+
+</Tab>
+
+</Tabs>
+
+<InlineNotification type="info">
+
+**Try It Out**: These examples use the actual ELEVATE Button component. You can copy the code and modify it to experiment with different combinations of properties.
+
+</InlineNotification>
 
 ## Accessibility
 

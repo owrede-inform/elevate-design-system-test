@@ -3,16 +3,20 @@ import ResourceLinks from 'gatsby-theme-carbon/src/components/LeftNav/ResourceLi
 
 const links = [
   {
-    title: 'Github',
-    href: 'https://github.com/carbon-design-system/gatsby-theme-carbon',
+    title: 'ELEVATE Core UI',
+    href: 'https://github.com/inform-elevate/elevate-core-ui',
   },
   {
-    title: 'Carbon',
-    href: 'https://www.carbondesignsystem.com',
+    title: 'Design Tokens',
+    href: 'https://github.com/inform-elevate/elevate-design-tokens',
   },
   {
-    title: 'Configuration guide',
-    href: '/guides/configuration',
+    title: 'Storybook',
+    href: 'https://elevate-core-ui.inform-cloud.io',
+  },
+  {
+    title: 'INFORM Software',
+    href: 'https://www.inform-software.com',
   },
 ];
 

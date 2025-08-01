@@ -12,7 +12,8 @@ Avatars are visual representations of users, teams, or entities within interface
 <AnchorLinks>
   <AnchorLink>Variations</AnchorLink>
   <AnchorLink>Design Guidelines</AnchorLink>  
-  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Component API</AnchorLink>
+  <AnchorLink>Usage Examples</AnchorLink>
   <AnchorLink>Accessibility</AnchorLink>
   <AnchorLink>Changelog</AnchorLink>
 </AnchorLinks>
@@ -22,11 +23,35 @@ Avatars are visual representations of users, teams, or entities within interface
 ### Image Avatar
 Standard avatar displaying user's profile photo or uploaded image.
 
+<Code className="language-html" metaData="path=/components/avatar/image-avatar.html">
+<elevate-avatar 
+  src="https://example.com/user-photo.jpg"
+  alt="John Doe"
+  size="medium">
+</elevate-avatar>
+</Code>
+
 ### Initials Avatar
 Fallback avatar showing user's initials when no image is available.
 
+<Code className="language-html" metaData="path=/components/avatar/initials-avatar.html">
+<elevate-avatar 
+  initials="JD"
+  size="medium"
+  tone="primary">
+</elevate-avatar>
+</Code>
+
 ### Icon Avatar
 Generic avatar using system icons for placeholder or anonymous users.
+
+<Code className="language-html" metaData="path=/components/avatar/icon-avatar.html">
+<elevate-avatar 
+  icon="user"
+  size="medium"
+  tone="neutral">
+</elevate-avatar>
+</Code>
 
 ### Group Avatar
 Avatar representing multiple users or team entities.
