@@ -1,0 +1,218 @@
+---
+title: Dialog
+description: Dialogs present important information or require user decisions. They overlay the main interface and focus attention on critical tasks or messages.
+---
+
+<PageDescription>
+
+Dialogs are modal windows that interrupt the user's workflow to present important information, gather input, or require decisions. The ELEVATE Dialog component provides accessible, responsive modal interactions for all INFORM applications.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Alert Dialog
+Simple informational dialog with a single action button.
+
+### Confirmation Dialog
+Dialog requesting user confirmation for important or destructive actions.
+
+### Form Dialog
+Dialog containing form fields for data input or editing.
+
+### Full Screen Dialog
+Dialog that takes up the entire viewport for complex interactions.
+
+### Non-Modal Dialog
+Dialog that doesn't block interaction with underlying content.
+
+### Loading Dialog
+Dialog showing progress or loading states for long operations.
+
+## Design Guidelines
+
+### When to Use
+- **Critical decisions**: Destructive actions, important confirmations
+- **Required input**: Essential information needed to continue
+- **Error handling**: Critical errors that need immediate attention
+- **Complex forms**: Multi-step processes or detailed data entry
+- **Content preview**: Quick view of detailed information
+
+### When Not to Use
+- **Simple notifications**: Use Toast or Notification components
+- **Non-critical information**: Use inline messaging or cards
+- **Primary navigation**: Use appropriate navigation patterns
+- **Frequent interactions**: Consider inline editing or side panels
+
+### Content Guidelines
+- Use clear, concise titles that describe the purpose
+- Write action-oriented button labels (Save, Delete, Cancel)
+- Keep body text scannable and focused
+- Provide clear next steps or instructions
+- Use progressive disclosure for complex content
+
+### Interaction Patterns
+- Always provide a way to close or cancel
+- Use primary/secondary button hierarchy
+- Consider escape key and overlay click behavior
+- Maintain focus management throughout interaction
+- Provide loading states for async actions
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-dialog open="true">
+  <elvt-dialog-header>
+    <h2>Confirm Action</h2>
+  </elvt-dialog-header>
+  <elvt-dialog-content>
+    <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+  </elvt-dialog-content>
+  <elvt-dialog-actions>
+    <elvt-button variant="secondary">Cancel</elvt-button>
+    <elvt-button variant="danger">Delete</elvt-button>
+  </elvt-dialog-actions>
+</elvt-dialog>
+```
+
+### Form Dialog
+
+```html
+<elvt-dialog open="true" size="medium">
+  <elvt-dialog-header>
+    <h2>Edit Profile</h2>
+  </elvt-dialog-header>
+  <elvt-dialog-content>
+    <elvt-input label="Full Name" value="John Doe"></elvt-input>
+    <elvt-input label="Email" type="email" value="john@example.com"></elvt-input>
+    <elvt-textarea label="Bio" placeholder="Tell us about yourself"></elvt-textarea>
+  </elvt-dialog-content>
+  <elvt-dialog-actions>
+    <elvt-button variant="secondary">Cancel</elvt-button>
+    <elvt-button variant="primary">Save Changes</elvt-button>
+  </elvt-dialog-actions>
+</elvt-dialog>
+```
+
+### Full Screen Dialog
+
+```html
+<elvt-dialog open="true" full-screen="true">
+  <elvt-dialog-header>
+    <h1>Create New Project</h1>
+    <elvt-button variant="ghost" slot="close">
+      <elvt-icon name="close"></elvt-icon>
+    </elvt-button>
+  </elvt-dialog-header>
+  <elvt-dialog-content>
+    <!-- Complex form content -->
+  </elvt-dialog-content>
+  <elvt-dialog-actions>
+    <elvt-button variant="secondary">Save Draft</elvt-button>
+    <elvt-button variant="primary">Create Project</elvt-button>
+  </elvt-dialog-actions>
+</elvt-dialog>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `open` | `boolean` | `false` | Whether the dialog is open |
+| `size` | `string` | `medium` | Dialog size: `small`, `medium`, `large`, `xl` |
+| `full-screen` | `boolean` | `false` | Whether dialog takes full viewport |
+| `modal` | `boolean` | `true` | Whether dialog is modal (blocks background interaction) |
+| `persistent` | `boolean` | `false` | Whether dialog can be closed by clicking overlay |
+| `scroll-body` | `boolean` | `false` | Whether to scroll dialog body vs entire dialog |
+| `max-width` | `string` | - | Custom maximum width |
+
+### Slots
+
+| Slot | Description |
+|------|-------------|
+| `header` | Dialog header area |
+| `content` | Main dialog content |
+| `actions` | Action buttons area |
+| `close` | Custom close button |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `open` | Fired when dialog opens |
+| `close` | Fired when dialog closes |
+| `overlay-click` | Fired when overlay background is clicked |
+| `escape-key` | Fired when escape key is pressed |
+
+## Accessibility
+
+### Focus Management
+- Focus moves to dialog when opened
+- Focus is trapped within dialog during interaction
+- Focus returns to trigger element when closed
+- Initial focus placement follows logical content order
+
+### Keyboard Support
+- **Escape**: Closes dialog (unless persistent)
+- **Tab**: Moves focus through dialog elements
+- **Shift + Tab**: Moves focus backward through elements
+- **Enter**: Activates focused buttons
+
+### Screen Reader Support
+- Dialog has proper `role="dialog"` or `role="alertdialog"`
+- Modal dialogs use `aria-modal="true"`
+- Dialog is labeled with `aria-labelledby` pointing to title
+- Additional description uses `aria-describedby`
+- Background content is properly hidden with `aria-hidden`
+
+### ARIA Support
+- Uses appropriate dialog roles based on content type
+- Maintains proper heading hierarchy within dialog
+- Form dialogs associate labels and controls correctly
+- Error states are announced appropriately
+
+### Best Practices
+- Provide clear, descriptive dialog titles
+- Use semantic heading structure within dialogs
+- Ensure all interactive elements are keyboard accessible
+- Maintain logical tab order throughout dialog
+- Provide clear close/cancel options
+- Don't open dialogs from other dialogs (avoid stacking)
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced animation and interaction patterns
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced responsive behavior
+- Improved focus management
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional dialog sizes and variants
+- Better mobile experience
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic modal dialog functionality
+- Core open/close interactions

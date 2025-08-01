@@ -1,18 +1,18 @@
 module.exports = {
   trailingSlash: `always`,
   siteMetadata: {
-    title: 'Gatsby Theme Carbon',
-    description: 'A Gatsby theme for the carbon design system',
-    keywords: 'gatsby,theme,carbon',
+    title: 'ELEVATE Design System',
+    description: 'Documentation and guidelines for the ELEVATE Design System',
+    keywords: 'design,system,elevate,components,guidelines',
   },
   pathPrefix: `/elevate-gatsby-test`,
   plugins: [
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Carbon Design Gatsby Theme',
+        name: 'ELEVATE Design System',
         icon: 'src/images/favicon.svg',
-        short_name: 'Gatsby Theme Carbon',
+        short_name: 'ELEVATE',
         start_url: '/',
         display: 'browser',
       },
@@ -29,12 +29,11 @@ module.exports = {
     {
       resolve: 'gatsby-theme-carbon',
       options: {
-        mediumAccount: 'carbondesign',
         repository: {
-          baseUrl:
-            'https://github.com/carbon-design-system/gatsby-theme-carbon',
-          subDirectory: '/packages/example',
+          baseUrl: 'https://github.com/inform-elevate/elevate-design-system-docs',
+          subDirectory: '',
         },
+        isSwitcherEnabled: true,
       },
     },
   ],

@@ -1,0 +1,183 @@
+---
+title: Breadcrumb
+description: Breadcrumbs show users their location within a site hierarchy and provide quick navigation to parent pages. They improve wayfinding and user orientation.
+---
+
+<PageDescription>
+
+Breadcrumbs are navigational aids that show users their current location within a website's hierarchy. The ELEVATE Breadcrumb component provides consistent navigation patterns and helps users understand their position in complex information architectures.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Guidelines</AnchorLink>  
+  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Variations
+
+### Standard Breadcrumb
+Traditional hierarchical navigation showing the path from root to current page.
+
+### Icon Breadcrumb
+Breadcrumb with icons to enhance visual recognition and category identification.
+
+### Compact Breadcrumb
+Condensed version that truncates middle levels for space-constrained layouts.
+
+### Dropdown Breadcrumb
+Interactive breadcrumb with dropdown menus for accessing sibling pages.
+
+### Mobile Breadcrumb
+Responsive breadcrumb optimized for mobile devices with simplified navigation.
+
+## Design Guidelines
+
+### When to Use
+- **Deep hierarchies**: Sites with 3+ levels of navigation
+- **Complex information architecture**: Multiple categories and subcategories
+- **User orientation**: When users need to understand their location
+- **Quick navigation**: Allowing fast access to parent levels
+- **E-commerce**: Product categories and detailed product pages
+
+### When Not to Use
+- **Shallow sites**: Sites with only 1-2 navigation levels
+- **Linear workflows**: Step-by-step processes or wizards
+- **Mobile-first designs**: Where space is extremely limited
+- **Single-page applications**: Without clear hierarchical structure
+
+### Hierarchy Guidelines
+- Start with home/root level when appropriate
+- Show immediate parent levels
+- Highlight current page (non-clickable)
+- Use consistent separator characters
+- Limit to 7 levels maximum for usability
+
+### Content Guidelines
+- Use clear, descriptive page titles
+- Keep labels concise but meaningful
+- Maintain consistency with main navigation
+- Use sentence case for readability
+- Ensure labels are actionable and clickable
+
+## Code Reference
+
+### Installation
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+### Basic Usage
+
+```html
+<elvt-breadcrumb>
+  <elvt-breadcrumb-item href="/">Home</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/products">Products</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/products/electronics">Electronics</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item current>Laptop</elvt-breadcrumb-item>
+</elvt-breadcrumb>
+```
+
+### With Icons
+
+```html
+<elvt-breadcrumb>
+  <elvt-breadcrumb-item href="/">
+    <elvt-icon name="home"></elvt-icon>
+    Home
+  </elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/dashboard">
+    <elvt-icon name="dashboard"></elvt-icon>
+    Dashboard
+  </elvt-breadcrumb-item>
+  <elvt-breadcrumb-item current>Settings</elvt-breadcrumb-item>
+</elvt-breadcrumb>
+```
+
+### Compact Version
+
+```html
+<elvt-breadcrumb compact max-items="3">
+  <elvt-breadcrumb-item href="/">Home</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/level1">Level 1</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/level2">Level 2</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item href="/level3">Level 3</elvt-breadcrumb-item>
+  <elvt-breadcrumb-item current>Current Page</elvt-breadcrumb-item>
+</elvt-breadcrumb>
+```
+
+### Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `separator` | `string` | `/` | Character or icon used between breadcrumb items |
+| `compact` | `boolean` | `false` | Enable compact mode for long breadcrumbs |
+| `max-items` | `number` | `5` | Maximum visible items before truncation |
+| `show-home` | `boolean` | `true` | Whether to always show home/root item |
+
+### Breadcrumb Item Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `href` | `string` | - | URL for the breadcrumb link |
+| `current` | `boolean` | `false` | Whether this is the current page |
+| `disabled` | `boolean` | `false` | Whether the item is disabled |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `item-click` | Fired when a breadcrumb item is clicked |
+| `overflow-click` | Fired when truncated items dropdown is opened |
+
+## Accessibility
+
+### Semantic Structure
+- Uses `nav` element with appropriate `aria-label`
+- Implements proper `ol` (ordered list) structure
+- Current page is marked with `aria-current="page"`
+- Non-clickable items have appropriate semantics
+
+### Keyboard Support
+- **Tab**: Moves focus between clickable breadcrumb items
+- **Enter/Space**: Activates focused breadcrumb links
+- **Arrow keys**: Navigate between items in compact mode dropdowns
+
+### Screen Reader Support
+- Breadcrumb navigation is announced as a landmark
+- Current page location is clearly identified
+- List structure provides logical reading order
+- Separator characters are handled appropriately
+
+### Best Practices
+- Provide clear `aria-label` for breadcrumb navigation
+- Ensure sufficient color contrast for all text
+- Don't make current page clickable
+- Use semantic HTML structure (nav > ol > li > a)
+- Provide alternative navigation for complex hierarchies
+
+## Changelog
+
+### Version 1.0.0 (Planned - November 2025)
+- Production-ready release
+- Full accessibility compliance
+- Advanced truncation strategies
+
+### Version 0.3.0 (Planned - September 2025)
+- Beta release with intensive testing
+- Enhanced mobile responsive behavior
+- Improved dropdown functionality
+
+### Version 0.2.0 (Planned - July 2025)
+- Updated component documentation
+- Additional separator options
+- Better overflow handling
+
+### Version 0.1.0 (Planned - May 2025)
+- Initial alpha release
+- Basic breadcrumb functionality
+- Core navigation structure

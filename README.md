@@ -1,31 +1,47 @@
-# Gatsby Theme Carbon Starter
+# ELEVATE Design System Documentation (Test)
 
 ## What is this?
 
-> Gatsby [themes](https://www.gatsbyjs.org/docs/themes/) encapsulate all of the
-> configuration and implementation details of Gatsby websites. This is a
-> starter-kit (boilerplate) with a dependancy on the `gatsby-theme-carbon`
-> package. The primary goal of `gatsby-theme-carbon` is to get content authors
-> speaking the IBM Design Language with Carbon as soon as possible. It includes
-> some sample components/content demos in the `src/pages` directory.
+> This is the documentation site for the ELEVATE Design System.
 
-## How do I use it?
+## Internal Resources
 
-Check out our quick
-[getting started](https://gatsby-theme-carbon.now.sh/getting-started) guide and
-video!
+### Work Documentation of the ELEVATE Team
 
-`gatsby-theme-carbon` at it’s core relies on [mdx](https://mdxjs.com/) for page
-creation. Check out the `src/pages` directory for some examples for using mdx.
+- Confluence Space with current documentation about the work on ELEVATE 
+  Design Sysstem from the ELEVATE team: https://confluence.inform-software.com/x/5dM6D
 
-A key feature of Gatsby themes is component shadowing. By simply placing a
-component into the `src/gatsby-theme-carbon/components` location, you can
-override components used by the theme. You can read more about component
-shadowing
-[here](https://www.gatsbyjs.org/docs/themes/api-reference#component-shadowing).
 
-You’re also free to make your own components and use them in your MDX pages.
+### GitHub
+ 
+- GitHub Organization for the ELEVATE Design System: https://github.com/inform-elevate
 
-## What’s Next?
+### Repositories 
 
-[Check out the docs!](https://gatsby-theme-carbon.now.sh)
+#### Core UI
+
+Core UI contains the Elevate Core UI components - a set of Web Components for 
+Inform applications. It uses Storybook to provide a development environment and documentation.
+
+- Repository: https://github.com/inform-elevate/elevate-core-ui
+- Storybook: http://elevate-icons.inform-cloud.io/
+
+#### Custom Icons
+
+This is a repository with icons exported from Figma. The icons are provided as SVGs and TypeScript constants with Data-URLs.
+
+- Repository: https://github.com/inform-elevate/elevate-icons
+- Storybook: http://elevate-icons.inform-cloud.io/
+
+#### Design Tokens
+
+This is a repository with the design tokens exported from Figma. It provides them as styles and json.
+
+- Repository: https://github.com/inform-elevate/elevate-design-tokens
+- Storybook: http://elevate-design-tokens.inform-cloud.io/
+
+### INFORM Corporate Design
+
+This page explains the essential components of INFORM GmbH's corporate design and serves as a basis for our service providers, business partners and suppliers.
+
+- URL: https://www.inform-software.design/

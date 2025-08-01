@@ -1,9 +1,148 @@
-// This is where your application styles could go.
+// ELEVATE Design System Custom Styles
+// Using local Inter variable fonts for better performance
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Keep JetBrains Mono from Google Fonts for code
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+// INFORM Brand Colors for ELEVATE Design System
+:root {
+  --elevate-primary: #0090a7; // INFORM Petrol
+  --elevate-primary-hover: #007a8f; // Darker petrol for hover
+  --elevate-secondary: #004759; // INFORM Dark green
+  --elevate-accent: #0090a7; // Petrol for accents
+  --elevate-success: #10b981; // Keep success green
+  --elevate-warning: #f59e0b; // Keep warning amber
+  --elevate-error: #ef4444; // Keep error red
+  --elevate-text-primary: #000000; // INFORM Black
+  --elevate-text-secondary: #4e5355; // INFORM Gray
+  --elevate-background: #ffffff;
+  --elevate-surface: #f9fafb;
+  --elevate-border: #e5e7eb;
+}
+
+// Typography overrides using Inter variable font
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-variation-settings: 'opsz' 16; // Optimized for 16px reading size
+}
+
+// Typography scale using Inter variable font features
+h1, .h1 {
+  font-variation-settings: 'opsz' 32, 'wght' 700;
+  font-weight: 700;
+}
+
+h2, .h2 {
+  font-variation-settings: 'opsz' 24, 'wght' 600;
+  font-weight: 600;
+}
+
+h3, .h3 {
+  font-variation-settings: 'opsz' 20, 'wght' 600;
+  font-weight: 600;
+}
+
+h4, .h4 {
+  font-variation-settings: 'opsz' 18, 'wght' 500;
+  font-weight: 500;
+}
+
+h5, .h5, h6, .h6 {
+  font-variation-settings: 'opsz' 16, 'wght' 500;
+  font-weight: 500;
+}
+
+// Optimize Inter for different text sizes
+.text-small {
+  font-variation-settings: 'opsz' 14;
+  font-size: 0.875rem;
+}
+
+.text-large {
+  font-variation-settings: 'opsz' 24;
+  font-size: 1.25rem;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace !important;
+}
+
+// Custom brand styling
+.homepage-feature {
+  background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-secondary) 100%);
+}
+
+// Header customization
+.bx--header {
+  background-color: var(--elevate-primary);
+  border-bottom: 1px solid var(--elevate-primary-hover);
+}
+
+// Navigation customization
+.bx--side-nav {
+  background-color: var(--elevate-surface);
+  border-right: 1px solid var(--elevate-border);
+}
+
+.bx--side-nav__link {
+  color: var(--elevate-text-primary);
+  
+  &:hover {
+    background-color: var(--elevate-primary);
+    color: white;
+  }
+}
+
+// Link styling
+a {
+  color: var(--elevate-primary);
+  
+  &:hover {
+    color: var(--elevate-primary-hover);
+  }
+}
+
+// Button customization
+.bx--btn--primary {
+  background-color: var(--elevate-primary);
+  border-color: var(--elevate-primary);
+  
+  &:hover {
+    background-color: var(--elevate-primary-hover);
+  }
+}
+
+// Card styling
+.bx--tile {
+  border: 1px solid var(--elevate-border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: var(--elevate-primary);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+  }
+}
 
 #gatsby-focus-wrapper {
   padding-top: 4.5rem;
 
-  @include breakpoint("md") {
-    padding-top: $spacing-07;
+  @media (min-width: 672px) {
+    padding-top: 2rem;
   }
 }
