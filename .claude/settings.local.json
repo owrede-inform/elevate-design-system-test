@@ -16,7 +16,23 @@
       "Bash(mkdir:*)",
       "Bash(cp:*)",
       "Bash(git add:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(yarn build)",
+      "Bash(git push:*)",
+      "Bash(jq:*)",
+      "Bash(find:*)",
+      "Bash(yarn:*)",
+      "Bash(powershell:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "WebFetch(domain:owrede-inform.github.io)",
+      "Bash(gh api:*)",
+      "Bash(gh workflow run:*)",
+      "Bash(git clone:*)",
+      "Bash(robocopy:*)",
+      "Bash(xcopy:*)"
     ],
     "deny": []
   }
