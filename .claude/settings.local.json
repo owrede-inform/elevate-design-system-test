@@ -61,7 +61,8 @@
       "Bash(do echo \"=== $file ===\")",
       "Bash(done)",
       "Bash(do echo \"Processing $file\")",
-      "Bash(cmd /c:*)"
+      "Bash(cmd /c:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }
