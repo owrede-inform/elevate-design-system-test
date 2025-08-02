@@ -3,7 +3,7 @@ import { HomepageBanner, HomepageCallout } from 'gatsby-theme-carbon';
 import HomepageTemplate from 'gatsby-theme-carbon/src/components/Layouts/Homepage';
 import { calloutLink } from './Homepage.module.scss';
 
-import CloudsBackground from './clouds.png';
+import CloudsBackground from '../../static/images/clouds-notype-gray.png';
 
 const FirstLeftText = () => <p>Built on Principles</p>;
 
@@ -38,15 +38,18 @@ const SecondRightText = () => (
 
 const BannerText = () => (
   <div style={{ 
-    marginTop: '-4rem', 
-    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '100%',
+    textAlign: 'left',
     textShadow: '0 2px 4px rgba(0,0,0,0.3)'
   }}>
     <h1 style={{ 
       color: '#262626',
       fontWeight: '700',
       fontSize: '4rem',
-      marginBottom: '1rem',
+      marginBottom: '2rem',
       textShadow: '0 2px 8px rgba(0,0,0,0.2)'
     }}>
       ELEVATE Design System
@@ -56,9 +59,9 @@ const BannerText = () => (
       color: '#393939',
       fontWeight: '500',
       maxWidth: '600px',
-      margin: '0 auto',
       lineHeight: '1.4',
-      textShadow: '0 1px 4px rgba(0,0,0,0.1)'
+      textShadow: '0 1px 4px rgba(0,0,0,0.1)',
+      marginBottom: '3rem'
     }}>
       Empowering INFORM teams to build the future of enterprise software
     </p>

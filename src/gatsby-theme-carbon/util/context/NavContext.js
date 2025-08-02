@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer, useState } from 'react';
+import React, { useMemo, useReducer, useState, useCallback } from 'react';
 import usePathprefix from '../hooks/usePathprefix';
 
 const NavContext = React.createContext({
@@ -32,9 +32,9 @@ export const NavContextProvider = ({ children }) => {
 
   const [leftNavScrollTop, setLeftNavScrollTop] = useState(0);
 
-  const toggleNavState = (nav, type) => {
+  const toggleNavState = useCallback((nav, type) => {
     dispatch({ nav, type });
-  };
+  }, [dispatch]);
 
   const [isManagingFocus, setIsManagingFocus] = useState(false);
 

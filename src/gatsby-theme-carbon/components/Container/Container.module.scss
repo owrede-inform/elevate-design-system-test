@@ -7,9 +7,11 @@
   transition: all 0.15s ease;
   pointer-events: none;
   opacity: 0;
+  visibility: hidden;
 }
 
 .visible {
   pointer-events: auto;
   opacity: 1;
+  visibility: visible;
 }

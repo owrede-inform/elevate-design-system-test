@@ -1,23 +1,12 @@
 // ELEVATE Design System Custom Styles
-// Using local Inter variable fonts for better performance
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Variable.ttf') format('truetype-variations');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
+// Note: Font faces are defined in gatsby-theme-carbon/styles/internal/_plex.scss
+// to avoid duplication and ensure proper loading
 
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Italic-Variable.ttf') format('truetype-variations');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
+// Import ELEVATE Design Tokens CSS (for custom properties)
+@import '~@inform-elevate/elevate-design-tokens/dist/light.css';
 
-// Keep Roboto Mono from Google Fonts for code
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+// Import ELEVATE Design System Typography
+@import './elevate-typography.scss';
 
 // INFORM Brand Colors for ELEVATE Design System
 :root {
@@ -35,52 +24,7 @@
   --elevate-border: #e5e7eb;
 }
 
-// Typography overrides using Inter variable font
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-variation-settings: 'opsz' 16; // Optimized for 16px reading size
-}
-
-// Typography scale using Inter variable font features
-h1, .h1 {
-  font-variation-settings: 'opsz' 32, 'wght' 700;
-  font-weight: 700;
-}
-
-h2, .h2 {
-  font-variation-settings: 'opsz' 24, 'wght' 600;
-  font-weight: 600;
-}
-
-h3, .h3 {
-  font-variation-settings: 'opsz' 20, 'wght' 600;
-  font-weight: 600;
-}
-
-h4, .h4 {
-  font-variation-settings: 'opsz' 18, 'wght' 500;
-  font-weight: 500;
-}
-
-h5, .h5, h6, .h6 {
-  font-variation-settings: 'opsz' 16, 'wght' 500;
-  font-weight: 500;
-}
-
-// Optimize Inter for different text sizes
-.text-small {
-  font-variation-settings: 'opsz' 14;
-  font-size: 0.875rem;
-}
-
-.text-large {
-  font-variation-settings: 'opsz' 24;
-  font-size: 1.25rem;
-}
-
-code, pre {
-  font-family: 'Roboto Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
-}
+// Note: Typography is now handled by ELEVATE Design Tokens in elevate-typography.scss
 
 // Custom brand styling
 .homepage-feature {
@@ -347,9 +291,61 @@ a {
 }
 
 #gatsby-focus-wrapper {
-  padding-top: 4.5rem;
+  padding-top: 3rem;
 
   @media (min-width: 672px) {
     padding-top: 2rem;
+  }
+}
+
+// AGGRESSIVE APPROACH: Remove ALL semi-transparent overlays on mobile
+@media (max-width: 1055px) {
+  // Target ANY element that could be creating the overlay
+  * {
+    // Remove any element with semi-transparent background
+    &[style*="rgba(0,0,0,"] {
+      display: none !important;
+    }
+    
+    // Remove any element with overlay-01 background (Carbon variable)
+    &[style*="background: rgba(0, 0, 0, 0.5)"],
+    &[style*="background:rgba(0,0,0,0.5)"],
+    &[style*="background: #161616cc"],
+    &[style*="background:#161616cc"] {
+      display: none !important;
+    }
+  }
+  
+  // Remove ALL overlays regardless of class
+  .overlay,
+  [class*="overlay"],
+  [class*="backdrop"],
+  [id*="overlay"],
+  [data-overlay] {
+    display: none !important;
+  }
+  
+  // Remove ALL pseudo-elements that could be overlays
+  *::before,
+  *::after {
+    &[style*="position: fixed"],
+    &[style*="rgba"] {
+      display: none !important;
+    }
+  }
+  
+  // Nuclear option: Remove ALL fixed positioned elements with z-index > 50
+  *[style*="position: fixed"] {
+    &[style*="z-index"] {
+      display: none !important;
+    }
+  }
+  
+  // Specific Carbon overlay killers
+  .cds--side-nav + *::before,
+  .cds--side-nav + *::after,
+  .cds--side-nav--website + *::before,
+  .cds--side-nav--website + *::after {
+    display: none !important;
   }
 }

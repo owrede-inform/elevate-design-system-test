@@ -11,7 +11,7 @@ module.exports = {
       branch: 'main',
     },
     isSearchEnabled: false,
-    isSwitcherEnabled: false,
+    isSwitcherEnabled: true,
     homepageTheme: 'g90',
     interiorTheme: 'g10',
     navigationStyle: '',

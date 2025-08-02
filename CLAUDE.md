@@ -59,3 +59,73 @@ This is a Gatsby site built using the `gatsby-theme-carbon` theme, which impleme
 - Customize site metadata in `gatsby-config.js`
 - Navigation structure is controlled via `src/data/nav-items.yaml`
 - Global styles can be modified in `src/styles/index.scss`
+
+## ELEVATE Design System Integration
+
+### Installing ELEVATE Components
+
+To properly install ELEVATE components, you must configure npm for the GitHub package registry first:
+
+```bash
+# Configure npm for GitHub packages (one-time setup)
+npm config set @inform-elevate:registry https://npm.pkg.github.com
+npm login --scope=@inform-elevate --auth-type=legacy --registry=https://npm.pkg.github.com
+
+# Install ELEVATE (this single package includes all dependencies)
+npm install @inform-elevate/elevate-core-ui --legacy-peer-deps
+```
+
+**Important Notes:**
+- Only install `@inform-elevate/elevate-core-ui` - it automatically installs all required dependencies including CDK and design tokens
+- Use `--legacy-peer-deps` flag to handle dependency conflicts with the Gatsby/Carbon ecosystem
+- The package includes all required dependencies like `composed-offset-position`, `qr-creator`, `@floating-ui/*`, etc.
+- Components are imported via `import '@inform-elevate/elevate-core-ui';` in the LiveExample component
+
+### ELEVATE Component Usage
+
+- ELEVATE components are automatically available in MDX files when using the `<LiveExample>` component
+- Components use web components standard (custom elements) like `<elvt-button>`, `<elvt-icon>`, etc.
+- The LiveExample component handles loading and registration of all ELEVATE web components
+
+## Typography
+
+### Font System
+The project uses **Inter** from Google Fonts instead of IBM Plex for better readability and modern design:
+
+- **Primary Font**: Inter Variable Font (supports weights 100-900)
+- **Monospace Font**: JetBrains Mono (for code blocks)
+- **Fallback Stack**: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`
+
+### Typography Hierarchy (ELEVATE Design Tokens)
+The project now uses the official ELEVATE Design System typography tokens:
+
+**Page Headlines (h1)**: Display sizes
+- `important-display-s` (3rem, semibold) - Main page titles
+- `important-display-m` (3.75rem, semibold) - Hero titles
+
+**Section Headlines**: Headline and Section sizes
+- `h2`: `emphasized-headline-s` (2.75rem, medium)
+- `h3`: `emphasized-section-l` (1.75rem, medium)  
+- `h4`: `emphasized-section-m` (1.5rem, medium)
+- `h5`: `emphasized-section-s` (1.25rem, medium)
+- `h6`: `emphasized-label-xl` (1.5rem, medium)
+
+**Body Text**: Content sizes
+- Default: `default-content-m` (1rem, regular)
+- Large: `default-content-l` (1.25rem, regular)
+- Small: `default-content-s` (0.875rem, regular)
+- XL: `default-content-xl` (1.5rem, regular)
+
+**UI Elements**: Label sizes
+- Labels: `default-label-m` (1rem, regular)
+- Captions: `default-caption` (0.75rem, regular)
+
+Font configuration is handled in:
+- `src/gatsby-theme-carbon/styles/internal/_plex.scss` - Font face definitions
+- `src/styles/elevate-typography.scss` - ELEVATE Design Token typography hierarchy
+- `src/styles/index.scss` - Main style imports
+
+## Code Interaction Guidelines
+
+- Do not auto commit and push unless I ask you to do it. Remember to commit, push & merge whenever I ask you to that with the command "/deploy".
+- Never add "Co-authored by Claude" lines (or similar) to comments or commit messages or PR comments.

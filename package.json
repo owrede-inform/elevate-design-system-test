@@ -18,11 +18,17 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^11.43.0",
+    "@floating-ui/utils": "^0.2.8",
+    "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
+    "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
+    "@inform-elevate/elevate-design-tokens": "^1.0.0",
     "@shoelace-style/shoelace": "^2.20.1",
+    "composed-offset-position": "^0.0.6",
     "gatsby": "^5.13.6",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-theme-carbon": "^4.1.4",
     "lit": "^3.3.1",
+    "qr-creator": "^1.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "1.62.1"
@@ -33,10 +39,12 @@
     "whatwg-url": "^14.2.0",
     "core-js": "^3.44.0",
     "node-fetch/whatwg-url": "^14.2.0",
-    "babel-runtime/core-js": "^3.44.0"
+    "babel-runtime/core-js": "^3.44.0",
+    "composed-offset-position": "^0.0.6"
   },
   "devDependencies": {
     "eslint-plugin-mdx": "^3.6.2",
+    "gatsby-plugin-eslint": "^4.0.4",
     "rimraf": "^6.0.1"
   },
   "_temporarilyRemovedDependencies": {

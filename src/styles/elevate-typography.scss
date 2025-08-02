@@ -1,0 +1,278 @@
+// ELEVATE Design System Typography
+// Using ELEVATE Design Token CSS custom properties directly
+
+// Page Headlines - Use Display sizes for main page titles with ultra-bold weight
+.page-title,
+h1,
+.h1 {
+  font-family: var(--elvt-type-alias-important-display-s-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-900, 900); // Use black weight (ultra-bold)
+  font-size: var(--elvt-type-alias-important-display-s-font-size, 3rem);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  
+  // Larger display for hero sections
+  &.hero-title {
+    font-family: var(--elvt-type-alias-important-display-m-font-family, 'Inter');
+    font-weight: var(--elvt-primitives-font-weight-900, 900); // Use black weight (ultra-bold)
+    font-size: var(--elvt-type-alias-important-display-m-font-size, 3.75rem);
+    line-height: 1.333;
+  }
+}
+
+// Section Headlines - Use Headline sizes for major sections with extra-bold weight
+h2,
+.h2 {
+  font-family: var(--elvt-type-alias-emphasized-headline-s-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-800, 800); // Use extra-bold weight
+  font-size: var(--elvt-type-alias-emphasized-headline-s-font-size, 2.75rem);
+  line-height: 1.455;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+// Subsection Headlines - Use smaller Headlines with extra-bold weight
+h3,
+.h3 {
+  font-family: var(--elvt-type-alias-emphasized-section-l-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-800, 800); // Use extra-bold weight
+  font-size: var(--elvt-type-alias-emphasized-section-l-font-size, 1.75rem);
+  line-height: 1.857;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+// Minor Headlines - Use Section sizes with bold weight
+h4,
+.h4 {
+  font-family: var(--elvt-type-alias-emphasized-section-m-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
+  font-size: var(--elvt-type-alias-emphasized-section-m-font-size, 1.5rem);
+  line-height: 2;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+h5,
+.h5 {
+  font-family: var(--elvt-type-alias-emphasized-section-s-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
+  font-size: var(--elvt-type-alias-emphasized-section-s-font-size, 1.25rem);
+  line-height: 2;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h6,
+.h6 {
+  font-family: var(--elvt-type-alias-emphasized-label-xl-font-family, 'Inter');
+  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
+  font-size: var(--elvt-type-alias-emphasized-label-xl-font-size, 1.5rem);
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+// Body Text - Use Content sizes for all copy text
+body,
+p,
+.body-text {
+  font-family: var(--elvt-type-alias-default-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-m-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-m-font-size, 1rem);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+// Large body text for introductions
+.intro-text,
+.lead {
+  font-family: var(--elvt-type-alias-default-content-l-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-l-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-l-font-size, 1.25rem);
+  line-height: 1.6;
+}
+
+// Small body text
+.small-text {
+  font-family: var(--elvt-type-alias-default-content-s-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-s-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-s-font-size, 0.875rem);
+  line-height: 1.429;
+}
+
+// Extra large content for callouts
+.callout-text {
+  font-family: var(--elvt-type-alias-default-content-xl-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-xl-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-xl-font-size, 1.5rem);
+  line-height: 1.5;
+}
+
+// Labels - Use Label sizes for UI elements
+label,
+.label {
+  font-family: var(--elvt-type-alias-default-label-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-label-m-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-label-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+.label-large {
+  font-family: var(--elvt-type-alias-default-label-l-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-label-l-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-label-l-font-size, 1.25rem);
+  line-height: 1.6;
+}
+
+.label-small {
+  font-family: var(--elvt-type-alias-default-label-s-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-label-s-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-label-s-font-size, 0.875rem);
+  line-height: 1.429;
+}
+
+// Emphasized text variants
+.emphasized {
+  font-family: var(--elvt-type-alias-emphasized-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-emphasized-content-m-font-weight, 500);
+  font-size: var(--elvt-type-alias-emphasized-content-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+.important {
+  font-family: var(--elvt-type-alias-important-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-important-content-m-font-weight, 600);
+  font-size: var(--elvt-type-alias-important-content-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+.strong {
+  font-family: var(--elvt-type-alias-strong-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-strong-content-m-font-weight, 700);
+  font-size: var(--elvt-type-alias-strong-content-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+// Caption text
+.caption {
+  font-family: var(--elvt-type-alias-default-caption-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-caption-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-caption-font-size, 0.75rem);
+  line-height: 1.667;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+// Code and preformatted text (keep monospace)
+code,
+pre,
+.code {
+  font-family: 'JetBrains Mono', 'Roboto Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
+  font-size: 0.875rem;
+  line-height: 1.429;
+}
+
+// Lists
+ul,
+ol {
+  font-family: var(--elvt-type-alias-default-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-m-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-m-font-size, 1rem);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+// Blockquotes
+blockquote {
+  font-family: var(--elvt-type-alias-emphasized-content-l-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-emphasized-content-l-font-weight, 500);
+  font-size: var(--elvt-type-alias-emphasized-content-l-font-size, 1.25rem);
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--elevate-primary, #0090a7);
+  font-style: italic;
+}
+
+// Links
+a {
+  color: var(--elevate-primary, #0090a7);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--elevate-primary-hover, #007a8f);
+    text-decoration: underline;
+  }
+}
+
+// Table text
+table {
+  font-family: var(--elvt-type-alias-default-content-s-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-s-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-s-font-size, 0.875rem);
+  line-height: 1.429;
+  
+  th {
+    font-family: var(--elvt-type-alias-emphasized-label-s-font-family, 'Inter');
+    font-weight: var(--elvt-type-alias-emphasized-label-s-font-weight, 500);
+    font-size: var(--elvt-type-alias-emphasized-label-s-font-size, 0.875rem);
+    line-height: 1.429;
+  }
+}
+
+// Form elements
+input,
+textarea,
+select {
+  font-family: var(--elvt-type-alias-default-content-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-default-content-m-font-weight, 400);
+  font-size: var(--elvt-type-alias-default-content-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+// Button text
+button,
+.btn {
+  font-family: var(--elvt-type-alias-emphasized-label-m-font-family, 'Inter');
+  font-weight: var(--elvt-type-alias-emphasized-label-m-font-weight, 500);
+  font-size: var(--elvt-type-alias-emphasized-label-m-font-size, 1rem);
+  line-height: 1.5;
+}
+
+// MDX-specific overrides for documentation
+.mdx-content {
+  // Override default margins for better spacing
+  h1, h2, h3, h4, h5, h6 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  
+  // Special styling for code examples
+  .code-example {
+    font-family: var(--elvt-type-alias-default-content-s-font-family, 'Inter');
+    font-weight: var(--elvt-type-alias-default-content-s-font-weight, 400);
+    font-size: var(--elvt-type-alias-default-content-s-font-size, 0.875rem);
+    line-height: 1.429;
+  }
+  
+  // Documentation-specific text sizes
+  .api-description {
+    font-family: var(--elvt-type-alias-default-content-m-font-family, 'Inter');
+    font-weight: var(--elvt-type-alias-default-content-m-font-weight, 400);
+    font-size: var(--elvt-type-alias-default-content-m-font-size, 1rem);
+    line-height: 1.5;
+  }
+  
+  .property-description {
+    font-family: var(--elvt-type-alias-default-content-s-font-family, 'Inter');
+    font-weight: var(--elvt-type-alias-default-content-s-font-weight, 400);
+    font-size: var(--elvt-type-alias-default-content-s-font-size, 0.875rem);
+    line-height: 1.429;
+  }
+}

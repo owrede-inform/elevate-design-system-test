@@ -48,6 +48,7 @@ const Select = ({ children, _id }) => {
 const TabList = ({ children, className, _id }) => {
   const { activeTab } = useContext(TabContext);
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
     <ul className={cx(className, styles.tabList)} role="tablist">
       {React.Children.map(children, (child, index) => {
         if (elementIsNullOrString(child)) return child;
@@ -138,7 +139,7 @@ export const Tabs = (props) => {
       activeTab,
       tabList: tabList.current,
     }),
-    [setActiveTab, activeTab, tabList.current]
+    [setActiveTab, activeTab]
   );
   return (
     <TabContext.Provider value={value}>

@@ -50,7 +50,18 @@
       "Bash(gh pr view:*)",
       "Bash(git fetch:*)",
       "Bash(gh pr merge:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(gh workflow:*)",
+      "Bash(copy:*)",
+      "Bash(rg:*)",
+      "Bash(npm ls:*)",
+      "Bash(git restore:*)",
+      "Bash(grep:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(done)",
+      "Bash(do echo \"Processing $file\")",
+      "Bash(cmd /c:*)"
     ],
     "deny": []
   }
