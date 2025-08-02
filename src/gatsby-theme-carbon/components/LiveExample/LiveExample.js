@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Code from '../Code/Code';
 
 // Import ELEVATE components
-import '@inform-elevate/elevate-core-ui';
+/* TODO: Re-enable when GitHub Actions has authentication for private packages
+import '@inform-elevate/elevate-core-ui'; */
 
 // MDI Icon Registry - Add common icons used in examples
 const MDI_ICONS = {

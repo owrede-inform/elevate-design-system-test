@@ -18,9 +18,6 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^11.43.0",
-    "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
-    "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
-    "@inform-elevate/elevate-design-tokens": "^1.0.0",
     "@shoelace-style/shoelace": "^2.20.1",
     "gatsby": "^5.13.6",
     "gatsby-plugin-sass": "^6.13.1",
@@ -41,5 +38,11 @@
   "devDependencies": {
     "eslint-plugin-mdx": "^3.6.2",
     "rimraf": "^6.0.1"
+  },
+  "_temporarilyRemovedDependencies": {
+    "_comment": "These packages were temporarily removed due to GitHub Actions authentication issues with private packages",
+    "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
+    "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
+    "@inform-elevate/elevate-design-tokens": "^1.0.0"
   }
 }
