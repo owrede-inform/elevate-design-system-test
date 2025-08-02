@@ -1,0 +1,221 @@
+---
+title: Divider
+description: Dividers create visual separation between content sections. They help organize information hierarchy and improve content scanability through subtle visual boundaries.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Dividers provide subtle visual separation that helps users understand content relationships and hierarchy. The ELEVATE Divider component helps designers and developers create consistent, accessible interfaces that organize information clearly without creating visual clutter.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Dividers
+- **Content sections**: Separate distinct topics or categories within a page
+- **List items**: Create visual breaks between related but separate list entries
+- **Form groups**: Organize form fields into logical sections
+- **Navigation menus**: Separate menu groups or categories
+- **Card content**: Divide different types of information within cards
+
+### When NOT to Use Dividers
+- **White space is sufficient**: Don't add dividers when spacing already creates clear separation
+- **Overuse**: Too many dividers create visual noise and reduce their effectiveness
+- **Primary navigation**: Use proper navigation components instead of divider-separated links
+- **Data tables**: Use proper table structure instead of dividers between data rows
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Orientation Types
+
+<InlineNotification kind="info">
+Divider components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Horizontal Dividers** separate vertically stacked content sections and are the most common type.
+
+**Vertical Dividers** separate horizontally arranged content, useful in navigation bars and toolbars.
+
+### Visual Styles
+
+**Solid Line** provides clear, definitive separation between content sections.
+
+**Dashed Line** creates softer separation while maintaining visual distinction.
+
+**Dotted Line** offers subtle separation for closely related content groups.
+
+**Gradient Fade** provides gentle visual transition between content areas.
+
+### Content Integration
+
+**Plain Dividers** offer simple line separation without additional content.
+
+**Text Labels** include descriptive text within the divider for section identification.
+
+**Icon Integration** combines icons with dividers for enhanced visual communication.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective divider design and prevent common mistakes.*
+
+### Subtlety Principle
+**Dividers should organize without overwhelming.** They provide structure through subtle visual cues rather than prominent visual elements. Heavy or overly decorative dividers compete with content for user attention.
+
+### Semantic Purpose Principle  
+**Every divider should have a clear organizational reason.** Random or decorative dividers confuse information hierarchy. Each divider should represent a meaningful content boundary that helps users understand relationships.
+
+### Consistency Principle
+**Similar content separations should use similar divider treatments.** Inconsistent divider usage creates visual chaos and reduces the user's ability to predict interface patterns.
+
+### Proportional Hierarchy Principle
+**Divider visual weight should match the importance of the separation.** Major section breaks might use stronger dividers while minor separations use lighter treatments.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common divider design mistakes.*
+
+### Using Appropriate Visual Weight
+
+**Why this matters:** Dividers that are too prominent draw attention away from content, while dividers that are too subtle fail to provide clear organization. The visual weight should match the level of separation needed.
+
+### Spacing and Alignment
+
+**Why this matters:** Inconsistent spacing around dividers creates visual imbalance and reduces their effectiveness as organizational tools. Proper spacing ensures dividers enhance rather than interrupt content flow.
+
+### Avoiding Overuse
+
+**Why this matters:** Too many dividers create visual noise and reduce their effectiveness. When everything is separated, nothing feels organized. Strategic use maintains their organizational value.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Divider component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/divider/divider.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic horizontal divider -->
+<elvt-divider></elvt-divider>
+
+<!-- Vertical divider for inline content -->
+<elvt-divider orientation="vertical"></elvt-divider>
+
+<!-- Divider with text label -->
+<elvt-divider>
+  Section Title
+</elvt-divider>
+
+<!-- Styled divider variants -->
+<elvt-divider style="dashed"></elvt-divider>
+<elvt-divider style="dotted"></elvt-divider>
+
+<!-- Divider with spacing control -->
+<elvt-divider spacing="large"></elvt-divider>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `orientation` | `horizontal` (default), `vertical` | Direction of the divider line |
+| `style` | `solid` (default), `dashed`, `dotted` | Visual appearance of the line |  
+| `spacing` | `small`, `medium` (default), `large` | Space around the divider |
+| `color` | CSS color value | Custom color for the divider line |
+| `thickness` | Number | Line thickness in pixels |
+| `text-align` | `left`, `center` (default), `right` | Text alignment for labeled dividers |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test divider behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Divider component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your divider implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Semantic markup considerations:**
+- Dividers are primarily visual elements
+- Use appropriate ARIA roles when dividers have semantic meaning
+- Don't rely on dividers alone to convey important information structure
+
+**Screen reader behavior:**
+- Most dividers should be ignored by screen readers
+- Use `role="separator"` for dividers that have semantic meaning
+- Provide alternative structure cues through proper heading hierarchy
+
+**Focus management:**
+- Dividers typically should not receive keyboard focus
+- Interactive dividers (like collapsible sections) need proper focus handling
+- Ensure content before and after dividers has logical tab order
+
+**Visual accessibility:**
+- Ensure sufficient contrast for divider lines (3:1 minimum)
+- Don't rely solely on dividers for content organization
+- Provide additional visual or structural cues for important boundaries
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Divider component implementation
+- **New**: Horizontal and vertical orientation support
+- **New**: Multiple visual styles (solid, dashed, dotted)
+- **New**: Text label integration for section dividers
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Divider component in development planning phase

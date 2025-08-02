@@ -16,8 +16,13 @@
   font-display: swap;
 }
 
+<<<<<<< HEAD
+// Keep Roboto Mono from Google Fonts for code
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+=======
 // Keep JetBrains Mono from Google Fonts for code
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+>>>>>>> origin/main
 
 // INFORM Brand Colors for ELEVATE Design System
 :root {
@@ -79,7 +84,11 @@ h5, .h5, h6, .h6 {
 }
 
 code, pre {
+<<<<<<< HEAD
+  font-family: 'Roboto Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
+=======
   font-family: 'JetBrains Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace !important;
+>>>>>>> origin/main
 }
 
 // Custom brand styling
@@ -108,6 +117,18 @@ code, pre {
   }
 }
 
+<<<<<<< HEAD
+// Override IBM Blue navigation indicator with INFORM Petrol
+.cds--side-nav.cds--side-nav--website--light
+  .cds--side-nav__item.cds--side-nav__item--active
+  .cds--side-nav__submenu[aria-expanded='false'] {
+  &::before {
+    background-color: var(--elevate-primary) !important; // INFORM Petrol instead of IBM Blue
+  }
+}
+
+=======
+>>>>>>> origin/main
 // Link styling
 a {
   color: var(--elevate-primary);

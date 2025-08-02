@@ -1,0 +1,269 @@
+---
+title: Table
+description: Tables organize structured data in rows and columns for easy comparison and analysis. They support sorting, filtering, and selection for complex data interactions.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Tables transform complex datasets into scannable, interactive interfaces that support user decision-making. The ELEVATE Table component helps designers and developers create consistent, accessible data presentations that handle large datasets efficiently while maintaining usability.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Tables
+- **Data comparison**: Comparing multiple items across different attributes
+- **Structured datasets**: Financial data, inventory, user lists, and reports
+- **Sortable information**: Content that benefits from multiple sort orders
+- **Bulk operations**: Selecting multiple items for batch actions
+- **Detailed listings**: Product catalogs, search results, and directory listings
+
+### When NOT to Use Tables
+- **Simple lists**: Use List component for basic item listings
+- **Card layouts**: Use Card component for rich content with multiple data types
+- **Mobile-first content**: Consider alternative layouts for small screens
+- **Few data points**: Don't use tables for 2-3 columns of simple data
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Table Types
+
+<InlineNotification kind="info">
+Table components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Basic Tables** display data in simple row and column format with minimal styling.
+
+**Sortable Tables** include column headers that allow sorting by different data attributes.
+
+**Selectable Tables** provide checkboxes or radio buttons for item selection and bulk actions.
+
+**Expandable Tables** allow rows to expand with additional detail information.
+
+**Data Tables** include advanced features like filtering, pagination, and search.
+
+### Visual Styles
+
+**Striped Rows** alternate row colors to improve scanning and readability.
+
+**Bordered Tables** use borders to clearly separate cells and improve data clarity.
+
+**Compact Tables** reduce spacing for dense data presentation.
+
+**Card-Style Tables** use card-like styling for a softer, more modern appearance.
+
+### Interactive Features
+
+**Column Sorting** enables users to sort data by clicking column headers.
+
+**Row Selection** provides checkboxes for selecting individual or multiple rows.
+
+**Inline Editing** allows direct data editing within table cells.
+
+**Column Filtering** includes filter controls for narrowing displayed data.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective table design and prevent common mistakes.*
+
+### Scannability Principle
+**Users should be able to quickly scan and compare data across rows and columns.** Visual design should support rapid information processing without creating fatigue or confusion.
+
+### Data Integrity Principle  
+**Information presentation should accurately reflect data relationships and hierarchies.** Misleading alignments, groupings, or visual treatments can cause users to misinterpret data.
+
+### Progressive Complexity Principle
+**Start with essential data, provide access to details when needed.** Tables should not overwhelm users with all available data but should make additional information accessible when relevant.
+
+### Responsive Adaptation Principle
+**Tables should remain functional across different screen sizes and interaction methods.** Large data tables need thoughtful responsive strategies that preserve usability on mobile devices.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common table design mistakes.*
+
+### Organizing Column Information
+
+**Why this matters:** Poor column organization makes data comparison difficult and increases cognitive load. Logical column ordering and appropriate data types improve user efficiency.
+
+### Managing Large Datasets
+
+**Why this matters:** Large tables can overwhelm users and create performance issues. Proper pagination, filtering, and progressive loading maintain usability with extensive data.
+
+### Providing Clear Data Hierarchy
+
+**Why this matters:** Users need to understand data relationships and importance. Visual hierarchy through typography, spacing, and emphasis guides attention to key information.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Table component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/table/table.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic table -->
+<elvt-table>
+  <elvt-table-header>
+    <elvt-table-row>
+      <elvt-table-cell type="header">Name</elvt-table-cell>
+      <elvt-table-cell type="header">Email</elvt-table-cell>
+      <elvt-table-cell type="header">Role</elvt-table-cell>
+    </elvt-table-row>
+  </elvt-table-header>
+  <elvt-table-body>
+    <elvt-table-row>
+      <elvt-table-cell>John Doe</elvt-table-cell>
+      <elvt-table-cell>john@example.com</elvt-table-cell>
+      <elvt-table-cell>Admin</elvt-table-cell>
+    </elvt-table-row>
+  </elvt-table-body>
+</elvt-table>
+
+<!-- Sortable table -->
+<elvt-table sortable>
+  <elvt-table-header>
+    <elvt-table-row>
+      <elvt-table-cell type="header" sortable sort-key="name">Name</elvt-table-cell>
+      <elvt-table-cell type="header" sortable sort-key="date">Date</elvt-table-cell>
+      <elvt-table-cell type="header" sortable sort-key="status">Status</elvt-table-cell>
+    </elvt-table-row>
+  </elvt-table-header>
+  <elvt-table-body>
+    <!-- Table rows -->
+  </elvt-table-body>
+</elvt-table>
+
+<!-- Selectable table -->
+<elvt-table selectable>
+  <elvt-table-header>
+    <elvt-table-row>
+      <elvt-table-cell type="header">
+        <elvt-checkbox aria-label="Select all"></elvt-checkbox>
+      </elvt-table-cell>
+      <elvt-table-cell type="header">Product</elvt-table-cell>
+      <elvt-table-cell type="header">Price</elvt-table-cell>
+    </elvt-table-row>
+  </elvt-table-header>
+  <elvt-table-body>
+    <elvt-table-row>
+      <elvt-table-cell>
+        <elvt-checkbox aria-label="Select item"></elvt-checkbox>
+      </elvt-table-cell>
+      <elvt-table-cell>Product Name</elvt-table-cell>
+      <elvt-table-cell>$29.99</elvt-table-cell>
+    </elvt-table-row>
+  </elvt-table-body>
+</elvt-table>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `sortable` | `true`, `false` (default) | Enable column sorting functionality |
+| `selectable` | `true`, `false` (default) | Include row selection checkboxes |  
+| `striped` | `true`, `false` (default) | Alternate row background colors |
+| `bordered` | `true`, `false` (default) | Add borders around cells |
+| `compact` | `true`, `false` (default) | Reduce padding for dense data |
+| `responsive` | `true` (default), `false` | Enable responsive behavior |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test table behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Table component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your table implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Proper table structure:**
+- Use semantic table elements (table, thead, tbody, th, td)
+- Include table captions that describe table purpose
+- Use proper heading hierarchy for table structure
+- Associate data cells with appropriate headers
+
+**Screen reader support:**
+- Provide clear column headers with scope attributes
+- Use aria-labels for complex table relationships
+- Announce sorting states and selection changes
+- Include summary information for large datasets
+
+**Keyboard navigation:**
+- Arrow keys navigate between table cells
+- Tab moves through interactive elements within table
+- Space/Enter activates buttons and checkboxes in cells
+- Provide keyboard shortcuts for common table actions
+
+**Visual accessibility:**
+- Ensure sufficient contrast for table text and borders
+- Use clear focus indicators for keyboard navigation
+- Don't rely solely on color for data meaning
+- Provide alternative text for data visualizations within tables
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Table component implementation
+- **New**: Sortable columns and data management
+- **New**: Row selection and bulk action support
+- **New**: Responsive table behavior and mobile optimization
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Table component in development planning phase

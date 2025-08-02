@@ -1,0 +1,3359 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+  "name": "@inform-elevate/elevate-core-ui",
+  "version": "0.0.26-alpha",
+  "description-markup": "markdown",
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "elvt-checkbox",
+          "description": "A checkbox allows the user to toggle an option on or off.\n\nUnlike the standard HTML checkbox it will change the value property depending on the checked status. So\nit can be treated like other form fields.\n---\n\n\n### **Events:**\n - **change** - Emitted when the checked state changes.\n- **blur** - Emitted when the checkbox loses focus.\n- **input** - Emitted when the checkbox receives input.\n\n### **Slots:**\n - _default_ - The checkbox's label.\n- **help-text** - Text that describes how to use the checkbox. Alternatively, you can use the `help-text` attribute.\n\n### **CSS Parts:**\n - **form-control-help-text** - The help text's wrapper.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-checkbox--docs",
+          "attributes": [
+            {
+              "name": "help-text",
+              "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "indeterminate",
+              "description": "If `true`, the checkbox will visually appear as indeterminate.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Checkbox Component.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "checked",
+              "description": "Sets the component in a checked/activated state if true",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "checked-value",
+              "description": "The value returned by the value property if the control is checked",
+              "value": {
+                "type": "string | boolean | number",
+                "default": "true"
+              }
+            },
+            {
+              "name": "value",
+              "description": "This will be the `checkedValue` if the checkbox is checked, otherwise `undefined`",
+              "value": { "type": "string | boolean | number | undefined" }
+            },
+            {
+              "name": "hide-label",
+              "description": "This will hide the label, a checkbox's label is highly recommended for Accessibility reasons.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "required",
+              "description": "Makes the control a required field.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            { "name": "", "description": "The checkbox's label." },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the checkbox. Alternatively, you can use the `help-text` attribute."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": "CheckboxChangeEvent",
+              "description": "Emitted when the checked state changes."
+            },
+            {
+              "name": "blur",
+              "description": "Emitted when the checkbox loses focus."
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the checkbox receives input."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "helpText",
+                "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+                "type": "string"
+              },
+              {
+                "name": "indeterminate",
+                "description": "If `true`, the checkbox will visually appear as indeterminate.",
+                "type": "boolean"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Checkbox Component.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "checked",
+                "description": "Sets the component in a checked/activated state if true",
+                "type": "boolean"
+              },
+              {
+                "name": "checkedValue",
+                "description": "The value returned by the value property if the control is checked",
+                "type": "string | boolean | number"
+              },
+              {
+                "name": "value",
+                "description": "This will be the `checkedValue` if the checkbox is checked, otherwise `undefined`",
+                "type": "Type | undefined"
+              },
+              {
+                "name": "hideLabel",
+                "description": "This will hide the label, a checkbox's label is highly recommended for Accessibility reasons.",
+                "type": "boolean"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              {
+                "name": "required",
+                "description": "Makes the control a required field.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "type": "CheckboxChangeEvent",
+                "description": "Emitted when the checked state changes."
+              },
+              {
+                "name": "blur",
+                "description": "Emitted when the checkbox loses focus."
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the checkbox receives input."
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-switch",
+          "description": "Switches allow the user to toggle an option on or off.\n---\n\n\n### **Events:**\n - **SwitchChangeEvent** - Emitted when the checked state changes.\n- **input** - Emitted when the switch receives input.\n- **change** - Triggers if the value is changed\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The switch's label.\n- **help-text** - Text that describes how to use the switch. Alternatively, you can use the `help-text` attribute.\n\n### **CSS Parts:**\n - **form-control-help-text** - The help text's wrapper.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-switch--docs",
+          "attributes": [
+            {
+              "name": "help-text",
+              "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "checked-value",
+              "description": "Allows to define the value returned if the control is checked",
+              "value": { "type": "string | boolean | number" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Switch Component.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "checked",
+              "description": "Sets the component in a checked/activated state if true",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "hide-label",
+              "description": "This will hide the label, a label is highly recommended for Accessibility reasons.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "tone",
+              "description": "The switch's tone (color).",
+              "value": {
+                "type": "'primary' | 'success'",
+                "default": "'primary'"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "required",
+              "description": "Makes the control a required field.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            { "name": "", "description": "The switch's label." },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the switch. Alternatively, you can use the `help-text` attribute."
+            }
+          ],
+          "events": [
+            {
+              "name": "SwitchChangeEvent",
+              "description": "Emitted when the checked state changes."
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the switch receives input."
+            },
+            {
+              "name": "change",
+              "description": "Triggers if the value is changed"
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "helpText",
+                "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+                "type": "string"
+              },
+              {
+                "name": "checkedValue",
+                "description": "Allows to define the value returned if the control is checked",
+                "type": "string | boolean | number"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Switch Component.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "checked",
+                "description": "Sets the component in a checked/activated state if true",
+                "type": "boolean"
+              },
+              {
+                "name": "value",
+                "description": "This will be the `checkedValue` if the checkbox is checked, otherwise `undefined`",
+                "type": "Type | undefined"
+              },
+              {
+                "name": "hideLabel",
+                "description": "This will hide the label, a label is highly recommended for Accessibility reasons.",
+                "type": "boolean"
+              },
+              {
+                "name": "tone",
+                "description": "The switch's tone (color).",
+                "type": "'primary' | 'success'"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              {
+                "name": "required",
+                "description": "Makes the control a required field.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "SwitchChangeEvent",
+                "description": "Emitted when the checked state changes."
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the switch receives input."
+              },
+              {
+                "name": "change",
+                "description": "Triggers if the value is changed"
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-expansion-panel",
+          "description": "Provides an expandable details view.\n---\n\n\n### **Events:**\n - **ExpansionPanelChangeEvent** - Emitted when the panel opens or closes.\n\n### **Slots:**\n - _default_ - The details' main content.\n- **expand-icon** - expand icon to use instead of the default (optional).\n- **collapse-icon** - expand icon to use instead of the default (optional).",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-expansion-panels-expansion-panel--docs",
+          "attributes": [
+            {
+              "name": "size",
+              "description": "Size of the Expansion Panel Component.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "summary",
+              "description": "The summary to show in the header.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the panel so it can't be expanded.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "layer",
+              "description": "Display a different background.",
+              "value": { "type": "'default' | 'elevated'" }
+            },
+            {
+              "name": "open",
+              "description": "Indicates whether the details are open. You can toggle this attribute to show and hide the details.",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The details' main content." },
+            {
+              "name": "expand-icon",
+              "description": "expand icon to use instead of the default (optional)."
+            },
+            {
+              "name": "collapse-icon",
+              "description": "expand icon to use instead of the default (optional)."
+            }
+          ],
+          "events": [
+            {
+              "name": "ExpansionPanelChangeEvent",
+              "description": "Emitted when the panel opens or closes."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "size",
+                "description": "Size of the Expansion Panel Component.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "summary",
+                "description": "The summary to show in the header.",
+                "type": "string"
+              },
+              {
+                "name": "disabled",
+                "description": "Disables the panel so it can't be expanded.",
+                "type": "boolean"
+              },
+              {
+                "name": "layer",
+                "description": "Display a different background.",
+                "type": "'default' | 'elevated'"
+              },
+              {
+                "name": "open",
+                "description": "Indicates whether the details are open. You can toggle this attribute to show and hide the details.",
+                "type": "boolean"
+              }
+            ],
+            "events": [
+              {
+                "name": "ExpansionPanelChangeEvent",
+                "description": "Emitted when the panel opens or closes."
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-paginator",
+          "description": "Paging Control Bar\n---\n\n\n### **Events:**\n - **page-change**",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-paginator--docs",
+          "attributes": [
+            {
+              "name": "disabled",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-page-size",
+              "description": "Hide the page size label and select",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-range-status",
+              "description": "Hide the range status label",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "page-size-options",
+              "value": { "type": "number[]", "default": "[10, 50, 100]" }
+            },
+            {
+              "name": "size",
+              "value": { "type": "'small' | 'medium' | 'large'" }
+            },
+            {
+              "name": "show-first-last-buttons",
+              "description": "Whether to show the first/last buttons to the user.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            { "name": "length", "value": { "type": "number" } },
+            { "name": "page-index", "value": { "type": "number" } },
+            {
+              "name": "page-size",
+              "description": "Number of items to display on a page.",
+              "value": { "type": "number" }
+            }
+          ],
+          "events": [{ "name": "page-change", "type": "PageChangeEvent" }],
+          "js": {
+            "properties": [
+              { "name": "disabled", "type": "boolean" },
+              {
+                "name": "hidePageSize",
+                "description": "Hide the page size label and select",
+                "type": "boolean"
+              },
+              {
+                "name": "hideRangeStatus",
+                "description": "Hide the range status label",
+                "type": "boolean"
+              },
+              { "name": "pageSizeOptions", "type": "number[]" },
+              { "name": "size", "type": "'small' | 'medium' | 'large'" },
+              {
+                "name": "showFirstLastButtons",
+                "description": "Whether to show the first/last buttons to the user.",
+                "type": "boolean"
+              },
+              { "name": "length", "type": "number" },
+              { "name": "pageIndex", "type": "number" },
+              {
+                "name": "pageSize",
+                "description": "Number of items to display on a page.",
+                "type": "number"
+              }
+            ],
+            "events": [{ "name": "page-change", "type": "PageChangeEvent" }]
+          }
+        },
+        {
+          "name": "elvt-resize-observer",
+          "description": "Triggers a resize event if its size changes.\n\nIf the delay is greater than 0, the event will trigger after the defined time.\nAny observed resize will restart that timer. The event will only trigger for\nthe last observed resize.\n---\n\n\n### **Events:**\n - **resize**",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-resize-observer--docs",
+          "attributes": [
+            {
+              "name": "delay",
+              "description": "Delay in milliseconds",
+              "value": { "type": "number", "default": "0" }
+            },
+            {
+              "name": "disabled",
+              "description": "Disable the observer",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "events": [{ "name": "resize", "type": "ResizeObservationEvent" }],
+          "js": {
+            "properties": [
+              {
+                "name": "delay",
+                "description": "Delay in milliseconds",
+                "type": "number"
+              },
+              {
+                "name": "disabled",
+                "description": "Disable the observer",
+                "type": "boolean"
+              }
+            ],
+            "events": [{ "name": "resize", "type": "ResizeObservationEvent" }]
+          }
+        },
+        {
+          "name": "elvt-mutation-observer",
+          "description": "Trigger an event for DOM changes.\n---\n\n\n### **Events:**\n - **mutation**",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-mutation-observer--docs",
+          "attributes": [
+            {
+              "name": "attribute-old-value",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "character-data",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "character-data-old-value",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "child-list",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "disabled",
+              "description": "Disable the observer",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "subtree",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "attribute-filter",
+              "value": { "type": "string | string[] | undefined" }
+            }
+          ],
+          "events": [
+            { "name": "mutation", "type": "MutationObservationEvent" }
+          ],
+          "js": {
+            "properties": [
+              { "name": "attributeOldValue", "type": "boolean" },
+              { "name": "characterData", "type": "boolean" },
+              { "name": "characterDataOldValue", "type": "boolean" },
+              { "name": "childList", "type": "boolean" },
+              {
+                "name": "disabled",
+                "description": "Disable the observer",
+                "type": "boolean"
+              },
+              { "name": "subtree", "type": "boolean" },
+              {
+                "name": "attributeFilter",
+                "type": "string | string[] | undefined"
+              }
+            ],
+            "events": [
+              { "name": "mutation", "type": "MutationObservationEvent" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-avatar",
+          "description": "Display an avatar icon\n---\n\n\n### **Slots:**\n - **icon** - Set custom guest icon\n\n### **CSS Properties:**\n - **--avatar-size** - The avatar icon size (default: `1em`) _(default: undefined)_\n- **--avatar-color-on-dark** - Initials color on a dark fill color (default: `#fff`) _(default: undefined)_\n- **--avatar-color-on-light** - Initials color on a light fill color (default: `#000`) _(default: undefined)_",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-avatar--docs",
+          "attributes": [
+            { "name": "shape", "value": { "type": "'circle' | 'square'" } },
+            {
+              "name": "image",
+              "description": "Avatar image",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "name",
+              "description": "Set the username for the avatar, without an image the initials will be extracted and\na fill color will be calculated from the name value.",
+              "value": { "type": "string" }
+            }
+          ],
+          "slots": [{ "name": "icon", "description": "Set custom guest icon" }],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "shape", "type": "'circle' | 'square'" },
+              {
+                "name": "name",
+                "description": "Set the username for the avatar, without an image the initials will be extracted and\na fill color will be calculated from the name value.",
+                "type": "string"
+              },
+              {
+                "name": "image",
+                "description": "Avatar image",
+                "type": "string | undefined"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-icon",
+          "description": "Display an icon\n\nIcons are expected to be defined as an SVG path on a raster of 24 by 24.\n---\n\n\n### **CSS Properties:**\n - **--icon-size** - The icon size (default: `1em`) _(default: undefined)_\n- **--icon-scale** - Scale icon motive (with transform filter) _(default: undefined)_\n- **--icon-alignment** - Vertical alignment _(default: undefined)_\n- **--icon-color** - The icon color _(default: undefined)_\n- **--icon-color-on-dark** - Icon color on a dark fill color (default: `#fff`) _(default: undefined)_\n- **--icon-color-on-light** - Icon color on a light fill color (default: `#000`) _(default: undefined)_\n- **--emblem-padding** - Cutout padding for the emblem (default: `1px`) _(default: undefined)_\n\n### **CSS Parts:**\n - **icon** - The icon container element\n- **emblem** - The emblem container element\n- **icon-svg** - The icon `<svg/>` element (not in mask mode)\n- **emblem-svg** - The emblem `<svg/>` element (not in mask mode)\n- **icon-mask** - The icon span with the mask image (only in mask mode)\n- **emblem-mask** - The emblem span with the mask image (only in mask mode)",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-icon--docs",
+          "attributes": [
+            {
+              "name": "aspect-ratio",
+              "description": "Set an aspect ratio for the icon element. The icon will be centered.",
+              "value": { "type": "string", "default": "'1 / 1'" }
+            },
+            {
+              "name": "fill",
+              "description": "Set a background color for the icon as a hexadecimal color code. The primary icon color will depend on the\nlightness of the color.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "selected",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            { "name": "image", "value": { "type": "string | undefined" } },
+            {
+              "name": "emblem",
+              "description": "The emblem is a second icon that will be put in a cutout in the lower right corner of the primary icon.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "icon",
+              "description": "The icon can be provided as a svg path, and encoded JSON or a URL.",
+              "value": { "type": "string" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "aspectRatio",
+                "description": "Set an aspect ratio for the icon element. The icon will be centered.",
+                "type": "string"
+              },
+              {
+                "name": "fill",
+                "description": "Set a background color for the icon as a hexadecimal color code. The primary icon color will depend on the\nlightness of the color.",
+                "type": "string"
+              },
+              { "name": "selected", "type": "boolean" },
+              { "name": "image", "type": "string | undefined" },
+              {
+                "name": "emblem",
+                "description": "The emblem is a second icon that will be put in a cutout in the lower right corner of the primary icon.",
+                "type": "string"
+              },
+              {
+                "name": "icon",
+                "description": "The icon can be provided as a svg path, and encoded JSON or a URL.",
+                "type": "string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-chip",
+          "description": "A chip component is used as labels to organize things or to indicate a selection.\n---\n\n\n### **Events:**\n - **request-remove** - Emitted when the removable prop is enabled and chip icon remove area is clicked.\n- **request-edit** - Emitted when the editable prop is enabled and chip content area is clicked.\n\n### **Slots:**\n - _default_ - The chip's content.\n- **remove-icon** - The chip's icon.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-chip--docs",
+          "attributes": [
+            {
+              "name": "tone",
+              "description": "Chip tone (color).",
+              "value": {
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'",
+                "default": "'neutral'"
+              }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Chip Component.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "shape",
+              "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+              "value": { "type": "'box' | 'pill'", "default": "'default'" }
+            },
+            {
+              "name": "removable",
+              "description": "Shows a remove action and makes the chip removable.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "editable",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "remove-label",
+              "description": "A custom label for assistive devices, used in the remove button.",
+              "value": { "type": "string", "default": "''" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The chip's content." },
+            { "name": "remove-icon", "description": "The chip's icon." }
+          ],
+          "events": [
+            {
+              "name": "request-remove",
+              "type": "CustomEvent",
+              "description": "Emitted when the removable prop is enabled and chip icon remove area is clicked."
+            },
+            {
+              "name": "request-edit",
+              "type": "CustomEvent",
+              "description": "Emitted when the editable prop is enabled and chip content area is clicked."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "tone",
+                "description": "Chip tone (color).",
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Chip Component.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "shape",
+                "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+                "type": "'box' | 'pill'"
+              },
+              {
+                "name": "removable",
+                "description": "Shows a remove action and makes the chip removable.",
+                "type": "boolean"
+              },
+              { "name": "editable", "type": "boolean" },
+              {
+                "name": "removeLabel",
+                "description": "A custom label for assistive devices, used in the remove button.",
+                "type": "string"
+              }
+            ],
+            "events": [
+              {
+                "name": "request-remove",
+                "type": "CustomEvent",
+                "description": "Emitted when the removable prop is enabled and chip icon remove area is clicked."
+              },
+              {
+                "name": "request-edit",
+                "type": "CustomEvent",
+                "description": "Emitted when the editable prop is enabled and chip content area is clicked."
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-badge",
+          "description": "A badge component that is used to draw attention and display statuses or counts.\n---\n\n\n### **Slots:**\n - _default_ - The badge's content.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-badge--docs",
+          "attributes": [
+            {
+              "name": "padding",
+              "description": "Allows to modify the default padding of the badge.",
+              "value": {
+                "type": "Padding | string | undefined",
+                "default": "undefined"
+              }
+            },
+            {
+              "name": "pulse",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "shape",
+              "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+              "value": { "type": "'box' | 'pill'", "default": "'pill'" }
+            },
+            {
+              "name": "tone",
+              "description": "The badge's tone (color).",
+              "value": {
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'",
+                "default": "'neutral'"
+              }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The badge's content." }],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "padding",
+                "description": "Allows to modify the default padding of the badge.",
+                "type": "Padding | string | undefined"
+              },
+              { "name": "pulse", "type": "boolean" },
+              {
+                "name": "shape",
+                "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+                "type": "'box' | 'pill'"
+              },
+              {
+                "name": "tone",
+                "description": "The badge's tone (color).",
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-dropdown",
+          "description": "A dropdown uses a trigger component to show an container with additional content\n---\n\n\n### **Methods:**\n - **show()** - Show the menu\n- **hide()** - Hide the menu\n- **reposition()** - Reposition the open menu\n\n### **Slots:**\n - _default_ - The dropdown menu content.\n- **trigger** - The dropdown menu trigger.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-dropdown--docs",
+          "attributes": [
+            {
+              "name": "hoist",
+              "description": "The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "placement",
+              "description": "The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep\nthe panel inside the viewport.",
+              "value": {
+                "type": "'bottom-end' | 'bottom-start' | 'bottom' | 'left-end' | 'left-start' | 'left' | 'right-end' | 'right-start' | 'right' | 'top-end' | 'top-start' | 'top'"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the dropdown so the panel will not open.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "stay-open-on-select",
+              "description": "By default, the dropdown is closed when an item is selected. This attribute will keep it open instead.\nUseful for dropdowns that allow for multiple interactions.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "open",
+              "description": "Indicates whether the dropdown is open. You can toggle thi s attribute to show and hide the dropdown,\nor you can use the show() and hide() methods and this attribute will reflect the dropdown’s open state.",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The dropdown menu content." },
+            { "name": "trigger", "description": "The dropdown menu trigger." }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "hoist",
+                "description": "The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container.",
+                "type": "boolean"
+              },
+              {
+                "name": "placement",
+                "description": "The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep\nthe panel inside the viewport.",
+                "type": "'bottom-end' | 'bottom-start' | 'bottom' | 'left-end' | 'left-start' | 'left' | 'right-end' | 'right-start' | 'right' | 'top-end' | 'top-start' | 'top'"
+              },
+              {
+                "name": "disabled",
+                "description": "Disables the dropdown so the panel will not open.",
+                "type": "boolean"
+              },
+              {
+                "name": "stayOpenOnSelect",
+                "description": "By default, the dropdown is closed when an item is selected. This attribute will keep it open instead.\nUseful for dropdowns that allow for multiple interactions.",
+                "type": "boolean"
+              },
+              {
+                "name": "open",
+                "description": "Indicates whether the dropdown is open. You can toggle thi s attribute to show and hide the dropdown,\nor you can use the show() and hide() methods and this attribute will reflect the dropdown’s open state.",
+                "type": "boolean"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-menu",
+          "description": "Menus provide a list of options for the user to choose from.\n\n! Nesting menus is not possible yet.\n---\n\n\n### **Events:**\n - **elvt-item-select**\n\n### **Slots:**\n - _default_ - The menu content (items, labels, dividers, ...).",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-menus-menu--docs",
+          "attributes": [
+            { "name": "shape", "value": { "type": "'box' | 'inline'" } }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "The menu content (items, labels, dividers, ...)."
+            }
+          ],
+          "events": [
+            { "name": "elvt-item-select", "type": "MenuItemSelectEvent" }
+          ],
+          "js": {
+            "properties": [
+              { "name": "shape", "type": "'box' | 'inline'" },
+              {
+                "name": "items",
+                "description": "Return all menu items (identified by the 'role' attribute)",
+                "type": "MenuItem[]"
+              }
+            ],
+            "events": [
+              { "name": "elvt-item-select", "type": "MenuItemSelectEvent" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-menu-item",
+          "description": "Menu-Items provide a list of options for the user to choose from.\n\n! Nesting menus is not possible yet.\n---\n\n\n### **Slots:**\n - _default_ - The menu item's label\n- **prefix** - Prepend an icon or similar element to the menu item.\n- **suffix** - Append an icon or similar element to the menu item.\n- **submenu** - A nested menu",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-menus-menu-item--docs",
+          "attributes": [
+            {
+              "name": "disabled",
+              "description": "Disables the item",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "selected",
+              "description": "Display the item as selected (for navigations)",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "type",
+              "description": "Set the type attribute to checkbox to create a menu item that will toggle on and off when selected.",
+              "value": { "type": "'checkbox' | 'normal'" }
+            },
+            {
+              "name": "value",
+              "description": "A value to store in the menu item. This can be used as a context when selected.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "href",
+              "description": "When set, the menu item will open the url if clicked",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "target",
+              "description": "Tells the browser where to open the link. Only used when `href` is present.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "checked",
+              "description": "Draws the item in a checked state.",
+              "value": { "type": "boolean" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The menu item's label" },
+            {
+              "name": "prefix",
+              "description": "Prepend an icon or similar element to the menu item."
+            },
+            {
+              "name": "suffix",
+              "description": "Append an icon or similar element to the menu item."
+            },
+            { "name": "submenu", "description": "A nested menu" }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "disabled",
+                "description": "Disables the item",
+                "type": "boolean"
+              },
+              {
+                "name": "selected",
+                "description": "Display the item as selected (for navigations)",
+                "type": "boolean"
+              },
+              {
+                "name": "isMenuItem",
+                "description": "Make it easy to recognize as a menu item.",
+                "type": "true"
+              },
+              {
+                "name": "type",
+                "description": "Set the type attribute to checkbox to create a menu item that will toggle on and off when selected.",
+                "type": "'checkbox' | 'normal'"
+              },
+              {
+                "name": "value",
+                "description": "A value to store in the menu item. This can be used as a context when selected.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "href",
+                "description": "When set, the menu item will open the url if clicked",
+                "type": "string | undefined"
+              },
+              {
+                "name": "target",
+                "description": "Tells the browser where to open the link. Only used when `href` is present.",
+                "type": "string"
+              },
+              {
+                "name": "checked",
+                "description": "Draws the item in a checked state.",
+                "type": "boolean"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-application",
+          "description": "Application acts as a main container providing services to its children and maintaining state.\n\n- It has slot for basic positions.\n- The `header` and `footer` slots will align their children horizontally, all others vertically.\n- The `side-start` and `side-end` will be positioned depending on the reading direction\n- Padding and gap have to be defined inside the slots.\n- Nested `elvt-application` instances will inherit theme and services from their ancestor.\n---\n\n\n### **Methods:**\n - **getAsAncestor(descendant: _Element_)** - Fetches the nearest ApplicationComponent instance on the ancestor axis of its descendant.\n\n### **Slots:**\n - _default_ - content area\n- **header** - At the top of the component\n- **footer** - At the bottom of the component\n- **side-start** - At the start side of the component (in reading direction)\n- **side-end** - At the end side of the component (in reading direction)",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-application--docs",
+          "attributes": [
+            {
+              "name": "root",
+              "description": "Setting `root` will disable inheritance and set the theme only for this container.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "theme",
+              "description": "The identifier/name of the theme. It needs to start with an ASCII letter and consists of only  ASCII letters and digits.\n\nSetting this value will apply CSS classes to the body element to activate the theme.",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "content area" },
+            { "name": "header", "description": "At the top of the component" },
+            {
+              "name": "footer",
+              "description": "At the bottom of the component"
+            },
+            {
+              "name": "side-start",
+              "description": "At the start side of the component (in reading direction)"
+            },
+            {
+              "name": "side-end",
+              "description": "At the end side of the component (in reading direction)"
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "[DependencyContainer.Symbol]" },
+              { "name": "providers", "type": "DependencyContainer" },
+              {
+                "name": "root",
+                "description": "Setting `root` will disable inheritance and set the theme only for this container.",
+                "type": "boolean"
+              },
+              {
+                "name": "theme",
+                "description": "The identifier/name of the theme. It needs to start with an ASCII letter and consists of only  ASCII letters and digits.\n\nSetting this value will apply CSS classes to the body element to activate the theme.",
+                "type": "string | undefined"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-card",
+          "description": "A card is a visual container for related subjects. The content of a\ncard will stretch if the height is set.\n---\n\n\n### **Slots:**\n - _default_ - Content\n- **header** - Card header content\n- **footer** - Card footer content",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-card--docs",
+          "attributes": [
+            {
+              "name": "border",
+              "value": { "type": "'all' | 'none' | 'rounded'" }
+            },
+            {
+              "name": "layer",
+              "value": {
+                "type": "'default' | 'elevated' | 'overlay' | 'sunken'"
+              }
+            },
+            {
+              "name": "padding",
+              "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+              "value": { "type": "Padding | string", "default": "'0'" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "Content" },
+            { "name": "header", "description": "Card header content" },
+            { "name": "footer", "description": "Card footer content" }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "border", "type": "'all' | 'none' | 'rounded'" },
+              {
+                "name": "layer",
+                "type": "'default' | 'elevated' | 'overlay' | 'sunken'"
+              },
+              {
+                "name": "padding",
+                "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+                "type": "Padding | string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-divider",
+          "description": "The divider acts as a separator in a stack of items. By default\nit will separate the items of a column with a horizontal line.\n---\n",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-divider--docs",
+          "attributes": [
+            {
+              "name": "direction",
+              "description": "Let the divider direction matches the container direction",
+              "value": { "type": "'row' | 'column'" }
+            },
+            {
+              "name": "size",
+              "description": "Divider size adds distance before/after the separator depending on the direction.\nIf undefined it will add no distance.",
+              "value": {
+                "type": "'small' | 'medium' | 'large' | undefined",
+                "default": "undefined"
+              }
+            },
+            {
+              "name": "padding",
+              "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+              "value": { "type": "Padding | string", "default": "'0'" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "direction",
+                "description": "Let the divider direction matches the container direction",
+                "type": "'row' | 'column'"
+              },
+              {
+                "name": "size",
+                "description": "Divider size adds distance before/after the separator depending on the direction.\nIf undefined it will add no distance.",
+                "type": "'small' | 'medium' | 'large' | undefined"
+              },
+              {
+                "name": "padding",
+                "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+                "type": "Padding | string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-stack",
+          "description": "A container for a stack of child elements.\n---\n\n\n### **Slots:**\n - _default_ - Stack items\n\n### **CSS Properties:**\n - **--overlap-indent** - Modify indent for overlap mode, default '40%' _(default: undefined)_",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-stack--docs",
+          "attributes": [
+            {
+              "name": "alignment",
+              "description": "Align the children against the direction axis, the default depends on the direction.\nRows use `center`, Columns use `stretch`",
+              "value": {
+                "type": "'start' | 'center' | 'end' | 'stretch' | undefined"
+              }
+            },
+            {
+              "name": "distribution",
+              "description": "Distribute the children on the direction axis, the default depends on the direction.\nRows use `stretch`, Columns use `start`",
+              "value": {
+                "type": "'start' | 'center' | 'end' | 'stretch' | 'overlap' | 'stretch-start' | 'stretch-end' | 'space-between' | undefined"
+              }
+            },
+            {
+              "name": "direction",
+              "value": {
+                "type": "'row' | 'column' | 'row-reverse' | 'column-reverse' | 'multi-column'",
+                "default": "'row'"
+              }
+            },
+            {
+              "name": "wrap",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "gap",
+              "value": { "type": "Gap | string", "default": "'s'" }
+            },
+            {
+              "name": "padding",
+              "value": { "type": "Padding | string", "default": "'0'" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "Stack items" }],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "alignment",
+                "description": "Align the children against the direction axis, the default depends on the direction.\nRows use `center`, Columns use `stretch`",
+                "type": "'start' | 'center' | 'end' | 'stretch' | undefined"
+              },
+              {
+                "name": "distribution",
+                "description": "Distribute the children on the direction axis, the default depends on the direction.\nRows use `stretch`, Columns use `start`",
+                "type": "'start' | 'center' | 'end' | 'stretch' | 'overlap' | 'stretch-start' | 'stretch-end' | 'space-between' | undefined"
+              },
+              {
+                "name": "direction",
+                "type": "'row' | 'column' | 'row-reverse' | 'column-reverse' | 'multi-column'"
+              },
+              { "name": "wrap", "type": "boolean" },
+              { "name": "gap", "type": "Gap | string" },
+              { "name": "padding", "type": "Padding | string" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-toolbar",
+          "description": "A toolbar defines a row of actions and context information.\n---\n\n\n### **Slots:**\n - _default_ - Content, positioned after the start slot content\n- **start** - At the start of the toolbar\n- **end** - At the end of the toolbar",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-toolbar--docs",
+          "attributes": [
+            {
+              "name": "border",
+              "value": { "type": "'all' | 'none' | 'start' | 'end' | 'both'" }
+            },
+            {
+              "name": "layer",
+              "value": {
+                "type": "'default' | 'elevated' | 'overlay' | 'sunken'"
+              }
+            },
+            { "name": "direction", "value": { "type": "'row' | 'column'" } },
+            {
+              "name": "gap",
+              "description": "The gap will apply to the toolbar container.",
+              "value": { "type": "Gap | string", "default": "'s'" }
+            },
+            {
+              "name": "padding",
+              "description": "The padding will apply to the toolbar container. For individual\npaddings use stack elements inside the parts.",
+              "value": { "type": "Padding | string", "default": "'0'" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Content, positioned after the start slot content"
+            },
+            { "name": "start", "description": "At the start of the toolbar" },
+            { "name": "end", "description": "At the end of the toolbar" }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "border",
+                "type": "'all' | 'none' | 'start' | 'end' | 'both'"
+              },
+              {
+                "name": "layer",
+                "type": "'default' | 'elevated' | 'overlay' | 'sunken'"
+              },
+              { "name": "direction", "type": "'row' | 'column'" },
+              {
+                "name": "gap",
+                "description": "The gap will apply to the toolbar container.",
+                "type": "Gap | string"
+              },
+              {
+                "name": "padding",
+                "description": "The padding will apply to the toolbar container. For individual\npaddings use stack elements inside the parts.",
+                "type": "Padding | string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-lightbox",
+          "description": "The lightbox fill the whole window with a backdrop and displays\na content above it.\n\nThe slots are transparent by default for maximum flexibility. Card work well as\na visible container inside.\n---\n\n\n### **Events:**\n - **backdrop-click**\n- **escape-keypress**",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-lightbox--docs",
+          "attributes": [],
+          "events": [
+            { "name": "backdrop-click", "type": "CustomEvent" },
+            { "name": "escape-keypress", "type": "CustomEvent" }
+          ],
+          "js": {
+            "properties": [],
+            "events": [
+              { "name": "backdrop-click", "type": "CustomEvent" },
+              { "name": "escape-keypress", "type": "CustomEvent" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-expansion-panel-group",
+          "description": "Provides a grouping to behave as an accordion for the expansion panels.\n---\n\n\n### **Slots:**\n - _default_ - The expansion panels elements.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-expansion-panels-expansion-panel-group--docs",
+          "attributes": [
+            {
+              "name": "allow-multiple-expanded",
+              "description": "Indicates whether the panel group should allow multiple expanded expansion panel to be expanded simultaneously.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "label",
+              "description": "A label to use for the expansion panel group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "gap",
+              "description": "Gap between the expansion panels",
+              "value": { "type": "Gap | string", "default": "'m'" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The expansion panels elements." }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              { "name": "defaultSlot", "type": "HTMLSlotElement" },
+              {
+                "name": "allowMultipleExpanded",
+                "description": "Indicates whether the panel group should allow multiple expanded expansion panel to be expanded simultaneously.",
+                "type": "boolean"
+              },
+              {
+                "name": "label",
+                "description": "A label to use for the expansion panel group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+                "type": "string"
+              },
+              {
+                "name": "gap",
+                "description": "Gap between the expansion panels",
+                "type": "Gap | string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-tab",
+          "description": "A tab component that can be used inside tab groups to display\nthe selection status of a tab and toggle it.\n\nThe component will only render correctly if used in conjunction with `elvt-tab-group`.\n---\n\n\n### **Events:**\n - **request-close** - Emitted when the tab is `closable` and the close button is clicked (or when closing the tab is requested programmatically).\n- **selection-change** - Emitted when the tab is selected. The event detail contains the `panel` attribute of the tab.\n\n### **Slots:**\n - _default_ - The tab's label.\n- **close-icon** - The tab's close icon.\n- **prefix** - A slot for a prefix icon or element, displayed before the tab label.\n- **suffix** - A slot for a suffix icon or element, displayed after the tab label.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab--docs",
+          "attributes": [
+            {
+              "name": "panel",
+              "description": "The unique (per tab group) identifier of the corresponding tab panel.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "disabled",
+              "description": "Whether this tab is disabled, i.e. can't be activated.",
+              "value": { "type": "boolean", "default": "`false`" }
+            },
+            {
+              "name": "closable",
+              "description": "Whether this tab can be closed by the user.\nIf true, a close button will be rendered on the tab.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "close-label",
+              "description": "A custom label for assistive devices, used in the close button.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "selected",
+              "description": "Whether this tab is selected.\nThis property is set by the parent `elvt-tab-group` component.",
+              "value": { "type": "boolean", "default": "`false`" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The tab's label." },
+            { "name": "close-icon", "description": "The tab's close icon." },
+            {
+              "name": "prefix",
+              "description": "A slot for a prefix icon or element, displayed before the tab label."
+            },
+            {
+              "name": "suffix",
+              "description": "A slot for a suffix icon or element, displayed after the tab label."
+            }
+          ],
+          "events": [
+            {
+              "name": "request-close",
+              "type": "CustomEvent",
+              "description": "Emitted when the tab is `closable` and the close button is clicked (or when closing the tab is requested programmatically)."
+            },
+            {
+              "name": "selection-change",
+              "description": "Emitted when the tab is selected. The event detail contains the `panel` attribute of the tab."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "panel",
+                "description": "The unique (per tab group) identifier of the corresponding tab panel.",
+                "type": "string"
+              },
+              {
+                "name": "disabled",
+                "description": "Whether this tab is disabled, i.e. can't be activated.",
+                "type": "boolean"
+              },
+              {
+                "name": "closable",
+                "description": "Whether this tab can be closed by the user.\nIf true, a close button will be rendered on the tab.",
+                "type": "boolean"
+              },
+              {
+                "name": "closeLabel",
+                "description": "A custom label for assistive devices, used in the close button.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "selected",
+                "description": "Whether this tab is selected.\nThis property is set by the parent `elvt-tab-group` component.",
+                "type": "boolean"
+              }
+            ],
+            "events": [
+              {
+                "name": "request-close",
+                "type": "CustomEvent",
+                "description": "Emitted when the tab is `closable` and the close button is clicked (or when closing the tab is requested programmatically)."
+              },
+              {
+                "name": "selection-change",
+                "description": "Emitted when the tab is selected. The event detail contains the `panel` attribute of the tab."
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-tab-panel",
+          "description": "A tab panel component that wraps the content of a single tab\ninside a tab group.\n\nThe component will only render correctly if used in conjunction with `elvt-tab-group`.\n---\n\n\n### **Slots:**\n - _default_ - The tab's content.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab-panel--docs",
+          "attributes": [
+            {
+              "name": "name",
+              "description": "The unique (per tab group) identifier of this tab panel used to associate it with the corresponding tab.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "selected",
+              "description": "When true, the tab panel will be shown.",
+              "value": { "type": "boolean" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The tab's content." }],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "name",
+                "description": "The unique (per tab group) identifier of this tab panel used to associate it with the corresponding tab.",
+                "type": "string"
+              },
+              {
+                "name": "selected",
+                "description": "When true, the tab panel will be shown.",
+                "type": "boolean"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-tab-group",
+          "description": "A control that renders a number of tabs (`elvt-tab`) and the content of the active tab (`elvt-tab-panel`).\n---\n\n\n### **Events:**\n - **change** - Emitted when the active tab changes.\n\n### **Slots:**\n - _default_ - The tab-panels for the tabs.\n- **nav** - The tabs for the tab group.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab-group--docs",
+          "attributes": [
+            {
+              "name": "active-tab",
+              "description": "The name of the currently active tab.",
+              "value": { "type": "string" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The tab-panels for the tabs." },
+            { "name": "nav", "description": "The tabs for the tab group." }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Emitted when the active tab changes."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "activeTab",
+                "description": "The name of the currently active tab.",
+                "type": "string"
+              }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "description": "Emitted when the active tab changes."
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-field",
+          "description": "Outer frame of a form field, with the label and help text.\n---\n\n\n### **Slots:**\n - _default_ - Form control\n- **label** - Field label. Alternatively, you can use the `help-text` attribute.\n- **help-text** - Text that describes how to use the form field. Alternatively, you can use the `help-text` attribute.\n- **status** - Show a status (like character count and limit)",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-fields-field--docs",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "The forms label text, use slot for complex labels",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "help-text",
+              "description": "A descriptive text for the select, use the help-text slot for HTML.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "required",
+              "description": "Show required indicator on label",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "disabled",
+              "description": "Show label / help text as disabled, this will not modify the control.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "invalid",
+              "description": "Show label / help text in error state, this will not modify the control.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "group",
+              "description": "Group mode for multiple form controls with own labels. This will replace the\ninternal `label` element with a `fieldset` and `legend` avoiding nested label elements.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "hide-label",
+              "description": "Visually hide field label",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the field.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "Form control" },
+            {
+              "name": "label",
+              "description": "Field label. Alternatively, you can use the `help-text` attribute."
+            },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the form field. Alternatively, you can use the `help-text` attribute."
+            },
+            {
+              "name": "status",
+              "description": "Show a status (like character count and limit)"
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "description": "The forms label text, use slot for complex labels",
+                "type": "string | undefined"
+              },
+              {
+                "name": "helpText",
+                "description": "A descriptive text for the select, use the help-text slot for HTML.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "required",
+                "description": "Show required indicator on label",
+                "type": "boolean"
+              },
+              {
+                "name": "disabled",
+                "description": "Show label / help text as disabled, this will not modify the control.",
+                "type": "boolean"
+              },
+              {
+                "name": "invalid",
+                "description": "Show label / help text in error state, this will not modify the control.",
+                "type": "boolean"
+              },
+              {
+                "name": "group",
+                "description": "Group mode for multiple form controls with own labels. This will replace the\ninternal `label` element with a `fieldset` and `legend` avoiding nested label elements.",
+                "type": "boolean"
+              },
+              {
+                "name": "hideLabel",
+                "description": "Visually hide field label",
+                "type": "boolean"
+              },
+              {
+                "name": "size",
+                "description": "Size of the field.",
+                "type": "'small' | 'medium' | 'large'"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-input",
+          "description": "An input field\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **prefix** - Prefix icon or similar element\n- **suffix** - Suffix icon or similar element\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-input--docs",
+          "attributes": [
+            {
+              "name": "autofocus",
+              "description": " Indicating that an element should be focused on page load",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "autocomplete",
+              "description": "Specify what if any permission the user agent has to provide automated assistance in filling\nout the field value",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "clearable",
+              "description": "Add a clear button if the value is set",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "max",
+              "description": "A maximum value for date/number inputs",
+              "value": { "type": "number | string | undefined" }
+            },
+            {
+              "name": "maxlength",
+              "description": "A maximum character length",
+              "value": { "type": "number | string | undefined" }
+            },
+            {
+              "name": "min",
+              "description": "A minimum value for date/number inputs",
+              "value": { "type": "number | string | undefined" }
+            },
+            {
+              "name": "minlength",
+              "description": "A minimum character length",
+              "value": { "type": "number | string | undefined" }
+            },
+            {
+              "name": "pattern",
+              "description": "A regular expression pattern to validate input against.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "placeholder",
+              "description": "Input placeholder text",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the input.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "step",
+              "description": "A step value for date/number inputs",
+              "value": { "type": "number | undefined" }
+            },
+            {
+              "name": "type",
+              "description": "Input type (as provided by the browser)",
+              "value": {
+                "type": "'number' | 'search' | 'tel' | 'text' | 'url' | 'date' | 'datetime-local' | 'email' | 'password' | 'time'",
+                "default": "'text'"
+              }
+            },
+            {
+              "name": "readonly",
+              "description": "If set to `true`, the input is readonly.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "required",
+              "description": "If set to `true`, the field will be invalid if empty",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            { "name": "value", "value": { "type": "string | undefined" } },
+            {
+              "name": "autocapitalize",
+              "description": "Automatically capitalize text input",
+              "value": {
+                "type": "'none' | 'characters' | 'off' | 'on' | 'sentences' | 'words'",
+                "default": "'none'"
+              }
+            },
+            {
+              "name": "enterkeyhint",
+              "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+              "value": {
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              }
+            },
+            {
+              "name": "inputmode",
+              "description": "Input mode for virtual keyboards",
+              "value": {
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              }
+            },
+            {
+              "name": "spellcheck",
+              "description": "Enables spell checking on the input",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "label",
+              "description": "The forms label text, use slot for complex labels",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "help-text",
+              "description": "A descriptive text for the select, use the help-text slot for HTML.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            {
+              "name": "prefix",
+              "description": "Prefix icon or similar element"
+            },
+            {
+              "name": "suffix",
+              "description": "Suffix icon or similar element"
+            },
+            {
+              "name": "label",
+              "description": "The input’s label. Alternatively, you can use the label attribute."
+            },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the input. Alternatively, you can use the help-text attribute."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Triggers if the value is changed"
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the element control receives input."
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "autocomplete",
+                "description": "Specify what if any permission the user agent has to provide automated assistance in filling\nout the field value",
+                "type": "string | undefined"
+              },
+              {
+                "name": "clearable",
+                "description": "Add a clear button if the value is set",
+                "type": "boolean"
+              },
+              {
+                "name": "max",
+                "description": "A maximum value for date/number inputs",
+                "type": "number | string | undefined"
+              },
+              {
+                "name": "maxlength",
+                "description": "A maximum character length",
+                "type": "number | string | undefined"
+              },
+              {
+                "name": "min",
+                "description": "A minimum value for date/number inputs",
+                "type": "number | string | undefined"
+              },
+              {
+                "name": "minlength",
+                "description": "A minimum character length",
+                "type": "number | string | undefined"
+              },
+              {
+                "name": "pattern",
+                "description": "A regular expression pattern to validate input against.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "placeholder",
+                "description": "Input placeholder text",
+                "type": "string | undefined"
+              },
+              {
+                "name": "size",
+                "description": "Size of the input.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "step",
+                "description": "A step value for date/number inputs",
+                "type": "number | undefined"
+              },
+              {
+                "name": "type",
+                "description": "Input type (as provided by the browser)",
+                "type": "'number' | 'search' | 'tel' | 'text' | 'url' | 'date' | 'datetime-local' | 'email' | 'password' | 'time'"
+              },
+              {
+                "name": "readonly",
+                "description": "If set to `true`, the input is readonly.",
+                "type": "boolean"
+              },
+              {
+                "name": "required",
+                "description": "If set to `true`, the field will be invalid if empty",
+                "type": "boolean"
+              },
+              { "name": "value", "type": "Type | undefined" },
+              {
+                "name": "autocapitalize",
+                "description": "Automatically capitalize text input",
+                "type": "'none' | 'characters' | 'off' | 'on' | 'sentences' | 'words'"
+              },
+              {
+                "name": "enterKeyHint",
+                "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              },
+              {
+                "name": "inputMode",
+                "description": "Input mode for virtual keyboards",
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              },
+              {
+                "name": "spellcheck",
+                "description": "Enables spell checking on the input",
+                "type": "boolean"
+              },
+              { "name": "autofocus", "type": "boolean" },
+              {
+                "name": "label",
+                "description": "The forms label text, use slot for complex labels",
+                "type": "string | undefined"
+              },
+              {
+                "name": "helpText",
+                "description": "A descriptive text for the select, use the help-text slot for HTML.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "description": "Triggers if the value is changed"
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the element control receives input."
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-radio",
+          "description": "A radio component that allows the user to select a single option from a group.\n\nBe aware that the radio is not a form field by itself. It needs a radio group.\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The radio's label.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-radios-radio--docs",
+          "attributes": [
+            {
+              "name": "size",
+              "description": "Size of the Radio Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            { "name": "checked", "value": { "type": "boolean" } },
+            {
+              "name": "value",
+              "description": "The radio's value. When selected, the field's group will get this value.",
+              "value": { "type": "string | boolean | number | undefined" }
+            },
+            {
+              "name": "hide-label",
+              "description": "This will hide the label, a radio's label is highly recommended for Accessibility reasons.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "required",
+              "description": "Makes the control a required field.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [{ "name": "", "description": "The radio's label." }],
+          "events": [
+            {
+              "name": "change",
+              "description": "Triggers if the value is changed"
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the element control receives input."
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "size",
+                "description": "Size of the Radio Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              { "name": "checked", "type": "boolean" },
+              {
+                "name": "value",
+                "description": "The radio's value. When selected, the field's group will get this value.",
+                "type": "Type | undefined"
+              },
+              {
+                "name": "hideLabel",
+                "description": "This will hide the label, a radio's label is highly recommended for Accessibility reasons.",
+                "type": "boolean"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              {
+                "name": "required",
+                "description": "Makes the control a required field.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "description": "Triggers if the value is changed"
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the element control receives input."
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-radio-group",
+          "description": "A radio component that allows the user to select a single option from a group.\n---\n\n\n### **Events:**\n - **type**\n- **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The radio elements\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-radios-radio-group--docs",
+          "attributes": [
+            {
+              "name": "required",
+              "description": "If set to `true`, one child has to be checked for the group to be valid",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Radio (Group) Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "value",
+              "description": "The radio's value.",
+              "value": { "type": "string | number | boolean | undefined" }
+            },
+            {
+              "name": "label",
+              "description": "The forms label text, use slot for complex labels",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "help-text",
+              "description": "A descriptive text for the select, use the help-text slot for HTML.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            { "name": "", "description": "The radio elements" },
+            {
+              "name": "label",
+              "description": "The input’s label. Alternatively, you can use the label attribute."
+            },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the input. Alternatively, you can use the help-text attribute."
+            }
+          ],
+          "events": [
+            { "name": "type", "type": "Event" },
+            {
+              "name": "change",
+              "description": "Triggers if the value is changed"
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the element control receives input."
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "required",
+                "description": "If set to `true`, one child has to be checked for the group to be valid",
+                "type": "boolean"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Radio (Group) Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "value",
+                "description": "The radio's value.",
+                "type": "Type | undefined"
+              },
+              {
+                "name": "label",
+                "description": "The forms label text, use slot for complex labels",
+                "type": "string | undefined"
+              },
+              {
+                "name": "helpText",
+                "description": "A descriptive text for the select, use the help-text slot for HTML.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              { "name": "type", "type": "Event" },
+              {
+                "name": "change",
+                "description": "Triggers if the value is changed"
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the element control receives input."
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-select",
+          "description": "A select field\n---\n\n\n### **Events:**\n - **input** - Emitted when the element control receives input.\n- **change** - Triggers if the value is changed\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **prefix** - Prefix icon or similar element\n- **suffix** - Suffix icon or similar element\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-select--docs",
+          "attributes": [
+            {
+              "name": "clearable",
+              "description": "Add a clear button if the value is set",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "placeholder",
+              "description": "Select placeholder text",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "required",
+              "description": "If set to `true`, the field will be invalid if empty",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the control.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            { "name": "multiple", "value": { "type": "boolean" } },
+            {
+              "name": "value",
+              "value": { "type": "string | string[] | undefined" }
+            },
+            {
+              "name": "label",
+              "description": "The forms label text, use slot for complex labels",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "help-text",
+              "description": "A descriptive text for the select, use the help-text slot for HTML.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            {
+              "name": "prefix",
+              "description": "Prefix icon or similar element"
+            },
+            {
+              "name": "suffix",
+              "description": "Suffix icon or similar element"
+            },
+            {
+              "name": "label",
+              "description": "The input’s label. Alternatively, you can use the label attribute."
+            },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the input. Alternatively, you can use the help-text attribute."
+            }
+          ],
+          "events": [
+            {
+              "name": "input",
+              "type": "Event",
+              "description": "Emitted when the element control receives input."
+            },
+            {
+              "name": "change",
+              "type": "Event",
+              "description": "Triggers if the value is changed"
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "clearable",
+                "description": "Add a clear button if the value is set",
+                "type": "boolean"
+              },
+              {
+                "name": "placeholder",
+                "description": "Select placeholder text",
+                "type": "string | undefined"
+              },
+              {
+                "name": "required",
+                "description": "If set to `true`, the field will be invalid if empty",
+                "type": "boolean"
+              },
+              {
+                "name": "size",
+                "description": "Size of the control.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              { "name": "multiple", "type": "boolean" },
+              {
+                "name": "options",
+                "type": "(SelectOptionItem | SelectOptionGroup)[]"
+              },
+              { "name": "value", "type": "Type | undefined" },
+              {
+                "name": "label",
+                "description": "The forms label text, use slot for complex labels",
+                "type": "string | undefined"
+              },
+              {
+                "name": "helpText",
+                "description": "A descriptive text for the select, use the help-text slot for HTML.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "input",
+                "type": "Event",
+                "description": "Emitted when the element control receives input."
+              },
+              {
+                "name": "change",
+                "type": "Event",
+                "description": "Triggers if the value is changed"
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-textarea",
+          "description": "A textarea field\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-textarea--docs",
+          "attributes": [
+            {
+              "name": "autofocus",
+              "description": " Indicating that an element should be focused on page load",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "readonly",
+              "description": "If set to `true`, the textarea is readonly.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "required",
+              "description": "If set to `true`, the textarea is mandatory.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "resize",
+              "description": "Resize mode",
+              "value": {
+                "type": "'none' | 'both' | 'auto' | 'vertical' | undefined"
+              }
+            },
+            {
+              "name": "placeholder",
+              "description": "Textarea placeholder text",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the textarea.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            { "name": "value", "value": { "type": "string | undefined" } },
+            {
+              "name": "autocapitalize",
+              "description": "Automatically capitalize text textarea",
+              "value": {
+                "type": "'none' | 'characters' | 'off' | 'on' | 'sentences' | 'words'",
+                "default": "'none'"
+              }
+            },
+            {
+              "name": "enterkeyhint",
+              "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+              "value": {
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              }
+            },
+            {
+              "name": "inputmode",
+              "description": "Input mode for virtual keyboards",
+              "value": {
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              }
+            },
+            {
+              "name": "spellcheck",
+              "description": "Enables spell checking on the textarea",
+              "value": { "type": "boolean" }
+            },
+            {
+              "name": "label",
+              "description": "The forms label text, use slot for complex labels",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "help-text",
+              "description": "A descriptive text for the select, use the help-text slot for HTML.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "name",
+              "description": "Form field name, used in form data",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "touched", "value": { "type": "string" } }
+          ],
+          "slots": [
+            {
+              "name": "label",
+              "description": "The input’s label. Alternatively, you can use the label attribute."
+            },
+            {
+              "name": "help-text",
+              "description": "Text that describes how to use the input. Alternatively, you can use the help-text attribute."
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Triggers if the value is changed"
+            },
+            {
+              "name": "input",
+              "description": "Emitted when the element control receives input."
+            },
+            { "name": "blur", "description": "Trigger on focus out" }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "readonly",
+                "description": "If set to `true`, the textarea is readonly.",
+                "type": "boolean"
+              },
+              {
+                "name": "required",
+                "description": "If set to `true`, the textarea is mandatory.",
+                "type": "boolean"
+              },
+              {
+                "name": "resize",
+                "description": "Resize mode",
+                "type": "'none' | 'both' | 'auto' | 'vertical' | undefined"
+              },
+              {
+                "name": "placeholder",
+                "description": "Textarea placeholder text",
+                "type": "string | undefined"
+              },
+              {
+                "name": "size",
+                "description": "Size of the textarea.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              { "name": "value", "type": "Type | undefined" },
+              {
+                "name": "autocapitalize",
+                "description": "Automatically capitalize text textarea",
+                "type": "'none' | 'characters' | 'off' | 'on' | 'sentences' | 'words'"
+              },
+              {
+                "name": "enterKeyHint",
+                "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              },
+              {
+                "name": "inputMode",
+                "description": "Input mode for virtual keyboards",
+                "type": "'none' | 'decimal' | 'numeric' | 'search' | 'tel' | 'text' | 'url'"
+              },
+              {
+                "name": "spellcheck",
+                "description": "Enables spell checking on the textarea",
+                "type": "boolean"
+              },
+              { "name": "autofocus", "type": "boolean" },
+              {
+                "name": "label",
+                "description": "The forms label text, use slot for complex labels",
+                "type": "string | undefined"
+              },
+              {
+                "name": "helpText",
+                "description": "A descriptive text for the select, use the help-text slot for HTML.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              { "name": "validators", "type": "ValidationFn[]" },
+              {
+                "name": "name",
+                "description": "Form field name, used in form data",
+                "type": "string | undefined"
+              },
+              { "name": "touched" },
+              {
+                "name": "form",
+                "description": "Associated form if available. This is the nearest form on the same (Shadow) DOM",
+                "type": "HTMLFormElement | undefined"
+              },
+              { "name": "validationMessage", "type": "string" },
+              {
+                "name": "validity",
+                "description": "Return the current validity state",
+                "type": "ValidityState"
+              },
+              { "name": "willValidate", "type": "boolean" }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "description": "Triggers if the value is changed"
+              },
+              {
+                "name": "input",
+                "description": "Emitted when the element control receives input."
+              },
+              { "name": "blur", "description": "Trigger on focus out" }
+            ]
+          }
+        },
+        {
+          "name": "elvt-breadcrumb-item",
+          "description": "Breadcrumb Items are used inside [breadcrumbs] to represent a route path.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb item's label.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-breadcrumbs-breadcrumb-item--docs",
+          "attributes": [
+            {
+              "name": "href",
+              "description": "Optional URL to direct the user to when the breadcrumb item is activated.\nWhen set, a link will be rendered internally.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "clickable",
+              "description": "Indicates whether the breadcrumb item is clickable.\nWhen set, a button will be rendered internally.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "target",
+              "description": "The target attribute for the link, if `href` is set.\nThis determines where the linked document will open.\nDefaults to `_self`, which opens the link in the same frame as it was clicked.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "selected",
+              "description": "Indicates whether the breadcrumb item is selected.\nThis can be used to visually indicate the current page or section.",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The breadcrumb item's label." }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "href",
+                "description": "Optional URL to direct the user to when the breadcrumb item is activated.\nWhen set, a link will be rendered internally.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "clickable",
+                "description": "Indicates whether the breadcrumb item is clickable.\nWhen set, a button will be rendered internally.",
+                "type": "boolean"
+              },
+              {
+                "name": "target",
+                "description": "The target attribute for the link, if `href` is set.\nThis determines where the linked document will open.\nDefaults to `_self`, which opens the link in the same frame as it was clicked.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "selected",
+                "description": "Indicates whether the breadcrumb item is selected.\nThis can be used to visually indicate the current page or section.",
+                "type": "boolean"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-breadcrumb",
+          "description": "Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb items to display.\n- **separator** - To be used between breadcrumb items.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-breadcrumbs-breadcrumb--docs",
+          "attributes": [],
+          "slots": [
+            { "name": "", "description": "The breadcrumb items to display." },
+            {
+              "name": "separator",
+              "description": "To be used between breadcrumb items."
+            }
+          ],
+          "events": [],
+          "js": { "properties": [], "events": [] }
+        },
+        {
+          "name": "elvt-button",
+          "description": "Buttons represent actions that are available to the user.\n---\n\n\n### **Slots:**\n - _default_ - The button's label.\n- **prefix** - A presentational prefix icon or similar element.\n- **suffix** - A presentational suffix icon or similar element.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-buttons-button--docs",
+          "attributes": [
+            {
+              "name": "disabled",
+              "description": "If set to `true`, user can't interact with the component.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "download",
+              "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "href",
+              "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+              "value": { "type": "string | undefined" }
+            },
+            { "name": "name", "value": { "type": "string | undefined" } },
+            {
+              "name": "padding",
+              "description": "Allows to modify the default padding of the button.",
+              "value": {
+                "type": "Padding | string | undefined",
+                "default": "undefined"
+              }
+            },
+            {
+              "name": "rel",
+              "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ninternal default is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "selected",
+              "description": "Display the button as selected",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Button Component.",
+              "value": {
+                "type": "'small' | 'medium' | 'large'",
+                "default": "'medium'"
+              }
+            },
+            {
+              "name": "target",
+              "description": "Tells the browser where to open the link. Only used when `href` is present.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "tone",
+              "description": "Button tone (color).",
+              "value": {
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'emphasized' | 'subtle'",
+                "default": "'neutral'"
+              }
+            },
+            {
+              "name": "type",
+              "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+              "value": { "type": "'button' | 'reset' | 'submit'" }
+            },
+            { "name": "value", "value": { "type": "string | undefined" } }
+          ],
+          "slots": [
+            { "name": "", "description": "The button's label." },
+            {
+              "name": "prefix",
+              "description": "A presentational prefix icon or similar element."
+            },
+            {
+              "name": "suffix",
+              "description": "A presentational suffix icon or similar element."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "disabled",
+                "description": "If set to `true`, user can't interact with the component.",
+                "type": "boolean"
+              },
+              {
+                "name": "download",
+                "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "href",
+                "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+                "type": "string | undefined"
+              },
+              { "name": "name", "type": "string | undefined" },
+              {
+                "name": "padding",
+                "description": "Allows to modify the default padding of the button.",
+                "type": "Padding | string | undefined"
+              },
+              {
+                "name": "rel",
+                "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ninternal default is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "selected",
+                "description": "Display the button as selected",
+                "type": "boolean"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Button Component.",
+                "type": "'small' | 'medium' | 'large'"
+              },
+              {
+                "name": "target",
+                "description": "Tells the browser where to open the link. Only used when `href` is present.",
+                "type": "string"
+              },
+              {
+                "name": "tone",
+                "description": "Button tone (color).",
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'emphasized' | 'subtle'"
+              },
+              {
+                "name": "type",
+                "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+                "type": "'button' | 'reset' | 'submit'"
+              },
+              { "name": "value", "type": "string | undefined" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-icon-button",
+          "description": "A clickable icon\n---\n\n\n### **Methods:**\n - **blur()** - Removes focus from the icon button.\n- **click()** - Simulates a click on the icon button.\n- **focus(options: _FocusOptions_)** - Sets focus on the icon button.\n\n### **Slots:**\n - **icon** - Provide icon elements, use `icon` property for a basic icon",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-icon-button--docs",
+          "attributes": [
+            {
+              "name": "disabled",
+              "description": "Disables the button.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "download",
+              "description": "Tells the browser to download the linked file (set as `href`) as this filename.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "icon",
+              "description": "The name of the icon to draw. Use the 'icon' slot for more flexibility.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "href",
+              "description": "Use a link element instead of the button to allow for browser navigation.",
+              "value": { "type": "string | undefined" }
+            },
+            {
+              "name": "label",
+              "description": "A description that gets read by assistive devices. For optimal accessibility, you should always include a label\nthat describes what the icon button does.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "selected",
+              "description": "Show as selected.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "shape",
+              "description": "Sets the shape of the icon button, this will be applied to the focus ring",
+              "value": { "type": "'circle' | 'rectangle' | undefined" }
+            },
+            {
+              "name": "size",
+              "description": "If set it applies a font-size to the icon, otherwise it will inherit the font-size.",
+              "value": { "type": "'small' | 'medium' | 'large' | undefined" }
+            },
+            {
+              "name": "target",
+              "description": "Target for the `href` if defined.",
+              "value": { "type": "string | undefined" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "icon",
+              "description": "Provide icon elements, use `icon` property for a basic icon"
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "disabled",
+                "description": "Disables the button.",
+                "type": "boolean"
+              },
+              {
+                "name": "download",
+                "description": "Tells the browser to download the linked file (set as `href`) as this filename.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "icon",
+                "description": "The name of the icon to draw. Use the 'icon' slot for more flexibility.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "href",
+                "description": "Use a link element instead of the button to allow for browser navigation.",
+                "type": "string | undefined"
+              },
+              {
+                "name": "label",
+                "description": "A description that gets read by assistive devices. For optimal accessibility, you should always include a label\nthat describes what the icon button does.",
+                "type": "string"
+              },
+              {
+                "name": "selected",
+                "description": "Show as selected.",
+                "type": "boolean"
+              },
+              {
+                "name": "shape",
+                "description": "Sets the shape of the icon button, this will be applied to the focus ring",
+                "type": "'circle' | 'rectangle' | undefined"
+              },
+              {
+                "name": "size",
+                "description": "If set it applies a font-size to the icon, otherwise it will inherit the font-size.",
+                "type": "'small' | 'medium' | 'large' | undefined"
+              },
+              {
+                "name": "target",
+                "description": "Target for the `href` if defined.",
+                "type": "string | undefined"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-button-group",
+          "description": "Button groups can be used to group related buttons into sections.\n---\n\n\n### **Slots:**\n - _default_ - One or more buttons to display in the button group.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-buttons-button-group--docs",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+              "value": { "type": "string", "default": "''" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "One or more buttons to display in the button group."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "label",
+                "description": "A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+                "type": "string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-link",
+          "description": "A link that redirects to a URL if clicked\n---\n\n\n### **Slots:**\n - _default_ - The link label",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-link--docs",
+          "attributes": [
+            {
+              "name": "usage",
+              "description": "How the link is used, e.g. if it's an external link.\nDetermines the visual style of the link.",
+              "value": { "type": "'internal' | 'external'" }
+            },
+            {
+              "name": "href",
+              "description": "The URL the link is referring to",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "target",
+              "description": "Tells the browser where to open the link.",
+              "value": { "type": "string" }
+            }
+          ],
+          "slots": [{ "name": "", "description": "The link label" }],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "usage",
+                "description": "How the link is used, e.g. if it's an external link.\nDetermines the visual style of the link.",
+                "type": "'internal' | 'external'"
+              },
+              {
+                "name": "href",
+                "description": "The URL the link is referring to",
+                "type": "string"
+              },
+              {
+                "name": "target",
+                "description": "Tells the browser where to open the link.",
+                "type": "string"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-tooltip",
+          "description": "\n---\n\n\n### **Slots:**\n - _default_ - Inner elements\n- **content** - Tooltip HTML content, use content property for basic text tooltips",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tooltip--docs",
+          "attributes": [
+            {
+              "name": "content",
+              "value": { "type": "string", "default": "''" }
+            },
+            { "name": "hoist", "value": { "type": "string", "default": "''" } }
+          ],
+          "slots": [
+            { "name": "", "description": "Inner elements" },
+            {
+              "name": "content",
+              "description": "Tooltip HTML content, use content property for basic text tooltips"
+            }
+          ],
+          "events": [],
+          "js": { "properties": [], "events": [] }
+        },
+        {
+          "name": "elvt-visually-hidden",
+          "description": "Makes content accessible to assistive devices without displaying it on the screen. If an element inside has\nthe focus the component will be visible.\n---\n",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-visually-hidden--docs",
+          "attributes": [],
+          "events": [],
+          "js": { "properties": [], "events": [] }
+        },
+        {
+          "name": "elvt-indicator",
+          "description": "Attach an indicator to the enclosed component\n---\n\n\n### **Slots:**\n - _default_ - Component to attach the indicator to.\n\n### **CSS Properties:**\n - **--indicator-offset-column** - horizontal indicator offset (default: `8px`) _(default: undefined)_\n- **--indicator-offset-row** - vertical indicator offset (default: `12px`) _(default: undefined)_",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-indicator--docs",
+          "attributes": [
+            {
+              "name": "position",
+              "value": {
+                "type": "'bottom-end' | 'bottom-start' | 'top-end' | 'top-start'"
+              }
+            },
+            {
+              "name": "tone",
+              "value": {
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "Component to attach the indicator to."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "position",
+                "type": "'bottom-end' | 'bottom-start' | 'top-end' | 'top-start'"
+              },
+              {
+                "name": "tone",
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-progress",
+          "description": "Show the progress of an ongoing operation.\n---\n\n\n### **Slots:**\n - _default_ - A label to show inside the progress indicator.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-progress--docs",
+          "attributes": [
+            {
+              "name": "shape",
+              "description": "shape the component will display.",
+              "value": { "type": "'bar' | 'ring' | 'arc'", "default": "'bar'" }
+            },
+            {
+              "name": "value",
+              "description": "The current progress, the value should be between [0, 1]",
+              "value": { "type": "number", "default": "0" }
+            },
+            {
+              "name": "indeterminate",
+              "description": "When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "label",
+              "description": "A custom label for assistive devices.",
+              "value": { "type": "string", "default": "''" }
+            },
+            {
+              "name": "size",
+              "description": "Size of the Progress Indicator in Circular Shape. If not set it will depend on the font-size.",
+              "value": {
+                "type": "'small' | 'medium' | 'large' | undefined",
+                "default": "undefined"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "",
+              "description": "A label to show inside the progress indicator."
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "shape",
+                "description": "shape the component will display.",
+                "type": "'bar' | 'ring' | 'arc'"
+              },
+              {
+                "name": "value",
+                "description": "The current progress, the value should be between [0, 1]",
+                "type": "number"
+              },
+              {
+                "name": "indeterminate",
+                "description": "When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.",
+                "type": "boolean"
+              },
+              {
+                "name": "label",
+                "description": "A custom label for assistive devices.",
+                "type": "string"
+              },
+              {
+                "name": "size",
+                "description": "Size of the Progress Indicator in Circular Shape. If not set it will depend on the font-size.",
+                "type": "'small' | 'medium' | 'large' | undefined"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-skeleton",
+          "description": "Skeletons are used to provide a visual representation of where content will eventually load.\n---\n\n\n### **CSS Properties:**\n - **--skeleton-min-width** - The skeleton's min width value. _(default: undefined)_",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-skeleton--docs",
+          "attributes": [
+            {
+              "name": "effect",
+              "description": "The effect the skeleton will have.",
+              "value": {
+                "type": "'none' | 'pulse' | 'sheen'",
+                "default": "'none'"
+              }
+            },
+            {
+              "name": "width",
+              "description": "The width of the skeleton component, it takes by default 100% of its container.\nthe value will display as a percentage, 0 to 100",
+              "value": { "type": "number", "default": "100" }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "effect",
+                "description": "The effect the skeleton will have.",
+                "type": "'none' | 'pulse' | 'sheen'"
+              },
+              {
+                "name": "width",
+                "description": "The width of the skeleton component, it takes by default 100% of its container.\nthe value will display as a percentage, 0 to 100",
+                "type": "number"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-notification",
+          "description": "Used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **change** - Emitted when the alert opens or closes. Note: it provides only rtl direction when the duration is set, ltr will be added later ;)\n\n### **Methods:**\n - **hide()** - Hides the notification.\n- **show()** - Shows the notification.\n\n### **Slots:**\n - _default_ - The alert's main content.\n- **icon** - An icon to show in the alert.",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-notification--docs",
+          "attributes": [
+            {
+              "name": "closable",
+              "description": "Enables a close button that allows the user to dismiss the notification.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "tone",
+              "description": "The notification's tone (color).",
+              "value": {
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'",
+                "default": "'primary'"
+              }
+            },
+            {
+              "name": "duration",
+              "description": "The length of time, in milliseconds, the notification will show before closing itself.\nIf the user interacts with the notification before it closes (e.g. moves the mouse over it), the timer will restart.\nDefaults to `Infinity`, meaning the notification will not close on its own.",
+              "value": { "type": "number" }
+            },
+            {
+              "name": "open",
+              "description": "Indicates whether or not the notification is open. You can toggle this attribute to show and hide the notification.",
+              "value": { "type": "boolean", "default": "false" }
+            }
+          ],
+          "slots": [
+            { "name": "", "description": "The alert's main content." },
+            { "name": "icon", "description": "An icon to show in the alert." }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "description": "Emitted when the alert opens or closes. Note: it provides only rtl direction when the duration is set, ltr will be added later ;)"
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "closable",
+                "description": "Enables a close button that allows the user to dismiss the notification.",
+                "type": "boolean"
+              },
+              {
+                "name": "tone",
+                "description": "The notification's tone (color).",
+                "type": "'primary' | 'success' | 'neutral' | 'warning' | 'danger'"
+              },
+              {
+                "name": "duration",
+                "description": "The length of time, in milliseconds, the notification will show before closing itself.\nIf the user interacts with the notification before it closes (e.g. moves the mouse over it), the timer will restart.\nDefaults to `Infinity`, meaning the notification will not close on its own.",
+                "type": "number"
+              },
+              {
+                "name": "open",
+                "description": "Indicates whether or not the notification is open. You can toggle this attribute to show and hide the notification.",
+                "type": "boolean"
+              }
+            ],
+            "events": [
+              {
+                "name": "change",
+                "description": "Emitted when the alert opens or closes. Note: it provides only rtl direction when the duration is set, ltr will be added later ;)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-table",
+          "description": "Table\n\nTable can be defined in two ways. You can create a table using the `elvt-table-*` elements or\nusing a data provider and a columns definition. If you add child elements, the columns definition and\ndata provider will be ignored.\n\n```html\n<elvt-table>\n    <elvt-table-column slot=\"head\">Column Label</elvt-table-column>\n    <elvt-table-row>\n        <elvt-table-cell>Content</elvt-table-cell>\n    <elvt-table-row>\n</elvt-table>\n```\n\nDynamic tables need a column definition and a data provider. These need to be set as properties. Only\ntables defined this way can use virtual scroll.\n\n```ts\nconst columns = [\n    {\n        id: 'name',\n        label: 'Name',\n        data: (item: TableItem) => html`${item.first_name} ${item.last_name}`,\n    },\n    {\n        id: 'email',\n        label: 'Email',\n        data: (item: TableItem) => item.email,\n    },\n    {\n        id: 'company',\n        label: 'Company',\n        data: (item: TableItem) => item.email,\n    },\n];\nconst provider = new ArrayDataProvider(records);\n```\n\n### ArrayTableDataProvider\n\nA basic table data provider that takes and array with all records and optionally a compare function (for sorting).\n\n```ts\n    const provider = new ArrayTableDataProvider(accounts.slice(0, 5), { compare: columnCompare });\n```\n\n### PagedTableDataProvider\n\nAllow to use an asynchronous function to fetch slices of data from an API.\n\n```ts\nconst provider = new PagedTableDataProvider(\n    // page size\n    10,\n    // asynchronous fetcher\n    async (pageIndex: number, pageSize: number, sortBy?: TableItemSort) => {\n        const offset = pageIndex * pageSize;\n        let url = `http://example.com/api/endpoint?offset=${offset}&limit=${limit}`;\n        if (sortBy) {\n          url += `&sortBy=${sortBy.column}|${sortBy.direction}`\n        }\n        const response = await fetch(url);\n        return {\n            items: response.arrayOfItems,\n            length: response.absoluteCountOfItems,\n        };\n    }\n);\n```\n\n### Custom Table Data Providers\n\nIf implementing an own data provider it must extend the abstract TableDataProvider class.\n\n```ts\nimport { BehaviourSubject, Subject } from '@inform-elevate/elevate-cdk';\nimport { TableData, TableProviderStatus } from './table-data-provider';\nexport abstract class TableDataProvider {\n    public readonly status = new BehaviourSubject<TableProviderStatus>(TableProviderStatus.Created);\n\n    public readonly changes = new Subject<void>();\n\n    public abstract slice(start?: number, end?: number, sortBy?: string): Promise<TableData>;\n}\n```\n---\n\n\n### **Events:**\n - **table-row-click**\n- **table-selection-change**\n\n### **Slots:**\n - _default_ - Table Rows\n- **head** - Table Columns",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table--docs",
+          "attributes": [
+            {
+              "name": "scroll-mode",
+              "value": { "type": "'none' | 'inner' | 'virtual'" }
+            },
+            { "name": "row-height", "value": { "type": "number" } },
+            { "name": "selectable", "value": { "type": "boolean" } }
+          ],
+          "slots": [
+            { "name": "", "description": "Table Rows" },
+            { "name": "head", "description": "Table Columns" }
+          ],
+          "events": [
+            { "name": "table-row-click", "type": "TableRowEvent" },
+            {
+              "name": "table-selection-change",
+              "type": "TableSelectionChangeEvent"
+            }
+          ],
+          "js": {
+            "properties": [
+              { "name": "columns", "type": "TableColumnDefinition[]" },
+              { "name": "displayedColumns", "type": "string[]" },
+              {
+                "name": "row",
+                "type": "TableRowDefinition | ((item: TableItem) => TableRowDefinition) | undefined"
+              },
+              { "name": "scrollMode", "type": "'none' | 'inner' | 'virtual'" },
+              { "name": "selection", "type": "TableSelection<Type>" },
+              { "name": "trackBy", "type": "(item: Type) => string | number" },
+              { "name": "provider", "type": "TableDataProvider | undefined" },
+              { "name": "rowHeight", "type": "number" },
+              { "name": "selectable", "type": "boolean" },
+              { "name": "sortBy", "type": "TableItemSort | undefined" },
+              { "name": "rowOffset", "type": "number" },
+              { "name": "rows", "type": "TableRow<Type>[]" }
+            ],
+            "events": [
+              { "name": "table-row-click", "type": "TableRowEvent" },
+              {
+                "name": "table-selection-change",
+                "type": "TableSelectionChangeEvent"
+              }
+            ]
+          }
+        },
+        {
+          "name": "elvt-table-column",
+          "description": "A table column - used inside `elvt-table`\n---\n",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-column--docs",
+          "attributes": [
+            {
+              "name": "alignment",
+              "value": {
+                "type": "'start' | 'center' | 'end' | 'justify' | undefined"
+              }
+            },
+            {
+              "name": "sortable",
+              "value": { "type": "TableItemSortDirection[] | undefined" }
+            },
+            { "name": "sorted", "value": { "type": "'asc' | 'desc'" } },
+            { "name": "width", "value": { "type": "string | undefined" } }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "alignment",
+                "type": "'start' | 'center' | 'end' | 'justify' | undefined"
+              },
+              {
+                "name": "sortable",
+                "type": "TableItemSortDirection[] | undefined"
+              },
+              { "name": "sorted", "type": "'asc' | 'desc'" },
+              { "name": "width", "type": "string | undefined" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-table-cell",
+          "description": "A table cell - used inside `elvt-table`\n---\n",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-cell--docs",
+          "attributes": [
+            {
+              "name": "alignment",
+              "value": { "type": "'start' | 'center' | 'end' | 'justify'" }
+            },
+            { "name": "width", "value": { "type": "string | undefined" } }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "alignment",
+                "type": "'start' | 'center' | 'end' | 'justify'"
+              },
+              { "name": "width", "type": "string | undefined" }
+            ],
+            "events": []
+          }
+        },
+        {
+          "name": "elvt-table-row",
+          "description": "A table row - used inside `elvt-table`\n---\n\n\n### **Events:**\n - **table-row-click**\n\n### **Slots:**\n - **label** - Checkbox Label (for accessibility)",
+          "doc-url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-row--docs",
+          "attributes": [
+            {
+              "name": "label",
+              "description": "The label is used in the selection checkbox (accessibility). It will be prefixed\nwith the select/deselect intl text.",
+              "value": { "type": "string" }
+            },
+            {
+              "name": "clickable",
+              "description": "A clickable row can receive the focus and trigger 'table-row-click' events",
+              "value": { "type": "boolean" }
+            }
+          ],
+          "slots": [
+            {
+              "name": "label",
+              "description": "Checkbox Label (for accessibility)"
+            }
+          ],
+          "events": [{ "name": "table-row-click", "type": "TableRowEvent" }],
+          "js": {
+            "properties": [
+              {
+                "name": "item",
+                "description": "The item represented by the row.",
+                "type": "Type | undefined"
+              },
+              {
+                "name": "label",
+                "description": "The label is used in the selection checkbox (accessibility). It will be prefixed\nwith the select/deselect intl text.",
+                "type": "string"
+              },
+              {
+                "name": "clickable",
+                "description": "A clickable row can receive the focus and trigger 'table-row-click' events",
+                "type": "boolean"
+              },
+              { "name": "selected", "type": "boolean" }
+            ],
+            "events": [{ "name": "table-row-click", "type": "TableRowEvent" }]
+          }
+        }
+      ]
+    }
+  }
+}

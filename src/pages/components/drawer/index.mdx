@@ -1,0 +1,235 @@
+---
+title: Drawer
+description: Drawers provide temporary overlay surfaces that slide in from screen edges. They offer additional content or navigation without leaving the current context.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Drawers expand interface real estate without navigating away from the current context. The ELEVATE Drawer component helps designers and developers create consistent, accessible overlay experiences that provide additional functionality while maintaining user focus and orientation.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Drawers
+- **Navigation menus**: Mobile-friendly navigation that doesn't take up screen space
+- **Filters and options**: Advanced filtering controls for search and data views
+- **Secondary actions**: Additional tools and options that support the main workflow
+- **Content details**: Expandable information panels without page navigation
+- **Settings panels**: Configuration options that apply to current context
+
+### When NOT to Use Drawers
+- **Primary content**: Main content should not be hidden in drawers
+- **Critical actions**: Essential user actions should be immediately visible
+- **Small content**: Simple content that fits better in tooltips or popovers
+- **Multi-step processes**: Use dedicated pages or modals for complex workflows
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Positioning Options
+
+<InlineNotification kind="info">
+Drawer components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Left Drawer** slides in from the left edge, commonly used for navigation menus and primary actions.
+
+**Right Drawer** slides in from the right edge, ideal for secondary content and supplementary information.
+
+**Bottom Drawer** slides up from the bottom, perfect for mobile interfaces and contextual actions.
+
+**Top Drawer** slides down from the top, useful for notifications and system-level controls.
+
+### Overlay Behavior
+
+**Modal Drawers** block interaction with background content and require explicit closing.
+
+**Non-Modal Drawers** allow interaction with both drawer and background content simultaneously.
+
+**Push Drawers** shift main content aside rather than overlaying it.
+
+### Size Variations
+
+**Compact Drawers** provide minimal space for focused content and simple actions.
+
+**Standard Drawers** offer balanced space for typical navigation and content needs.
+
+**Wide Drawers** accommodate detailed content and complex interface elements.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective drawer design and prevent common mistakes.*
+
+### Context Preservation Principle
+**Users should maintain orientation when drawers open.** Drawers provide additional functionality without losing the user's place in their current task. Disorienting transitions or unclear relationships break this context.
+
+### Progressive Disclosure Principle  
+**Reveal functionality when needed, hide when not.** Drawers should contain secondary or contextual functionality that supports but doesn't compete with primary content. Overloading drawers defeats their organizational purpose.
+
+### Escape Hatch Principle
+**Users should always have clear ways to close or dismiss drawers.** Modal drawers especially need obvious exit methods. Trapped users become frustrated and lose confidence in the interface.
+
+### Responsive Adaptation Principle
+**Drawer behavior should adapt appropriately to different screen sizes.** Mobile devices may need different drawer positions or sizes compared to desktop interfaces.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common drawer design mistakes.*
+
+### Choosing Appropriate Positioning
+
+**Why this matters:** Drawer position affects user expectation and thumb reach on mobile devices. Left drawers are expected for navigation while right drawers are better for secondary content. Wrong positioning creates confusion and usability issues.
+
+### Managing Focus and Keyboard Navigation
+
+**Why this matters:** Drawers change the available interface, but keyboard users need predictable focus management. Poor focus handling makes drawers inaccessible and frustrating for keyboard navigation.
+
+### Content Organization and Hierarchy
+
+**Why this matters:** Drawers have limited space and user attention. Poor content organization makes drawers feel cluttered and reduces their effectiveness as focused interface extensions.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Drawer component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/drawer/drawer.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Navigation drawer -->
+<elvt-drawer position="left" size="standard">
+  <nav slot="content">
+    <elvt-link href="/dashboard">Dashboard</elvt-link>
+    <elvt-link href="/reports">Reports</elvt-link>
+    <elvt-link href="/settings">Settings</elvt-link>
+  </nav>
+</elvt-drawer>
+
+<!-- Filter drawer -->
+<elvt-drawer position="right" modal="false">
+  <div slot="header">
+    <h3>Filters</h3>
+  </div>
+  <div slot="content">
+    <!-- Filter controls -->
+  </div>
+</elvt-drawer>
+
+<!-- Mobile bottom drawer -->
+<elvt-drawer position="bottom" trigger="mobile-menu-button">
+  <div slot="content">
+    <!-- Mobile actions -->
+  </div>
+</elvt-drawer>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `position` | `left`, `right`, `top`, `bottom` | Where drawer slides in from |
+| `size` | `compact`, `standard` (default), `wide` | Drawer width or height |  
+| `modal` | `true` (default), `false` | Whether drawer blocks background interaction |
+| `overlay` | `true` (default), `false` | Whether to show background overlay |
+| `push-content` | `true`, `false` (default) | Whether to push main content aside |
+| `trigger` | Element ID | Element that opens the drawer |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test drawer behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Drawer component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your drawer implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Focus management:**
+- Move focus to drawer when it opens
+- Trap focus within modal drawers
+- Return focus to trigger element when drawer closes
+- Provide clear focus indicators throughout drawer content
+
+**Keyboard navigation:**
+- Escape key closes modal drawers
+- Tab navigation works predictably within drawer
+- Arrow keys navigate drawer menu items when appropriate
+- Enter/Space activates drawer trigger elements
+
+**Screen reader support:**
+- Announce drawer state changes (opened/closed)
+- Use appropriate ARIA roles (dialog, navigation, complementary)
+- Provide labels for drawer regions and purposes
+- Communicate drawer position and behavior
+
+**Visual accessibility:**
+- Ensure sufficient contrast for drawer content
+- Provide clear visual indicators for active/focus states
+- Make drawer boundaries visually obvious
+- Include close buttons with recognizable icons
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Drawer component implementation
+- **New**: Multi-position support (left, right, top, bottom)
+- **New**: Modal and non-modal variants
+- **New**: Responsive behavior and mobile optimization
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Drawer component in development planning phase

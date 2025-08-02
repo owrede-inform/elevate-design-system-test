@@ -1,0 +1,243 @@
+---
+title: Icon
+description: Icons provide visual communication through recognizable symbols. They enhance usability by communicating concepts quickly and supporting text-based information.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Icons create visual consistency and improve interface comprehension through universal symbols. The ELEVATE Icon component helps designers and developers create consistent, accessible interfaces that communicate effectively across language and cultural barriers.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Icons
+- **Action identification**: Buttons, menu items, and interactive elements
+- **Status indication**: Success, warning, error, and information states
+- **Navigation aids**: Wayfinding and section identification
+- **Content categorization**: Document types, content themes, and classifications
+- **Visual reinforcement**: Supporting text with recognizable symbols
+
+### When NOT to Use Icons
+- **Unclear concepts**: Avoid icons for abstract or ambiguous ideas
+- **Cultural specificity**: Don't use icons that may not translate across cultures
+- **Decoration only**: Icons should serve functional purposes, not just visual appeal
+- **Overcrowding**: Too many icons create visual noise and reduce effectiveness
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Icon Categories
+
+<InlineNotification kind="info">
+Icon components are currently in development. Examples shown represent planned functionality using Material Design Icons.
+</InlineNotification>
+
+**Action Icons** represent user interactions like save, delete, edit, and share.
+
+**Navigation Icons** help users move through interfaces with arrows, home, and menu symbols.
+
+**Status Icons** communicate states through checkmarks, warnings, errors, and information symbols.
+
+**Content Icons** represent different types of content like documents, images, and media files.
+
+**System Icons** indicate system functions like settings, search, and notifications.
+
+### Size Variations
+
+**Small Icons (16px)** work well in dense interfaces and inline with text.
+
+**Medium Icons (24px)** provide standard icon size for most interface elements.
+
+**Large Icons (32px)** create emphasis and work well for primary actions.
+
+**Extra Large Icons (48px+)** serve as focal points and illustration elements.
+
+### Style Treatments
+
+**Outlined Icons** use strokes to define shapes, providing clean, minimal appearance.
+
+**Filled Icons** use solid shapes for greater visual weight and emphasis.
+
+**Two-Tone Icons** combine outlined and filled elements for visual hierarchy.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective icon design and prevent common mistakes.*
+
+### Recognition Principle
+**Icons should be immediately recognizable and universally understood.** Users should not have to guess what icons represent. Unclear or overly stylized icons create cognitive load and slow down task completion.
+
+### Consistency Principle  
+**Similar functions should use similar icons throughout the interface.** Inconsistent icon usage confuses users and reduces the efficiency benefits that icons provide.
+
+### Contextual Relevance Principle
+**Icons should enhance rather than replace clear communication.** Icons work best when they support text or have established conventions, not when they carry full communication responsibility.
+
+### Visual Hierarchy Principle
+**Icon size and treatment should reflect importance and interaction priority.** Primary actions might use larger or more prominent icons while secondary functions use smaller, subtler treatments.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common icon design mistakes.*
+
+### Choosing Recognizable Icons
+
+**Why this matters:** Unfamiliar icons force users to learn new visual vocabulary, increasing cognitive load. Well-established icon conventions help users understand functionality instantly.
+
+### Pairing Icons with Text
+
+**Why this matters:** Icons alone can be ambiguous, especially for complex or abstract concepts. Text labels provide clarity and improve accessibility for all users.
+
+### Maintaining Visual Consistency
+
+**Why this matters:** Mixed icon styles create visual inconsistency that makes interfaces feel unprofessional and harder to scan. Consistent treatment improves overall design cohesion.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Icon component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/icon/icon.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic icon usage -->
+<elvt-icon icon="mdi:home"></elvt-icon>
+<elvt-icon icon="mdi:user" size="24"></elvt-icon>
+
+<!-- Icons with semantic meaning -->
+<elvt-icon icon="mdi:check-circle" color="success"></elvt-icon>
+<elvt-icon icon="mdi:alert-circle" color="warning"></elvt-icon>
+<elvt-icon icon="mdi:close-circle" color="error"></elvt-icon>
+
+<!-- Icons in buttons -->
+<elvt-button>
+  <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+  Add Item
+</elvt-button>
+
+<!-- Interactive icons -->
+<elvt-icon 
+  icon="mdi:heart-outline" 
+  interactive 
+  aria-label="Add to favorites"
+  onclick="toggleFavorite()">
+</elvt-icon>
+
+<!-- Custom icon sizes -->
+<elvt-icon icon="mdi:settings" size="16"></elvt-icon>
+<elvt-icon icon="mdi:settings" size="32"></elvt-icon>
+<elvt-icon icon="mdi:settings" size="48"></elvt-icon>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `icon` | Icon name string | Icon identifier from supported icon libraries |
+| `size` | Number or preset | Icon size in pixels or named size |  
+| `color` | Color value or theme token | Icon color, supports theme colors |
+| `interactive` | `true`, `false` (default) | Whether icon responds to hover/focus |
+| `aria-label` | String | Accessibility label for screen readers |
+| `title` | String | Tooltip text for icon meaning |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test icon behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Icon component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your icon implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Provide alternative text:**
+```html
+<!-- Decorative icons (no screen reader announcement) -->
+<elvt-icon icon="mdi:star" aria-hidden="true"></elvt-icon>
+
+<!-- Functional icons (with meaning) -->
+<elvt-icon icon="mdi:delete" aria-label="Delete item"></elvt-icon>
+<elvt-icon icon="mdi:edit" title="Edit item"></elvt-icon>
+```
+
+**Don't rely solely on icons:**
+- Always provide text labels or context for important actions
+- Use icons to enhance, not replace, clear communication
+- Consider that icon meanings may not be universal
+
+**Interactive icon accessibility:**
+- Interactive icons need proper focus indicators
+- Use appropriate ARIA roles for clickable icons
+- Ensure adequate touch target size (44px minimum)
+- Provide keyboard interaction support
+
+**Color and contrast:**
+- Icons must meet 3:1 contrast ratio minimum
+- Don't use color alone to convey meaning
+- Ensure icons remain visible in high contrast mode
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Icon component implementation
+- **New**: Material Design Icons integration
+- **New**: Multiple size presets and custom sizing
+- **New**: Theme color integration and custom colors
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Icon component in development planning phase

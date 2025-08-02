@@ -3,215 +3,539 @@ title: Button
 description: Buttons trigger actions and guide users through workflows. They provide clear affordances and communicate hierarchy through visual styling.
 ---
 
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
 <PageDescription>
 
-Buttons are interactive elements that trigger actions when activated. The ELEVATE Button component provides multiple variants, sizes, and states to accommodate different use cases while maintaining consistent INFORM branding.
+Buttons are the primary interface for user actions in digital products. The ELEVATE Button component helps designers and developers create consistent, accessible interfaces that guide users through workflows with clear visual hierarchy and meaningful interactions.
 
 </PageDescription>
 
 <AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
   <AnchorLink>Variations</AnchorLink>
-  <AnchorLink>Design Guidelines</AnchorLink>  
-  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
   <AnchorLink>Accessibility</AnchorLink>
   <AnchorLink>Changelog</AnchorLink>
 </AnchorLinks>
 
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Buttons
+- **Primary actions**: Sign up, submit, save, confirm, purchase
+- **Secondary actions**: Cancel, back, learn more, edit  
+- **Navigation**: Next step, continue, proceed to checkout
+- **Destructive actions**: Delete, remove, reset, archive
+
+### When NOT to Use Buttons
+- **Links**: Use Link component for navigation between pages or external sites
+- **Toggles**: Use Switch component for on/off states or settings
+- **Selection**: Use Checkbox or Radio for multiple choice selections
+- **Filters**: Use FilterButton or Chip components for content filtering
+
 ## Variations
 
-The Button component supports multiple visual tones and shapes to establish clear hierarchy and communicate different action types.
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
 
 ### Tone Variations
-- **Neutral** - Default button for standard actions
-- **Primary** - Main action on a page or workflow (use sparingly)
-- **Success** - Positive actions like save, confirm, or complete
-- **Warning** - Caution actions that need attention
-- **Danger** - Destructive actions like delete or remove
-- **Emphasized** - High-emphasis actions with strong visual weight
-- **Subtle** - Low-emphasis actions with minimal visual treatment
+
+Each tone communicates a different type of action and creates visual hierarchy in your interface.
+
+<Tabs>
+
+<Tab label="Primary & Secondary">
+
+**Primary buttons** represent the main action users should take. Use only one per view to maintain clear hierarchy.
+**Neutral buttons** serve as secondary actions that support the primary flow.
+
+<LiveExample 
+  title="Primary and Secondary Actions" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+  <elvt-button tone="primary">Save Changes</elvt-button>
+  <elvt-button>Cancel</elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+<Tab label="Success & Warning">
+
+**Success buttons** confirm positive outcomes or completions.
+**Warning buttons** indicate caution or actions that need attention but aren't destructive.
+
+<LiveExample 
+  title="Success and Warning Actions" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+  <elvt-button tone="success">Confirm Order</elvt-button>
+  <elvt-button tone="warning">Save Draft</elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+<Tab label="Danger & Emphasized">
+
+**Danger buttons** are for destructive actions that can't be easily undone.
+**Emphasized buttons** create high-contrast actions for special situations.
+
+<LiveExample 
+  title="Danger and Emphasized Actions" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+  <elvt-button tone="danger">Delete Account</elvt-button>
+  <elvt-button tone="emphasized">Upgrade Now</elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+<Tab label="Subtle">
+
+**Subtle buttons** provide low-prominence actions that don't compete with primary content.
+
+<LiveExample 
+  title="Subtle Actions" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+  <elvt-button tone="subtle">View Details</elvt-button>
+  <elvt-button tone="subtle">Learn More</elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+</Tabs>
 
 ### Shape Variations
-- **Box** (default) - Standard rectangular button
-- **Pill** - Rounded button with full corner radius
+
+<Row>
+<Column colMd={4} colLg={6}>
+
+<Title>Box Shape (Default)</Title>
+
+Standard rectangular button with square corners for professional interfaces.
+
+<LiveExample 
+  title="Box Shape Button" 
+  htmlCode={`<elvt-button shape="box">Box Button</elvt-button>`}
+  showCode={false}
+/>
+
+</Column>
+<Column colMd={4} colLg={6}>
+
+<Title>Pill Shape</Title>
+
+Rounded button with full corner radius for softer, more modern interfaces.
+
+<LiveExample 
+  title="Pill Shape Button" 
+  htmlCode={`<elvt-button shape="pill">Pill Button</elvt-button>`}
+  showCode={false}
+/>
+
+</Column>
+</Row>
+
+### Icon Usage
+
+Buttons can include icons to enhance clarity and provide visual context. Icons should always support the button's purpose.
+
+<Tabs>
+
+<Tab label="Prefix Icons">
+
+Icons before text help identify the action type or category.
+
+<LiveExample 
+  title="Buttons with Prefix Icons" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+  <elvt-button tone="primary">
+    <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+    Add Item
+  </elvt-button>
+  <elvt-button tone="success">
+    <elvt-icon slot="prefix" icon="mdi:download"></elvt-icon>
+    Download
+  </elvt-button>
+  <elvt-button tone="danger">
+    <elvt-icon slot="prefix" icon="mdi:delete"></elvt-icon>
+    Delete
+  </elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+<Tab label="Suffix Icons">
+
+Icons after text suggest direction or outcome of the action.
+
+<LiveExample 
+  title="Buttons with Suffix Icons" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+  <elvt-button tone="primary">
+    Continue
+    <elvt-icon slot="suffix" icon="mdi:chevron-right"></elvt-icon>
+  </elvt-button>
+  <elvt-button>
+    Open Link
+    <elvt-icon slot="suffix" icon="mdi:open-in-new"></elvt-icon>
+  </elvt-button>
+  <elvt-button tone="subtle">
+    Expand
+    <elvt-icon slot="suffix" icon="mdi:chevron-down"></elvt-icon>
+  </elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+<Tab label="Icon Only">
+
+Icon-only buttons save space but require clear, universally understood icons and accessibility considerations.
+
+<LiveExample 
+  title="Icon-Only Buttons" 
+  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+  <elvt-button tone="primary" title="Add new item" aria-label="Add new item">
+    <elvt-icon icon="mdi:plus"></elvt-icon>
+  </elvt-button>
+  <elvt-button title="Edit" aria-label="Edit">
+    <elvt-icon icon="mdi:pencil"></elvt-icon>
+  </elvt-button>
+  <elvt-button tone="danger" title="Delete" aria-label="Delete">
+    <elvt-icon icon="mdi:delete"></elvt-icon>
+  </elvt-button>
+  <elvt-button tone="subtle" title="More options" aria-label="More options">
+    <elvt-icon icon="mdi:dots-vertical"></elvt-icon>
+  </elvt-button>
+</div>`}
+/>
+
+</Tab>
+
+</Tabs>
 
 ### Size Variations
-- **Small** - Compact buttons for dense layouts
-- **Medium** - Default size for most use cases
-- **Large** - Prominent buttons for hero sections
 
-## Design Guidelines
+<LiveExample 
+  title="Button Sizes" 
+  htmlCode={`<div style="display: flex; gap: 1rem; align-items: center;">
+  <elvt-button size="small">Small</elvt-button>
+  <elvt-button size="medium">Medium</elvt-button>
+  <elvt-button size="large">Large</elvt-button>
+</div>`}
+/>
 
-### When to Use
-- **Primary actions**: Sign up, submit, save, confirm
-- **Secondary actions**: Cancel, back, learn more  
-- **Navigation**: Next step, continue, proceed
-- **Destructive actions**: Delete, remove, reset
+## Design Principles
 
-### When Not to Use
-- **Links**: Use Link component for navigation between pages
-- **Toggles**: Use Switch component for on/off states
-- **Selection**: Use Checkbox or Radio for multiple choice
+*Purpose: Understand the foundational UI principles that guide effective button design and prevent common mistakes.*
 
-### Button Hierarchy
-Establish clear visual hierarchy using button variants:
-1. **Primary**: Most important action (1 per page)
-2. **Secondary**: Supporting actions (2-3 per page)
-3. **Tertiary**: Least important actions
+Understanding these core principles will help you make better design decisions and avoid interface patterns that confuse or frustrate users.
 
-### Sizing Guidelines
-- **Large**: Hero sections, primary CTAs
-- **Medium**: Default size for most use cases  
-- **Small**: Compact layouts, data tables
+### Visual Hierarchy Principle
+**Clear hierarchy guides user attention and reduces cognitive load.** Users should immediately understand which action is most important on any given screen. Competing visual weights create confusion and decision paralysis.
 
-## Code Reference
+### Semantic Communication Principle  
+**Visual design should match functional meaning.** Colors, shapes, and styling should intuitively communicate what type of action the button performs. Misleading visual cues break user expectations and decrease trust.
 
-### Installation
+### Cognitive Load Principle
+**Reduce the mental effort required to use your interface.** Button labels should be descriptive and action-oriented. Generic or vague labels force users to guess what will happen, increasing friction and mistakes.
+
+### Consistency Principle
+**Similar actions should look and behave similarly across your product.** Inconsistent button styling creates a fragmented experience and forces users to relearn patterns throughout your interface.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common button design mistakes.*
+
+### Establishing Clear Hierarchy
+
+**Why this matters:** When multiple buttons compete for attention with equal visual weight, users experience decision paralysis. They can't quickly identify the most important action, leading to hesitation and mistakes.
+
+<DoDontRow>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="do" caption="Use one primary button per page for the main action">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem'}}>
+  <button style={{background: '#0066cc', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Save Changes</button>
+  <button style={{background: 'transparent', color: '#161616', border: '1px solid #8d8d8d', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Cancel</button>
+</div>
+
+</DoDontExample>
+</Column>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="dont" caption="Don't use multiple primary buttons, it creates confusion">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem'}}>
+  <button style={{background: '#0066cc', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Save Changes</button>
+  <button style={{background: '#0066cc', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Submit Form</button>
+</div>
+
+</DoDontExample>
+</Column>
+</DoDontRow>
+
+### Writing Effective Button Labels
+
+**Why this matters:** Vague button labels increase cognitive load and create uncertainty. Users hesitate when they can't predict what will happen after clicking. Clear, action-oriented labels build confidence and reduce interaction friction.
+
+<DoDontRow>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="do" caption="Use clear, action-oriented labels that describe what will happen">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem', flexDirection: 'column'}}>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Delete Account</button>
+  <button style={{background: '#24a148', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Confirm Order</button>
+  <button style={{background: 'transparent', color: '#161616', border: '1px solid #8d8d8d', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Save Draft</button>
+</div>
+
+</DoDontExample>
+</Column>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="dont" caption="Don't use vague or generic labels that don't describe the action">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem', flexDirection: 'column'}}>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>OK</button>
+  <button style={{background: '#24a148', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Yes</button>
+  <button style={{background: 'transparent', color: '#161616', border: '1px solid #8d8d8d', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Click Here</button>
+</div>
+
+</DoDontExample>
+</Column>
+</DoDontRow>
+
+### Using Danger Tone Appropriately
+
+**Why this matters:** Overusing danger styling creates "alert fatigue" where users become desensitized to warnings. Misusing danger tone for reversible actions breaks the semantic meaning users expect, reducing trust and potentially causing accidental destructive actions.
+
+<DoDontRow>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="do" caption="Use danger tone for destructive actions with clear consequences">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem', flexDirection: 'column'}}>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Delete 3 selected items</button>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Remove user access</button>
+</div>
+
+</DoDontExample>
+</Column>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="dont" caption="Don't use danger tone for non-destructive actions or reversible operations">
+
+<div style={{display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center', minHeight: '110px', aspectRatio: '16/9', padding: '1rem', flexDirection: 'column'}}>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Log Out</button>
+  <button style={{background: '#da1e28', color: 'white', border: 'none', padding: '0.75rem 1.5rem', borderRadius: '4px', fontWeight: '500', cursor: 'pointer'}}>Hide Notification</button>
+</div>
+
+</DoDontExample>
+</Column>
+</DoDontRow>
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+### Getting Started
 
 ```bash
 npm install @inform-elevate/elevate-core-ui
 ```
 
-### Basic Usage
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
 
-```html
-<elvt-button>Default Button</elvt-button>
-<elvt-button tone="primary">Primary Button</elvt-button>
-<elvt-button tone="success">Success Button</elvt-button>
-<elvt-button tone="danger">Danger Button</elvt-button>
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
 ```
 
-### With Icons (Prefix/Suffix Slots)
+### Common Usage Patterns
 
 ```html
-<elvt-button tone="primary">
-  <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+<!-- Primary action with secondary support -->
+<elevate-button tone="primary">Save Changes</elevate-button>
+<elevate-button>Cancel</elevate-button>
+
+<!-- Action with prefix icon -->
+<elevate-button tone="primary">
+  <elevate-icon slot="prefix" icon="mdi:plus"></elevate-icon>
   Add Item
-</elvt-button>
+</elevate-button>
 
-<elvt-button tone="secondary">
+<!-- Navigation with suffix icon -->
+<elevate-button>
   Continue
-  <elvt-icon slot="suffix" icon="mdi:chevron-right"></elvt-icon>
-</elvt-button>
+  <elevate-icon slot="suffix" icon="mdi:chevron-right"></elevate-icon>
+</elevate-button>
+
+<!-- Destructive action -->
+<elevate-button tone="danger">Delete Account</elevate-button>
+
+<!-- Link button -->
+<elevate-button href="/dashboard">Go to Dashboard</elevate-button>
+
+<!-- Form submission -->
+<elevate-button type="submit" tone="primary">Submit Form</elevate-button>
 ```
 
-### Different Shapes and Sizes
+### Key Properties
 
-```html
-<elvt-button shape="pill" size="large" tone="primary">Pill Button</elvt-button>
-<elvt-button size="small" tone="subtle">Small Button</elvt-button>
-```
+The most commonly used properties for design and development:
 
-### As Link
+<PageTable>
 
-```html
-<elvt-button href="https://example.com" target="_blank">
-  External Link
-</elvt-button>
-```
+| Property | Options | Description |
+|----------|---------|-------------|
+| `tone` | `neutral` (default), `primary`, `success`, `warning`, `danger`, `emphasized`, `subtle` | Visual style that communicates action type |
+| `size` | `small`, `medium` (default), `large` | Physical size of the button |  
+| `shape` | `box` (default), `pill` | Corner radius style |
+| `disabled` | `true`, `false` (default) | Whether the button can be interacted with |
+| `href` | URL string | Makes button behave as a link |
+| `type` | `button` (default), `submit`, `reset` | Form behavior when used in forms |
 
-### Form Integration
+</PageTable>
 
-```html
-<elvt-button type="submit" tone="primary">Submit Form</elvt-button>
-<elvt-button type="reset" tone="secondary">Reset Form</elvt-button>
-```
+**Icon Slots:** Use `slot="prefix"` for icons before text, `slot="suffix"` for icons after text.
 
-### With Custom Padding
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
 
-```html
-<elvt-button padding="0 xl">Custom Padding</elvt-button>
-```
+## Interactive Examples
 
-### Properties
+*Purpose: Allow designers and developers to test button behavior and copy working code for their projects.*
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `tone` | `ButtonTone` | `neutral` | Visual tone: `neutral`, `primary`, `success`, `warning`, `danger`, `emphasized`, `subtle` |
-| `size` | `Size` | `medium` | Button size: `small`, `medium`, `large` |
-| `shape` | `string` | `box` | Button shape: `box`, `pill` |
-| `disabled` | `boolean` | `false` | Whether the button is disabled |
-| `selected` | `boolean` | `false` | Whether the button appears selected |
-| `type` | `ButtonType` | `button` | Button type: `button`, `submit`, `reset` |
-| `href` | `string` | - | When set, renders as `<a>` tag with this URL |
-| `target` | `LinkTarget` | - | Link target (when `href` is used) |
-| `rel` | `string` | `noreferrer noopener` | Link relationship (when `href` is used) |
-| `download` | `string` | - | Download filename (when `href` is used) |
-| `name` | `string` | - | Form field name |
-| `value` | `string` | - | Form field value |
-| `padding` | `Padding` | - | Custom padding using design token values |
+### Live Button Playground
 
-### Slots
+Experience how buttons behave in realistic contexts. All examples use actual ELEVATE components.
 
-| Slot | Description |
-|------|-------------|
-| `default` | The button's label text |
-| `prefix` | Icon or element before the label |
-| `suffix` | Icon or element after the label |
+<Tabs>
 
-### Events
+<Tab label="Form Context">
 
-| Event | Description |
-|-------|-------------|
-| `click` | Fired when button is clicked (includes form submission logic) |
-| `focus` | Fired when button receives focus |
-| `blur` | Fired when button loses focus |
+Test buttons in a realistic form to understand hierarchy and interaction patterns:
 
-### Methods
+<LiveExample 
+  title="Form with Button Hierarchy" 
+  htmlCode={`<form style="max-width: 400px; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 8px;" onsubmit="event.preventDefault(); alert('Form submitted! (prevented for demo)');">
+  <h3 style="margin-top: 0;">Contact Form</h3>
+  
+  <div style="margin-bottom: 1rem;">
+    <label for="demo-name" style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Name:</label>
+    <input type="text" id="demo-name" name="name" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  
+  <div style="margin-bottom: 1rem;">
+    <label for="demo-email" style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Email:</label>
+    <input type="email" id="demo-email" name="email" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+  </div>
+  
+  <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+    <elvt-button type="reset">Reset</elvt-button>
+    <elvt-button type="submit" tone="primary">Submit</elvt-button>
+  </div>
+</form>`}
+/>
 
-| Method | Description |
-|--------|-------------|
-| `focus(options?: FocusOptions)` | Programmatically focus the button |
+</Tab>
+
+<Tab label="Action Groups">
+
+See how different button combinations work together:
+
+<LiveExample 
+  title="Button Combinations" 
+  htmlCode={`<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 500px;">
+  <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+    <elvt-button onclick="alert('Cancelled')">Cancel</elvt-button>
+    <elvt-button tone="primary" onclick="alert('Changes saved!')">Save Changes</elvt-button>
+  </div>
+  
+  <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+    <elvt-button onclick="alert('Cancelled deletion')">Keep Account</elvt-button>
+    <elvt-button tone="danger" onclick="alert('Account deleted!')">Delete Account</elvt-button>
+  </div>
+  
+  <div style="display: flex; gap: 1rem; align-items: center;">
+    <elvt-button onclick="alert('Going back')">
+      <elvt-icon slot="prefix" icon="mdi:chevron-left"></elvt-icon>
+      Back
+    </elvt-button>
+    <elvt-button tone="primary" onclick="alert('Continuing')">
+      Continue
+      <elvt-icon slot="suffix" icon="mdi:chevron-right"></elvt-icon>
+    </elvt-button>
+  </div>
+</div>`}
+/>
+
+</Tab>
+
+</Tabs>
 
 ## Accessibility
 
-### Keyboard Support
-- **Space/Enter**: Activates the button
-- **Tab**: Moves focus to the button
-- **Shift + Tab**: Moves focus away from the button
+*Purpose: Ensure your button implementations are usable by all users, including those with disabilities.*
 
-### Screen Reader Support
-- Buttons have proper `role="button"` semantics
-- Button text is announced to screen readers
-- Disabled state is communicated to assistive technology
-- Loading state provides appropriate feedback
+### Essential Accessibility Practices
 
-### Focus Management
-- Clear focus indicators meet WCAG contrast requirements
-- Focus is trapped appropriately in modal contexts
-- Focus returns to appropriate element after button actions
+**Icon-only buttons require labels:**
+```html
+<!-- Good: Screen readers can announce the action -->
+<elevate-button aria-label="Delete item" title="Delete item">
+  <elevate-icon icon="mdi:delete"></elevate-icon>
+</elevate-button>
 
-### Best Practices
-- Use descriptive button text that clearly indicates the action
-- Avoid generic text like "Click here" or "Learn more"
-- Ensure sufficient color contrast (4.5:1 minimum)
-- Maintain minimum touch target size of 44px × 44px
-- Provide alternative text for icon-only buttons
+<!-- Bad: Screen readers can't identify the action -->
+<elevate-button>
+  <elevate-icon icon="mdi:delete"></elevate-icon>
+</elevate-button>
+```
+
+**Use clear, descriptive labels:**
+- ✅ "Delete 3 selected items" 
+- ❌ "OK" or "Click here"
+
+**Ensure sufficient contrast:**
+- Button text must meet 4.5:1 contrast ratio minimum
+- Focus indicators must be clearly visible
+
+**Maintain touch target size:**
+- Minimum 44px × 44px for mobile interfaces
+- All button sizes meet this requirement by default
+
+**Keyboard behavior is built-in:**
+- Space and Enter activate buttons automatically
+- Tab navigation works without additional code
 
 ## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
 
 ### Version 0.0.26-alpha (July 16, 2025)
 - Current version in active development
 
 ### Version 0.0.25-alpha (July 10, 2025)
-- Adjust Button Design, Remove Shoelace Button
-- Complete rewrite with custom styling
-- Improved tone system and visual hierarchy
+- **Breaking**: Adjust Button Design, Remove Shoelace Button
+- **Enhanced**: Complete rewrite with custom styling
+
+### Version 0.0.22-alpha (June 25, 2025)
+- **New**: Add ButtonComponent.focus() method
 
 ### Version 0.0.20-alpha (June 18, 2025)
-- Add "name" and "value" Attributes to Button
-- Replace Severity with Tone (Breaking Change)
-- Console Generic Shape (Box|Pill)
+- **New**: Add "name" and "value" Attributes to Button
+- **Breaking**: Replace Severity with Tone
 
-### Version 0.0.19-alpha (June 11, 2025)
-- Add ButtonComponent.focus() method
-- Form integration improvements
+### Version 0.0.18-alpha (June 9, 2025)
+- **Fixed**: Fixed Usability Issues in Button and Button Group Stories
 
 ### Version 0.0.3-alpha (March 27, 2025)
-- Add Button Component
-- Initial implementation with basic functionality
-- Form association and submission support
-
-### Since Version 0.0.3-alpha
-- Component has been available since March 2025
-- Status: Complete (as of component comments)
-- Continuous improvements and design refinements
+- **New**: Add Button Component (initial implementation)
+- **New**: Add Icon Button Component
