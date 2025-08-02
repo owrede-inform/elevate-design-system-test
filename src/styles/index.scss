@@ -205,6 +205,25 @@ code, pre {
   }
 }
 
+// More aggressive fix for expandable section titles when selected/active
+.cds--side-nav .cds--side-nav__item--active > .cds--side-nav__submenu,
+.cds--side-nav--website--light .cds--side-nav__item--active > .cds--side-nav__submenu,
+.cds--side-nav .cds--side-nav__item--active .cds--side-nav__submenu[aria-expanded="true"],
+.cds--side-nav--website--light .cds--side-nav__item--active .cds--side-nav__submenu[aria-expanded="true"] {
+  color: #ffffff !important;
+  
+  // Target the text content directly
+  .cds--side-nav__link-text,
+  .cds--side-nav__submenu-title {
+    color: #ffffff !important;
+  }
+  
+  // Nuclear option for any text element
+  * {
+    color: #ffffff !important;
+  }
+}
+
 // Expanded submenu styling
 .cds--side-nav .cds--side-nav__item .cds--side-nav__submenu[aria-expanded='true'],
 .cds--side-nav--website--light .cds--side-nav__item .cds--side-nav__submenu[aria-expanded='true'] {
@@ -271,6 +290,21 @@ code, pre {
 .cds--side-nav *::before,
 .cds--side-nav--website--light *::before {
   background-color: var(--elevate-primary) !important;
+}
+
+// Nuclear option: Force ALL text in sidebar to be white (prevent any black text)
+.cds--side-nav,
+.cds--side-nav--website--light {
+  * {
+    color: #f4f4f4 !important;
+  }
+  
+  // Specifically target any expandable section titles
+  .cds--side-nav__item--active {
+    * {
+      color: #ffffff !important;
+    }
+  }
 }
 
 // Ensure the current page link has petrol indicator regardless of structure
