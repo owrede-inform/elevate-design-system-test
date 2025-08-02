@@ -3,7 +3,7 @@ import { HomepageBanner, HomepageCallout } from 'gatsby-theme-carbon';
 import HomepageTemplate from 'gatsby-theme-carbon/src/components/Layouts/Homepage';
 import { calloutLink } from './Homepage.module.scss';
 
-import Carbon from './carbon.jpg';
+import CloudsBackground from './clouds.png';
 
 const FirstLeftText = () => <p>Built on Principles</p>;
 
@@ -37,16 +37,36 @@ const SecondRightText = () => (
 );
 
 const BannerText = () => (
-  <div>
-    <h1>ELEVATE Design System</h1>
-    <p style={{ fontSize: '1.25rem', marginTop: '1rem', opacity: 0.9 }}>
+  <div style={{ 
+    marginTop: '-4rem', 
+    textAlign: 'center',
+    textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+  }}>
+    <h1 style={{ 
+      color: '#262626',
+      fontWeight: '700',
+      fontSize: '4rem',
+      marginBottom: '1rem',
+      textShadow: '0 2px 8px rgba(0,0,0,0.2)'
+    }}>
+      ELEVATE Design System
+    </h1>
+    <p style={{ 
+      fontSize: '1.5rem', 
+      color: '#393939',
+      fontWeight: '500',
+      maxWidth: '600px',
+      margin: '0 auto',
+      lineHeight: '1.4',
+      textShadow: '0 1px 4px rgba(0,0,0,0.1)'
+    }}>
       Empowering INFORM teams to build the future of enterprise software
     </p>
   </div>
 );
 
 const customProps = {
-  Banner: <HomepageBanner renderText={BannerText} image={Carbon} />,
+  Banner: <HomepageBanner renderText={BannerText} image={CloudsBackground} />,
   FirstCallout: (
     <HomepageCallout
       backgroundColor="#0090a7"

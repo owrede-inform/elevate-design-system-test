@@ -4,3 +4,25 @@
   position: relative;
   top: $spacing-06; //margin-top doesn't work on table-cell, and padding-top looks weird on focus
 }
+
+// Homepage banner adjustments for cloud background
+:global(.cds--homepage-banner) {
+  // Ensure the banner has enough height and proper positioning
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Make sure the text container is properly positioned
+  :global(.cds--homepage-banner__content) {
+    z-index: 2;
+    position: relative;
+  }
+  
+  // Ensure the background image covers properly
+  :global(.cds--homepage-banner__image) {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
