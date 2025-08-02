@@ -63,103 +63,6 @@ const LiveExample = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-<<<<<<< HEAD
-    // Load ELEVATE components and dependencies
-    const loadComponents = () => {
-      // Check if components are already loaded
-      if (window.customElements && window.customElements.get('elvt-button')) {
-        setIsLoaded(true);
-        return;
-      }
-
-      // Create import map for module resolution
-      if (!document.querySelector('script[type="importmap"]')) {
-        const importMap = document.createElement('script');
-        importMap.type = 'importmap';
-        importMap.textContent = JSON.stringify({
-          imports: {
-            // React (for compatibility)
-            "react": "https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.development.js",
-            "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.development.js"
-          }
-        });
-        document.head.appendChild(importMap);
-        console.log('Import map created for module resolution');
-        console.log('Import map contents:', JSON.parse(importMap.textContent));
-      }
-
-      // Since ELEVATE components are now imported directly, just check if they're registered
-      checkForComponents();
-
-      function checkForComponents() {
-        let attempts = 0;
-        const maxAttempts = 100; // Increase timeout to 10 seconds
-        
-        const checkComponents = () => {
-          attempts++;
-          
-          // Log what custom elements are actually registered
-          if (attempts === 1 || attempts % 10 === 0) {
-            console.log(`Attempt ${attempts}: Checking for custom elements...`);
-            const registeredElements = [];
-            
-            // Check for any ELEVATE elements
-            ['elvt-button', 'elevate-button', 'elvt-icon', 'elevate-icon', 'elvt-card', 'elevate-card'].forEach(tagName => {
-              if (window.customElements && window.customElements.get(tagName)) {
-                registeredElements.push(tagName);
-              }
-            });
-            
-            if (registeredElements.length > 0) {
-              console.log('Found registered ELEVATE elements:', registeredElements);
-            } else {
-              console.log('No ELEVATE elements registered yet...');
-            }
-          }
-          
-          // Check for any ELEVATE component (not just button)
-          const elevateElements = ['elvt-button', 'elevate-button', 'elvt-icon', 'elevate-icon', 'elvt-card', 'elevate-card'];
-          const foundElement = elevateElements.find(tagName => 
-            window.customElements && window.customElements.get(tagName)
-          );
-          
-          if (foundElement) {
-            console.log(`ELEVATE component found: ${foundElement}`);
-            setIsLoaded(true);
-          } else if (attempts < maxAttempts) {
-            setTimeout(checkComponents, 100);
-          } else {
-            console.warn('ELEVATE components did not register within timeout');
-            console.log('Final check - listing all custom elements that are registered:');
-            
-            // Try to log all registered custom elements for debugging
-            try {
-              const allElements = [];
-              for (let i = 0; i < 1000; i++) {
-                const testName = `test-element-${i}`;
-                try {
-                  if (window.customElements.get(testName)) {
-                    allElements.push(testName);
-                  }
-                } catch (e) {
-                  // Ignore errors
-                }
-              }
-              console.log('Some registered elements:', allElements.slice(0, 10));
-            } catch (e) {
-              console.log('Could not enumerate custom elements');
-            }
-            
-            setError('Components loaded but did not register properly - check console for details');
-          }
-        };
-        
-        checkComponents();
-      }
-    };
-    
-    loadComponents();
-=======
     // ELEVATE components are now imported via npm, so they should be available
     // Just wait a moment for them to register
     const checkComponents = () => {
@@ -172,7 +75,6 @@ const LiveExample = ({
     };
     
     checkComponents();
->>>>>>> origin/main
 
     // Cleanup function
     return () => {

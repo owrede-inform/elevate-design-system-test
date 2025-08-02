@@ -138,14 +138,9 @@ const Video = ({
         onEnded={onEnded}
         src={fixedSrc}
         poster={fixedPoster}
-<<<<<<< HEAD
         {...props}>
         <track kind="captions" srcLang="en" label="English captions" />
       </video>
-=======
-        {...props}
-      />
->>>>>>> origin/main
     </div>
   );
 };

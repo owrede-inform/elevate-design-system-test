@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useMemo, useReducer, useState, useCallback } from 'react';
-=======
-import React, { useMemo, useReducer, useState } from 'react';
->>>>>>> origin/main
 import usePathprefix from '../hooks/usePathprefix';
 
 const NavContext = React.createContext({

@@ -3,7 +3,7 @@
 // to avoid duplication and ensure proper loading
 
 // Import ELEVATE Design Tokens CSS (for custom properties)
-@import '~@inform-elevate/elevate-design-tokens/dist/light.css';
+@import '@inform-elevate/elevate-design-tokens/dist/light.css';
 
 // Import ELEVATE Design System Typography
 @import './elevate-typography.scss';

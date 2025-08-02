@@ -22,7 +22,6 @@ import {
   addNoScroll,
 } from './ImageGallery.module.scss';
 
-<<<<<<< HEAD
 // Wrapper to suppress inert warnings from focus-trap-react
 const FocusTrapWrapper = ({ children, ...props }) => {
   // Temporarily suppress console warnings for inert attribute
@@ -40,9 +39,6 @@ const FocusTrapWrapper = ({ children, ...props }) => {
   
   return <FocusTrap {...props}>{children}</FocusTrap>;
 };
-
-=======
->>>>>>> origin/main
 function ImageGallery({ children, className }) {
   const [portalsNode, updateNode] = useState(null);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
