@@ -1,0 +1,1779 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "elvt-checkbox",
+      "description": "A checkbox allows the user to toggle an option on or off.\n\nUnlike the standard HTML checkbox it will change the value property depending on the checked status. So\nit can be treated like other form fields.\n---\n\n\n### **Events:**\n - **change** - Emitted when the checked state changes.\n- **blur** - Emitted when the checkbox loses focus.\n- **input** - Emitted when the checkbox receives input.\n\n### **Slots:**\n - _default_ - The checkbox's label.\n- **help-text** - Text that describes how to use the checkbox. Alternatively, you can use the `help-text` attribute.\n\n### **CSS Parts:**\n - **form-control-help-text** - The help text's wrapper.",
+      "attributes": [
+        {
+          "name": "help-text",
+          "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+          "values": []
+        },
+        {
+          "name": "indeterminate",
+          "description": "If `true`, the checkbox will visually appear as indeterminate.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the Checkbox Component.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "checked",
+          "description": "Sets the component in a checked/activated state if true",
+          "values": []
+        },
+        {
+          "name": "checked-value",
+          "description": "The value returned by the value property if the control is checked",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "This will be the `checkedValue` if the checkbox is checked, otherwise `undefined`",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "This will hide the label, a checkbox's label is highly recommended for Accessibility reasons.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Makes the control a required field.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-checkbox--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-switch",
+      "description": "Switches allow the user to toggle an option on or off.\n---\n\n\n### **Events:**\n - **SwitchChangeEvent** - Emitted when the checked state changes.\n- **input** - Emitted when the switch receives input.\n- **change** - Triggers if the value is changed\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The switch's label.\n- **help-text** - Text that describes how to use the switch. Alternatively, you can use the `help-text` attribute.\n\n### **CSS Parts:**\n - **form-control-help-text** - The help text's wrapper.",
+      "attributes": [
+        {
+          "name": "help-text",
+          "description": "The checkbox's help text.\nIf you need to display HTML, use the `help-text` slot instead.",
+          "values": []
+        },
+        {
+          "name": "checked-value",
+          "description": "Allows to define the value returned if the control is checked",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the Switch Component.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "checked",
+          "description": "Sets the component in a checked/activated state if true",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "This will hide the label, a label is highly recommended for Accessibility reasons.",
+          "values": []
+        },
+        {
+          "name": "tone",
+          "description": "The switch's tone (color).",
+          "values": [{ "name": "primary" }, { "name": "success" }]
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Makes the control a required field.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-switch--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-expansion-panel",
+      "description": "Provides an expandable details view.\n---\n\n\n### **Events:**\n - **ExpansionPanelChangeEvent** - Emitted when the panel opens or closes.\n\n### **Slots:**\n - _default_ - The details' main content.\n- **expand-icon** - expand icon to use instead of the default (optional).\n- **collapse-icon** - expand icon to use instead of the default (optional).",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Size of the Expansion Panel Component.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "summary",
+          "description": "The summary to show in the header.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the panel so it can't be expanded.",
+          "values": []
+        },
+        {
+          "name": "layer",
+          "description": "Display a different background.",
+          "values": [{ "name": "default" }, { "name": "elevated" }]
+        },
+        {
+          "name": "open",
+          "description": "Indicates whether the details are open. You can toggle this attribute to show and hide the details.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-expansion-panels-expansion-panel--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-paginator",
+      "description": "Paging Control Bar\n---\n\n\n### **Events:**\n - **page-change**",
+      "attributes": [
+        { "name": "disabled", "values": [] },
+        {
+          "name": "hide-page-size",
+          "description": "Hide the page size label and select",
+          "values": []
+        },
+        {
+          "name": "hide-range-status",
+          "description": "Hide the range status label",
+          "values": []
+        },
+        { "name": "page-size-options", "values": [{ "name": "number[]" }] },
+        {
+          "name": "size",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "show-first-last-buttons",
+          "description": "Whether to show the first/last buttons to the user.",
+          "values": []
+        },
+        { "name": "length", "values": [] },
+        { "name": "page-index", "values": [] },
+        {
+          "name": "page-size",
+          "description": "Number of items to display on a page.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-paginator--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-resize-observer",
+      "description": "Triggers a resize event if its size changes.\n\nIf the delay is greater than 0, the event will trigger after the defined time.\nAny observed resize will restart that timer. The event will only trigger for\nthe last observed resize.\n---\n\n\n### **Events:**\n - **resize**",
+      "attributes": [
+        {
+          "name": "delay",
+          "description": "Delay in milliseconds",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disable the observer",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-resize-observer--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-mutation-observer",
+      "description": "Trigger an event for DOM changes.\n---\n\n\n### **Events:**\n - **mutation**",
+      "attributes": [
+        { "name": "attribute-old-value", "values": [] },
+        { "name": "character-data", "values": [] },
+        { "name": "character-data-old-value", "values": [] },
+        { "name": "child-list", "values": [] },
+        {
+          "name": "disabled",
+          "description": "Disable the observer",
+          "values": []
+        },
+        { "name": "subtree", "values": [] },
+        { "name": "attribute-filter", "values": [{ "name": "string[]" }] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-mutation-observer--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-avatar",
+      "description": "Display an avatar icon\n---\n\n\n### **Slots:**\n - **icon** - Set custom guest icon\n\n### **CSS Properties:**\n - **--avatar-size** - The avatar icon size (default: `1em`) _(default: undefined)_\n- **--avatar-color-on-dark** - Initials color on a dark fill color (default: `#fff`) _(default: undefined)_\n- **--avatar-color-on-light** - Initials color on a light fill color (default: `#000`) _(default: undefined)_",
+      "attributes": [
+        {
+          "name": "shape",
+          "values": [{ "name": "circle" }, { "name": "square" }]
+        },
+        { "name": "image", "description": "Avatar image", "values": [] },
+        {
+          "name": "name",
+          "description": "Set the username for the avatar, without an image the initials will be extracted and\na fill color will be calculated from the name value.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-avatar--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-icon",
+      "description": "Display an icon\n\nIcons are expected to be defined as an SVG path on a raster of 24 by 24.\n---\n\n\n### **CSS Properties:**\n - **--icon-size** - The icon size (default: `1em`) _(default: undefined)_\n- **--icon-scale** - Scale icon motive (with transform filter) _(default: undefined)_\n- **--icon-alignment** - Vertical alignment _(default: undefined)_\n- **--icon-color** - The icon color _(default: undefined)_\n- **--icon-color-on-dark** - Icon color on a dark fill color (default: `#fff`) _(default: undefined)_\n- **--icon-color-on-light** - Icon color on a light fill color (default: `#000`) _(default: undefined)_\n- **--emblem-padding** - Cutout padding for the emblem (default: `1px`) _(default: undefined)_\n\n### **CSS Parts:**\n - **icon** - The icon container element\n- **emblem** - The emblem container element\n- **icon-svg** - The icon `<svg/>` element (not in mask mode)\n- **emblem-svg** - The emblem `<svg/>` element (not in mask mode)\n- **icon-mask** - The icon span with the mask image (only in mask mode)\n- **emblem-mask** - The emblem span with the mask image (only in mask mode)",
+      "attributes": [
+        {
+          "name": "aspect-ratio",
+          "description": "Set an aspect ratio for the icon element. The icon will be centered.",
+          "values": []
+        },
+        {
+          "name": "fill",
+          "description": "Set a background color for the icon as a hexadecimal color code. The primary icon color will depend on the\nlightness of the color.",
+          "values": []
+        },
+        { "name": "selected", "values": [] },
+        { "name": "image", "values": [] },
+        {
+          "name": "emblem",
+          "description": "The emblem is a second icon that will be put in a cutout in the lower right corner of the primary icon.",
+          "values": []
+        },
+        {
+          "name": "icon",
+          "description": "The icon can be provided as a svg path, and encoded JSON or a URL.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-icon--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-chip",
+      "description": "A chip component is used as labels to organize things or to indicate a selection.\n---\n\n\n### **Events:**\n - **request-remove** - Emitted when the removable prop is enabled and chip icon remove area is clicked.\n- **request-edit** - Emitted when the editable prop is enabled and chip content area is clicked.\n\n### **Slots:**\n - _default_ - The chip's content.\n- **remove-icon** - The chip's icon.",
+      "attributes": [
+        {
+          "name": "tone",
+          "description": "Chip tone (color).",
+          "values": [
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "Size of the Chip Component.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "shape",
+          "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+          "values": [{ "name": "box" }, { "name": "pill" }]
+        },
+        {
+          "name": "removable",
+          "description": "Shows a remove action and makes the chip removable.",
+          "values": []
+        },
+        { "name": "editable", "values": [] },
+        {
+          "name": "remove-label",
+          "description": "A custom label for assistive devices, used in the remove button.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-chip--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-badge",
+      "description": "A badge component that is used to draw attention and display statuses or counts.\n---\n\n\n### **Slots:**\n - _default_ - The badge's content.",
+      "attributes": [
+        {
+          "name": "padding",
+          "description": "Allows to modify the default padding of the badge.",
+          "values": [{ "name": "Padding" }]
+        },
+        { "name": "pulse", "values": [] },
+        {
+          "name": "shape",
+          "description": "If set to shape `pill`, displays a chip with rounded edges (pill style).",
+          "values": [{ "name": "box" }, { "name": "pill" }]
+        },
+        {
+          "name": "tone",
+          "description": "The badge's tone (color).",
+          "values": [
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-badge--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-dropdown",
+      "description": "A dropdown uses a trigger component to show an container with additional content\n---\n\n\n### **Methods:**\n - **show()** - Show the menu\n- **hide()** - Hide the menu\n- **reposition()** - Reposition the open menu\n\n### **Slots:**\n - _default_ - The dropdown menu content.\n- **trigger** - The dropdown menu trigger.",
+      "attributes": [
+        {
+          "name": "hoist",
+          "description": "The hoist attribute forces the panel to use a fixed positioning strategy, allowing it to break out of the container.",
+          "values": []
+        },
+        {
+          "name": "placement",
+          "description": "The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep\nthe panel inside the viewport.",
+          "values": [
+            { "name": "bottom-end" },
+            { "name": "bottom-start" },
+            { "name": "bottom" },
+            { "name": "left-end" },
+            { "name": "left-start" },
+            { "name": "left" },
+            { "name": "right-end" },
+            { "name": "right-start" },
+            { "name": "right" },
+            { "name": "top-end" },
+            { "name": "top-start" },
+            { "name": "top" }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the dropdown so the panel will not open.",
+          "values": []
+        },
+        {
+          "name": "stay-open-on-select",
+          "description": "By default, the dropdown is closed when an item is selected. This attribute will keep it open instead.\nUseful for dropdowns that allow for multiple interactions.",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "Indicates whether the dropdown is open. You can toggle thi s attribute to show and hide the dropdown,\nor you can use the show() and hide() methods and this attribute will reflect the dropdown’s open state.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-dropdown--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-menu",
+      "description": "Menus provide a list of options for the user to choose from.\n\n! Nesting menus is not possible yet.\n---\n\n\n### **Events:**\n - **elvt-item-select**\n\n### **Slots:**\n - _default_ - The menu content (items, labels, dividers, ...).",
+      "attributes": [
+        { "name": "shape", "values": [{ "name": "box" }, { "name": "inline" }] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-menus-menu--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-menu-item",
+      "description": "Menu-Items provide a list of options for the user to choose from.\n\n! Nesting menus is not possible yet.\n---\n\n\n### **Slots:**\n - _default_ - The menu item's label\n- **prefix** - Prepend an icon or similar element to the menu item.\n- **suffix** - Append an icon or similar element to the menu item.\n- **submenu** - A nested menu",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Disables the item",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Display the item as selected (for navigations)",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "Set the type attribute to checkbox to create a menu item that will toggle on and off when selected.",
+          "values": [{ "name": "checkbox" }, { "name": "normal" }]
+        },
+        {
+          "name": "value",
+          "description": "A value to store in the menu item. This can be used as a context when selected.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "When set, the menu item will open the url if clicked",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link. Only used when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "checked",
+          "description": "Draws the item in a checked state.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-menus-menu-item--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-application",
+      "description": "Application acts as a main container providing services to its children and maintaining state.\n\n- It has slot for basic positions.\n- The `header` and `footer` slots will align their children horizontally, all others vertically.\n- The `side-start` and `side-end` will be positioned depending on the reading direction\n- Padding and gap have to be defined inside the slots.\n- Nested `elvt-application` instances will inherit theme and services from their ancestor.\n---\n\n\n### **Methods:**\n - **getAsAncestor(descendant: _Element_)** - Fetches the nearest ApplicationComponent instance on the ancestor axis of its descendant.\n\n### **Slots:**\n - _default_ - content area\n- **header** - At the top of the component\n- **footer** - At the bottom of the component\n- **side-start** - At the start side of the component (in reading direction)\n- **side-end** - At the end side of the component (in reading direction)",
+      "attributes": [
+        {
+          "name": "root",
+          "description": "Setting `root` will disable inheritance and set the theme only for this container.",
+          "values": []
+        },
+        {
+          "name": "theme",
+          "description": "The identifier/name of the theme. It needs to start with an ASCII letter and consists of only  ASCII letters and digits.\n\nSetting this value will apply CSS classes to the body element to activate the theme.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-application--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-card",
+      "description": "A card is a visual container for related subjects. The content of a\ncard will stretch if the height is set.\n---\n\n\n### **Slots:**\n - _default_ - Content\n- **header** - Card header content\n- **footer** - Card footer content",
+      "attributes": [
+        {
+          "name": "border",
+          "values": [
+            { "name": "all" },
+            { "name": "none" },
+            { "name": "rounded" }
+          ]
+        },
+        {
+          "name": "layer",
+          "values": [
+            { "name": "default" },
+            { "name": "elevated" },
+            { "name": "overlay" },
+            { "name": "sunken" }
+          ]
+        },
+        {
+          "name": "padding",
+          "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+          "values": [{ "name": "Padding" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-card--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-divider",
+      "description": "The divider acts as a separator in a stack of items. By default\nit will separate the items of a column with a horizontal line.\n---\n",
+      "attributes": [
+        {
+          "name": "direction",
+          "description": "Let the divider direction matches the container direction",
+          "values": [{ "name": "row" }, { "name": "column" }]
+        },
+        {
+          "name": "size",
+          "description": "Divider size adds distance before/after the separator depending on the direction.\nIf undefined it will add no distance.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "padding",
+          "description": "The padding will apply to all parts of the card. For individual\npaddings use stack elements inside the parts.",
+          "values": [{ "name": "Padding" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-divider--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-stack",
+      "description": "A container for a stack of child elements.\n---\n\n\n### **Slots:**\n - _default_ - Stack items\n\n### **CSS Properties:**\n - **--overlap-indent** - Modify indent for overlap mode, default '40%' _(default: undefined)_",
+      "attributes": [
+        {
+          "name": "alignment",
+          "description": "Align the children against the direction axis, the default depends on the direction.\nRows use `center`, Columns use `stretch`",
+          "values": [
+            { "name": "start" },
+            { "name": "center" },
+            { "name": "end" },
+            { "name": "stretch" }
+          ]
+        },
+        {
+          "name": "distribution",
+          "description": "Distribute the children on the direction axis, the default depends on the direction.\nRows use `stretch`, Columns use `start`",
+          "values": [
+            { "name": "start" },
+            { "name": "center" },
+            { "name": "end" },
+            { "name": "stretch" },
+            { "name": "overlap" },
+            { "name": "stretch-start" },
+            { "name": "stretch-end" },
+            { "name": "space-between" }
+          ]
+        },
+        {
+          "name": "direction",
+          "values": [
+            { "name": "row" },
+            { "name": "column" },
+            { "name": "row-reverse" },
+            { "name": "column-reverse" },
+            { "name": "multi-column" }
+          ]
+        },
+        { "name": "wrap", "values": [] },
+        { "name": "gap", "values": [{ "name": "Gap" }] },
+        { "name": "padding", "values": [{ "name": "Padding" }] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-stack--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-toolbar",
+      "description": "A toolbar defines a row of actions and context information.\n---\n\n\n### **Slots:**\n - _default_ - Content, positioned after the start slot content\n- **start** - At the start of the toolbar\n- **end** - At the end of the toolbar",
+      "attributes": [
+        {
+          "name": "border",
+          "values": [
+            { "name": "all" },
+            { "name": "none" },
+            { "name": "start" },
+            { "name": "end" },
+            { "name": "both" }
+          ]
+        },
+        {
+          "name": "layer",
+          "values": [
+            { "name": "default" },
+            { "name": "elevated" },
+            { "name": "overlay" },
+            { "name": "sunken" }
+          ]
+        },
+        {
+          "name": "direction",
+          "values": [{ "name": "row" }, { "name": "column" }]
+        },
+        {
+          "name": "gap",
+          "description": "The gap will apply to the toolbar container.",
+          "values": [{ "name": "Gap" }]
+        },
+        {
+          "name": "padding",
+          "description": "The padding will apply to the toolbar container. For individual\npaddings use stack elements inside the parts.",
+          "values": [{ "name": "Padding" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-toolbar--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-lightbox",
+      "description": "The lightbox fill the whole window with a backdrop and displays\na content above it.\n\nThe slots are transparent by default for maximum flexibility. Card work well as\na visible container inside.\n---\n\n\n### **Events:**\n - **backdrop-click**\n- **escape-keypress**",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-lightbox--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-expansion-panel-group",
+      "description": "Provides a grouping to behave as an accordion for the expansion panels.\n---\n\n\n### **Slots:**\n - _default_ - The expansion panels elements.",
+      "attributes": [
+        {
+          "name": "allow-multiple-expanded",
+          "description": "Indicates whether the panel group should allow multiple expanded expansion panel to be expanded simultaneously.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "A label to use for the expansion panel group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+          "values": []
+        },
+        {
+          "name": "gap",
+          "description": "Gap between the expansion panels",
+          "values": [{ "name": "Gap" }]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-expansion-panels-expansion-panel-group--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-tab",
+      "description": "A tab component that can be used inside tab groups to display\nthe selection status of a tab and toggle it.\n\nThe component will only render correctly if used in conjunction with `elvt-tab-group`.\n---\n\n\n### **Events:**\n - **request-close** - Emitted when the tab is `closable` and the close button is clicked (or when closing the tab is requested programmatically).\n- **selection-change** - Emitted when the tab is selected. The event detail contains the `panel` attribute of the tab.\n\n### **Slots:**\n - _default_ - The tab's label.\n- **close-icon** - The tab's close icon.\n- **prefix** - A slot for a prefix icon or element, displayed before the tab label.\n- **suffix** - A slot for a suffix icon or element, displayed after the tab label.",
+      "attributes": [
+        {
+          "name": "panel",
+          "description": "The unique (per tab group) identifier of the corresponding tab panel.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Whether this tab is disabled, i.e. can't be activated.",
+          "values": []
+        },
+        {
+          "name": "closable",
+          "description": "Whether this tab can be closed by the user.\nIf true, a close button will be rendered on the tab.",
+          "values": []
+        },
+        {
+          "name": "close-label",
+          "description": "A custom label for assistive devices, used in the close button.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Whether this tab is selected.\nThis property is set by the parent `elvt-tab-group` component.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-tab-panel",
+      "description": "A tab panel component that wraps the content of a single tab\ninside a tab group.\n\nThe component will only render correctly if used in conjunction with `elvt-tab-group`.\n---\n\n\n### **Slots:**\n - _default_ - The tab's content.",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The unique (per tab group) identifier of this tab panel used to associate it with the corresponding tab.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "When true, the tab panel will be shown.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab-panel--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-tab-group",
+      "description": "A control that renders a number of tabs (`elvt-tab`) and the content of the active tab (`elvt-tab-panel`).\n---\n\n\n### **Events:**\n - **change** - Emitted when the active tab changes.\n\n### **Slots:**\n - _default_ - The tab-panels for the tabs.\n- **nav** - The tabs for the tab group.",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "description": "The name of the currently active tab.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tabs-tab-group--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-field",
+      "description": "Outer frame of a form field, with the label and help text.\n---\n\n\n### **Slots:**\n - _default_ - Form control\n- **label** - Field label. Alternatively, you can use the `help-text` attribute.\n- **help-text** - Text that describes how to use the form field. Alternatively, you can use the `help-text` attribute.\n- **status** - Show a status (like character count and limit)",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The forms label text, use slot for complex labels",
+          "values": []
+        },
+        {
+          "name": "help-text",
+          "description": "A descriptive text for the select, use the help-text slot for HTML.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Show required indicator on label",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Show label / help text as disabled, this will not modify the control.",
+          "values": []
+        },
+        {
+          "name": "invalid",
+          "description": "Show label / help text in error state, this will not modify the control.",
+          "values": []
+        },
+        {
+          "name": "group",
+          "description": "Group mode for multiple form controls with own labels. This will replace the\ninternal `label` element with a `fieldset` and `legend` avoiding nested label elements.",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "Visually hide field label",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the field.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-fields-field--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-input",
+      "description": "An input field\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **prefix** - Prefix icon or similar element\n- **suffix** - Suffix icon or similar element\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+      "attributes": [
+        {
+          "name": "autofocus",
+          "description": " Indicating that an element should be focused on page load",
+          "values": []
+        },
+        {
+          "name": "autocomplete",
+          "description": "Specify what if any permission the user agent has to provide automated assistance in filling\nout the field value",
+          "values": []
+        },
+        {
+          "name": "clearable",
+          "description": "Add a clear button if the value is set",
+          "values": []
+        },
+        {
+          "name": "max",
+          "description": "A maximum value for date/number inputs",
+          "values": []
+        },
+        {
+          "name": "maxlength",
+          "description": "A maximum character length",
+          "values": []
+        },
+        {
+          "name": "min",
+          "description": "A minimum value for date/number inputs",
+          "values": []
+        },
+        {
+          "name": "minlength",
+          "description": "A minimum character length",
+          "values": []
+        },
+        {
+          "name": "pattern",
+          "description": "A regular expression pattern to validate input against.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Input placeholder text",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the input.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "step",
+          "description": "A step value for date/number inputs",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "Input type (as provided by the browser)",
+          "values": [
+            { "name": "number" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "text" },
+            { "name": "url" },
+            { "name": "date" },
+            { "name": "datetime-local" },
+            { "name": "email" },
+            { "name": "password" },
+            { "name": "time" }
+          ]
+        },
+        {
+          "name": "readonly",
+          "description": "If set to `true`, the input is readonly.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "If set to `true`, the field will be invalid if empty",
+          "values": []
+        },
+        { "name": "value", "values": [] },
+        {
+          "name": "autocapitalize",
+          "description": "Automatically capitalize text input",
+          "values": [
+            { "name": "none" },
+            { "name": "characters" },
+            { "name": "off" },
+            { "name": "on" },
+            { "name": "sentences" },
+            { "name": "words" }
+          ]
+        },
+        {
+          "name": "enterkeyhint",
+          "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+          "values": [
+            { "name": "none" },
+            { "name": "decimal" },
+            { "name": "numeric" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "text" },
+            { "name": "url" }
+          ]
+        },
+        {
+          "name": "inputmode",
+          "description": "Input mode for virtual keyboards",
+          "values": [
+            { "name": "none" },
+            { "name": "decimal" },
+            { "name": "numeric" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "text" },
+            { "name": "url" }
+          ]
+        },
+        {
+          "name": "spellcheck",
+          "description": "Enables spell checking on the input",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "The forms label text, use slot for complex labels",
+          "values": []
+        },
+        {
+          "name": "help-text",
+          "description": "A descriptive text for the select, use the help-text slot for HTML.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-input--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-radio",
+      "description": "A radio component that allows the user to select a single option from a group.\n\nBe aware that the radio is not a form field by itself. It needs a radio group.\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The radio's label.",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Size of the Radio Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        { "name": "checked", "values": [] },
+        {
+          "name": "value",
+          "description": "The radio's value. When selected, the field's group will get this value.",
+          "values": []
+        },
+        {
+          "name": "hide-label",
+          "description": "This will hide the label, a radio's label is highly recommended for Accessibility reasons.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Makes the control a required field.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-radios-radio--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-radio-group",
+      "description": "A radio component that allows the user to select a single option from a group.\n---\n\n\n### **Events:**\n - **type**\n- **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - _default_ - The radio elements\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+      "attributes": [
+        {
+          "name": "required",
+          "description": "If set to `true`, one child has to be checked for the group to be valid",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the Radio (Group) Component.\nAdd the size attribute to the Field's Group to change the radios’ size.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        { "name": "value", "description": "The radio's value.", "values": [] },
+        {
+          "name": "label",
+          "description": "The forms label text, use slot for complex labels",
+          "values": []
+        },
+        {
+          "name": "help-text",
+          "description": "A descriptive text for the select, use the help-text slot for HTML.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-radios-radio-group--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-select",
+      "description": "A select field\n---\n\n\n### **Events:**\n - **input** - Emitted when the element control receives input.\n- **change** - Triggers if the value is changed\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **prefix** - Prefix icon or similar element\n- **suffix** - Suffix icon or similar element\n- **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+      "attributes": [
+        {
+          "name": "clearable",
+          "description": "Add a clear button if the value is set",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Select placeholder text",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "If set to `true`, the field will be invalid if empty",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the control.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        { "name": "multiple", "values": [] },
+        { "name": "value", "values": [{ "name": "string[]" }] },
+        {
+          "name": "label",
+          "description": "The forms label text, use slot for complex labels",
+          "values": []
+        },
+        {
+          "name": "help-text",
+          "description": "A descriptive text for the select, use the help-text slot for HTML.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-select--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-textarea",
+      "description": "A textarea field\n---\n\n\n### **Events:**\n - **change** - Triggers if the value is changed\n- **input** - Emitted when the element control receives input.\n- **blur** - Trigger on focus out\n\n### **Slots:**\n - **label** - The input’s label. Alternatively, you can use the label attribute.\n- **help-text** - Text that describes how to use the input. Alternatively, you can use the help-text attribute.",
+      "attributes": [
+        {
+          "name": "autofocus",
+          "description": " Indicating that an element should be focused on page load",
+          "values": []
+        },
+        {
+          "name": "readonly",
+          "description": "If set to `true`, the textarea is readonly.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "If set to `true`, the textarea is mandatory.",
+          "values": []
+        },
+        {
+          "name": "resize",
+          "description": "Resize mode",
+          "values": [
+            { "name": "none" },
+            { "name": "both" },
+            { "name": "auto" },
+            { "name": "vertical" }
+          ]
+        },
+        {
+          "name": "placeholder",
+          "description": "Textarea placeholder text",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the textarea.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        { "name": "value", "values": [] },
+        {
+          "name": "autocapitalize",
+          "description": "Automatically capitalize text textarea",
+          "values": [
+            { "name": "none" },
+            { "name": "characters" },
+            { "name": "off" },
+            { "name": "on" },
+            { "name": "sentences" },
+            { "name": "words" }
+          ]
+        },
+        {
+          "name": "enterkeyhint",
+          "description": "Defines what action label (or icon) to present for the enter key on virtual keyboards",
+          "values": [
+            { "name": "none" },
+            { "name": "decimal" },
+            { "name": "numeric" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "text" },
+            { "name": "url" }
+          ]
+        },
+        {
+          "name": "inputmode",
+          "description": "Input mode for virtual keyboards",
+          "values": [
+            { "name": "none" },
+            { "name": "decimal" },
+            { "name": "numeric" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "text" },
+            { "name": "url" }
+          ]
+        },
+        {
+          "name": "spellcheck",
+          "description": "Enables spell checking on the textarea",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "The forms label text, use slot for complex labels",
+          "values": []
+        },
+        {
+          "name": "help-text",
+          "description": "A descriptive text for the select, use the help-text slot for HTML.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Form field name, used in form data",
+          "values": []
+        },
+        { "name": "touched", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-textarea--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-breadcrumb-item",
+      "description": "Breadcrumb Items are used inside [breadcrumbs] to represent a route path.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb item's label.",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "Optional URL to direct the user to when the breadcrumb item is activated.\nWhen set, a link will be rendered internally.",
+          "values": []
+        },
+        {
+          "name": "clickable",
+          "description": "Indicates whether the breadcrumb item is clickable.\nWhen set, a button will be rendered internally.",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "The target attribute for the link, if `href` is set.\nThis determines where the linked document will open.\nDefaults to `_self`, which opens the link in the same frame as it was clicked.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Indicates whether the breadcrumb item is selected.\nThis can be used to visually indicate the current page or section.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-breadcrumbs-breadcrumb-item--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-breadcrumb",
+      "description": "Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.\n---\n\n\n### **Slots:**\n - _default_ - The breadcrumb items to display.\n- **separator** - To be used between breadcrumb items.",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-breadcrumbs-breadcrumb--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-button",
+      "description": "Buttons represent actions that are available to the user.\n---\n\n\n### **Slots:**\n - _default_ - The button's label.\n- **prefix** - A presentational prefix icon or similar element.\n- **suffix** - A presentational suffix icon or similar element.",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "If set to `true`, user can't interact with the component.",
+          "values": []
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+          "values": []
+        },
+        { "name": "name", "values": [] },
+        {
+          "name": "padding",
+          "description": "Allows to modify the default padding of the button.",
+          "values": [{ "name": "Padding" }]
+        },
+        {
+          "name": "rel",
+          "description": "When using `href`, this attribute will map to the underlying link's `rel` attribute. Unlike regular links, the\ninternal default is `noreferrer noopener` to prevent security exploits. However, if you're using `target` to point to a\nspecific tab/window, this will prevent that from working correctly. You can remove or change the default value by\nsetting the attribute to an empty string or a value of your choice, respectively.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Display the button as selected",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the Button Component.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link. Only used when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "tone",
+          "description": "Button tone (color).",
+          "values": [
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" },
+            { "name": "emphasized" },
+            { "name": "subtle" }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+          "values": [
+            { "name": "button" },
+            { "name": "reset" },
+            { "name": "submit" }
+          ]
+        },
+        { "name": "value", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-buttons-button--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-icon-button",
+      "description": "A clickable icon\n---\n\n\n### **Methods:**\n - **blur()** - Removes focus from the icon button.\n- **click()** - Simulates a click on the icon button.\n- **focus(options: _FocusOptions_)** - Sets focus on the icon button.\n\n### **Slots:**\n - **icon** - Provide icon elements, use `icon` property for a basic icon",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Disables the button.",
+          "values": []
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file (set as `href`) as this filename.",
+          "values": []
+        },
+        {
+          "name": "icon",
+          "description": "The name of the icon to draw. Use the 'icon' slot for more flexibility.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "Use a link element instead of the button to allow for browser navigation.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "A description that gets read by assistive devices. For optimal accessibility, you should always include a label\nthat describes what the icon button does.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Show as selected.",
+          "values": []
+        },
+        {
+          "name": "shape",
+          "description": "Sets the shape of the icon button, this will be applied to the focus ring",
+          "values": [{ "name": "circle" }, { "name": "rectangle" }]
+        },
+        {
+          "name": "size",
+          "description": "If set it applies a font-size to the icon, otherwise it will inherit the font-size.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Target for the `href` if defined.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-icon-button--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-button-group",
+      "description": "Button groups can be used to group related buttons into sections.\n---\n\n\n### **Slots:**\n - _default_ - One or more buttons to display in the button group.",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive\ndevices when interacting with the control and is strongly recommended.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-buttons-button-group--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-link",
+      "description": "A link that redirects to a URL if clicked\n---\n\n\n### **Slots:**\n - _default_ - The link label",
+      "attributes": [
+        {
+          "name": "usage",
+          "description": "How the link is used, e.g. if it's an external link.\nDetermines the visual style of the link.",
+          "values": [{ "name": "internal" }, { "name": "external" }]
+        },
+        {
+          "name": "href",
+          "description": "The URL the link is referring to",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-link--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-tooltip",
+      "description": "\n---\n\n\n### **Slots:**\n - _default_ - Inner elements\n- **content** - Tooltip HTML content, use content property for basic text tooltips",
+      "attributes": [
+        { "name": "content", "values": [] },
+        { "name": "hoist", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tooltip--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-visually-hidden",
+      "description": "Makes content accessible to assistive devices without displaying it on the screen. If an element inside has\nthe focus the component will be visible.\n---\n",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-visually-hidden--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-indicator",
+      "description": "Attach an indicator to the enclosed component\n---\n\n\n### **Slots:**\n - _default_ - Component to attach the indicator to.\n\n### **CSS Properties:**\n - **--indicator-offset-column** - horizontal indicator offset (default: `8px`) _(default: undefined)_\n- **--indicator-offset-row** - vertical indicator offset (default: `12px`) _(default: undefined)_",
+      "attributes": [
+        {
+          "name": "position",
+          "values": [
+            { "name": "bottom-end" },
+            { "name": "bottom-start" },
+            { "name": "top-end" },
+            { "name": "top-start" }
+          ]
+        },
+        {
+          "name": "tone",
+          "values": [
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-indicator--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-progress",
+      "description": "Show the progress of an ongoing operation.\n---\n\n\n### **Slots:**\n - _default_ - A label to show inside the progress indicator.",
+      "attributes": [
+        {
+          "name": "shape",
+          "description": "shape the component will display.",
+          "values": [{ "name": "bar" }, { "name": "ring" }, { "name": "arc" }]
+        },
+        {
+          "name": "value",
+          "description": "The current progress, the value should be between [0, 1]",
+          "values": []
+        },
+        {
+          "name": "indeterminate",
+          "description": "When true, percentage is ignored, the label is hidden, and the progress bar is drawn in an indeterminate state.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "A custom label for assistive devices.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "Size of the Progress Indicator in Circular Shape. If not set it will depend on the font-size.",
+          "values": [
+            { "name": "small" },
+            { "name": "medium" },
+            { "name": "large" }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-progress--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-skeleton",
+      "description": "Skeletons are used to provide a visual representation of where content will eventually load.\n---\n\n\n### **CSS Properties:**\n - **--skeleton-min-width** - The skeleton's min width value. _(default: undefined)_",
+      "attributes": [
+        {
+          "name": "effect",
+          "description": "The effect the skeleton will have.",
+          "values": [
+            { "name": "none" },
+            { "name": "pulse" },
+            { "name": "sheen" }
+          ]
+        },
+        {
+          "name": "width",
+          "description": "The width of the skeleton component, it takes by default 100% of its container.\nthe value will display as a percentage, 0 to 100",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-skeleton--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-notification",
+      "description": "Used to display important messages inline or as toast notifications.\n---\n\n\n### **Events:**\n - **change** - Emitted when the alert opens or closes. Note: it provides only rtl direction when the duration is set, ltr will be added later ;)\n\n### **Methods:**\n - **hide()** - Hides the notification.\n- **show()** - Shows the notification.\n\n### **Slots:**\n - _default_ - The alert's main content.\n- **icon** - An icon to show in the alert.",
+      "attributes": [
+        {
+          "name": "closable",
+          "description": "Enables a close button that allows the user to dismiss the notification.",
+          "values": []
+        },
+        {
+          "name": "tone",
+          "description": "The notification's tone (color).",
+          "values": [
+            { "name": "primary" },
+            { "name": "success" },
+            { "name": "neutral" },
+            { "name": "warning" },
+            { "name": "danger" }
+          ]
+        },
+        {
+          "name": "duration",
+          "description": "The length of time, in milliseconds, the notification will show before closing itself.\nIf the user interacts with the notification before it closes (e.g. moves the mouse over it), the timer will restart.\nDefaults to `Infinity`, meaning the notification will not close on its own.",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "Indicates whether or not the notification is open. You can toggle this attribute to show and hide the notification.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-notification--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-table",
+      "description": "Table\n\nTable can be defined in two ways. You can create a table using the `elvt-table-*` elements or\nusing a data provider and a columns definition. If you add child elements, the columns definition and\ndata provider will be ignored.\n\n```html\n<elvt-table>\n    <elvt-table-column slot=\"head\">Column Label</elvt-table-column>\n    <elvt-table-row>\n        <elvt-table-cell>Content</elvt-table-cell>\n    <elvt-table-row>\n</elvt-table>\n```\n\nDynamic tables need a column definition and a data provider. These need to be set as properties. Only\ntables defined this way can use virtual scroll.\n\n```ts\nconst columns = [\n    {\n        id: 'name',\n        label: 'Name',\n        data: (item: TableItem) => html`${item.first_name} ${item.last_name}`,\n    },\n    {\n        id: 'email',\n        label: 'Email',\n        data: (item: TableItem) => item.email,\n    },\n    {\n        id: 'company',\n        label: 'Company',\n        data: (item: TableItem) => item.email,\n    },\n];\nconst provider = new ArrayDataProvider(records);\n```\n\n### ArrayTableDataProvider\n\nA basic table data provider that takes and array with all records and optionally a compare function (for sorting).\n\n```ts\n    const provider = new ArrayTableDataProvider(accounts.slice(0, 5), { compare: columnCompare });\n```\n\n### PagedTableDataProvider\n\nAllow to use an asynchronous function to fetch slices of data from an API.\n\n```ts\nconst provider = new PagedTableDataProvider(\n    // page size\n    10,\n    // asynchronous fetcher\n    async (pageIndex: number, pageSize: number, sortBy?: TableItemSort) => {\n        const offset = pageIndex * pageSize;\n        let url = `http://example.com/api/endpoint?offset=${offset}&limit=${limit}`;\n        if (sortBy) {\n          url += `&sortBy=${sortBy.column}|${sortBy.direction}`\n        }\n        const response = await fetch(url);\n        return {\n            items: response.arrayOfItems,\n            length: response.absoluteCountOfItems,\n        };\n    }\n);\n```\n\n### Custom Table Data Providers\n\nIf implementing an own data provider it must extend the abstract TableDataProvider class.\n\n```ts\nimport { BehaviourSubject, Subject } from '@inform-elevate/elevate-cdk';\nimport { TableData, TableProviderStatus } from './table-data-provider';\nexport abstract class TableDataProvider {\n    public readonly status = new BehaviourSubject<TableProviderStatus>(TableProviderStatus.Created);\n\n    public readonly changes = new Subject<void>();\n\n    public abstract slice(start?: number, end?: number, sortBy?: string): Promise<TableData>;\n}\n```\n---\n\n\n### **Events:**\n - **table-row-click**\n- **table-selection-change**\n\n### **Slots:**\n - _default_ - Table Rows\n- **head** - Table Columns",
+      "attributes": [
+        {
+          "name": "scroll-mode",
+          "values": [
+            { "name": "none" },
+            { "name": "inner" },
+            { "name": "virtual" }
+          ]
+        },
+        { "name": "row-height", "values": [] },
+        { "name": "selectable", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-table-column",
+      "description": "A table column - used inside `elvt-table`\n---\n",
+      "attributes": [
+        {
+          "name": "alignment",
+          "values": [
+            { "name": "start" },
+            { "name": "center" },
+            { "name": "end" },
+            { "name": "justify" }
+          ]
+        },
+        {
+          "name": "sortable",
+          "values": [{ "name": "TableItemSortDirection[]" }]
+        },
+        { "name": "sorted", "values": [{ "name": "asc" }, { "name": "desc" }] },
+        { "name": "width", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-column--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-table-cell",
+      "description": "A table cell - used inside `elvt-table`\n---\n",
+      "attributes": [
+        {
+          "name": "alignment",
+          "values": [
+            { "name": "start" },
+            { "name": "center" },
+            { "name": "end" },
+            { "name": "justify" }
+          ]
+        },
+        { "name": "width", "values": [] }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-cell--docs"
+        }
+      ]
+    },
+    {
+      "name": "elvt-table-row",
+      "description": "A table row - used inside `elvt-table`\n---\n\n\n### **Events:**\n - **table-row-click**\n\n### **Slots:**\n - **label** - Checkbox Label (for accessibility)",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The label is used in the selection checkbox (accessibility). It will be prefixed\nwith the select/deselect intl text.",
+          "values": []
+        },
+        {
+          "name": "clickable",
+          "description": "A clickable row can receive the focus and trigger 'table-row-click' events",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://elevate-core-ui.inform-cloud.io/?path=/docs/components-tables-table-row--docs"
+        }
+      ]
+    }
+  ]
+}
