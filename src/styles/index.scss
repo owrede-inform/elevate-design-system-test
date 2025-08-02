@@ -144,7 +144,7 @@ code, pre {
   }
 }
 
-// Active/Selected states - darker gray background
+// Active/Selected states - darker gray background with petrol indicator
 .cds--side-nav a.cds--side-nav__link[aria-current='page'],
 .cds--side-nav .cds--side-nav__menu a.cds--side-nav__link--current,
 .cds--side-nav .cds--side-nav__menu a.cds--side-nav__link[aria-current='page'],
@@ -153,6 +153,18 @@ code, pre {
 .cds--side-nav--website--light .cds--side-nav__menu a.cds--side-nav__link[aria-current='page'] {
   background-color: #393939 !important; // Darker gray for selected
   color: #ffffff !important;
+  position: relative;
+  
+  // Add petrol left border indicator for current page
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: var(--elevate-primary) !important; // INFORM Petrol indicator
+  }
   
   .cds--side-nav__link-text {
     color: #ffffff !important;
@@ -180,6 +192,16 @@ code, pre {
   
   .cds--side-nav__icon svg {
     fill: #ffffff !important;
+  }
+}
+
+// Fix expandable section title text color (like "Design Guidelines")
+.cds--side-nav .cds--side-nav__item.cds--side-nav__item--active .cds--side-nav__submenu,
+.cds--side-nav--website--light .cds--side-nav__item.cds--side-nav__item--active .cds--side-nav__submenu {
+  color: #ffffff !important;
+  
+  .cds--side-nav__link-text {
+    color: #ffffff !important;
   }
 }
 
@@ -243,6 +265,20 @@ code, pre {
     width: 4px;
     background-color: var(--elevate-primary) !important; // Force INFORM Petrol over IBM Blue
   }
+}
+
+// Nuclear option: Override ALL possible IBM blue indicators in sidebar
+.cds--side-nav *::before,
+.cds--side-nav--website--light *::before {
+  background-color: var(--elevate-primary) !important;
+}
+
+// Ensure the current page link has petrol indicator regardless of structure
+.cds--side-nav [aria-current="page"]::before,
+.cds--side-nav--website--light [aria-current="page"]::before,
+.cds--side-nav .cds--side-nav__link--current::before,
+.cds--side-nav--website--light .cds--side-nav__link--current::before {
+  background-color: var(--elevate-primary) !important;
 }
 
 // Link styling
