@@ -3,70 +3,248 @@ title: Card
 description: Cards are flexible containers that group related content and actions. They provide visual hierarchy and structure to complex interfaces.
 ---
 
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
 <PageDescription>
 
-Cards are versatile containers that organize related information and actions into digestible sections. The ELEVATE Card component provides consistent styling and flexible layouts for displaying content in INFORM applications.
+Cards are versatile containers that organize related information and actions into digestible sections. The ELEVATE Card component helps designers and developers create consistent, accessible layouts that structure complex information clearly and support user workflows.
 
 </PageDescription>
 
 <AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
   <AnchorLink>Variations</AnchorLink>
-  <AnchorLink>Design Guidelines</AnchorLink>  
-  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
   <AnchorLink>Accessibility</AnchorLink>
   <AnchorLink>Changelog</AnchorLink>
 </AnchorLinks>
 
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Cards
+- **Content grouping**: Related information that belongs together logically
+- **Data display**: Metrics, statistics, dashboards, or summary information
+- **Navigation**: Category links, feature highlights, landing page sections
+- **Product listings**: Items in catalogs, directories, or search results
+- **Information hierarchy**: Breaking complex content into digestible sections
+
+### When NOT to Use Cards
+- **Simple lists**: Use List component for basic item collections
+- **Form sections**: Use proper form fieldsets or sections for form organization
+- **Full-page layouts**: Use appropriate layout components for main page structure
+- **Inline content**: Use appropriate text components for paragraph-level information
+
 ## Variations
 
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Basic Card
+
+Simple content container for grouping related information with default styling.
+
+<LiveExample 
+  title="Basic Card Example" 
+  htmlCode={`<elvt-card>
+  <h3>Project Status</h3>
+  <p>Your project is currently in development phase. Next milestone: Beta testing scheduled for next week.</p>
+  <elvt-button tone="primary" size="small">View Details</elvt-button>
+</elvt-card>`}
+/>
+
+### Card with Header and Footer
+
+Structured card layout with dedicated header and footer areas for organized content hierarchy.
+
+<LiveExample 
+  title="Card with Header and Footer" 
+  htmlCode={`<elvt-card>
+  <div slot="header">
+    <h3>Monthly Report</h3>
+    <elvt-button tone="subtle" size="small">Download</elvt-button>
+  </div>
+  
+  <p>Performance metrics show a 15% increase in user engagement this month. Key highlights include improved conversion rates and reduced bounce time.</p>
+  
+  <div slot="footer">
+    <elvt-button tone="primary">View Full Report</elvt-button>
+    <elvt-button>Share Report</elvt-button>
+  </div>
+</elvt-card>`}
+/>
+
 ### Border Variations
-- **All** (default) - Card with complete border around all edges
-- **Rounded** - Card with rounded corners only
-- **None** - Borderless card for seamless integration
+
+Different border treatments for various design contexts and integration needs.
+
+<LiveExample 
+  title="Card Border Variations" 
+  htmlCode={`<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+  <elvt-card border="all">
+    <h4>All Borders</h4>
+    <p>Complete border treatment (default)</p>
+  </elvt-card>
+  
+  <elvt-card border="rounded">
+    <h4>Rounded Only</h4>
+    <p>Rounded corners without borders</p>
+  </elvt-card>
+  
+  <elvt-card border="none">
+    <h4>No Borders</h4>
+    <p>Seamless integration design</p>
+  </elvt-card>
+</div>`}
+/>
 
 ### Layer Variations
-- **Default** - Standard card appearance
-- **Elevated** - Card with shadow elevation effect
-- **Overlay** - Card designed to overlay other content
-- **Sunken** - Card with inset/recessed appearance
 
-### Layout Variations
-- **Basic Card** - Simple content container
-- **Card with Header** - Includes dedicated header slot
-- **Card with Footer** - Includes dedicated footer slot
-- **Full Card** - Uses header, content, and footer slots
+Visual depth treatments for different card prominence and context needs.
 
-### Custom Padding
-Cards support flexible padding using the design token system for consistent spacing.
+<LiveExample 
+  title="Card Layer Variations" 
+  htmlCode={`<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; padding: 1rem; background: #f4f4f4;">
+  <elvt-card layer="default">
+    <h4>Default</h4>
+    <p>Standard appearance</p>
+  </elvt-card>
+  
+  <elvt-card layer="elevated">
+    <h4>Elevated</h4>
+    <p>Raised with shadow</p>
+  </elvt-card>
+  
+  <elvt-card layer="overlay">
+    <h4>Overlay</h4>
+    <p>Designed for overlays</p>
+  </elvt-card>
+  
+  <elvt-card layer="sunken">
+    <h4>Sunken</h4>
+    <p>Inset appearance</p>
+  </elvt-card>
+</div>`}
+/>
 
-## Design Guidelines
+## Design Principles
 
-### When to Use
-- **Content grouping**: Related information that belongs together
-- **Data display**: Metrics, statistics, or summary information
-- **Navigation**: Category links, feature highlights
-- **Product listings**: Items in a catalog or dashboard
-- **Notifications**: Alerts, messages, or updates
+*Purpose: Understand the foundational UI principles that guide effective card design and prevent common layout mistakes.*
 
-### When Not to Use
-- **Single pieces of content**: Use appropriate semantic elements instead
-- **Complex layouts**: Consider dedicated page layouts
-- **Linear content**: Use standard content flow
-- **Data tables**: Use Table component for structured data
+Understanding these core principles will help you create card layouts that enhance rather than complicate information consumption and user task completion.
 
-### Content Guidelines
-Keep card content focused and scannable:
-- **Clear hierarchy**: Use headings and consistent spacing
-- **Concise text**: Summarize key information effectively
-- **Logical actions**: Include relevant actions for the content
-- **Visual balance**: Maintain appropriate white space
+### Information Hierarchy Principle
+**Cards should create clear visual hierarchy within content.** Users need to quickly scan and prioritize information within cards. Poor hierarchy forces users to read everything to find what they need, slowing down task completion.
 
-### Layout Patterns
-- **Grid layouts**: Consistent card sizing in responsive grids
-- **List layouts**: Variable-width cards in linear arrangements
-- **Mixed layouts**: Combine different card types thoughtfully
+### Content Cohesion Principle  
+**Related information should be grouped together logically.** Cards work best when they contain information that naturally belongs together. Mixing unrelated content confuses users and breaks their mental models of how information is organized.
 
-## Code Reference
+### Visual Consistency Principle
+**Similar content types should use similar card treatments.** Consistent card patterns help users predict where to find information and how to interact with content. Visual inconsistency creates cognitive overhead and reduces interface familiarity.
+
+### Contextual Appropriateness Principle
+**Card treatment should match the content's importance and purpose.** High-priority content may need elevated cards, while background information works better with subtle treatments. Mismatched visual weight creates confusion about content importance.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common card design mistakes.*
+
+### Creating Effective Content Hierarchy
+
+**Why this matters:** Cards without clear visual hierarchy force users to read all content to find relevant information. Good hierarchy enables quick scanning and helps users prioritize their attention effectively.
+
+<DoDontRow>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="do" caption="Use clear headings, logical spacing, and visual hierarchy within cards">
+
+<div style={{border: '1px solid #e0e0e0', borderRadius: '8px', padding: '1rem', background: 'white', maxWidth: '280px'}}>
+  <h4 style={{margin: '0 0 0.5rem 0', fontSize: '1.125rem', fontWeight: '600'}}>Project Alpha</h4>
+  <p style={{margin: '0 0 1rem 0', color: '#6f6f6f', fontSize: '0.875rem'}}>Status: In Progress • Due: March 15</p>
+  <p style={{margin: '0 0 1rem 0', fontSize: '0.875rem', lineHeight: '1.4'}}>Backend API development is 80% complete. Frontend integration begins next week.</p>
+  <button style={{background: '#0066cc', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.875rem', cursor: 'pointer'}}>View Details</button>
+</div>
+
+</DoDontExample>
+</Column>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="dont" caption="Don't use flat hierarchy that makes content hard to scan">
+
+<div style={{border: '1px solid #e0e0e0', borderRadius: '8px', padding: '1rem', background: 'white', maxWidth: '280px'}}>
+  <p style={{margin: '0 0 0.5rem 0', fontSize: '0.875rem'}}>Project Alpha</p>
+  <p style={{margin: '0 0 0.5rem 0', fontSize: '0.875rem'}}>Status: In Progress</p>
+  <p style={{margin: '0 0 0.5rem 0', fontSize: '0.875rem'}}>Due: March 15</p>
+  <p style={{margin: '0 0 0.5rem 0', fontSize: '0.875rem'}}>Backend API development is 80% complete. Frontend integration begins next week.</p>
+  <button style={{background: '#0066cc', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', fontSize: '0.875rem', cursor: 'pointer'}}>View Details</button>
+</div>
+
+</DoDontExample>
+</Column>
+</DoDontRow>
+
+### Grouping Related Content Effectively
+
+**Why this matters:** Cards that mix unrelated information increase cognitive load and make it harder for users to understand the purpose of each card. Logical grouping helps users process information more efficiently.
+
+<DoDontRow>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="do" caption="Group logically related information that serves a common purpose">
+
+<div style={{border: '1px solid #e0e0e0', borderRadius: '8px', padding: '1rem', background: 'white', maxWidth: '280px'}}>
+  <h4 style={{margin: '0 0 0.75rem 0', fontSize: '1.125rem', fontWeight: '600'}}>Account Security</h4>
+  <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Two-factor authentication</span>
+      <span style={{color: '#28a745', fontWeight: '500'}}>Enabled</span>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Password strength</span>
+      <span style={{color: '#28a745', fontWeight: '500'}}>Strong</span>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Last login</span>
+      <span style={{color: '#6f6f6f'}}>2 hours ago</span>
+    </div>
+  </div>
+</div>
+
+</DoDontExample>
+</Column>
+<Column colMd={4} colLg={6}>
+<DoDontExample type="dont" caption="Don't mix unrelated information that serves different purposes">
+
+<div style={{border: '1px solid #e0e0e0', borderRadius: '8px', padding: '1rem', background: 'white', maxWidth: '280px'}}>
+  <h4 style={{margin: '0 0 0.75rem 0', fontSize: '1.125rem', fontWeight: '600'}}>Account Settings</h4>
+  <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Two-factor authentication</span>
+      <span style={{color: '#28a745', fontWeight: '500'}}>Enabled</span>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Newsletter subscription</span>
+      <span style={{color: '#6f6f6f'}}>Weekly</span>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem'}}>
+      <span>Storage used</span>
+      <span style={{color: '#6f6f6f'}}>2.3 GB</span>
+    </div>
+  </div>
+</div>
+
+</DoDontExample>
+</Column>
+</DoDontRow>
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
 
 ### Installation
 
@@ -140,29 +318,87 @@ npm install @inform-elevate/elevate-core-ui
 </elvt-card>
 ```
 
-### Properties
+### Key Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `border` | `CardBorder` | `all` | Border style: `all`, `rounded`, `none` |
-| `layer` | `CardLayer` | `default` | Visual layer: `default`, `elevated`, `overlay`, `sunken` |
-| `padding` | `Padding` | `0` | Custom padding using design token values |
+The most commonly used properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `border` | `all` (default), `rounded`, `none` | Border treatment for different visual contexts |
+| `layer` | `default`, `elevated`, `overlay`, `sunken` | Visual depth and prominence level |
+| `padding` | Design token values | Custom spacing using consistent design tokens |
+
+</PageTable>
 
 ### Slots
 
+<PageTable>
+
 | Slot | Description |
 |------|-------------|
-| `default` | Main card content |
-| `header` | Header content area (automatically detected) |
-| `footer` | Footer content area (automatically detected) |
+| `default` | Main card content area |
+| `header` | Header content (automatically detected when used) |
+| `footer` | Footer content (automatically detected when used) |
 
-### Data Attributes
+</PageTable>
 
-The component automatically sets data attributes based on slot usage:
-- `data-has-header="true/false"` - Indicates if header slot is filled
-- `data-has-footer="true/false"` - Indicates if footer slot is filled
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
 
-These attributes can be used for styling purposes in CSS.
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test card behavior and copy working code for their projects.*
+
+### Live Card Playground
+
+Experience how cards behave in realistic contexts. All examples use actual ELEVATE components.
+
+<LiveExample 
+  title="Dashboard Card Layout" 
+  htmlCode={`<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 1rem;">
+  <!-- Metrics Card -->
+  <elvt-card layer="elevated">
+    <div slot="header">
+      <h3 style="margin: 0; font-size: 1.125rem;">Active Users</h3>
+      <elvt-button tone="subtle" size="small">View Details</elvt-button>
+    </div>
+    
+    <div style="display: flex; align-items: baseline; gap: 0.5rem; margin: 1rem 0;">
+      <span style="font-size: 2rem; font-weight: 600; color: #161616;">2,847</span>
+      <span style="color: #28a745; font-size: 0.875rem;">↑ 12%</span>
+    </div>
+    
+    <p style="margin: 0; color: #6f6f6f; font-size: 0.875rem;">Compared to last month</p>
+  </elvt-card>
+  
+  <!-- Task Card -->
+  <elvt-card>
+    <div slot="header">
+      <h3 style="margin: 0; font-size: 1.125rem;">Recent Tasks</h3>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #e0e0e0;">
+        <span style="font-size: 0.875rem;">Review design proposals</span>
+        <span style="color: #dc3545; font-size: 0.75rem; padding: 0.25rem 0.5rem; background: #fff5f5; border-radius: 12px;">Overdue</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #e0e0e0;">
+        <span style="font-size: 0.875rem;">Update documentation</span>
+        <span style="color: #ffc107; font-size: 0.75rem; padding: 0.25rem 0.5rem; background: #fffbf0; border-radius: 12px;">In Progress</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0;">
+        <span style="font-size: 0.875rem;">Team meeting prep</span>
+        <span style="color: #6f6f6f; font-size: 0.75rem; padding: 0.25rem 0.5rem; background: #f4f4f4; border-radius: 12px;">Pending</span>
+      </div>
+    </div>
+    
+    <div slot="footer">
+      <elvt-button tone="primary" size="small">View All Tasks</elvt-button>
+    </div>
+  </elvt-card>
+</div>`}
+/>
 
 ## Accessibility
 
@@ -195,21 +431,13 @@ These attributes can be used for styling purposes in CSS.
 
 ## Changelog
 
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
 ### Version 0.0.26-alpha (July 16, 2025)
 - Current version in active development
 
 ### Version 0.0.22-alpha (June 25, 2025)
-- Add Card Border and Layer Properties
-- Enhanced visual customization options
-- Improved design token integration
+- **New**: Add Card Border and Layer Properties
 
 ### Version 0.0.2-alpha (March 19, 2025)
-- Add Card Component
-- Initial implementation with slot support
-- Status: Unstable (as noted in component comments)
-
-### Since Version 0.0.2-alpha
-- Component has been available since March 2025
-- Continuous improvements to visual variants
-- Enhanced padding system using design tokens
-- Automatic slot detection for header/footer
+- **New**: Add Card Component (initial implementation)

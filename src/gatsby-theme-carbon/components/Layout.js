@@ -1,8 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect } from "react";
 
-import { Information } from "@carbon/icons-react";
-
 import Meta from "gatsby-theme-carbon/src/components/Meta";
 import LeftNav from "gatsby-theme-carbon/src/components/LeftNav";
 import Header from "gatsby-theme-carbon/src/components/Header";

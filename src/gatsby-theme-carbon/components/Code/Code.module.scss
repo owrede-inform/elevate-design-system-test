@@ -23,7 +23,7 @@
 
   // Add's additional length for scrolling under sidebar
   .token:last-of-type {
-    margin-right: 64px;
+    margin-right: 0;
   }
 }
 
@@ -32,9 +32,20 @@
   color: $white-0;
   @include type-style('code-02');
   font-family: 'Roboto Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
-  width: calc(100% + 2rem);
+  width: 100% !important;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  left: 0 !important;
+  transform: none !important;
   @include breakpoint('lg') {
-    width: calc(67% + 1.15rem);
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
@@ -53,14 +64,25 @@ li .row {
 .container {
   position: relative;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  overflow: visible !important;
 }
 
 .highlight {
-  padding: $spacing-05;
+  padding: $spacing-06 $spacing-06 $spacing-06 $spacing-07;
   position: relative;
   overflow: auto;
   width: 100%;
+  max-width: none;
   text-wrap: wrap;
+  min-height: 4.5rem;
+  box-sizing: border-box;
+  border-radius: 0 0 8px 8px;
+  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .sideBarMinHeight {
@@ -70,6 +92,7 @@ li .row {
 // feedback tooltip adjustments
 .container :global(.cds--btn--copy__feedback) {
   position: absolute;
+  overflow: visible !important;
   &::before {
     left: $spacing-07;
   }

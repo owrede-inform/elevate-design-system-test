@@ -90,6 +90,12 @@ const Code = ({ children, className: classNameProp = '', metaData }) => {
   if (isInlineCode) {
     return <code>{children}</code>;
   }
+  
+  // Safety check for undefined children
+  if (!children || typeof children !== 'string') {
+    return <code>{children}</code>;
+  }
+  
   return (
     <Row className={cx(styles.row)}>
       <PathRow src={src} path={path}>

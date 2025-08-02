@@ -1,0 +1,223 @@
+---
+title: Date Picker
+description: Date Picker allows users to select dates from a calendar interface or text input. It provides intuitive date selection with formatting, validation, and localization support.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Date Picker simplifies date selection for users while ensuring proper formatting and validation. The ELEVATE Date Picker component helps designers and developers create consistent, accessible date input experiences that work across different locales and use cases.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Date Picker
+- **Event scheduling**: Appointments, meetings, and calendar events
+- **Booking systems**: Travel, reservations, and service bookings
+- **Data filtering**: Date range filters for reports and analytics
+- **Form inputs**: Birth dates, deadlines, and important dates
+- **Time-sensitive content**: Publication dates and expiration times
+
+### When NOT to Use Date Picker
+- **Approximate dates**: Use text input for "around 2020" or vague timeframes
+- **Historical dates**: Very old dates may be better as separate year/month inputs
+- **Time-only selection**: Use Time Picker component for time without dates
+- **Simple text**: When users prefer typing familiar formats like "tomorrow"
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Input Methods
+
+<InlineNotification kind="info">
+Date Picker components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Calendar Popup** provides visual date selection with month/year navigation and date highlighting.
+
+**Inline Calendar** displays the calendar directly in the interface without a popup trigger.
+
+**Text Input with Validation** allows typed dates with format hints and error checking.
+
+**Date Range Picker** enables selection of start and end dates with visual range indication.
+
+### Display Formats
+
+**Single Date Selection** for choosing one specific date with various format options.
+
+**Date Range Selection** for selecting start and end dates with clear visual connection.
+
+**Multiple Date Selection** for choosing several individual dates like availability calendars.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective date picker design and prevent common mistakes.*
+
+### Familiarity Principle
+**Use conventions users already understand.** Date pickers should follow established calendar patterns and format expectations. Unusual layouts or navigation patterns create confusion and slow down task completion.
+
+### Flexibility Principle  
+**Support different user input preferences.** Some users prefer visual calendar selection while others prefer typing dates. Effective date pickers accommodate both interaction styles without forcing one approach.
+
+### Context Principle
+**Provide appropriate constraints and guidance.** Date pickers should show valid date ranges, disable inappropriate dates, and provide clear formatting expectations to prevent user errors.
+
+### Efficiency Principle
+**Minimize steps to reach common dates.** Users often select recent dates, today, or dates within the current month. Date pickers should make these common selections easy to access.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common date picker design mistakes.*
+
+### Setting Appropriate Date Constraints
+
+**Why this matters:** Unconstrained date pickers force users to navigate through irrelevant time periods. Users booking future appointments shouldn't have to navigate past historical dates, and birth date inputs shouldn't default to current year.
+
+### Clear Format Communication
+
+**Why this matters:** Date format expectations vary by region and context. Users make errors when format requirements aren't clear, leading to form validation errors and frustration.
+
+### Keyboard and Mobile Optimization
+
+**Why this matters:** Not all users can or prefer to use mouse interaction with calendar interfaces. Mobile users need touch-friendly targets, and keyboard users need efficient navigation between dates.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Date Picker component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/date-picker/date-picker.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Single date selection -->
+<elvt-date-picker 
+  label="Event Date" 
+  placeholder="Select date"
+  format="MM/DD/YYYY">
+</elvt-date-picker>
+
+<!-- Date range selection -->
+<elvt-date-picker 
+  type="range"
+  label="Travel Dates"
+  start-placeholder="Departure"
+  end-placeholder="Return">
+</elvt-date-picker>
+
+<!-- Inline calendar -->
+<elvt-date-picker 
+  display="inline"
+  min-date="2025-01-01"
+  max-date="2025-12-31">
+</elvt-date-picker>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `type` | `single` (default), `range`, `multiple` | Date selection mode |
+| `display` | `popup` (default), `inline` | How calendar is presented |  
+| `format` | String | Date format pattern (e.g., "MM/DD/YYYY") |
+| `min-date` | Date string | Earliest selectable date |
+| `max-date` | Date string | Latest selectable date |
+| `disabled-dates` | Array | Specific dates to disable |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test date picker behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Date Picker component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your date picker implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Keyboard navigation support:**
+- Arrow keys navigate between calendar dates
+- Enter/Space selects highlighted dates
+- Escape closes calendar popup
+- Tab moves between calendar controls
+
+**Screen reader compatibility:**
+- Announce selected dates and date ranges
+- Provide labels for all interactive elements
+- Include format instructions and constraints
+- Communicate disabled dates and reasons
+
+**Focus management:**
+- Clear focus indicators on all interactive elements
+- Logical tab order through calendar interface
+- Return focus appropriately after selections
+- Maintain focus position during month navigation
+
+**Alternative input methods:**
+- Allow direct text input with validation
+- Support common date format variations
+- Provide format examples and hints
+- Include error messages for invalid dates
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Date Picker component implementation
+- **New**: Single date and date range selection
+- **New**: Calendar popup and inline display modes
+- **New**: Internationalization and localization support
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Date Picker component in development planning phase

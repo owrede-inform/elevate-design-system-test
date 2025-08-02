@@ -1,0 +1,245 @@
+---
+title: Expansion Panel
+description: Expansion panels provide collapsible content sections that help organize information hierarchically. They allow users to focus on relevant content while maintaining access to additional details.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Expansion panels organize complex information into manageable, progressive disclosure patterns. The ELEVATE Expansion Panel component helps designers and developers create consistent, accessible collapsible interfaces that help users navigate and consume information efficiently.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Expansion Panels
+- **FAQ sections**: Frequently asked questions with expandable answers
+- **Settings groups**: Organized configuration options by category
+- **Product details**: Specifications, features, and additional information
+- **Form sections**: Progressive form completion with logical groupings
+- **Content summaries**: Detailed content with overview and expandable details
+
+### When NOT to Use Expansion Panels
+- **Critical information**: Essential content should not be hidden by default
+- **Single items**: Use other disclosure patterns for individual collapsible items
+- **Navigation**: Use proper navigation components for site structure
+- **Short content**: Don't hide content that fits comfortably in available space
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Panel Behaviors
+
+<InlineNotification kind="info">
+Expansion Panel components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Accordion Mode** allows only one panel to be expanded at a time, maintaining focus on single topics.
+
+**Independent Mode** lets multiple panels expand simultaneously for content comparison.
+
+**Nested Panels** provide hierarchical organization with panels inside other panels.
+
+### Visual Styles
+
+**Standard Panels** use clear headers with standard expand/collapse indicators.
+
+**Card-Style Panels** include borders and backgrounds for enhanced visual separation.
+
+**Minimal Panels** use subtle styling that integrates seamlessly with surrounding content.
+
+### Content Organization
+
+**Header-Only Panels** show just titles until expanded to reveal content.
+
+**Summary Panels** display preview text alongside headers for better context.
+
+**Icon-Enhanced Panels** include icons to help categorize and identify panel content.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective expansion panel design and prevent common mistakes.*
+
+### Progressive Disclosure Principle
+**Reveal information in digestible stages that match user needs.** Expansion panels should help users find relevant information without overwhelming them with details they don't currently need.
+
+### Predictable Behavior Principle  
+**Panel expansion and collapse should behave consistently throughout the interface.** Users should learn interaction patterns once and apply them confidently across all expansion panels.
+
+### Context Preservation Principle
+**Users should maintain orientation when panels expand or collapse.** Animation and layout changes should feel natural and not disrupt the user's mental model of the interface.
+
+### Meaningful Hierarchy Principle
+**Panel organization should reflect logical information relationships.** Random or unclear groupings make expansion panels less effective at organizing complex content.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common expansion panel design mistakes.*
+
+### Writing Clear Panel Headers
+
+**Why this matters:** Vague or unclear headers force users to expand panels unnecessarily to find relevant content. Good headers let users predict content and make informed decisions about what to explore.
+
+### Managing Panel Content Length
+
+**Why this matters:** Overly long panel content defeats the organizational purpose of expansion panels. Content should be substantial enough to warrant collapsing but concise enough to remain focused.
+
+### Choosing Appropriate Default States
+
+**Why this matters:** Default expanded or collapsed states affect user workflow and information discovery. Wrong defaults can hide important information or overwhelm users with too much detail.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Expansion Panel component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/expansion-panel/expansion-panel.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic expansion panel -->
+<elvt-expansion-panel>
+  <span slot="header">Account Settings</span>
+  <div slot="content">
+    <!-- Panel content -->
+    <p>Manage your account preferences and profile information.</p>
+  </div>
+</elvt-expansion-panel>
+
+<!-- Panel with summary text -->
+<elvt-expansion-panel>
+  <span slot="header">Shipping Information</span>
+  <span slot="summary">Standard delivery in 3-5 days</span>
+  <div slot="content">
+    <!-- Detailed shipping options -->
+  </div>
+</elvt-expansion-panel>
+
+<!-- Accordion group -->
+<elvt-expansion-panel-group accordion>
+  <elvt-expansion-panel>
+    <span slot="header">Billing</span>
+    <div slot="content">Billing content...</div>
+  </elvt-expansion-panel>
+  <elvt-expansion-panel>
+    <span slot="header">Shipping</span>
+    <div slot="content">Shipping content...</div>
+  </elvt-expansion-panel>
+</elvt-expansion-panel-group>
+
+<!-- Panel with icon -->
+<elvt-expansion-panel>
+  <elvt-icon slot="icon" icon="mdi:settings"></elvt-icon>
+  <span slot="header">Advanced Settings</span>
+  <div slot="content">
+    <!-- Advanced configuration options -->
+  </div>
+</elvt-expansion-panel>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `expanded` | `true`, `false` (default) | Whether panel is initially expanded |
+| `disabled` | `true`, `false` (default) | Whether panel can be toggled |  
+| `accordion` | `true`, `false` (default) | Accordion behavior for panel groups |
+| `variant` | `standard` (default), `card`, `minimal` | Visual style variation |
+| `icon-position` | `start` (default), `end` | Position of expand/collapse icon |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test expansion panel behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Expansion Panel component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your expansion panel implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Keyboard navigation support:**
+- Space/Enter toggles panel expansion
+- Arrow keys navigate between panel headers in groups
+- Tab moves through interactive content within panels
+- Clear focus indicators on panel headers
+
+**Screen reader compatibility:**
+- Use proper ARIA attributes (aria-expanded, aria-controls)
+- Associate panel headers with content regions
+- Announce expansion state changes
+- Provide meaningful labels for panel purposes
+
+**Focus management:**
+- Maintain logical focus order when panels expand/collapse
+- Don't trap focus within expanded panels unless modal
+- Return focus appropriately after panel state changes
+- Ensure all interactive panel content is keyboard accessible
+
+**Content structure:**
+- Use proper heading hierarchy for panel headers
+- Ensure content within panels follows accessibility guidelines
+- Provide alternative ways to access hidden content if needed
+- Don't hide critical information behind collapsed panels
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Expansion Panel component implementation
+- **New**: Accordion and independent expansion modes
+- **New**: Multiple visual styles and variants
+- **New**: Nested panel support and icon integration
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Expansion Panel component in development planning phase

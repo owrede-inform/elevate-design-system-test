@@ -1,0 +1,250 @@
+---
+title: Tooltip
+description: Tooltips provide contextual information on hover or focus without cluttering the interface. They offer helpful details and explanations for UI elements.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Tooltips reveal helpful information without overwhelming the interface. The ELEVATE Tooltip component helps designers and developers create consistent, accessible help systems that provide context-sensitive information exactly when users need it.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Tooltips
+- **Icon explanations**: Clarify the meaning of icon-only buttons and controls
+- **Form field help**: Provide formatting examples and validation requirements
+- **Feature descriptions**: Explain complex functionality without cluttering the UI
+- **Additional context**: Offer supplementary information about interface elements
+- **Keyboard shortcuts**: Display available shortcuts for power users
+
+### When NOT to Use Tooltips
+- **Essential information**: Critical information should not be hidden in tooltips
+- **Mobile interfaces**: Touch devices don't have hover states for tooltip activation
+- **Long content**: Use modals or expandable sections for substantial information
+- **Repeated interactions**: Information needed frequently should be always visible
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Tooltip Types
+
+<InlineNotification kind="info">
+Tooltip components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Basic Tooltips** provide simple text information on hover or focus.
+
+**Rich Tooltips** include formatted content, links, and enhanced styling.
+
+**Error Tooltips** show validation messages and error explanations.
+
+**Help Tooltips** offer contextual assistance and feature explanations.
+
+### Positioning Options
+
+**Auto Positioning** automatically places tooltips in optimal positions based on available space.
+
+**Fixed Positioning** allows manual control over tooltip placement relative to trigger elements.
+
+**Smart Positioning** adjusts tooltip position to stay within viewport boundaries.
+
+### Trigger Behaviors
+
+**Hover Activation** shows tooltips on mouse hover with configurable delay.
+
+**Focus Activation** displays tooltips when elements receive keyboard focus.
+
+**Click Activation** toggles tooltips on click for touch-friendly interfaces.
+
+**Manual Control** allows programmatic tooltip display and hiding.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective tooltip design and prevent common mistakes.*
+
+### Discoverability Principle
+**Users should be able to find helpful information when they need it.** Tooltips should be available on elements that might benefit from explanation, but not so ubiquitous that they become annoying.
+
+### Timing Principle  
+**Tooltip appearance and disappearance should feel natural and responsive.** Too-fast activation creates accidental triggers while too-slow activation feels unresponsive to user intent.
+
+### Clarity Principle
+**Tooltip content should be immediately useful and clearly written.** Vague or redundant tooltip text wastes user attention and undermines the helpfulness of the tooltip system.
+
+### Non-Interference Principle
+**Tooltips should enhance rather than interrupt user workflows.** They should provide help without blocking content or interfering with ongoing tasks.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common tooltip design mistakes.*
+
+### Writing Effective Tooltip Content
+
+**Why this matters:** Poor tooltip content provides no value and can annoy users. Good tooltips should be concise, informative, and genuinely helpful rather than stating the obvious.
+
+### Choosing Appropriate Triggers
+
+**Why this matters:** Wrong trigger methods can make tooltips inaccessible or annoying. Hover works well for desktop but not mobile, while click activation might interfere with primary element functions.
+
+### Managing Tooltip Positioning
+
+**Why this matters:** Poorly positioned tooltips can be cut off by viewport edges or cover important content. Smart positioning ensures tooltips remain readable and useful.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Tooltip component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/tooltip/tooltip.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic tooltip -->
+<elvt-tooltip content="Save your changes">
+  <elvt-button>
+    <elvt-icon icon="mdi:content-save"></elvt-icon>
+  </elvt-button>
+</elvt-tooltip>
+
+<!-- Rich content tooltip -->
+<elvt-tooltip>
+  <elvt-button slot="trigger">Help</elvt-button>
+  <div slot="content">
+    <h4>Keyboard Shortcuts</h4>
+    <ul>
+      <li><kbd>Ctrl+S</kbd> - Save</li>
+      <li><kbd>Ctrl+Z</kbd> - Undo</li>
+    </ul>
+  </div>
+</elvt-tooltip>
+
+<!-- Form field tooltip -->
+<div>
+  <label for="password">Password</label>
+  <elvt-tooltip content="Must be at least 8 characters with numbers and symbols">
+    <input type="password" id="password" />
+  </elvt-tooltip>
+</div>
+
+<!-- Positioned tooltip -->
+<elvt-tooltip content="Additional options" position="bottom">
+  <elvt-button>
+    <elvt-icon icon="mdi:dots-vertical"></elvt-icon>
+  </elvt-button>
+</elvt-tooltip>
+
+<!-- Click-activated tooltip -->
+<elvt-tooltip content="Click to copy link" trigger="click">
+  <elvt-button>Share Link</elvt-button>
+</elvt-tooltip>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `content` | String | Simple text content for the tooltip |
+| `position` | `auto` (default), `top`, `bottom`, `left`, `right` | Preferred tooltip position |  
+| `trigger` | `hover` (default), `focus`, `click`, `manual` | How tooltip is activated |
+| `delay` | Number | Delay in milliseconds before showing |
+| `offset` | Number | Distance from trigger element |
+| `arrow` | `true` (default), `false` | Whether to show pointing arrow |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test tooltip behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Tooltip component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your tooltip implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Keyboard accessibility:**
+- Tooltips should appear on focus for keyboard users
+- Escape key should dismiss active tooltips
+- Tab navigation should work predictably with tooltips
+- Interactive tooltip content needs proper focus management
+
+**Screen reader support:**
+- Use `aria-describedby` to associate tooltips with trigger elements
+- Ensure tooltip content is announced by screen readers
+- Don't use tooltips for critical information that screen readers might miss
+- Provide alternative ways to access tooltip information
+
+**Focus management:**
+- Don't trap focus within tooltips unless they contain interactive elements
+- Return focus appropriately when tooltips are dismissed
+- Ensure tooltips don't interfere with normal tab order
+- Provide clear focus indicators for tooltip triggers
+
+**Alternative access methods:**
+- Consider that mobile users can't hover to see tooltips
+- Provide alternative ways to access tooltip information on touch devices
+- Don't rely solely on tooltips for important help information
+- Test tooltip functionality with keyboard-only navigation
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Tooltip component implementation
+- **New**: Multiple trigger methods (hover, focus, click)
+- **New**: Smart positioning with viewport awareness
+- **New**: Rich content support and custom styling
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Tooltip component in development planning phase

@@ -6,16 +6,26 @@
   "scripts": {
     "dev": "gatsby develop",
     "dev:clean": "gatsby clean && gatsby develop -H 0.0.0.0",
+    "dev:fast": "gatsby develop --preserve-cache",
     "build": "gatsby build",
     "build:clean": "yarn clean && gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "clean:images": "rimraf .cache/caches/gatsby-plugin-sharp && rimraf public/static",
+    "render-images": "yarn clean:images && gatsby build --prefix-paths",
+    "cache:info": "node scripts/cache-info.js",
+    "cache:preserve": "echo 'Using existing image cache for faster builds' && gatsby develop --preserve-cache"
   },
   "dependencies": {
     "@carbon/icons-react": "^11.43.0",
+    "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
+    "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
+    "@inform-elevate/elevate-design-tokens": "^1.0.0",
+    "@shoelace-style/shoelace": "^2.20.1",
     "gatsby": "^5.13.6",
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-theme-carbon": "^4.1.4",
+    "lit": "^3.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "1.62.1"
@@ -24,6 +34,12 @@
     "sass": "1.62.1",
     "tr46": "^5.1.1",
     "whatwg-url": "^14.2.0",
-    "core-js": "^3.38.1"
+    "core-js": "^3.44.0",
+    "node-fetch/whatwg-url": "^14.2.0",
+    "babel-runtime/core-js": "^3.44.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-mdx": "^3.6.2",
+    "rimraf": "^6.0.1"
   }
 }

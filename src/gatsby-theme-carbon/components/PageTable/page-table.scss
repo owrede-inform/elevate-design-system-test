@@ -62,13 +62,37 @@
   }
 }
 
+// Specific styles for simple two-column tables (Slots, Events, Methods)
+// These tables need fixed layout for consistent Description column alignment
+// Target tables in smaller grid containers (2-column tables)
+.cds--col-lg-8 .page-table,
+.cds--col-md-6 .page-table {
+  table-layout: fixed;
+
+  th:first-child,
+  td:first-child {
+    width: 12rem;
+    min-width: 12rem;
+  }
+}
+
+// Align Properties table first column with Description column position
+// Properties table is in larger grid container (4-column table)
+.cds--col-lg-12 .page-table {
+  th:first-child,
+  td:first-child {
+    width: 12rem;
+    min-width: 12rem;
+  }
+}
+
 .component-docs p {
   @include breakpoint('md') {
-    max-width: 75%;
+    max-width: 85%;
   }
 
   @include breakpoint('lg') {
-    max-width: 55%;
+    max-width: 70%;
   }
 }
 

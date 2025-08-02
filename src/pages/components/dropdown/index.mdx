@@ -1,0 +1,242 @@
+---
+title: Dropdown
+description: Dropdowns allow users to select from a list of options in a compact interface. They save screen space while providing access to multiple choices.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Dropdowns provide efficient option selection within constrained interface space. The ELEVATE Dropdown component helps designers and developers create consistent, accessible selection experiences that work well across different contexts and device types.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Dropdowns
+- **Form selections**: Country, state, category, and type selections
+- **Filters and sorting**: Data table filters and sort options
+- **Settings menus**: Configuration options and preferences
+- **Action menus**: Context-specific actions and commands
+- **Navigation**: Secondary navigation and menu structures
+
+### When NOT to Use Dropdowns
+- **Two options**: Use radio buttons or toggle switches for binary choices
+- **Many options**: Consider autocomplete or search for 10+ options
+- **Always visible info**: Use visible text for frequently referenced information
+- **Primary navigation**: Use dedicated navigation components for main site sections
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Selection Types
+
+<InlineNotification kind="info">
+Dropdown components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Single Selection** allows users to choose one option from the available list.
+
+**Multi-Selection** enables choosing multiple options with checkboxes or chip indicators.
+
+### Content Types
+
+**Text Options** display simple text labels for straightforward selection.
+
+**Rich Content** includes icons, descriptions, or additional metadata with options.
+
+**Grouped Options** organize related choices under section headers.
+
+**Search and Filter** provide input fields to narrow down option lists.
+
+### Trigger Styles
+
+**Button Style** uses button appearance for action-oriented dropdowns.
+
+**Input Style** resembles form inputs for data entry contexts.
+
+**Link Style** appears as links for navigation-focused dropdowns.
+
+**Icon Only** uses just an icon trigger for compact interfaces.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective dropdown design and prevent common mistakes.*
+
+### Predictability Principle
+**Users should understand what will happen when they interact with dropdowns.** Clear trigger styling and consistent behavior patterns help users predict dropdown functionality without trial and error.
+
+### Efficiency Principle  
+**Minimize steps and cognitive load for common selections.** Frequently chosen options should be easy to find and select. Long scrolling or complex navigation defeats the space-saving purpose of dropdowns.
+
+### Clarity Principle
+**Selected states and available options should be immediately obvious.** Users need to understand current selections and see all available choices clearly. Ambiguous states create uncertainty and selection errors.
+
+### Responsive Adaptation Principle
+**Dropdowns should work effectively across different screen sizes and input methods.** Mobile touch interfaces have different requirements than desktop mouse interaction.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common dropdown design mistakes.*
+
+### Organizing Options Logically
+
+**Why this matters:** Random or poorly organized option lists force users to scan through irrelevant choices. Logical organization reduces cognitive load and helps users find their desired selection quickly.
+
+### Handling Long Option Lists
+
+**Why this matters:** Dropdowns with many options become unwieldy and hard to navigate. Users get overwhelmed with too many choices and may struggle to find what they need.
+
+### Providing Clear Selection States
+
+**Why this matters:** Users need confirmation of their selections and ability to understand current dropdown state. Unclear selection feedback creates uncertainty about form completion and data entry.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Dropdown component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/dropdown/dropdown.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Basic single selection -->
+<elvt-dropdown label="Select Country" placeholder="Choose...">
+  <elvt-option value="us">United States</elvt-option>
+  <elvt-option value="ca">Canada</elvt-option>
+  <elvt-option value="uk">United Kingdom</elvt-option>
+</elvt-dropdown>
+
+<!-- Multi-selection dropdown -->
+<elvt-dropdown multiple label="Select Categories">
+  <elvt-option value="tech">Technology</elvt-option>
+  <elvt-option value="design">Design</elvt-option>
+  <elvt-option value="business">Business</elvt-option>
+</elvt-dropdown>
+
+<!-- Searchable dropdown -->
+<elvt-dropdown searchable label="Find User">
+  <elvt-option value="user1">John Doe</elvt-option>
+  <elvt-option value="user2">Jane Smith</elvt-option>
+  <elvt-option value="user3">Mike Johnson</elvt-option>
+</elvt-dropdown>
+
+<!-- Grouped options -->
+<elvt-dropdown label="Select Location">
+  <elvt-option-group label="North America">
+    <elvt-option value="us">United States</elvt-option>
+    <elvt-option value="ca">Canada</elvt-option>
+  </elvt-option-group>
+  <elvt-option-group label="Europe">
+    <elvt-option value="uk">United Kingdom</elvt-option>
+    <elvt-option value="de">Germany</elvt-option>
+  </elvt-option-group>
+</elvt-dropdown>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `multiple` | `true`, `false` (default) | Allow multiple option selection |
+| `searchable` | `true`, `false` (default) | Include search/filter capability |  
+| `placeholder` | String | Text shown when no option is selected |
+| `disabled` | `true`, `false` (default) | Whether dropdown can be interacted with |
+| `size` | `small`, `medium` (default), `large` | Physical size of the dropdown |
+| `position` | `auto` (default), `top`, `bottom` | Where dropdown menu appears |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test dropdown behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Dropdown component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your dropdown implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Keyboard navigation support:**
+- Space/Enter opens dropdown menu
+- Arrow keys navigate through options
+- Escape closes dropdown menu
+- Tab moves to next form element
+
+**Screen reader compatibility:**
+- Use proper ARIA roles (combobox, listbox, option)
+- Announce current selection and available options
+- Provide labels and descriptions for dropdown purpose
+- Communicate expanded/collapsed states
+
+**Focus management:**
+- Clear focus indicators on trigger and options
+- Logical focus order through dropdown interface
+- Return focus to trigger when dropdown closes
+- Highlight selected options appropriately
+
+**Selection feedback:**
+- Announce selection changes to screen readers
+- Provide visual confirmation of selected options
+- Clear indication of multi-selection states
+- Error messages for validation failures
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Dropdown component implementation
+- **New**: Single and multi-selection support
+- **New**: Search and filtering capabilities
+- **New**: Option grouping and rich content support
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Dropdown component in development planning phase

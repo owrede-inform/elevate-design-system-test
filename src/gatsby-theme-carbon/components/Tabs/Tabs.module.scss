@@ -1,8 +1,7 @@
 .tab-list {
   display: flex;
   max-width: min-content;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin: 0;
   border-bottom: 1px solid $ui-03;
   scrollbar-width: none;
   overflow-x: auto;
@@ -12,17 +11,14 @@
 }
 
 .dropdownWrapper {
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin: 0;
 }
 
 .panel {
   --space: 0;
   color: $text-01;
   background: $ui-01;
-  margin-left: -$spacing-05;
-  margin-right: -$spacing-05;
-
+  margin: 0;
   padding: $spacing-05;
   padding-bottom: $spacing-08;
 }

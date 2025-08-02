@@ -18,9 +18,8 @@
 //---------------------------------------
 
 body {
-  background: $black-100;
+  background: $background;
   color: $text-01;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 // prevents jank while page hydrates
@@ -45,7 +44,7 @@ body em {
 }
 
 body button {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: inherit;
 }
 
 // fix needed for v11 aspect ratio migration

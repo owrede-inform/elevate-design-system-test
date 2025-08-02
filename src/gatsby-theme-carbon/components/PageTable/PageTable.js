@@ -5,11 +5,18 @@ import cx from 'classnames';
 export default class PageTable extends React.Component {
   render() {
     const { children } = this.props;
-    let gridSize;
-    if (Array.isArray(children[1].props.children)) {
-      gridSize = children[1].props.children[0].props.children.length;
-    } else {
-      gridSize = children[1].props.children.props.children.length;
+    let gridSize = 4; // default size
+    
+    // Safely check children structure
+    if (children && Array.isArray(children) && children[1] && children[1].props && children[1].props.children) {
+      if (Array.isArray(children[1].props.children)) {
+        const firstChild = children[1].props.children[0];
+        if (firstChild && firstChild.props && firstChild.props.children) {
+          gridSize = firstChild.props.children.length;
+        }
+      } else if (children[1].props.children.props && children[1].props.children.props.children) {
+        gridSize = children[1].props.children.props.children.length;
+      }
     }
 
     const classNames = cx({

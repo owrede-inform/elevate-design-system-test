@@ -1,0 +1,203 @@
+---
+title: Charts
+description: Charts visualize data relationships and trends through various graphical representations. They help users understand complex information quickly and identify patterns in datasets.
+---
+
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
+<PageDescription>
+
+Charts transform raw data into visual insights that users can quickly understand and act upon. The ELEVATE Charts component helps designers and developers create consistent, accessible data visualizations that communicate information clearly and support data-driven decision making.
+
+</PageDescription>
+
+<AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
+  <AnchorLink>Variations</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
+  <AnchorLink>Accessibility</AnchorLink>
+  <AnchorLink>Changelog</AnchorLink>
+</AnchorLinks>
+
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Charts
+- **Data comparison**: Compare values across categories or time periods
+- **Trend visualization**: Show changes and patterns over time
+- **Part-to-whole relationships**: Display how individual parts make up a total
+- **Performance metrics**: Dashboard KPIs and business intelligence displays
+- **Progress tracking**: Show completion status and goal achievement
+
+### When NOT to Use Charts
+- **Simple values**: Use text or number displays for single data points
+- **Complex tables**: Use Table component for detailed data that needs sorting/filtering
+- **Interactive exploration**: Use specialized data visualization tools for complex analysis
+- **Real-time streaming**: Consider performance implications for rapidly updating data
+
+## Variations
+
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
+
+### Chart Types
+
+<InlineNotification kind="info">
+Chart components are currently in development. Examples shown represent planned functionality.
+</InlineNotification>
+
+**Line Charts** show trends and changes over time, ideal for continuous data.
+
+**Bar Charts** compare discrete categories or values, perfect for rankings and comparisons.
+
+**Pie Charts** display part-to-whole relationships, best for showing proportions of a total.
+
+**Area Charts** combine line chart benefits with filled areas to show volume and trends.
+
+**Scatter Plots** reveal correlations and relationships between two variables.
+
+## Design Principles
+
+*Purpose: Understand the foundational UI principles that guide effective chart design and prevent common mistakes.*
+
+### Clarity Principle
+**Data should be immediately understandable without interpretation.** Charts should communicate their message within seconds of viewing. Complex or confusing visualizations force users to work harder to extract insights.
+
+### Truthfulness Principle  
+**Visual representation should accurately reflect the underlying data.** Misleading scales, truncated axes, or disproportionate visual elements can misrepresent information and lead to incorrect conclusions.
+
+### Progressive Disclosure Principle
+**Start with overview, allow drilling down to details.** Users often need both high-level insights and specific data points. Charts should support multiple levels of detail without overwhelming the initial view.
+
+### Context Principle
+**Provide sufficient context for data interpretation.** Charts without proper labels, legends, or reference points leave users guessing about meaning and significance.
+
+## Best Practices
+
+*Purpose: Apply design principles through specific, actionable guidelines that prevent common chart design mistakes.*
+
+### Choosing Appropriate Chart Types
+
+**Why this matters:** Wrong chart types can obscure patterns or create false impressions. Users make decisions based on visual patterns, so the chart type must match the data relationship being communicated.
+
+### Using Color Effectively
+
+**Why this matters:** Color carries meaning in data visualization. Inconsistent or inappropriate color usage can confuse users or make charts inaccessible to users with color vision differences.
+
+### Labeling and Legends
+
+**Why this matters:** Charts without clear labels force users to guess what data represents. Ambiguous or missing labels create cognitive load and reduce user confidence in the information.
+
+## Implementation
+
+*Purpose: Provide developers with practical implementation guidance and common usage patterns, not exhaustive technical reference (see Storybook for complete API docs).*
+
+<InlineNotification kind="warning">
+Charts component is currently in development. Implementation details will be available in future releases.
+</InlineNotification>
+
+### Getting Started
+
+```bash
+npm install @inform-elevate/elevate-core-ui
+```
+
+```javascript
+// Import all components
+import '@inform-elevate/elevate-core-ui';
+
+// Or import specific components  
+import '@inform-elevate/elevate-core-ui/dist/components/charts/charts.js';
+```
+
+### Planned Usage Patterns
+
+```html
+<!-- Line chart for time series data -->
+<elvt-chart type="line" data="..." title="Revenue Over Time">
+</elvt-chart>
+
+<!-- Bar chart for category comparison -->
+<elvt-chart type="bar" data="..." title="Sales by Region">
+</elvt-chart>
+
+<!-- Pie chart for part-to-whole -->
+<elvt-chart type="pie" data="..." title="Market Share">
+</elvt-chart>
+```
+
+### Key Properties
+
+The most commonly planned properties for design and development:
+
+<PageTable>
+
+| Property | Options | Description |
+|----------|---------|-------------|
+| `type` | `line`, `bar`, `pie`, `area`, `scatter` | Chart visualization type |
+| `data` | Array/Object | Data source for the chart |  
+| `title` | String | Chart title for context |
+| `theme` | `light` (default), `dark` | Visual theme variant |
+| `responsive` | `true` (default), `false` | Whether chart adapts to container size |
+| `interactive` | `true` (default), `false` | Enable hover and interaction features |
+
+</PageTable>
+
+*For complete API reference including all properties, events, and methods, see the [Storybook documentation](storybook-url).*
+
+## Interactive Examples
+
+*Purpose: Allow designers and developers to test chart behavior and copy working code for their projects.*
+
+<InlineNotification kind="info">
+Interactive examples will be available when the Charts component is implemented. Check back in future releases for live demonstrations.
+</InlineNotification>
+
+## Accessibility
+
+*Purpose: Ensure your chart implementations are usable by all users, including those with disabilities.*
+
+### Essential Accessibility Practices
+
+**Provide alternative data representations:**
+- Include data tables as alternatives to visual charts
+- Offer text summaries of key insights
+- Consider sonification for screen reader users
+
+**Use sufficient color contrast:**
+- Chart elements must meet 3:1 contrast ratio minimum
+- Don't rely solely on color to convey information
+- Include patterns or textures alongside color coding
+
+**Keyboard navigation support:**
+- Interactive chart elements should be keyboard accessible
+- Provide focus indicators for interactive data points
+- Enable data exploration without mouse interaction
+
+**Screen reader compatibility:**
+- Use ARIA labels to describe chart content
+- Provide structured markup for data relationships
+- Include alt text that summarizes chart insights
+
+## Changelog
+
+*Purpose: Track component evolution and help teams understand what changed between versions.*
+
+### Planned Releases
+
+**Version 0.1.0 (Planned)**
+- **New**: Initial Charts component implementation
+- **New**: Line, bar, and pie chart types
+- **New**: Responsive design and mobile optimization
+- **New**: Accessibility features and ARIA support
+
+**Version 0.0.26-alpha (July 16, 2025)**
+- Current version - Charts component in development planning phase

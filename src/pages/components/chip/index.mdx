@@ -3,39 +3,92 @@ title: Chip
 description: Chips represent small pieces of information, selections, or actions. They provide compact ways to display attributes, tags, or interactive elements.
 ---
 
+import LiveExample from '../../../gatsby-theme-carbon/components/LiveExample';
+import Code from 'gatsby-theme-carbon/src/components/Code';
+import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
+import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
+import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
+import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+
 <PageDescription>
 
-Chips are compact elements that represent input, attributes, or actions. The ELEVATE Chip component provides consistent styling for tags, filters, selections, and small interactive elements across all INFORM applications.
+Chips are compact elements that help users manage selections, filters, and tags efficiently. The ELEVATE Chip component helps designers and developers create consistent, accessible interfaces for content organization and user interactions.
 
 </PageDescription>
 
 <AnchorLinks>
+  <AnchorLink>Overview</AnchorLink>
   <AnchorLink>Variations</AnchorLink>
-  <AnchorLink>Design Guidelines</AnchorLink>  
-  <AnchorLink>Code Reference</AnchorLink>
+  <AnchorLink>Design Principles</AnchorLink>
+  <AnchorLink>Best Practices</AnchorLink>
+  <AnchorLink>Implementation</AnchorLink>
+  <AnchorLink>Interactive Examples</AnchorLink>
   <AnchorLink>Accessibility</AnchorLink>
   <AnchorLink>Changelog</AnchorLink>
 </AnchorLinks>
 
+## Overview
+
+*Purpose: Establish context and help designers/developers understand when and why to use this component.*
+
+### When to Use Chips
+- **Tags and labels**: Categorizing or labeling content for easy identification
+- **Active filters**: Showing applied search or content filters with remove options
+- **User selections**: Displaying chosen options from multi-select interactions  
+- **Compact actions**: Space-constrained interactive elements for secondary actions
+- **Status indicators**: Quick status communication with dismissible options
+
+### When NOT to Use Chips
+- **Primary actions**: Use Button component for main interactions users need to take
+- **Long text content**: Use appropriate text components for substantial information
+- **Complex information**: Use Card or other layout components for detailed data
+- **Navigation**: Use Link or navigation components for page transitions
+
 ## Variations
 
-### Input Chip
-Represents user selections or entered data that can be removed.
+*Purpose: Show designers all available visual options and their semantic meaning to make informed design decisions.*
 
-### Filter Chip
-Interactive chip used for filtering content with active/inactive states.
+### Filter Chips
 
-### Choice Chip
-Selectable chip for single or multiple choice selections.
+Filter chips help users refine content with clear active/inactive states.
 
-### Action Chip
-Triggers actions when clicked, similar to a compact button.
+<LiveExample 
+  title="Filter Chip Examples" 
+  htmlCode={`<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <elvt-chip variant="filter">All Items</elvt-chip>
+  <elvt-chip variant="filter" selected>Active Filter</elvt-chip>
+  <elvt-chip variant="filter">Another Filter</elvt-chip>
+  <elvt-chip variant="filter" selected>Selected Filter</elvt-chip>
+</div>`}
+/>
 
-### Avatar Chip
-Chip with user avatar or icon for person-related actions.
+### Tag Chips
 
-### Status Chip
-Indicates status or state with semantic colors and labels.
+Tag chips represent categories, labels, or user selections with dismissible options.
+
+<LiveExample 
+  title="Tag Chip Examples" 
+  htmlCode={`<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <elvt-chip dismissible>JavaScript</elvt-chip>
+  <elvt-chip dismissible>React</elvt-chip>
+  <elvt-chip dismissible>Design System</elvt-chip>
+  <elvt-chip dismissible color="primary">Featured</elvt-chip>
+</div>`}
+/>
+
+### Status Chips
+
+Status chips communicate states with semantic colors and clear labels.
+
+<LiveExample 
+  title="Status Chip Examples" 
+  htmlCode={`<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+  <elvt-chip color="success">Active</elvt-chip>
+  <elvt-chip color="warning">Pending</elvt-chip>
+  <elvt-chip color="error">Failed</elvt-chip>
+  <elvt-chip>Draft</elvt-chip>
+</div>`}
+/>
 
 ## Design Guidelines
 
@@ -174,22 +227,19 @@ npm install @inform-elevate/elevate-core-ui
 
 ## Changelog
 
-### Version 1.0.0 (Planned - November 2025)
-- Production-ready release
-- Full accessibility compliance
-- Advanced chip interactions
+*Purpose: Track component evolution and help teams understand what changed between versions.*
 
-### Version 0.3.0 (Planned - September 2025)
-- Beta release with intensive testing
-- Enhanced selection patterns
-- Improved avatar integration
+### Version 0.0.26-alpha (July 16, 2025)
+- Current version in active development
 
-### Version 0.2.0 (Planned - July 2025)
-- Updated component documentation
-- Additional chip variants
-- Better group management
+### Version 0.0.17-alpha (June 5, 2025)
+- **Enhanced**: Adjust/Revisit Chip Component Styles
 
-### Version 0.1.0 (Planned - May 2025)
-- Initial alpha release
-- Basic chip functionality
-- Core dismissible and clickable states
+### Version 0.0.15-alpha (May 23, 2025)
+- **Fixed**: Update Design Tokens, Higher Contrast for Badges/Chips
+
+### Version 0.0.13-alpha (May 16, 2025)
+- **New**: Add Elevate Chip (major implementation)
+
+### Version 0.0.1-alpha (March 14, 2025)
+- **New**: Add Chip Component (initial implementation)
