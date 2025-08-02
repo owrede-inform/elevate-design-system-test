@@ -63,6 +63,7 @@ const LiveExample = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
+<<<<<<< HEAD
     // Load ELEVATE components and dependencies
     const loadComponents = () => {
       // Check if components are already loaded
@@ -158,6 +159,20 @@ const LiveExample = ({
     };
     
     loadComponents();
+=======
+    // ELEVATE components are now imported via npm, so they should be available
+    // Just wait a moment for them to register
+    const checkComponents = () => {
+      if (window.customElements && window.customElements.get('elvt-button')) {
+        setIsLoaded(true);
+      } else {
+        // Wait a bit longer and try again
+        setTimeout(checkComponents, 100);
+      }
+    };
+    
+    checkComponents();
+>>>>>>> origin/main
 
     // Cleanup function
     return () => {

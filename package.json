@@ -46,11 +46,5 @@
     "eslint-plugin-mdx": "^3.6.2",
     "gatsby-plugin-eslint": "^4.0.4",
     "rimraf": "^6.0.1"
-  },
-  "_temporarilyRemovedDependencies": {
-    "_comment": "These packages were temporarily removed due to GitHub Actions authentication issues with private packages",
-    "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
-    "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
-    "@inform-elevate/elevate-design-tokens": "^1.0.0"
   }
 }
