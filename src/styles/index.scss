@@ -93,101 +93,113 @@ code, pre {
   border-bottom: 1px solid var(--elevate-primary-hover);
 }
 
-// Navigation customization - Homepage Dark Sidebar
-// Target the homepage specifically (uses g90 theme)
-.theme--g90 {
-  .cds--side-nav.cds--side-nav--website--light {
-    background-color: #262626 !important; // Dark gray background for homepage
-    border-right: 1px solid #393939 !important; // Darker border
+// Homepage Dark Sidebar - Force dark theme on homepage
+// Use multiple targeting approaches to ensure the sidebar is dark
+.cds--side-nav.cds--side-nav--website--light,
+.cds--side-nav.cds--side-nav--website,
+.cds--side-nav {
+  background-color: #262626 !important; // Force dark background
+  border-right: 1px solid #393939 !important;
+}
+
+// Dark sidebar navigation background
+.cds--side-nav--website--light .cds--side-nav__navigation,
+.cds--side-nav--website .cds--side-nav__navigation,
+.cds--side-nav__navigation {
+  background-color: #262626 !important;
+}
+
+// Force all sidebar text to be light colored
+.cds--side-nav .cds--side-nav__item .cds--side-nav__submenu,
+.cds--side-nav .cds--side-nav__item > a.cds--side-nav__link,
+.cds--side-nav a.cds--side-nav__link > .cds--side-nav__link-text,
+.cds--side-nav--website--light .cds--side-nav__item .cds--side-nav__submenu,
+.cds--side-nav--website--light .cds--side-nav__item > a.cds--side-nav__link,
+.cds--side-nav--website--light a.cds--side-nav__link > .cds--side-nav__link-text {
+  color: #f4f4f4 !important;
+}
+
+// Force all sidebar icons to be light colored
+.cds--side-nav .cds--side-nav__icon > svg,
+.cds--side-nav--website--light .cds--side-nav__icon > svg {
+  fill: #f4f4f4 !important;
+}
+
+// Medium gray hover states
+.cds--side-nav .cds--side-nav__item:not(.cds--side-nav__item--active):hover > .cds--side-nav__submenu,
+.cds--side-nav .cds--side-nav__menu a.cds--side-nav__link:not(.cds--side-nav__link--current):not([aria-current='page']):hover,
+.cds--side-nav .cds--side-nav__item:not(.cds--side-nav__item--active):hover > .cds--side-nav__link,
+.cds--side-nav--website--light .cds--side-nav__item:not(.cds--side-nav__item--active):hover > .cds--side-nav__submenu,
+.cds--side-nav--website--light .cds--side-nav__menu a.cds--side-nav__link:not(.cds--side-nav__link--current):not([aria-current='page']):hover,
+.cds--side-nav--website--light .cds--side-nav__item:not(.cds--side-nav__item--active):hover > .cds--side-nav__link {
+  background-color: #4a4a4a !important; // Medium gray hover
+  color: #f4f4f4 !important;
+
+  .cds--side-nav__link-text {
+    color: #f4f4f4 !important;
   }
 
-  // Dark sidebar navigation background
-  .cds--side-nav--website--light .cds--side-nav__navigation {
-    background-color: #262626 !important;
-  }
-
-  // Dark sidebar text colors
-  .cds--side-nav.cds--side-nav--website--light
-    .cds--side-nav__item
-    .cds--side-nav__submenu,
-  .cds--side-nav--website--light .cds--side-nav__item > a.cds--side-nav__link,
-  .cds--side-nav.cds--side-nav--website--light
-    a.cds--side-nav__link
-    > .cds--side-nav__link-text {
-    color: #f4f4f4 !important; // Light text for dark background
-  }
-
-  // Dark sidebar icons
-  .cds--side-nav--website--light .cds--side-nav__icon > svg {
+  .cds--side-nav__icon svg {
     fill: #f4f4f4 !important;
   }
+}
 
-  // Dark sidebar hover states
-  .cds--side-nav--website--light
-    .cds--side-nav__item:not(.cds--side-nav__item--active):hover
-    > .cds--side-nav__submenu,
-  .cds--side-nav--website--light
-    .cds--side-nav__menu
-    a.cds--side-nav__link:not(.cds--side-nav__link--current):not(
-      [aria-current='page']
-    ):hover,
-  .cds--side-nav--website--light
-    .cds--side-nav__item:not(.cds--side-nav__item--active):hover
-    > .cds--side-nav__link {
-    background-color: var(--elevate-primary) !important; // INFORM Petrol hover
-    color: white !important;
-
-    .cds--side-nav__link-text {
-      color: white !important;
-    }
-
-    .cds--side-nav__icon svg {
-      fill: white !important;
-    }
+// Active/Selected states - darker gray background
+.cds--side-nav a.cds--side-nav__link[aria-current='page'],
+.cds--side-nav .cds--side-nav__menu a.cds--side-nav__link--current,
+.cds--side-nav .cds--side-nav__menu a.cds--side-nav__link[aria-current='page'],
+.cds--side-nav--website--light a.cds--side-nav__link[aria-current='page'],
+.cds--side-nav--website--light .cds--side-nav__menu a.cds--side-nav__link--current,
+.cds--side-nav--website--light .cds--side-nav__menu a.cds--side-nav__link[aria-current='page'] {
+  background-color: #393939 !important; // Darker gray for selected
+  color: #ffffff !important;
+  
+  .cds--side-nav__link-text {
+    color: #ffffff !important;
   }
-
-  // Active states for dark sidebar
-  .cds--side-nav.cds--side-nav--website--light
-    a.cds--side-nav__link[aria-current='page'],
-  .cds--side-nav--website--light
-    .cds--side-nav__menu
-    a.cds--side-nav__link--current,
-  .cds--side-nav--website--light
-    .cds--side-nav__menu
-    a.cds--side-nav__link[aria-current='page'] {
-    background-color: #393939 !important; // Slightly lighter gray for active
+  
+  .cds--side-nav__icon svg {
+    fill: #ffffff !important;
   }
+}
 
-  // Active submenu states
-  .cds--side-nav.cds--side-nav--website--light
-    .cds--side-nav__item.cds--side-nav__item--active
-    .cds--side-nav__submenu[aria-expanded='false'] {
-    background-color: #393939 !important;
-    
-    &::before {
-      background-color: var(--elevate-primary) !important; // INFORM Petrol accent
-    }
+// Active submenu states with INFORM Petrol accent indicator
+.cds--side-nav .cds--side-nav__item.cds--side-nav__item--active .cds--side-nav__submenu[aria-expanded='false'],
+.cds--side-nav--website--light .cds--side-nav__item.cds--side-nav__item--active .cds--side-nav__submenu[aria-expanded='false'] {
+  background-color: #393939 !important;
+  color: #ffffff !important;
+  
+  // Petrol indicator on the left
+  &::before {
+    background-color: var(--elevate-primary) !important; // INFORM Petrol indicator
   }
+  
+  .cds--side-nav__link-text {
+    color: #ffffff !important;
+  }
+  
+  .cds--side-nav__icon svg {
+    fill: #ffffff !important;
+  }
+}
 
-  // Expanded submenu styling
-  .cds--side-nav.cds--side-nav--website--light
-    .cds--side-nav__item
-    .cds--side-nav__submenu[aria-expanded='true'] {
-    background-color: #393939 !important;
+// Expanded submenu styling
+.cds--side-nav .cds--side-nav__item .cds--side-nav__submenu[aria-expanded='true'],
+.cds--side-nav--website--light .cds--side-nav__item .cds--side-nav__submenu[aria-expanded='true'] {
+  background-color: #393939 !important;
+  color: #ffffff !important;
+
+  &:hover {
+    background-color: #4a4a4a !important; // Medium gray hover for expanded items
     color: #f4f4f4 !important;
-
-    &:hover {
-      background-color: var(--elevate-primary) !important;
-      color: white !important;
-
-      .cds--side-nav__icon svg {
-        fill: white !important;
-      }
-    }
 
     .cds--side-nav__icon svg {
       fill: #f4f4f4 !important;
     }
+  }
+
+  .cds--side-nav__icon svg {
+    fill: #ffffff !important;
   }
 }
 
@@ -207,11 +219,29 @@ code, pre {
 }
 
 // Override IBM Blue navigation indicator with INFORM Petrol
+// This targets the exact selector from _website-side-nav.scss line 57 that uses $interactive-01
 .cds--side-nav.cds--side-nav--website--light
   .cds--side-nav__item.cds--side-nav__item--active
   .cds--side-nav__submenu[aria-expanded='false'] {
   &::before {
     background-color: var(--elevate-primary) !important; // INFORM Petrol instead of IBM Blue
+  }
+}
+
+// Additional override for any other hardcoded $interactive-01 usage in sidebar
+.cds--side-nav.cds--side-nav--website--light
+  .cds--side-nav__item.cds--side-nav__item--active
+  .cds--side-nav__submenu {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: var(--elevate-primary) !important; // Force INFORM Petrol over IBM Blue
   }
 }
 

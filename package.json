@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "dev:clean": "gatsby clean && gatsby develop -H 0.0.0.0",
-    "dev:fast": "gatsby develop --preserve-cache",
+    "dev:fast": "echo 'Starting fast dev server (preserving image cache)' && gatsby develop",
     "build": "gatsby build",
     "build:clean": "yarn clean && gatsby build",
     "serve": "gatsby serve",
