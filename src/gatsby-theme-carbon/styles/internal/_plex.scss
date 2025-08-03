@@ -1,5 +1,6 @@
 // Inter Variable Font for ELEVATE Design System
 // Using local font files to avoid 404 errors and improve performance
+// Using pathPrefix-aware URLs for GitHub Pages deployment
 
 // Inter Variable Font - Regular
 @font-face {
@@ -7,8 +8,8 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/Inter-Variable.woff2') format('woff2'),
-       url('/fonts/Inter-Variable.ttf') format('truetype');
+  src: url('/elevate-design-system-test/fonts/Inter-Variable.woff2') format('woff2'),
+       url('/elevate-design-system-test/fonts/Inter-Variable.ttf') format('truetype');
 }
 
 // Inter Variable Font - Italic
@@ -17,8 +18,8 @@
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/Inter-Italic-Variable.woff2') format('woff2'),
-       url('/fonts/Inter-Italic-Variable.ttf') format('truetype');
+  src: url('/elevate-design-system-test/fonts/Inter-Italic-Variable.woff2') format('woff2'),
+       url('/elevate-design-system-test/fonts/Inter-Italic-Variable.ttf') format('truetype');
 }
 
 // Standard fallback font family for non-variable font support
@@ -27,8 +28,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/Inter-Variable.woff2') format('woff2'),
-       url('/fonts/Inter-Variable.ttf') format('truetype');
+  src: url('/elevate-design-system-test/fonts/Inter-Variable.woff2') format('woff2'),
+       url('/elevate-design-system-test/fonts/Inter-Variable.ttf') format('truetype');
 }
 
 // Base font stack with proper fallbacks
