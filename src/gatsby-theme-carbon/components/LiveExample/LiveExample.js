@@ -149,7 +149,7 @@ const LiveExample = ({
         typeof window.__GATSBY_BUILD__ !== 'undefined'
       );
 
-    // Dynamically load ELEVATE components using script injection
+    // Dynamically import ELEVATE components for better Gatsby compatibility
     const loadElevateComponents = async () => {
       try {
         // First load the design tokens CSS
@@ -161,37 +161,36 @@ const LiveExample = ({
           console.log('ELEVATE design tokens CSS loaded');
         }
         
-        // Try to load ELEVATE components from unpkg as fallback
-        // This avoids webpack bundling issues entirely
-        if (!document.querySelector('script[src*="elevate-core-ui"]')) {
-          const script = document.createElement('script');
-          script.type = 'module';
-          script.src = 'https://unpkg.com/@inform-elevate/elevate-core-ui@latest/dist/elevate-core-ui/elevate-core-ui.esm.js';
-          script.onload = () => {
-            console.log('ELEVATE components loaded from CDN');
-            setTimeout(() => {
-              if (window.customElements && window.customElements.get('elvt-button')) {
-                setIsLoaded(true);
-              } else {
-                console.warn('ELEVATE components not registered, using fallback');
-                setIsLoaded(true);
-              }
-            }, 500);
-          };
-          script.onerror = () => {
-            console.warn('Failed to load ELEVATE components from CDN, using fallback');
+        // Dynamic import to avoid SSR issues
+        await import('@inform-elevate/elevate-core-ui');
+        console.log('ELEVATE components imported successfully');
+        
+        // Check for component registration
+        const checkComponents = () => {
+          if (window.customElements && window.customElements.get('elvt-button')) {
             setIsLoaded(true);
-          };
-          document.head.appendChild(script);
-        } else {
-          // Script already loaded, check components
-          setTimeout(() => {
-            setIsLoaded(true);
-          }, 100);
-        }
+          } else {
+            // Wait a bit longer and try again
+            setTimeout(checkComponents, 100);
+          }
+        };
+        
+        checkComponents();
       } catch (error) {
-        console.warn('ELEVATE components unavailable, falling back to code display only:', error.message);
-        setIsLoaded(true);
+        console.error('Failed to load ELEVATE components:', error);
+        // Try loading from CDN as fallback
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'https://unpkg.com/@inform-elevate/elevate-core-ui@latest/dist/elevate-core-ui/elevate-core-ui.esm.js';
+        script.onload = () => {
+          console.log('ELEVATE components loaded from CDN fallback');
+          setTimeout(() => setIsLoaded(true), 500);
+        };
+        script.onerror = () => {
+          console.warn('Failed to load ELEVATE components from CDN');
+          setIsLoaded(true);
+        };
+        document.head.appendChild(script);
       }
     };
     
@@ -225,26 +224,10 @@ const LiveExample = ({
           window.customElements && 
           window.customElements.get('elvt-button');
         
-        // If no ELEVATE components available, show placeholder message
+        // If no ELEVATE components available, show loading message but still render HTML
         if (!hasElevateComponents) {
-          exampleContainer.innerHTML = `
-            <div style="
-              padding: 1rem; 
-              background: #f8f9fa; 
-              border: 1px solid #dee2e6; 
-              border-radius: 4px; 
-              color: #6c757d; 
-              text-align: center;
-              font-style: italic;
-            ">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;">
-                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-              </svg>
-              Interactive example will be available when ELEVATE components are loaded
-            </div>
-          `;
-          containerRef.current.appendChild(exampleContainer);
-          return;
+          console.log('ELEVATE components not yet available, rendering HTML directly');
+          // Still render the HTML code directly even without components
         }
         
         // Process HTML code to inject MDI icons

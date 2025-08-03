@@ -33,38 +33,57 @@ jobs:
 
       - name: Configure npm for GitHub Packages
         run: |
+          # Configure npm registry for @inform-elevate scope
           echo "@inform-elevate:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-          # Also set up for yarn
+          
+          # Try to use ELEVATE_TOKEN first, fallback to GITHUB_TOKEN
+          if [ -n "${{ secrets.ELEVATE_TOKEN }}" ]; then
+            echo "Using ELEVATE_TOKEN for authentication"
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.ELEVATE_TOKEN }}" >> ~/.npmrc
+            export NODE_AUTH_TOKEN="${{ secrets.ELEVATE_TOKEN }}"
+          else
+            echo "Using GITHUB_TOKEN for authentication"
+            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+            export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          fi
+          
+          # Configure yarn for GitHub Packages
           echo 'npmScopes:' > .yarnrc.yml
           echo '  inform-elevate:' >> .yarnrc.yml
           echo '    npmRegistryServer: "https://npm.pkg.github.com"' >> .yarnrc.yml
-          echo '    npmAuthToken: "${NODE_AUTH_TOKEN}"' >> .yarnrc.yml
-          # Set build environment flag for Gatsby
+          echo "    npmAuthToken: \"${NODE_AUTH_TOKEN}\"" >> .yarnrc.yml
+          
+          # Test authentication
+          echo "Testing authentication..."
+          npm whoami --registry=https://npm.pkg.github.com
+          
           echo "GATSBY_BUILD=true" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: |
-          # Try to install with auth first
-          if ! yarn install --frozen-lockfile; then
-            echo "Failed to install with private packages, creating fallback package.json..."
-            # Create a backup
-            cp package.json package.json.backup
-            # Remove private packages from package.json for CI
-            npm pkg delete dependencies.@inform-elevate/elevate-cdk
-            npm pkg delete dependencies.@inform-elevate/elevate-core-ui  
-            npm pkg delete dependencies.@inform-elevate/elevate-design-tokens
-            # Remove related dependencies that might break
-            npm pkg delete dependencies.@floating-ui/utils
-            npm pkg delete dependencies.composed-offset-position
-            npm pkg delete dependencies.qr-creator
-            echo "Attempting installation without private packages..."
-            yarn install --frozen-lockfile
+          # Set the correct NODE_AUTH_TOKEN
+          if [ -n "${{ secrets.ELEVATE_TOKEN }}" ]; then
+            export NODE_AUTH_TOKEN="${{ secrets.ELEVATE_TOKEN }}"
+          else
+            export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          echo "Attempting to install dependencies with authentication..."
+          echo "Yarn config:"
+          cat .yarnrc.yml
+          echo "NPM config:"
+          cat ~/.npmrc
+          
+          # Try to install with verbose output for debugging
+          if yarn install --frozen-lockfile --verbose; then
+            echo "✅ Successfully installed all dependencies including private packages"
+            yarn list --pattern "@inform-elevate/*"
+          else
+            echo "❌ Failed to install dependencies with private packages"
+            echo "Error details:"
+            yarn install --frozen-lockfile --verbose 2>&1 | tail -20
+            exit 1
+          fi
 
       - name: Build with Gatsby
         run: yarn build --prefix-paths
