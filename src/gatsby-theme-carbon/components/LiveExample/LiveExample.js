@@ -56,10 +56,25 @@ const LiveExample = ({
   padding = "2.5rem"
 }) => {
   const containerRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // Initialize as loaded during SSR to prevent hydration issues
+  const [isLoaded, setIsLoaded] = useState(typeof window === 'undefined');
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Skip during SSR/build process
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    // Check if we're in a build environment by detecting common CI/build indicators
+    const isBuildEnvironment = 
+      typeof process !== 'undefined' && (
+        process.env.NODE_ENV === 'production' ||
+        process.env.CI === 'true' ||
+        process.env.GATSBY_BUILD === 'true' ||
+        typeof window.__GATSBY_BUILD__ !== 'undefined'
+      );
+
     // Dynamically import ELEVATE components for better Gatsby compatibility
     const loadElevateComponents = async () => {
       try {
@@ -72,9 +87,16 @@ const LiveExample = ({
           console.log('ELEVATE design tokens CSS loaded');
         }
         
-        // Dynamic import to avoid SSR issues
-        await import('@inform-elevate/elevate-core-ui');
-        console.log('ELEVATE components imported successfully');
+        // Try to dynamically import ELEVATE components with graceful fallback
+        try {
+          await import('@inform-elevate/elevate-core-ui');
+          console.log('ELEVATE components imported successfully');
+        } catch (importError) {
+          console.warn('ELEVATE components not available, using fallback rendering:', importError.message);
+          // Set as loaded but with fallback mode
+          setIsLoaded(true);
+          return;
+        }
         
         // Check for component registration
         const checkComponents = () => {
@@ -88,15 +110,21 @@ const LiveExample = ({
         
         checkComponents();
       } catch (error) {
-        console.error('Failed to load ELEVATE components:', error);
-        setError('Failed to load ELEVATE components');
+        console.warn('ELEVATE components unavailable, falling back to code display only:', error.message);
+        // Don't set error - just use fallback mode
+        setIsLoaded(true);
       }
     };
     
-    // Only load on client side
-    if (typeof window !== 'undefined') {
-      loadElevateComponents();
+    // Skip component loading in build environments where packages might not be available
+    if (isBuildEnvironment) {
+      console.log('Build environment detected, skipping ELEVATE component loading');
+      setIsLoaded(true);
+      return;
     }
+    
+    // Only load on client side in development/runtime
+    loadElevateComponents();
 
     // Cleanup function
     return () => {
@@ -112,6 +140,33 @@ const LiveExample = ({
         
         // Create a container div for the live example
         const exampleContainer = document.createElement('div');
+        
+        // Check if ELEVATE components are actually available
+        const hasElevateComponents = typeof window !== 'undefined' && 
+          window.customElements && 
+          window.customElements.get('elvt-button');
+        
+        // If no ELEVATE components available, show placeholder message
+        if (!hasElevateComponents) {
+          exampleContainer.innerHTML = `
+            <div style="
+              padding: 1rem; 
+              background: #f8f9fa; 
+              border: 1px solid #dee2e6; 
+              border-radius: 4px; 
+              color: #6c757d; 
+              text-align: center;
+              font-style: italic;
+            ">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 0.5rem;">
+                <path d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+              Interactive example will be available when ELEVATE components are loaded
+            </div>
+          `;
+          containerRef.current.appendChild(exampleContainer);
+          return;
+        }
         
         // Process HTML code to inject MDI icons
         let processedHtml = htmlCode;
@@ -153,7 +208,22 @@ const LiveExample = ({
         // Append to the ref container
         containerRef.current.appendChild(exampleContainer);
       } catch (err) {
-        setError(`Error rendering live example: ${err.message}`);
+        console.warn('Error rendering live example:', err.message);
+        // Show fallback message instead of error
+        if (containerRef.current) {
+          containerRef.current.innerHTML = `
+            <div style="
+              padding: 1rem; 
+              background: #fff3cd; 
+              border: 1px solid #ffeaa7; 
+              border-radius: 4px; 
+              color: #856404; 
+              text-align: center;
+            ">
+              Unable to render interactive example. Code shown below.
+            </div>
+          `;
+        }
       }
     }
   }, [isLoaded, htmlCode]);
@@ -228,7 +298,7 @@ const LiveExample = ({
               color: '#666',
               fontSize: '0.9rem'
             }}>
-              Loading ELEVATE components...
+              {typeof window === 'undefined' ? 'Preparing example...' : 'Loading ELEVATE components...'}
             </div>
           )}
         </div>

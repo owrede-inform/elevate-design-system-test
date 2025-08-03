@@ -40,6 +40,8 @@ jobs:
           echo '  inform-elevate:' >> .yarnrc.yml
           echo '    npmRegistryServer: "https://npm.pkg.github.com"' >> .yarnrc.yml
           echo '    npmAuthToken: "${NODE_AUTH_TOKEN}"' >> .yarnrc.yml
+          # Set build environment flag for Gatsby
+          echo "GATSBY_BUILD=true" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -69,6 +71,7 @@ jobs:
         env:
           NODE_ENV: production
           CI: true
+          GATSBY_BUILD: true
           GATSBY_CPU_COUNT: 2
 
       - name: Setup Pages
