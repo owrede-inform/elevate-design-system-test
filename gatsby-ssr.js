@@ -23,16 +23,25 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
   ];
 
   setHeadComponents([
-    // Font preloads
+    // Font preloads - highest priority
     ...fontPreloads.map((font, index) => (
       <link key={`font-preload-${index}`} {...font} />
     )),
     
-    // Critical CSS for fonts loaded synchronously
+    // Critical CSS for fonts loaded synchronously - prevent FOUT
     <style
       key="critical-fonts"
       dangerouslySetInnerHTML={{
         __html: `
+          /* Font loading optimization - prevent FOUT */
+          html {
+            font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          }
+          
+          /* Prevent font loading cascade by setting base fonts immediately */
+          body, * {
+            font-family: inherit;
+          }
           /* Critical font face declarations for Inter */
           @font-face {
             font-family: 'Inter Var';

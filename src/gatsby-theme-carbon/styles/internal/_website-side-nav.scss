@@ -243,6 +243,14 @@ a.cds--side-nav__link > .cds--side-nav__icon {
 }
 
 .cds--side-nav.cds--side-nav--website + div::before {
+  // NUCLEAR APPROACH: Completely disable the overlay pseudo-element
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  
+  // Original styles commented out to prevent overlay
+  /*
   content: '';
   visibility: hidden;
   opacity: 0;
@@ -255,6 +263,7 @@ a.cds--side-nav__link > .cds--side-nav__icon {
   height: 100vh;
   width: 100vw;
   z-index: 100;
+  */
 }
 
 .cds--side-nav.cds--side-nav--website:not(.side-nav__closed) {
@@ -265,8 +274,17 @@ a.cds--side-nav__link > .cds--side-nav__icon {
   }
 
   & + div::before {
+    // NUCLEAR APPROACH: Never show the overlay even when nav is open
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    
+    // Original styles commented out
+    /*
     opacity: 1;
     visibility: initial;
+    */
   }
 
   @include breakpoint('lg') {
@@ -275,8 +293,17 @@ a.cds--side-nav__link > .cds--side-nav__icon {
     }
 
     & + div::before {
+      // NUCLEAR APPROACH: Ensure overlay is never visible at any breakpoint
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      
+      // Original styles commented out
+      /*
       visibility: hidden;
       opacity: 0;
+      */
     }
   }
 }

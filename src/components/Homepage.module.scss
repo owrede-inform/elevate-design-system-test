@@ -26,3 +26,51 @@
     height: 100%;
   }
 }
+
+// Responsive typography for homepage banner text
+:global(.homepage-title) {
+  color: #262626 !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  line-height: 1.1 !important;
+  
+  // Responsive font sizes
+  font-size: 2.5rem !important; // Mobile first
+  
+  @media (min-width: 576px) {
+    font-size: 3rem !important; // Small tablets
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 3.5rem !important; // Tablets
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 4rem !important; // Desktop
+  }
+}
+
+:global(.homepage-subtitle) {
+  color: #393939 !important;
+  font-weight: 500 !important;
+  max-width: 600px !important;
+  line-height: 1.4 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
+  margin-bottom: 3rem !important;
+  
+  // Responsive font sizes
+  font-size: 1.1rem !important; // Mobile first
+  
+  @media (min-width: 576px) {
+    font-size: 1.25rem !important; // Small tablets
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 1.4rem !important; // Tablets
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.5rem !important; // Desktop
+  }
+}

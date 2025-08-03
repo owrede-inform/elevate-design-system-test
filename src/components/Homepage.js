@@ -45,24 +45,10 @@ const BannerText = () => (
     textAlign: 'left',
     textShadow: '0 2px 4px rgba(0,0,0,0.3)'
   }}>
-    <h1 style={{ 
-      color: '#262626',
-      fontWeight: '700',
-      fontSize: '4rem',
-      marginBottom: '2rem',
-      textShadow: '0 2px 8px rgba(0,0,0,0.2)'
-    }}>
+    <h1 className="homepage-title">
       ELEVATE Design System
     </h1>
-    <p style={{ 
-      fontSize: '1.5rem', 
-      color: '#393939',
-      fontWeight: '500',
-      maxWidth: '600px',
-      lineHeight: '1.4',
-      textShadow: '0 1px 4px rgba(0,0,0,0.1)',
-      marginBottom: '3rem'
-    }}>
+    <p className="homepage-subtitle">
       Empowering INFORM teams to build the future of enterprise software
     </p>
   </div>

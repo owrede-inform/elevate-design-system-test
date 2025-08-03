@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 
 const FontLoader = () => {
   useEffect(() => {
+    // DISABLED: FontLoader is now handled by gatsby-ssr.js to prevent font loading cascade
+    // This prevents multiple font loading sources that cause visual flickering
+    console.log('FontLoader: Fonts are now handled by gatsby-ssr.js for optimal loading');
+    return;
+    
+    /* COMMENTED OUT TO PREVENT FONT LOADING CASCADE
     // Get the path prefix - try multiple methods to ensure we get it
     let pathPrefix = '';
     if (typeof window !== 'undefined') {
@@ -23,6 +29,7 @@ const FontLoader = () => {
     if (document.querySelector('style[data-font-loader]')) {
       return;
     }
+    */
     
     // Create dynamic font face CSS with correct paths and variable font support
     const fontCSS = `
