@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Code from '../Code/Code';
 
-// Import ELEVATE components
-import '@inform-elevate/elevate-core-ui';
-
 // MDI Icon Registry - Add common icons used in examples
 const MDI_ICONS = {
   'mdi:plus': '<path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />',
@@ -63,18 +60,43 @@ const LiveExample = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // ELEVATE components are now imported via npm, so they should be available
-    // Just wait a moment for them to register
-    const checkComponents = () => {
-      if (window.customElements && window.customElements.get('elvt-button')) {
-        setIsLoaded(true);
-      } else {
-        // Wait a bit longer and try again
-        setTimeout(checkComponents, 100);
+    // Dynamically import ELEVATE components for better Gatsby compatibility
+    const loadElevateComponents = async () => {
+      try {
+        // First load the design tokens CSS
+        if (!document.querySelector('link[href*="elevate-design-tokens"]')) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://unpkg.com/@inform-elevate/elevate-design-tokens@1.0.0/dist/light.css';
+          document.head.appendChild(link);
+          console.log('ELEVATE design tokens CSS loaded');
+        }
+        
+        // Dynamic import to avoid SSR issues
+        await import('@inform-elevate/elevate-core-ui');
+        console.log('ELEVATE components imported successfully');
+        
+        // Check for component registration
+        const checkComponents = () => {
+          if (window.customElements && window.customElements.get('elvt-button')) {
+            setIsLoaded(true);
+          } else {
+            // Wait a bit longer and try again
+            setTimeout(checkComponents, 100);
+          }
+        };
+        
+        checkComponents();
+      } catch (error) {
+        console.error('Failed to load ELEVATE components:', error);
+        setError('Failed to load ELEVATE components');
       }
     };
     
-    checkComponents();
+    // Only load on client side
+    if (typeof window !== 'undefined') {
+      loadElevateComponents();
+    }
 
     // Cleanup function
     return () => {

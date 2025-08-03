@@ -147,16 +147,10 @@ function ImageGallery({ children, className }) {
         isGalleryOpen &&
         !isMobile &&
         ReactDOM.createPortal(
-<<<<<<< HEAD
           <FocusTrapWrapper>
             <div
               role="group"
               tabIndex={0}
-=======
-          <FocusTrap>
-            <div
-              role="group"
->>>>>>> origin/main
               className={inDialogGalleryContainer}
               onKeyDown={onKeyDown}>
               <Row>
@@ -210,11 +204,7 @@ function ImageGallery({ children, className }) {
                 </Row>
               </Grid>
             </div>
-<<<<<<< HEAD
           </FocusTrapWrapper>,
-=======
-          </FocusTrap>,
->>>>>>> origin/main
           portalsNode
         )}
     </div>

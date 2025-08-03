@@ -32,15 +32,9 @@ export const NavContextProvider = ({ children }) => {
 
   const [leftNavScrollTop, setLeftNavScrollTop] = useState(0);
 
-<<<<<<< HEAD
   const toggleNavState = useCallback((nav, type) => {
     dispatch({ nav, type });
   }, [dispatch]);
-=======
-  const toggleNavState = (nav, type) => {
-    dispatch({ nav, type });
-  };
->>>>>>> origin/main
 
   const [isManagingFocus, setIsManagingFocus] = useState(false);
 

@@ -2,8 +2,7 @@
 // Note: Font faces are defined in gatsby-theme-carbon/styles/internal/_plex.scss
 // to avoid duplication and ensure proper loading
 
-// Import ELEVATE Design Tokens CSS (for custom properties)
-@import '@inform-elevate/elevate-design-tokens/dist/light.css';
+// ELEVATE Design Tokens CSS will be loaded via JavaScript to avoid SASS import issues
 
 // Import ELEVATE Design System Typography
 @import './elevate-typography.scss';
