@@ -75,7 +75,7 @@ const LiveExample = ({
         typeof window.__GATSBY_BUILD__ !== 'undefined'
       );
 
-    // Dynamically import ELEVATE components for better Gatsby compatibility
+    // Dynamically load ELEVATE components using script injection
     const loadElevateComponents = async () => {
       try {
         // First load the design tokens CSS
@@ -87,31 +87,36 @@ const LiveExample = ({
           console.log('ELEVATE design tokens CSS loaded');
         }
         
-        // Try to dynamically import ELEVATE components with graceful fallback
-        try {
-          await import('@inform-elevate/elevate-core-ui');
-          console.log('ELEVATE components imported successfully');
-        } catch (importError) {
-          console.warn('ELEVATE components not available, using fallback rendering:', importError.message);
-          // Set as loaded but with fallback mode
-          setIsLoaded(true);
-          return;
-        }
-        
-        // Check for component registration
-        const checkComponents = () => {
-          if (window.customElements && window.customElements.get('elvt-button')) {
+        // Try to load ELEVATE components from unpkg as fallback
+        // This avoids webpack bundling issues entirely
+        if (!document.querySelector('script[src*="elevate-core-ui"]')) {
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.src = 'https://unpkg.com/@inform-elevate/elevate-core-ui@latest/dist/elevate-core-ui/elevate-core-ui.esm.js';
+          script.onload = () => {
+            console.log('ELEVATE components loaded from CDN');
+            setTimeout(() => {
+              if (window.customElements && window.customElements.get('elvt-button')) {
+                setIsLoaded(true);
+              } else {
+                console.warn('ELEVATE components not registered, using fallback');
+                setIsLoaded(true);
+              }
+            }, 500);
+          };
+          script.onerror = () => {
+            console.warn('Failed to load ELEVATE components from CDN, using fallback');
             setIsLoaded(true);
-          } else {
-            // Wait a bit longer and try again
-            setTimeout(checkComponents, 100);
-          }
-        };
-        
-        checkComponents();
+          };
+          document.head.appendChild(script);
+        } else {
+          // Script already loaded, check components
+          setTimeout(() => {
+            setIsLoaded(true);
+          }, 100);
+        }
       } catch (error) {
         console.warn('ELEVATE components unavailable, falling back to code display only:', error.message);
-        // Don't set error - just use fallback mode
         setIsLoaded(true);
       }
     };
