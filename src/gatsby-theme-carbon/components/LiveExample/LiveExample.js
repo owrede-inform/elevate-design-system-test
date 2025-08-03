@@ -152,13 +152,21 @@ const LiveExample = ({
     // Dynamically import ELEVATE components for better Gatsby compatibility
     const loadElevateComponents = async () => {
       try {
-        // First load the design tokens CSS
+        // First load the design tokens CSS from local package
         if (!document.querySelector('link[href*="elevate-design-tokens"]')) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://unpkg.com/@inform-elevate/elevate-design-tokens@1.0.0/dist/light.css';
-          document.head.appendChild(link);
-          console.log('ELEVATE design tokens CSS loaded');
+          try {
+            // Try to import design tokens from local package first
+            const designTokensCSS = await import('@inform-elevate/elevate-design-tokens/dist/light.css');
+            console.log('ELEVATE design tokens CSS loaded from local package');
+          } catch (designTokensError) {
+            console.warn('Failed to load local design tokens, using unpkg fallback:', designTokensError.message);
+            // Fallback to unpkg
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://unpkg.com/@inform-elevate/elevate-design-tokens@1.0.0/dist/light.css';
+            document.head.appendChild(link);
+            console.log('ELEVATE design tokens CSS loaded from unpkg');
+          }
         }
         
         // Dynamic import to avoid SSR issues

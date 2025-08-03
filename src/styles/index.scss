@@ -7,6 +7,103 @@
 // Import ELEVATE Design System Typography
 @import './elevate-typography.scss';
 
+// GLOBAL FONT OVERRIDE - Ensure Inter is used everywhere except code
+// Override all Carbon theme font stacks specifically, but preserve monospace for code
+body,
+html,
+.cds--body,
+.cds--body-compact-01,
+.cds--body-compact-02,
+.cds--body-01,
+.cds--body-02,
+.cds--caption-01,
+.cds--caption-02,
+.cds--label-01,
+.cds--label-02,
+.cds--helper-text-01,
+.cds--helper-text-02,
+.cds--legal-01,
+.cds--legal-02,
+.cds--productive-heading-01,
+.cds--productive-heading-02,
+.cds--productive-heading-03,
+.cds--productive-heading-04,
+.cds--productive-heading-05,
+.cds--productive-heading-06,
+.cds--productive-heading-07,
+.cds--expressive-heading-01,
+.cds--expressive-heading-02,
+.cds--expressive-heading-03,
+.cds--expressive-heading-04,
+.cds--expressive-heading-05,
+.cds--expressive-heading-06,
+.cds--expressive-paragraph-01,
+.cds--quotation-01,
+.cds--quotation-02,
+.cds--display-01,
+.cds--display-02,
+.cds--display-03,
+.cds--display-04 {
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+// Ensure all interactive elements use Inter
+button,
+input,
+select,
+textarea,
+.cds--btn,
+.cds--tab,
+.cds--tabs,
+.cds--tab--list,
+.cds--side-nav,
+.cds--side-nav__link-text,
+.cds--header,
+.cds--header__name,
+.cds--header__menu-title,
+.cds--switcher,
+.cds--switcher__item,
+a:not(code a):not(pre a) {
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+// Preserve monospace fonts for code elements
+code,
+pre,
+.cds--code-01,
+.cds--code-02,
+kbd,
+samp,
+var {
+  font-family: 'Source Code Pro Var', 'Source Code Pro', 'Roboto Mono Var', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
+}
+
+// ELEVATE Components Font Override
+// Ensure ELEVATE web components use Inter font family
+elvt-button,
+elvt-icon,
+elvt-badge,
+elvt-card,
+elvt-chip,
+elvt-dialog,
+elvt-dropdown,
+elvt-input,
+elvt-link,
+elvt-notification,
+elvt-switch,
+elvt-table,
+elvt-tooltip,
+elevate-button,
+[class*="elvt-"],
+[class*="elevate-"] {
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  
+  // Ensure all child elements also inherit Inter
+  * {
+    font-family: inherit !important;
+  }
+}
+
 // INFORM Brand Colors for ELEVATE Design System
 :root {
   --elevate-primary: #0090a7; // INFORM Petrol
