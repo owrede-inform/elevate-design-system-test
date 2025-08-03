@@ -61,6 +61,10 @@ public
 # Mac files
 .DS_Store
 
+# Package managers
+# We use yarn, so ignore npm lock file to prevent conflicts
+package-lock.json
+
 # Yarn
 yarn-error.log
 .pnp/

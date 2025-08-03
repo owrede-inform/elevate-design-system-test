@@ -3,6 +3,11 @@
   "private": true,
   "version": "4.1.4",
   "license": "Apache 2.0",
+  "engines": {
+    "yarn": ">=1.22.0",
+    "node": ">=18.0.0"
+  },
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "gatsby develop",
     "dev:clean": "gatsby clean && gatsby develop -H 0.0.0.0",
