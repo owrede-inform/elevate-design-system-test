@@ -431,54 +431,138 @@ a {
   }
 }
 
-// AGGRESSIVE APPROACH: Remove ALL semi-transparent overlays on mobile
+// NUCLEAR APPROACH: Remove ALL semi-transparent overlays on mobile
 @media (max-width: 1055px) {
-  // Target ANY element that could be creating the overlay
-  * {
+  // Target ANY element that could be creating the overlay with maximum specificity
+  body * {
     // Remove any element with semi-transparent background
-    &[style*="rgba(0,0,0,"] {
+    &[style*="rgba(0,0,0,"],
+    &[style*="rgba(0, 0, 0,"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
     
     // Remove any element with overlay-01 background (Carbon variable)
     &[style*="background: rgba(0, 0, 0, 0.5)"],
     &[style*="background:rgba(0,0,0,0.5)"],
     &[style*="background: #161616cc"],
-    &[style*="background:#161616cc"] {
+    &[style*="background:#161616cc"],
+    &[style*="background-color: rgba(0, 0, 0, 0.5)"],
+    &[style*="background-color:rgba(0,0,0,0.5)"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
   }
   
-  // Remove ALL overlays regardless of class
+  // Remove ALL overlays regardless of class with maximum specificity
+  body .overlay,
+  body [class*="overlay"],
+  body [class*="backdrop"],
+  body [class*="modal"],
+  body [id*="overlay"],
+  body [data-overlay],
   .overlay,
   [class*="overlay"],
   [class*="backdrop"],
+  [class*="modal"],
   [id*="overlay"],
   [data-overlay] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
-  // Remove ALL pseudo-elements that could be overlays
+  // Remove ALL pseudo-elements that could be overlays with maximum specificity
+  body *::before,
+  body *::after,
   *::before,
   *::after {
+    // Target fixed position pseudo-elements
     &[style*="position: fixed"],
-    &[style*="rgba"] {
+    &[style*="position:fixed"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    
+    // Target any pseudo-element with rgba background
+    &[style*="rgba"],
+    &[style*="background"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
   }
   
-  // Nuclear option: Remove ALL fixed positioned elements with z-index > 50
+  // Nuclear option: Remove ALL fixed positioned elements completely
+  body *[style*="position: fixed"],
   *[style*="position: fixed"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    
+    // Also target if they have z-index
     &[style*="z-index"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
   }
   
-  // Specific Carbon overlay killers
+  // Specific Carbon overlay killers with maximum specificity
+  body .cds--side-nav + *::before,
+  body .cds--side-nav + *::after,
+  body .cds--side-nav--website + *::before,
+  body .cds--side-nav--website + *::after,
   .cds--side-nav + *::before,
   .cds--side-nav + *::after,
   .cds--side-nav--website + *::before,
   .cds--side-nav--website + *::after {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  // Additional nuclear approach: Remove any element with high z-index that might be an overlay
+  body *[style*="z-index: 9"],
+  body *[style*="z-index:9"],
+  *[style*="z-index: 9"],
+  *[style*="z-index:9"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  // Remove any dynamically injected overlay elements
+  body > div[style*="position: fixed"],
+  body > div[style*="position:fixed"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  // DIRECT TARGET: Container overlay from gatsby-theme-carbon
+  // This directly targets the specific overlay component causing the issue
+  div[role="button"][aria-labelledby="overlay-label"],
+  .overlay,
+  [class*="Container-module--overlay"],
+  [class*="container-module--overlay"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -9999 !important;
   }
 }
