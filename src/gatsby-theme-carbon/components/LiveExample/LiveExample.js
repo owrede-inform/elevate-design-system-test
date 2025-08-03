@@ -60,6 +60,80 @@ const LiveExample = ({
   const [isLoaded, setIsLoaded] = useState(typeof window === 'undefined');
   const [error, setError] = useState(null);
 
+  // Early return for SSR - just show the code
+  if (typeof window === 'undefined') {
+    return (
+      <div style={{ marginBottom: '-0.5rem' }}>
+        {title && (
+          <h4 style={{ 
+            marginTop: '2rem',
+            marginBottom: '1rem', 
+            fontSize: '1rem',
+            fontWeight: '600',
+            color: '#2e2e2e'
+          }}>
+            {title}
+          </h4>
+        )}
+        
+        <div 
+          style={{
+            border: '1px solid #e0e0e0',
+            borderRadius: '8px',
+            marginBottom: showCode ? '0' : '1rem',
+            width: '100%',
+            maxWidth: 'none',
+            overflow: 'visible',
+            position: 'relative'
+          }}
+        >
+          <div
+            style={{
+              padding: padding,
+              minHeight: '100px',
+              backgroundColor: '#ffffff',
+              borderRadius: '8px 8px 0 0',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: '1rem'
+            }}
+          >
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100px',
+              color: '#666',
+              fontSize: '0.9rem'
+            }}>
+              Interactive example will be available after page load
+            </div>
+          </div>
+          
+          {showCode && htmlCode && (
+            <div style={{
+              borderTop: '1px solid #e0e0e0',
+              borderRadius: '0 0 8px 8px',
+              overflow: 'visible',
+              width: '100%',
+              margin: 0,
+              padding: 0,
+              display: 'block'
+            }}>
+              <div style={{ width: '100%', margin: 0, padding: 0 }}>
+                <Code className="language-html">{htmlCode}</Code>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   useEffect(() => {
     // Skip during SSR/build process
     if (typeof window === 'undefined') {
