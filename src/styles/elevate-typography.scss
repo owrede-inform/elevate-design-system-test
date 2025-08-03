@@ -1,21 +1,21 @@
 // ELEVATE Design System Typography
 // Using ELEVATE Design Token CSS custom properties directly
 
-// Page Headlines - Use Display sizes for main page titles with ultra-bold weight
+// Page Headlines - Use Display sizes for main page titles with bold weight
 .page-title,
 h1,
 .h1 {
-  font-family: var(--elvt-type-alias-important-display-s-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-900, 900); // Use black weight (ultra-bold)
-  font-size: var(--elvt-type-alias-important-display-s-font-size, 3rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 700 !important; // Use bold weight
+  font-size: 3rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
   
   // Larger display for hero sections
   &.hero-title {
-    font-family: var(--elvt-type-alias-important-display-m-font-family, 'Inter');
-    font-weight: var(--elvt-primitives-font-weight-900, 900); // Use black weight (ultra-bold)
-    font-size: var(--elvt-type-alias-important-display-m-font-size, 3.75rem);
+    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-weight: 700 !important; // Use bold weight
+    font-size: 3.75rem;
     line-height: 1.333;
   }
 }
@@ -23,9 +23,9 @@ h1,
 // Section Headlines - Use Headline sizes for major sections with extra-bold weight
 h2,
 .h2 {
-  font-family: var(--elvt-type-alias-emphasized-headline-s-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-800, 800); // Use extra-bold weight
-  font-size: var(--elvt-type-alias-emphasized-headline-s-font-size, 2.75rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 800 !important; // Use extra-bold weight
+  font-size: 2.75rem;
   line-height: 1.455;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -34,9 +34,9 @@ h2,
 // Subsection Headlines - Use smaller Headlines with extra-bold weight
 h3,
 .h3 {
-  font-family: var(--elvt-type-alias-emphasized-section-l-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-800, 800); // Use extra-bold weight
-  font-size: var(--elvt-type-alias-emphasized-section-l-font-size, 1.75rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 800 !important; // Use extra-bold weight
+  font-size: 1.75rem;
   line-height: 1.857;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -45,9 +45,9 @@ h3,
 // Minor Headlines - Use Section sizes with bold weight
 h4,
 .h4 {
-  font-family: var(--elvt-type-alias-emphasized-section-m-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
-  font-size: var(--elvt-type-alias-emphasized-section-m-font-size, 1.5rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 700 !important; // Use bold weight
+  font-size: 1.5rem;
   line-height: 2;
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
@@ -55,9 +55,9 @@ h4,
 
 h5,
 .h5 {
-  font-family: var(--elvt-type-alias-emphasized-section-s-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
-  font-size: var(--elvt-type-alias-emphasized-section-s-font-size, 1.25rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 700 !important; // Use bold weight
+  font-size: 1.25rem;
   line-height: 2;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -65,21 +65,20 @@ h5,
 
 h6,
 .h6 {
-  font-family: var(--elvt-type-alias-emphasized-label-xl-font-family, 'Inter');
-  font-weight: var(--elvt-primitives-font-weight-700, 700); // Use bold weight
-  font-size: var(--elvt-type-alias-emphasized-label-xl-font-size, 1.5rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 700 !important; // Use bold weight
+  font-size: 1.5rem;
   line-height: 1.5;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-// Body Text - Use Content sizes for all copy text
-body,
+// Body Text - Simplified without CSS variables
 p,
 .body-text {
-  font-family: var(--elvt-type-alias-default-content-m-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-default-content-m-font-weight, 400);
-  font-size: var(--elvt-type-alias-default-content-m-font-size, 1rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
 }
@@ -87,25 +86,25 @@ p,
 // Large body text for introductions
 .intro-text,
 .lead {
-  font-family: var(--elvt-type-alias-default-content-l-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-default-content-l-font-weight, 400);
-  font-size: var(--elvt-type-alias-default-content-l-font-size, 1.25rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
   line-height: 1.6;
 }
 
 // Small body text
 .small-text {
-  font-family: var(--elvt-type-alias-default-content-s-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-default-content-s-font-weight, 400);
-  font-size: var(--elvt-type-alias-default-content-s-font-size, 0.875rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
   line-height: 1.429;
 }
 
 // Extra large content for callouts
 .callout-text {
-  font-family: var(--elvt-type-alias-default-content-xl-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-default-content-xl-font-weight, 400);
-  font-size: var(--elvt-type-alias-default-content-xl-font-size, 1.5rem);
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
   line-height: 1.5;
 }
 
@@ -132,26 +131,28 @@ label,
   line-height: 1.429;
 }
 
-// Emphasized text variants
-.emphasized {
-  font-family: var(--elvt-type-alias-emphasized-content-m-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-emphasized-content-m-font-weight, 500);
-  font-size: var(--elvt-type-alias-emphasized-content-m-font-size, 1rem);
-  line-height: 1.5;
+// Emphasized text variants - Simplified
+.emphasized,
+strong,
+b {
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700 !important;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .important {
-  font-family: var(--elvt-type-alias-important-content-m-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-important-content-m-font-weight, 600);
-  font-size: var(--elvt-type-alias-important-content-m-font-size, 1rem);
-  line-height: 1.5;
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700 !important;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .strong {
-  font-family: var(--elvt-type-alias-strong-content-m-font-family, 'Inter');
-  font-weight: var(--elvt-type-alias-strong-content-m-font-weight, 700);
-  font-size: var(--elvt-type-alias-strong-content-m-font-size, 1rem);
-  line-height: 1.5;
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 800 !important;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 // Caption text
@@ -164,13 +165,15 @@ label,
   margin-bottom: 1rem;
 }
 
-// Code and preformatted text (keep monospace)
+// Code and preformatted text - Using Source Code Pro and Roboto Mono
 code,
 pre,
 .code {
-  font-family: 'JetBrains Mono', 'Roboto Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
+  font-family: 'Source Code Pro Var', 'Source Code Pro', 'Roboto Mono Var', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
   font-size: 0.875rem;
   line-height: 1.429;
+  font-weight: 400;
+  font-feature-settings: 'liga' 0; /* Disable ligatures for better code readability */
 }
 
 // Lists
