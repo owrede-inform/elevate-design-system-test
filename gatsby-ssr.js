@@ -1,18 +1,21 @@
 import React from 'react';
 
 export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
+  // Ensure we have the correct path prefix - fallback for production
+  const actualPathPrefix = pathPrefix || (process.env.NODE_ENV === 'production' ? '/elevate-design-system-test' : '');
+  
   // Preload critical fonts for better performance
   const fontPreloads = [
     {
       rel: 'preload',
-      href: `${pathPrefix}/fonts/Inter-Variable.woff2`,
+      href: `${actualPathPrefix}/fonts/Inter-Variable.woff2`,
       as: 'font',
       type: 'font/woff2',
       crossOrigin: 'anonymous',
     },
     {
       rel: 'preload',
-      href: `${pathPrefix}/fonts/Inter-Italic-Variable.woff2`,
+      href: `${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2`,
       as: 'font',
       type: 'font/woff2',
       crossOrigin: 'anonymous',
@@ -36,9 +39,9 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: normal;
             font-weight: 100 900;
             font-display: swap;
-            src: url('${pathPrefix}/fonts/Inter-Variable.woff2') format('woff2 supports variations'),
-                 url('${pathPrefix}/fonts/Inter-Variable.woff2') format('woff2-variations'),
-                 url('${pathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2 supports variations'),
+                 url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2-variations'),
+                 url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
             font-named-instance: 'Regular';
           }
           
@@ -47,9 +50,9 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: italic;
             font-weight: 100 900;
             font-display: swap;
-            src: url('${pathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2 supports variations'),
-                 url('${pathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2-variations'),
-                 url('${pathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2 supports variations'),
+                 url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2-variations'),
+                 url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2');
             font-named-instance: 'Italic';
           }
           
@@ -59,7 +62,7 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: normal;
             font-weight: 400;
             font-display: swap;
-            src: url('${pathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
           }
           
           @font-face {
@@ -67,7 +70,7 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: normal;
             font-weight: 700;
             font-display: swap;
-            src: url('${pathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
           }
         `
       }}

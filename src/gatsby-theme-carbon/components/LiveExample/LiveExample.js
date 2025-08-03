@@ -226,6 +226,8 @@ const LiveExample = ({
         
         // Create a container div for the live example
         const exampleContainer = document.createElement('div');
+        exampleContainer.className = 'live-example-container';
+        exampleContainer.setAttribute('data-live-example', 'true');
         
         // Check if ELEVATE components are actually available
         const hasElevateComponents = typeof window !== 'undefined' && 

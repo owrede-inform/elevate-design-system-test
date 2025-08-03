@@ -78,8 +78,8 @@ var {
   font-family: 'Source Code Pro Var', 'Source Code Pro', 'Roboto Mono Var', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
 }
 
-// ELEVATE Components Font Override
-// Ensure ELEVATE web components use Inter font family
+// ELEVATE Components Font Override - Nuclear approach
+// Ensure ELEVATE web components use Inter font family with maximum specificity
 elvt-button,
 elvt-icon,
 elvt-badge,
@@ -95,10 +95,49 @@ elvt-table,
 elvt-tooltip,
 elevate-button,
 [class*="elvt-"],
-[class*="elevate-"] {
+[class*="elevate-"],
+// Target shadow DOM content
+elvt-button::part(base),
+elvt-button::part(label),
+elvt-button::part(prefix),
+elvt-button::part(suffix) {
   font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   
   // Ensure all child elements also inherit Inter
+  * {
+    font-family: inherit !important;
+  }
+  
+  // Target anything that might have Times or serif
+  &, * {
+    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+}
+
+// Additional targeting for web component internals
+elvt-button {
+  --font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  --button-font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  
+  // Override any internal button styles
+  button, .button, [role="button"] {
+    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+}
+
+// Global override for any element that might have Times
+* {
+  &[style*="Times"],
+  &[style*="serif"] {
+    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+}
+
+// Override for LiveExample container to ensure ELEVATE components inherit properly
+.live-example-container,
+[data-live-example] {
+  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  
   * {
     font-family: inherit !important;
   }

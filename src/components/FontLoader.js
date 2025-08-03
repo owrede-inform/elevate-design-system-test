@@ -2,8 +2,22 @@ import React, { useEffect } from 'react';
 
 const FontLoader = () => {
   useEffect(() => {
-    // Get the path prefix (empty for dev, /elevate-design-system-test for production)
-    const pathPrefix = typeof window !== 'undefined' && window.__GATSBY_GLOBAL__?.pathPrefix || '';
+    // Get the path prefix - try multiple methods to ensure we get it
+    let pathPrefix = '';
+    if (typeof window !== 'undefined') {
+      // Try window.__GATSBY_GLOBAL__ first
+      pathPrefix = window.__GATSBY_GLOBAL__?.pathPrefix || '';
+      
+      // If empty, check if we're on production domain and set manually
+      if (!pathPrefix && window.location.hostname.includes('github.io')) {
+        pathPrefix = '/elevate-design-system-test';
+      }
+      
+      // Also check if the current path starts with the expected prefix
+      if (!pathPrefix && window.location.pathname.startsWith('/elevate-design-system-test')) {
+        pathPrefix = '/elevate-design-system-test';
+      }
+    }
     
     // Skip if font faces are already loaded
     if (document.querySelector('style[data-font-loader]')) {
