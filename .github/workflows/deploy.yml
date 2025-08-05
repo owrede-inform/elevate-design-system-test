@@ -68,20 +68,14 @@ jobs:
             export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           fi
           
-          echo "Attempting to install dependencies with authentication..."
-          echo "Yarn config:"
-          cat .yarnrc.yml
-          echo "NPM config:"
-          cat ~/.npmrc
+          echo "Installing dependencies with authentication..."
           
-          # Try to install with verbose output for debugging
-          if yarn install --verbose; then
+          # Install dependencies
+          if yarn install; then
             echo "✅ Successfully installed all dependencies including private packages"
             yarn list --pattern "@inform-elevate/*"
           else
             echo "❌ Failed to install dependencies with private packages"
-            echo "Error details:"
-            yarn install --verbose 2>&1 | tail -20
             exit 1
           fi
 
