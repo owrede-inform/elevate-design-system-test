@@ -558,7 +558,12 @@ a {
   div[role="button"][aria-labelledby="overlay-label"],
   .overlay,
   [class*="Container-module--overlay"],
-  [class*="container-module--overlay"] {
+  [class*="container-module--overlay"],
+  // CARBON DESIGN SYSTEM: Target the actual HTML overlay element
+  .cds--side-nav__overlay,
+  .cds--side-nav__overlay-active,
+  div.cds--side-nav__overlay,
+  div.cds--side-nav__overlay-active {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
