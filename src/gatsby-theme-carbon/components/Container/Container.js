@@ -42,20 +42,9 @@ const Container = ({ children, homepage, theme }) => {
 
   return (
     <>
-      <span hidden id="overlay-label">
-        Collapse navigation items
-      </span>
-      <div
-        role="button"
-        aria-labelledby="overlay-label"
-        tabIndex="0"
-        className={cx(overlay, { [visible]: overlayVisible })}
-        onClick={closeNavs}
-        onKeyPress={closeNavs}
-      />
+      {/* Overlay completely removed to fix mobile navigation issue */}
       <main
         id="main-content"
-        aria-hidden={overlayVisible}
         className={containerClassNames}>
         {children}
       </main>
