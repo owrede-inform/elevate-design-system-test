@@ -8,7 +8,7 @@ import Switcher from "./Switcher";
 import Container from "gatsby-theme-carbon/src/components/Container";
 import useMetadata from "gatsby-theme-carbon/src/util/hooks/useMetadata";
 import Footer from "./Footer";
-import FontLoader from "../../components/FontLoader";
+// FontLoader removed - using unified SSR font loading instead
 
 import "gatsby-theme-carbon/src/styles/index.scss";
 import { layout } from "../../styles/Layout.module.scss";
@@ -41,7 +41,7 @@ const Layout = ({
 
   return (
     <div className={layout}>
-      <FontLoader />
+      {/* FontLoader removed - using unified SSR font loading instead */}
       <Meta
         titleType={titleType}
         pageTitle={pageTitle}

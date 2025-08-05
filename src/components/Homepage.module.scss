@@ -37,7 +37,7 @@
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important; // Changed from flex-end to center for consistency
+    justify-content: flex-end !important; // Match production positioning
     align-items: flex-start !important;
     padding: 2rem !important;
     // Force positioning to be identical in dev and prod
@@ -165,7 +165,7 @@
     // Force consistent positioning regardless of CSS loading order
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important; // Consistent with above change
+    justify-content: flex-end !important; // Match production positioning
     align-items: flex-start !important;
     position: relative !important;
     z-index: 15 !important;

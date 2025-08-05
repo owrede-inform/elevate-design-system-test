@@ -1,12 +1,11 @@
-// Inter Variable Font for ELEVATE Design System
-// Font faces are loaded dynamically by FontLoader component
-// This ensures correct paths for both development and production
+// ELEVATE Design System Font Integration
+// Fonts loaded via SSR in gatsby-ssr.js for consistency
+// This file provides weight declarations only
 
-// Base font stack with standard Inter (not variable font)
+// Base body styling - font-family comes from SSR
 body {
   font-size: 1em;
   line-height: 1.5;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

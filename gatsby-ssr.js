@@ -37,22 +37,18 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
       key="critical-fonts"
       dangerouslySetInnerHTML={{
         __html: `
-          /* UNIVERSAL FONT LOADING - IDENTICAL ACROSS ALL ENVIRONMENTS */
-          /* Environment marker for CSS targeting */
-          body {
-            --env: '${isDevelopment ? 'development' : 'production'}';
-          }
-          body::before {
-            content: '';
-            display: none;
-            /* Environment data for JavaScript access */
-            --gatsby-env: '${isDevelopment ? 'development' : 'production'}';
+          /* UNIFIED FONT SYSTEM - NO CLIENT-SIDE OVERRIDES */
+          /* Clean, systematic approach with single source of truth */
+          
+          /* Base font declaration */
+          html {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
           }
           
-          /* Force Inter font family everywhere with maximum specificity */
-          html, body, * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+          /* Inherit for all elements - no conflicts */
+          body, * {
+            font-family: inherit;
           }
           
           /* Override any Gatsby theme or Carbon component font declarations */
