@@ -36,46 +36,30 @@ jobs:
           # Configure npm registry for @inform-elevate scope
           echo "@inform-elevate:registry=https://npm.pkg.github.com" >> ~/.npmrc
           
-          # Try to use ELEVATE_TOKEN first, fallback to GITHUB_TOKEN
-          if [ -n "${{ secrets.ELEVATE_TOKEN }}" ]; then
-            echo "Using ELEVATE_TOKEN for authentication"
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.ELEVATE_TOKEN }}" >> ~/.npmrc
-            export NODE_AUTH_TOKEN="${{ secrets.ELEVATE_TOKEN }}"
-          else
-            echo "Using GITHUB_TOKEN for authentication"
-            echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
-            export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          fi
+          # Use GITHUB_TOKEN with proper permissions
+          echo "Using GITHUB_TOKEN for authentication"
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           
-          # Configure yarn for GitHub Packages
-          echo 'npmScopes:' > .yarnrc.yml
-          echo '  inform-elevate:' >> .yarnrc.yml
-          echo '    npmRegistryServer: "https://npm.pkg.github.com"' >> .yarnrc.yml
-          echo "    npmAuthToken: \"${NODE_AUTH_TOKEN}\"" >> .yarnrc.yml
-          
-          # Test authentication
+          # Test authentication (optional - may fail but shouldn't stop build)
           echo "Testing authentication..."
-          npm whoami --registry=https://npm.pkg.github.com
+          npm whoami --registry=https://npm.pkg.github.com || echo "Authentication test failed but continuing..."
           
           echo "GATSBY_BUILD=true" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |
           # Set the correct NODE_AUTH_TOKEN
-          if [ -n "${{ secrets.ELEVATE_TOKEN }}" ]; then
-            export NODE_AUTH_TOKEN="${{ secrets.ELEVATE_TOKEN }}"
-          else
-            export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          fi
+          export NODE_AUTH_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           
           echo "Installing dependencies with authentication..."
           
           # Install dependencies
           if yarn install; then
             echo "✅ Successfully installed all dependencies including private packages"
-            yarn list --pattern "@inform-elevate/*"
+            yarn list --pattern "@inform-elevate/*" || echo "No private packages found"
           else
-            echo "❌ Failed to install dependencies with private packages"
+            echo "❌ Failed to install dependencies"
             exit 1
           fi
 

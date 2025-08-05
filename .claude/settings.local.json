@@ -75,7 +75,8 @@
       "Bash(cat:*)",
       "Bash(Remove-Item \"set-auth-env.ps1\" -Force)",
       "Bash(npm whoami:*)",
-      "Bash(Remove-Item \"setup-local-auth.ps1\", \"restore-deploy-auth.ps1\", \".npmrc.local\", \"test-auth.ps1\", \"test-yarn.ps1\" -Force)"
+      "Bash(Remove-Item \"setup-local-auth.ps1\", \"restore-deploy-auth.ps1\", \".npmrc.local\", \"test-auth.ps1\", \"test-yarn.ps1\" -Force)",
+      "Bash($env:NODE_AUTH_TOKEN = $env:GITHUB_TOKEN)"
     ],
     "deny": []
   }
