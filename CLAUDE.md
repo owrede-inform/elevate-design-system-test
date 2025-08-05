@@ -64,15 +64,15 @@ This is a Gatsby site built using the `gatsby-theme-carbon` theme, which impleme
 
 ### Installing ELEVATE Components
 
-To properly install ELEVATE components, you must configure npm for the GitHub package registry first:
+To properly install ELEVATE components, you must configure yarn for the GitHub package registry first:
 
 ```bash
-# Configure npm for GitHub packages (one-time setup)
-npm config set @inform-elevate:registry https://npm.pkg.github.com
+# Configure yarn for GitHub packages (one-time setup)
+yarn config set @inform-elevate:registry https://npm.pkg.github.com
 npm login --scope=@inform-elevate --auth-type=legacy --registry=https://npm.pkg.github.com
 
 # Install ELEVATE (this single package includes all dependencies)
-npm install @inform-elevate/elevate-core-ui --legacy-peer-deps
+yarn add @inform-elevate/elevate-core-ui --legacy-peer-deps
 ```
 
 **Important Notes:**
