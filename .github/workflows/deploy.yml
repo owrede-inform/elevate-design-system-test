@@ -75,13 +75,13 @@ jobs:
           cat ~/.npmrc
           
           # Try to install with verbose output for debugging
-          if yarn install --frozen-lockfile --verbose; then
+          if yarn install --verbose; then
             echo "✅ Successfully installed all dependencies including private packages"
             yarn list --pattern "@inform-elevate/*"
           else
             echo "❌ Failed to install dependencies with private packages"
             echo "Error details:"
-            yarn install --frozen-lockfile --verbose 2>&1 | tail -20
+            yarn install --verbose 2>&1 | tail -20
             exit 1
           fi
 
