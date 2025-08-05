@@ -139,7 +139,7 @@ export const Tabs = (props) => {
       activeTab,
       tabList: tabList.current,
     }),
-    [setActiveTab, activeTab, tabList.current]
+    [setActiveTab, activeTab]
   );
   return (
     <TabContext.Provider value={value}>

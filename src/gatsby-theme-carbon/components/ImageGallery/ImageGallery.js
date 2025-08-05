@@ -149,10 +149,12 @@ function ImageGallery({ children, className }) {
         ReactDOM.createPortal(
           <FocusTrapWrapper>
             <div
-              role="group"
-              tabIndex={0}
+              role="button"
+              aria-label="Image gallery"
+              tabIndex={-1}
               className={inDialogGalleryContainer}
-              onKeyDown={onKeyDown}>
+              onKeyDown={onKeyDown}
+            >
               <Row>
                 <Column colLg={2}>
                   <button

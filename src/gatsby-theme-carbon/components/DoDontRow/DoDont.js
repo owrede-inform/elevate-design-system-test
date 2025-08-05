@@ -38,10 +38,18 @@ export default class DoDont extends React.Component {
       [styles.iconIncorrect]: type === 'dont',
     });
 
+    // Check if children contain code blocks to determine if this should be a code variant
+    const hasCodeContent = React.Children.toArray(children).some(child => 
+      typeof child === 'object' && 
+      (child.props?.className?.includes('language-') || 
+       child.props?.children?.props?.className?.includes('language-'))
+    );
+
     const wrapperClassNames = cx(className, styles.example, {
       [styles.correct]: type === 'do',
       [styles.incorrect]: type === 'dont',
       [styles.dark]: color === 'dark',
+      [styles.codeVariant]: hasCodeContent, // Add code variant class
       [styles.ratio]:
         aspectRatio === '1:1' ||
         aspectRatio === '2:1' ||

@@ -5,19 +5,13 @@ exports.onPreBootstrap = ({ actions }) => {
 };
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
-  // Minimal webpack config - let Gatsby handle CSS modules processing
-  const webpackConfig = {
-    // Completely disable cache to prevent SassError serialization issues
-    cache: false,
-    infrastructureLogging: {
-      level: 'error', // Reduce webpack warnings about cache
-    },
-  };
+  // Only configure essential timeout settings - let Gatsby handle the rest
+  const webpackConfig = {};
 
-  // Only add essential configs without interfering with CSS modules
-  if (stage === 'develop') {
+  // Development-specific timeout fix
+  if (stage === 'develop' || stage === 'develop-html') {
     webpackConfig.output = {
-      chunkLoadTimeout: 30000, // Increase timeout to 30 seconds
+      chunkLoadTimeout: 120000, // 2 minute timeout for slow connections
     };
   }
 

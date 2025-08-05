@@ -86,6 +86,7 @@ npm install @inform-elevate/elevate-core-ui --legacy-peer-deps
 - ELEVATE components are automatically available in MDX files when using the `<LiveExample>` component
 - Components use web components standard (custom elements) like `<elvt-button>`, `<elvt-icon>`, etc.
 - The LiveExample component handles loading and registration of all ELEVATE web components
+- This project documents the ELEVATE Design System. We need components from @inform-elevate/elevate-core-ui to be installed for LiveExample component. The Design Tokens are available at @inform-elevate/elevate-design-tokens.
 
 ## Typography
 
@@ -129,3 +130,13 @@ Font configuration is handled in:
 
 - Do not auto commit and push unless I ask you to do it. Remember to commit, push & merge whenever I ask you to that with the command "/deploy".
 - Never add "Co-authored by Claude" lines (or similar) to comments or commit messages or PR comments.
+
+## Problem-Solving Guidelines
+
+- Never try to work around issues via quick fixes. Resolve problems in a way that they are permanently solved and will work on both the dev server and on the deployment server!
+
+## Package Management Guidelines
+
+- Always install `@inform-elevate/elevate-core-ui` and `@inform-elevate/elevate-design-tokens`
+- Do not work around authentication issues
+- Always use yarn package manager in this project
