@@ -27,14 +27,30 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'yarn'
           registry-url: 'https://npm.pkg.github.com'
           
-      - name: Configure npm authentication
+      - name: Validate ELEVATE_NPM_TOKEN
+        run: |
+          if [ -z "${{ secrets.ELEVATE_NPM_TOKEN }}" ]; then
+            echo "❌ ELEVATE_NPM_TOKEN secret is empty or not set"
+            echo "Please add a valid GitHub Personal Access Token to repository secrets"
+            exit 1
+          else
+            echo "✅ ELEVATE_NPM_TOKEN secret is present"
+            # Test if it's a valid token format (should start with ghp_ or github_pat_)
+            if [[ "${{ secrets.ELEVATE_NPM_TOKEN }}" =~ ^(ghp_|github_pat_) ]]; then
+              echo "✅ Token format appears valid"
+            else
+              echo "⚠️  Warning: Token format may be invalid (should start with ghp_ or github_pat_)"
+            fi
+          fi
+
+      - name: Configure authentication for yarn
         run: |
           echo "@inform-elevate:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=\${NODE_AUTH_TOKEN}" >> ~/.npmrc
-
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.ELEVATE_NPM_TOKEN }}" >> ~/.npmrc
+          
       - name: Test authentication
         run: |
           echo "Testing GitHub Package Registry authentication..."
@@ -42,13 +58,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_NPM_TOKEN }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies with yarn
+        run: yarn install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_NPM_TOKEN }}
 
       - name: Build with Gatsby
-        run: npm run build -- --prefix-paths
+        run: yarn build --prefix-paths
         env:
           NODE_ENV: production
           CI: true
