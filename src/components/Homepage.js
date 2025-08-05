@@ -4,6 +4,8 @@ import HomepageTemplate from 'gatsby-theme-carbon/src/components/Layouts/Homepag
 import { calloutLink } from './Homepage.module.scss';
 
 import CloudsBackground from '../../static/images/clouds-notype-gray.png';
+import InformLogo from '../../static/images/inform-brand.svg';
+import InformLogoBlack from '../../static/images/svg-logo-black.svg';
 
 const FirstLeftText = () => <p>Built on Principles</p>;
 
@@ -40,11 +42,24 @@ const BannerText = () => (
   <div style={{ 
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
     height: '100%',
     textAlign: 'left',
-    textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+    paddingBottom: '3rem'
   }}>
+    <img 
+      src={InformLogoBlack} 
+      alt="INFORM" 
+      className="homepage-logo"
+      style={{
+        height: '1.5rem',
+        width: 'auto',
+        marginBottom: '1.5rem',
+        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
+      }}
+    />
     <h1 className="homepage-title">
       ELEVATE Design System
     </h1>

@@ -17,7 +17,7 @@ const CustomHeader = (props) => (
   <Header {...props}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
       <InformLogo />
-      <span>ELEVATE</span>&nbsp;Design System
+      <span><strong>ELEVATE</strong> Design System</span>
     </div>
   </Header>
 );

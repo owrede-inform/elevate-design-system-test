@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
     window.addEventListener('testPassive', null, opts);
     window.removeEventListener('testPassive', null, opts);
   } catch (e) {
-    console.warn(e);
+    // Passive listener test failed - using default
     passiveListenerSupported = false;
   }
 } else {

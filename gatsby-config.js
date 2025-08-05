@@ -45,10 +45,10 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          formats: ['auto'],
-          placeholder: 'none',
-          quality: 100,
-          breakpoints: [320, 768, 1024],
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'blurred',
+          quality: 85,
+          breakpoints: [320, 768, 1024, 1920],
           backgroundColor: 'transparent',
         }
       },
@@ -56,8 +56,8 @@ module.exports = {
     {
       resolve: 'gatsby-theme-carbon',
       options: {
-        withWebp: false,
-        imageQuality: 100,
+        withWebp: true,
+        imageQuality: 85,
       },
     },
   ],

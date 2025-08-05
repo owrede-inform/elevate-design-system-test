@@ -1,9 +1,24 @@
 # PowerShell script for dev:clean:simple with LMDB handling
 Write-Host "Starting Gatsby clean development server (simple)..." -ForegroundColor Cyan
 
-# Kill any existing Node.js processes from this project
-Write-Host "Stopping any running development servers..." -ForegroundColor Yellow
-Get-Process -Name "node" -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+# Kill only Gatsby development servers (preserve Claude Code and other Node processes)
+Write-Host "Stopping any running Gatsby development servers..." -ForegroundColor Yellow
+
+# Get all Node.js processes and filter for Gatsby-related ones
+$nodeProcesses = Get-Process -Name "node" -ErrorAction SilentlyContinue
+foreach ($process in $nodeProcesses) {
+    try {
+        $commandLine = (Get-WmiObject Win32_Process -Filter "ProcessId = $($process.Id)").CommandLine
+        if ($commandLine -and ($commandLine -match "gatsby" -or $commandLine -match "webpack-dev-server" -or $commandLine -match "elevate-design-system-test")) {
+            Write-Host "Stopping Gatsby process: $($process.Id)" -ForegroundColor Yellow
+            Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue
+        }
+    }
+    catch {
+        # Ignore processes we can't access
+    }
+}
+
 Start-Sleep -Seconds 2
 
 # Force remove cache directories if they exist and are locked

@@ -63,14 +63,14 @@ const LiveExample = ({
           link.rel = 'stylesheet';
           link.href = 'https://unpkg.com/@inform-elevate/elevate-design-tokens@1.0.0/dist/light.css';
           document.head.appendChild(link);
-          console.log('ELEVATE design tokens CSS loaded from unpkg');
+          // ELEVATE design tokens CSS loaded
         }
         
         // Try to dynamically import ELEVATE components if available
         // This will gracefully fail if the package is not installed
         // Dynamic import to avoid SSR issues
         await import('@inform-elevate/elevate-core-ui');
-        console.log('ELEVATE components imported successfully');
+        // ELEVATE components imported successfully
         
         // Register MDI icons - using lazy loading to prevent serialization issues
         const iconNames = [
@@ -90,7 +90,7 @@ const LiveExample = ({
         setIsLoaded(true);
         setError(null);
       } catch (err) {
-        console.error('Failed to load ELEVATE components:', err);
+        // Failed to load ELEVATE components - continuing with fallback
         setError('Failed to load interactive components');
         setIsLoaded(true); // Still set to true so we show the static version
       }
@@ -98,7 +98,7 @@ const LiveExample = ({
 
     // Skip loading in build/CI environments to prevent build failures
     if (isBuildEnvironment) {
-      console.log('Build environment detected, skipping ELEVATE component loading');
+      // Build environment detected, skipping ELEVATE component loading
       setIsLoaded(true);
       return;
     }
@@ -152,7 +152,7 @@ const LiveExample = ({
         
         containerRef.current.appendChild(exampleContainer);
       } catch (err) {
-        console.error('Error rendering live example:', err);
+        // Error rendering live example - showing fallback
         if (containerRef.current) {
           containerRef.current.innerHTML = `
             <div style="color: #dc3545; padding: 1rem; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;">

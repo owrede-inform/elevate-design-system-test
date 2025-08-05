@@ -171,7 +171,7 @@ const FontLoader = () => {
     styleElement.textContent = fontCSS;
     document.head.appendChild(styleElement);
     
-    console.log('Dynamic font loader: Loaded Inter fonts with prefix:', pathPrefix || 'none (development)');
+    // Fonts loaded successfully
   }, []);
 
   return null; // This component doesn't render anything

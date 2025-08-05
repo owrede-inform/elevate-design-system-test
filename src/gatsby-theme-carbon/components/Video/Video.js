@@ -90,7 +90,7 @@ const Video = ({
         setIsPlaying(true);
       })
       .catch((error) => {
-        console.log(error);
+        // Video play error handled silently
       });
   }
 
@@ -112,7 +112,7 @@ const Video = ({
           setIsPlaying(true);
         })
         .catch((error) => {
-          console.log(error);
+          // Video play error handled silently
         });
     }
   }

@@ -16,7 +16,7 @@ const StorybookLink = ({
   const url = getStorybookUrl(component);
   
   if (!url) {
-    console.warn(`StorybookLink: No URL found for component "${component}"`);
+    // StorybookLink: No URL found for component - showing fallback
     return <span className="text-gray-500">{children} (URL not configured)</span>;
   }
   

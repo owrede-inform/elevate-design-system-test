@@ -27,11 +27,34 @@
   }
 }
 
+// Responsive styling for homepage logo (60% of original size)
+:global(.homepage-logo) {
+  height: 1.2rem !important; // Mobile first (60% of 2rem)
+  width: auto !important;
+  margin-bottom: 1.25rem !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)) !important;
+  
+  @media (min-width: 576px) {
+    height: 1.35rem !important; // Small tablets (60% of 2.25rem)
+    margin-bottom: 1.4rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    height: 1.5rem !important; // Tablets (60% of 2.5rem)
+    margin-bottom: 1.5rem !important;
+  }
+  
+  @media (min-width: 1024px) {
+    height: 1.65rem !important; // Desktop (60% of 2.75rem)
+    margin-bottom: 1.75rem !important;
+  }
+}
+
 // Responsive typography for homepage banner text
 :global(.homepage-title) {
   color: #262626 !important;
   font-weight: 700 !important;
-  margin-bottom: 2rem !important;
+  margin-bottom: 0.75rem !important;
   text-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   line-height: 1.1 !important;
   
@@ -57,7 +80,7 @@
   max-width: 600px !important;
   line-height: 1.4 !important;
   text-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
-  margin-bottom: 3rem !important;
+  margin-bottom: 0 !important;
   
   // Responsive font sizes
   font-size: 1.1rem !important; // Mobile first
