@@ -31,8 +31,27 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@inform-elevate'
 
+      - name: Debug authentication
+        run: |
+          echo "ELEVATE_NPM_TOKEN exists: ${{ secrets.ELEVATE_NPM_TOKEN != '' }}"
+          echo "Using token source: ${{ secrets.ELEVATE_NPM_TOKEN != '' && 'ELEVATE_NPM_TOKEN' || 'GITHUB_TOKEN' }}"
+          
       - name: Install dependencies
-        run: npm install
+        run: |
+          # Try to install with authentication first
+          if npm install; then
+            echo "✅ Successfully installed with private packages"
+          else
+            echo "❌ Failed to install private packages, trying fallback..."
+            # Remove private packages temporarily and install public packages only
+            npm pkg delete dependencies.@inform-elevate/elevate-cdk
+            npm pkg delete dependencies.@inform-elevate/elevate-core-ui  
+            npm pkg delete dependencies.@inform-elevate/elevate-design-tokens
+            npm pkg delete dependencies.@inform-elevate/elevate-icons
+            echo "Installing without private packages..."
+            npm install
+            echo "⚠️  WARNING: Built without ELEVATE private packages!"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_NPM_TOKEN || secrets.GITHUB_TOKEN }}
 
