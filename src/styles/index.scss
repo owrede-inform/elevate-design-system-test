@@ -2,15 +2,23 @@
 // Note: Font faces are defined in gatsby-theme-carbon/styles/internal/_plex.scss
 // to avoid duplication and ensure proper loading
 
-// ELEVATE Design Tokens CSS will be loaded via JavaScript to avoid SASS import issues
+// Import ELEVATE Design Tokens CSS from local package
+@import '~@inform-elevate/elevate-design-tokens/dist/light.css';
 
 // Import ELEVATE Design System Typography
 @import './elevate-typography.scss';
 
-// GLOBAL FONT OVERRIDE - Ensure Inter is used everywhere except code
-// Override all Carbon theme font stacks specifically, but preserve monospace for code
-body,
+// UNIVERSAL ENVIRONMENT SYNCHRONIZATION
+// Force identical behavior across development and production builds
+// This overrides any CSS loading order differences between environments
+
+// Environment-agnostic font override with maximum specificity
+// Ensures Inter is used everywhere except code, regardless of build environment
+*,
+*::before,
+*::after,
 html,
+body,
 .cds--body,
 .cds--body-compact-01,
 .cds--body-compact-02,
@@ -44,7 +52,7 @@ html,
 .cds--display-02,
 .cds--display-03,
 .cds--display-04 {
-  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 // Ensure all interactive elements use Inter
@@ -64,7 +72,7 @@ textarea,
 .cds--switcher,
 .cds--switcher__item,
 a:not(code a):not(pre a) {
-  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 // Preserve monospace fonts for code elements
@@ -101,7 +109,7 @@ elvt-button::part(base),
 elvt-button::part(label),
 elvt-button::part(prefix),
 elvt-button::part(suffix) {
-  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   
   // Ensure all child elements also inherit Inter
   * {
@@ -110,7 +118,7 @@ elvt-button::part(suffix) {
   
   // Target anything that might have Times or serif
   &, * {
-    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   }
 }
 
@@ -121,7 +129,7 @@ elvt-button {
   
   // Override any internal button styles
   button, .button, [role="button"] {
-    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   }
 }
 
@@ -129,14 +137,14 @@ elvt-button {
 * {
   &[style*="Times"],
   &[style*="serif"] {
-    font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   }
 }
 
 // Override for LiveExample container to ensure ELEVATE components inherit properly
 .live-example-container,
 [data-live-example] {
-  font-family: 'Inter Var', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   
   * {
     font-family: inherit !important;

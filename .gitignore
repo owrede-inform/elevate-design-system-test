@@ -74,4 +74,3 @@ yarn-error.log
 
 # Yarn configuration with authentication tokens
 .yarnrc
-.npmrc

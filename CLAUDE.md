@@ -64,16 +64,32 @@ This is a Gatsby site built using the `gatsby-theme-carbon` theme, which impleme
 
 ### Installing ELEVATE Components
 
-To properly install ELEVATE components, you must configure yarn for the GitHub package registry first:
+**Authentication Setup (Required):**
+ELEVATE packages are hosted on GitHub Package Registry and require authentication. The project uses standard npm authentication with environment variables.
 
-```bash
-# Configure yarn for GitHub packages (one-time setup)
-yarn config set @inform-elevate:registry https://npm.pkg.github.com
-npm login --scope=@inform-elevate --auth-type=legacy --registry=https://npm.pkg.github.com
+**For Local Development:**
+```powershell
+# Set up authentication (run once per PowerShell session)
+.\setup-auth.ps1
 
-# Install ELEVATE (this single package includes all dependencies)
-yarn add @inform-elevate/elevate-core-ui --legacy-peer-deps
+# Now standard yarn/npm commands work
+yarn install
+yarn dev
 ```
+
+**Manual Setup (Alternative):**
+```powershell
+# Set the environment variable manually
+$env:NODE_AUTH_TOKEN = "your-github-token"
+
+# Now run yarn/npm commands
+yarn install
+```
+
+**How it works:**
+- The `.npmrc` file uses `${NODE_AUTH_TOKEN}` for environment variable substitution
+- Setting the `NODE_AUTH_TOKEN` environment variable enables standard npm/yarn authentication
+- No complex workarounds needed - this is the standard approach
 
 **Important Notes:**
 - Only install `@inform-elevate/elevate-core-ui` - it automatically installs all required dependencies including CDK and design tokens
@@ -130,6 +146,7 @@ Font configuration is handled in:
 
 - Do not auto commit and push unless I ask you to do it. Remember to commit, push & merge whenever I ask you to that with the command "/deploy".
 - Never add "Co-authored by Claude" lines (or similar) to comments or commit messages or PR comments.
+- Never use references to Claude Code in commit messages or PR comments/messages
 
 ## Problem-Solving Guidelines
 

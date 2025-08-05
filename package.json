@@ -30,6 +30,8 @@
     "@inform-elevate/elevate-cdk": "^0.7.0-alpha",
     "@inform-elevate/elevate-core-ui": "^0.0.26-alpha",
     "@inform-elevate/elevate-design-tokens": "^0.15.0",
+    "@inform-elevate/elevate-icons": "https://github.com/inform-elevate/elevate-icons.git",
+    "@mdi/js": "^7.4.47",
     "@shoelace-style/shoelace": "^2.20.1",
     "composed-offset-position": "^0.0.6",
     "gatsby": "^5.13.6",

@@ -56,15 +56,9 @@ const LiveExample = ({
     // Dynamically import ELEVATE components for better Gatsby compatibility
     const loadElevateComponents = async () => {
       try {
-        // First load the design tokens CSS 
-        if (!document.querySelector('link[href*="elevate-design-tokens"]')) {
-          // Load design tokens from unpkg since local import doesn't work in browser
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://unpkg.com/@inform-elevate/elevate-design-tokens@1.0.0/dist/light.css';
-          document.head.appendChild(link);
-          // ELEVATE design tokens CSS loaded
-        }
+        // Skip loading design tokens CSS since we'll load them via SCSS imports
+        // This prevents the unpkg fetch error that was causing the 500 error
+        // Design tokens are now imported via gatsby build process
         
         // Try to dynamically import ELEVATE components if available
         // This will gracefully fail if the package is not installed

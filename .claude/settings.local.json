@@ -70,7 +70,12 @@
       "Bash(set GATSBY_DISABLE_DEV_SSR=true)",
       "Bash(npm audit:*)",
       "Bash(git rm:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(npm view:*)",
+      "Bash(cat:*)",
+      "Bash(Remove-Item \"set-auth-env.ps1\" -Force)",
+      "Bash(npm whoami:*)",
+      "Bash(Remove-Item \"setup-local-auth.ps1\", \"restore-deploy-auth.ps1\", \".npmrc.local\", \"test-auth.ps1\", \"test-yarn.ps1\" -Force)"
     ],
     "deny": []
   }
