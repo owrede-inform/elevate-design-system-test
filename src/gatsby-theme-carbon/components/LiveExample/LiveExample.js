@@ -60,8 +60,10 @@ const LiveExample = ({
         // This prevents the unpkg fetch error that was causing the 500 error
         // Design tokens are now imported via gatsby build process
         
-        // ELEVATE components are now loaded from static files
-        // This avoids npm package authentication issues
+        // Try to dynamically import ELEVATE components if available
+        // This will gracefully fail if the package is not installed
+        // Dynamic import to avoid SSR issues
+        await import('@inform-elevate/elevate-core-ui');
         // ELEVATE components imported successfully
         
         // Register MDI icons - using lazy loading to prevent serialization issues
