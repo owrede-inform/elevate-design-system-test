@@ -30,16 +30,16 @@ jobs:
           cache: 'yarn'
           registry-url: 'https://npm.pkg.github.com'
           
-      - name: Validate ELEVATE_NPM_TOKEN
+      - name: Validate ELEVATE_TOKEN
         run: |
-          if [ -z "${{ secrets.ELEVATE_NPM_TOKEN }}" ]; then
-            echo "❌ ELEVATE_NPM_TOKEN secret is empty or not set"
+          if [ -z "${{ secrets.ELEVATE_TOKEN }}" ]; then
+            echo "❌ ELEVATE_TOKEN secret is empty or not set"
             echo "Please add a valid GitHub Personal Access Token to repository secrets"
             exit 1
           else
-            echo "✅ ELEVATE_NPM_TOKEN secret is present"
+            echo "✅ ELEVATE_TOKEN secret is present"
             # Test if it's a valid token format (should start with ghp_ or github_pat_)
-            if [[ "${{ secrets.ELEVATE_NPM_TOKEN }}" =~ ^(ghp_|github_pat_) ]]; then
+            if [[ "${{ secrets.ELEVATE_TOKEN }}" =~ ^(ghp_|github_pat_) ]]; then
               echo "✅ Token format appears valid"
             else
               echo "⚠️  Warning: Token format may be invalid (should start with ghp_ or github_pat_)"
@@ -49,19 +49,19 @@ jobs:
       - name: Configure authentication for yarn
         run: |
           echo "@inform-elevate:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.ELEVATE_NPM_TOKEN }}" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.ELEVATE_TOKEN }}" >> ~/.npmrc
           
       - name: Test authentication
         run: |
           echo "Testing GitHub Package Registry authentication..."
           npm whoami --registry=https://npm.pkg.github.com || echo "Authentication test failed"
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_TOKEN }}
 
       - name: Install dependencies with yarn
         run: yarn install
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.ELEVATE_TOKEN }}
 
       - name: Build with Gatsby
         run: yarn build --prefix-paths
