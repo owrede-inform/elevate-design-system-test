@@ -1,0 +1,12 @@
+# Exclude data directory from Gatsby processing to prevent Sharp freeze
+data/
+data/**
+.backstop/
+.backstop/**
+# Exclude node_modules and other common directories
+node_modules/
+node_modules/**
+.cache/
+.cache/**
+public/
+public/**

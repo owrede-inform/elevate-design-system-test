@@ -1,10 +1,10 @@
+// Configuration with Sharp processing fix for data directory exclusion
 module.exports = {
   trailingSlash: `always`,
   siteMetadata: {
     title: 'ELEVATE Design System',
     description: 'Documentation and guidelines for the ELEVATE Design System',
     keywords: 'design,system,elevate,components,guidelines',
-    // Required fields for gatsby-theme-carbon
     repository: {
       baseUrl: 'https://github.com/owrede-inform/elevate-design-system-test',
       subDirectory: '',
@@ -18,49 +18,46 @@ module.exports = {
     lang: 'en',
   },
   pathPrefix: process.env.NODE_ENV === 'production' ? `/elevate-design-system-test` : '',
+  flags: {
+    FAST_DEV: true,
+    DEV_SSR: false,
+    // Disable file download caching to prevent serialization issues
+    PRESERVE_FILE_DOWNLOAD_CACHE: false,
+  },
   plugins: [
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'ELEVATE Design System',
-        icon: 'src/images/favicon.svg',
-        short_name: 'ELEVATE',
-        start_url: '/',
-        display: 'browser',
+        name: 'pages',
+        path: './src/pages/',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+        // Exclude backstop test images from processing
+        ignore: [`**/data/**`, `**/.backstop/**`, `**/node_modules/**`],
       },
     },
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          formats: ['auto', 'webp'],
-          placeholder: 'blurred',
-          quality: 85,
-          breakpoints: [750, 1080, 1366, 1920],
-        },
-        // High quality settings with persistent caching
-        failOn: 'none',
-        stripMetadata: true,
-        defaultQuality: 85,
-        useMozJpeg: true,
-        // Enable persistent caching
-        base64Width: 20,
+          formats: ['auto'],
+          placeholder: 'none',
+          quality: 100,
+          breakpoints: [320, 768, 1024],
+          backgroundColor: 'transparent',
+        }
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-sass',
-    //   options: {
-    //     sassOptions: {
-    //       quietDeps: true,
-    //       silenceDeprecations: ['mixed-decls', 'legacy-js-api'],
-    //     },
-    //   },
-    // },
     {
       resolve: 'gatsby-theme-carbon',
       options: {
-        // Repository config moved to siteMetadata to avoid duplication
-        // isSwitcherEnabled moved to siteMetadata as well
+        withWebp: false,
+        imageQuality: 100,
       },
     },
   ],
