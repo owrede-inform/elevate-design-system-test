@@ -238,6 +238,28 @@ elvt-menu {
     height: auto !important; // Allow natural sizing based on image
     max-height: none !important; // No restrictions
     
+    // Override Carbon's aspect ratio forcing for mobile
+    .cds--aspect-ratio,
+    .cds--aspect-ratio--1x1 {
+      padding-bottom: 0 !important; // Remove forced aspect ratio
+      height: auto !important; // Natural height
+    }
+    
+    .cds--aspect-ratio--object {
+      position: relative !important; // Change from absolute
+      height: auto !important; // Natural height
+    }
+    
+    .gatsby-resp-image-wrapper {
+      height: auto !important;
+      max-width: 100% !important;
+    }
+    
+    .gatsby-resp-image-background-image {
+      padding-bottom: 33.3333% !important; // Respect the image's natural 3:1 ratio
+      position: relative !important;
+    }
+    
     img {
       // Image should determine container size, not fill arbitrary container
       width: 100% !important;
