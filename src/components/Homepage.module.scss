@@ -43,6 +43,14 @@
     padding: 2rem !important;
     padding-bottom: 2rem !important; // Content positioned in lower section
     box-sizing: border-box !important;
+    
+    // Override any inline styles that might be applied
+    div[style*="display: flex"] {
+      padding-top: 20vh !important; // Push content to lower portion
+      min-height: 60vh !important;
+      justify-content: flex-end !important;
+      align-items: flex-start !important;
+    }
   }
   
   // Additional specificity override for all text elements in banner
@@ -254,4 +262,33 @@
       z-index: 100 !important;
     }
   }
+}
+
+// AGGRESSIVE POSITIONING OVERRIDE - Target the exact HTML structure
+// Override inline styles on the flex container div
+div[class*="Banner-module--column"] > div[style*="display: flex"][style*="height: 100%"] {
+  height: 60vh !important;
+  padding-top: 25vh !important; // Push content to lower 35vh of the 60vh banner
+  padding-bottom: 3rem !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  min-height: auto !important;
+}
+
+// NUCLEAR OPTION - Force banner height at the highest level
+body div[style*="background-image"],
+body section[class*="banner"],
+body .cds--homepage-banner,
+body [class*="Banner"] {
+  min-height: 60vh !important;
+  max-height: 60vh !important;
+  height: 60vh !important;
+  overflow: visible !important;
+}
+
+// Force the column container to match
+body div[class*="Banner-module--column"] {
+  height: 60vh !important;
+  min-height: 60vh !important;
+  max-height: 60vh !important;
 }
