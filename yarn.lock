@@ -1605,9 +1605,10 @@
   resolved "https://npm.pkg.github.com/download/@inform-elevate/elevate-design-tokens/0.15.0/8d4923c9d8a98224b00a926639e74d7c101c4e84#8d4923c9d8a98224b00a926639e74d7c101c4e84"
   integrity sha512-u6q5IXLPgFPxdnHegy2p1CfcwIaFaXpt6DpymTnMT6NR2bU2U2E6Ij+ke9LITXlUiSbMo/UbIvN1MLyLcuat4Q==
 
-"@inform-elevate/elevate-icons@https://github.com/inform-elevate/elevate-icons.git":
-  version "0.3.0"
-  resolved "https://github.com/inform-elevate/elevate-icons.git#314f892538ac5cfcda0c13455cf86761b1d726fb"
+"@inform-elevate/elevate-icons@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@inform-elevate/elevate-icons/0.1.0/294ce68c2cb64a41e30af4c1cf0785fb9f7f6259#294ce68c2cb64a41e30af4c1cf0785fb9f7f6259"
+  integrity sha512-5HvfFRe6LIu0mohxaIM9RBzQ0aUU3DPo/ATcux7pHbN6sGBCi7xXZg6Szl5pe07jUu5SocQ1LSmeZDHoiIzsjg==
 
 "@internationalized/number@^3.6.1":
   version "3.6.4"
