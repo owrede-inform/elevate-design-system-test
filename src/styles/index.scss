@@ -192,7 +192,7 @@ elvt-menu {
   // Remove background gradient to prevent showing through image
   background: transparent !important;
   
-  // Set appropriate base container height
+  // Set appropriate base container height (overridden by responsive breakpoints)
   min-height: 260px !important;
   height: auto !important; // Allow expansion for content
   
@@ -233,16 +233,21 @@ elvt-menu {
   
   // Fix responsive layout issues - ensure full coverage at all breakpoints
   @media (max-width: 768px) {
-    // Mobile: ensure adequate height for both image and Getting started button
-    min-height: 240px !important;
-    max-height: none !important; // Remove max-height restriction
-    height: auto !important; // Allow natural expansion for content
+    // Mobile: let container height match image proportions, no forced height
+    min-height: auto !important; // Override base min-height
+    height: auto !important; // Allow natural sizing based on image
+    max-height: none !important; // No restrictions
     
     img {
-      min-width: 100% !important;
-      min-height: 100% !important;
+      // Image should determine container size, not fill arbitrary container
       width: 100% !important;
-      height: 100% !important;
+      height: auto !important; // Natural height based on aspect ratio
+      min-width: 100% !important;
+      position: relative !important; // Change from absolute to relative
+      top: auto !important;
+      left: auto !important;
+      transform: none !important; // Remove scale transform
+      object-fit: contain !important; // Change from cover to contain
     }
     
     // Ensure button content stays visible above image
