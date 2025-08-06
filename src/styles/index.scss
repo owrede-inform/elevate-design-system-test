@@ -233,54 +233,49 @@ elvt-menu {
   
   // Fix responsive layout issues - ensure full coverage at all breakpoints
   @media (max-width: 768px) {
-    // Mobile: let container height match image proportions, no forced height
-    min-height: auto !important; // Override base min-height
-    height: auto !important; // Allow natural sizing based on image
-    max-height: none !important; // No restrictions
+    // Mobile: maintain proper FeatureCard proportions and ensure image fills completely
+    min-height: auto !important; // Let Carbon determine the height
+    height: auto !important; // Allow Carbon's aspect ratio to work
     
-    // Override Carbon's aspect ratio forcing for mobile
-    .cds--aspect-ratio,
+    // Keep Carbon's aspect ratio but ensure image fills completely
     .cds--aspect-ratio--1x1 {
-      padding-bottom: 0 !important; // Remove forced aspect ratio
-      height: auto !important; // Natural height
+      // Keep the 1:1 aspect ratio for consistency with other cards
+      // Don't override padding-bottom - let Carbon handle it
     }
     
     .cds--aspect-ratio--object {
-      position: relative !important; // Change from absolute
-      height: auto !important; // Natural height
-    }
-    
-    .gatsby-resp-image-wrapper {
-      height: auto !important;
-      max-width: 100% !important;
-    }
-    
-    .gatsby-resp-image-background-image {
-      padding-bottom: 33.3333% !important; // Respect the image's natural 3:1 ratio
-      position: relative !important;
+      // Keep absolute positioning for proper fill
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
     }
     
     img {
-      // Image should determine container size, not fill arbitrary container
+      // Image must fill the entire 1:1 container completely
       width: 100% !important;
-      height: auto !important; // Natural height based on aspect ratio
-      min-width: 100% !important;
-      position: relative !important; // Change from absolute to relative
-      top: auto !important;
-      left: auto !important;
-      transform: none !important; // Remove scale transform
-      object-fit: contain !important; // Change from cover to contain
+      height: 100% !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      object-fit: cover !important; // Cover the entire container
+      object-position: center !important; // Center the image
+      transform: scale(1.05) !important; // Slight scale to ensure no gaps
     }
     
-    // Ensure button content stays visible above image
+    // Ensure button content stays visible and maintains proper styling
     .cds--tile,
     [class*="tile"],
     a {
       position: relative !important;
-      z-index: 10 !important; // Higher z-index for mobile
+      z-index: 10 !important;
       display: block !important;
       visibility: visible !important;
       opacity: 1 !important;
+      // Maintain proper card proportions
+      width: auto !important;
+      height: auto !important;
     }
   }
   
