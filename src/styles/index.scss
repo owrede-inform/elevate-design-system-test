@@ -191,11 +191,14 @@ elvt-menu {
 .homepage-feature {
   background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-secondary) 100%);
   
+  // Constrain container height to prevent excessive vertical space
+  min-height: 220px !important;
+  
   // Ensure image fills the entire feature card container
   img {
     width: 100% !important;
     height: 100% !important;
-    min-height: 280px !important;
+    min-height: 220px !important; // Reduced default height
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
@@ -220,9 +223,13 @@ elvt-menu {
   
   // Fix responsive layout issues
   @media (max-width: 768px) {
-    // Mobile: proper container sizing
+    // Mobile: reduce container height to prevent excessive vertical space
+    min-height: 180px !important;
+    max-height: 180px !important;
+    
     img {
-      min-height: 200px !important;
+      min-height: 180px !important;
+      max-height: 180px !important;
     }
   }
   
