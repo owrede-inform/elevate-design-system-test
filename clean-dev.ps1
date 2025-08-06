@@ -134,7 +134,7 @@ foreach ($dir in $directories) {
     Remove-LockedDirectory -Path $dir
 }
 
-# Clean yarn cache and npm cache to ensure fresh dependencies
+# Clean yarn cache to ensure fresh dependencies
 Write-Host "Cleaning yarn cache..." -ForegroundColor Cyan
 try {
     yarn cache clean --force 2>$null | Out-Null
@@ -142,16 +142,6 @@ try {
 }
 catch {
     Write-Host "Warning: Could not clean yarn cache" -ForegroundColor Yellow
-}
-
-# Clear npm cache if available (additional safety)
-Write-Host "Cleaning npm cache..." -ForegroundColor Cyan
-try {
-    npm cache clean --force 2>$null | Out-Null
-    Write-Host "npm cache cleaned successfully" -ForegroundColor Green
-}
-catch {
-    Write-Host "Warning: Could not clean npm cache" -ForegroundColor Yellow
 }
 
 # Clear temp files that might contain stale webpack references
@@ -180,7 +170,7 @@ if ($forceReinstall) {
     
     Write-Host "Reinstalling dependencies..." -ForegroundColor Cyan
     try {
-        yarn install --force 2>$null
+        yarn install 2>$null
         Write-Host "Dependencies reinstalled successfully" -ForegroundColor Green
     }
     catch {

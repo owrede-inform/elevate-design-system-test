@@ -17,27 +17,45 @@
   // Override scrollbar color from white to dark (consistent with production)
   scrollbar-color: #4a4a4a #f0f0f0; // Dark thumb, light track
   
-  // Webkit scrollbar styling for consistency
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f0f0f0;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #4a4a4a;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #333;
-  }
-  
   // Force our color scheme over component themes
   color-scheme: light;
+}
+
+// GLOBAL SCROLLBAR DARK THEME
+// Apply dark scrollbar globally to override any white scrollbars
+html,
+body,
+*,
+:root,
+:host {
+  // Modern scrollbar styling (Firefox)
+  scrollbar-color: #4a4a4a #f0f0f0; // Dark thumb, light track
+  scrollbar-width: thin;
+}
+
+// Webkit scrollbar styling for all browsers
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+// Override any component-specific scrollbar styling
+* {
+  scrollbar-color: #4a4a4a #f0f0f0; // Dark thumb, light track
+  scrollbar-width: thin;
 }
 
 // CLEAN FONT SYSTEM - MINIMAL OVERRIDES
@@ -72,18 +90,82 @@ var {
   font-family: 'Source Code Pro', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
 }
 
-// ELEVATE Components - Clean CSS custom properties approach
+// ELEVATE Components - Comprehensive Typography Fix
+// Force Inter font on all ELEVATE components and override any Times/serif fallbacks
 [class*="elvt-"],
-[class*="elevate-"] {
-  --font-family: inherit; // Use the globally defined Inter font
-  --button-font-family: inherit;
+[class*="elevate-"],
+elvt-button,
+elvt-input,
+elvt-select,
+elvt-card,
+elvt-modal,
+elvt-tooltip,
+elvt-alert,
+elvt-badge,
+elvt-tab,
+elvt-menu {
+  // Force Inter font family across all ELEVATE components
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  
+  // CSS Custom Properties for ELEVATE Design System
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --button-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --input-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --heading-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  // Override any internal component font specifications
+  * {
+    font-family: inherit !important;
+  }
 }
 
-// Only override problematic serif/Times declarations when they occur
+// Aggressive font override for problematic serif/Times declarations
 * {
+  // Override any inline styles with Times or serif fonts
   &[style*="Times"],
-  &[style*="serif"] {
-    font-family: inherit;
+  &[style*="serif"],
+  &[style*="Georgia"],
+  &[style*="Palatino"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+}
+
+// Shadow DOM and Web Component font fix for ELEVATE components
+// Target shadow DOM content directly
+::slotted(*) {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+// Web Components global styling (for custom elements)
+:defined {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+// LiveExample container typography override
+.live-example-container {
+  // Force Inter font on all content within LiveExample
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  
+  // Target all elements within the live example
+  * {
+    font-family: inherit !important;
+  }
+  
+  // Specifically target ELEVATE web components within live examples
+  elvt-button,
+  elvt-input,
+  elvt-select,
+  elvt-card,
+  elvt-modal,
+  elvt-tooltip,
+  elvt-alert,
+  elvt-badge,
+  elvt-tab,
+  elvt-menu,
+  [class*="elvt-"],
+  [class*="elevate-"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   }
 }
 

@@ -157,3 +157,7 @@ Font configuration is handled in:
 - Always install `@inform-elevate/elevate-core-ui` and `@inform-elevate/elevate-design-tokens`
 - Do not work around authentication issues
 - Always use yarn package manager in this project
+
+## Authentication Setup Memories
+
+- Remember the current setup for the auth token locally and on the GitHub server.
