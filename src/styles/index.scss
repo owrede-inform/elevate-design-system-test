@@ -192,8 +192,9 @@ elvt-menu {
   // Remove background gradient to prevent showing through image
   background: transparent !important;
   
-  // Constrain container height to prevent excessive vertical space
-  min-height: 220px !important;
+  // Set appropriate base container height
+  min-height: 260px !important;
+  height: auto !important; // Allow expansion for content
   
   // Ensure image fills the entire feature card container completely
   img {
@@ -240,7 +241,10 @@ elvt-menu {
   }
   
   @media (min-width: 769px) and (max-width: 1024px) {
-    // Tablet: ensure complete container fill
+    // Tablet: increase container height to prevent clipping of Getting started button
+    min-height: 280px !important;
+    height: auto !important; // Allow container to expand if needed
+    
     img {
       min-width: 100% !important;
       min-height: 100% !important;
@@ -250,7 +254,10 @@ elvt-menu {
   }
   
   @media (min-width: 1025px) {
-    // Desktop: ensure complete container fill
+    // Desktop: ensure adequate height and complete container fill
+    min-height: 320px !important;
+    height: auto !important; // Allow container to expand if needed
+    
     img {
       min-width: 100% !important;
       min-height: 100% !important;
