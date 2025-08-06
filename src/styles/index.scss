@@ -191,44 +191,52 @@ elvt-menu {
 .homepage-feature {
   background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-secondary) 100%);
   
-  // Ensure proper image display across all breakpoints
+  // Ensure image fills the entire feature card container
   img {
     width: 100% !important;
-    height: auto !important;
-    max-height: 300px !important;
+    height: 100% !important;
+    min-height: 280px !important;
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
     margin: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1 !important;
+  }
+  
+  // Make sure the feature card has proper positioning for the absolute image
+  position: relative !important;
+  overflow: hidden !important;
+  
+  // Ensure content (Getting started button) appears above the image
+  .cds--tile,
+  [class*="tile"],
+  a {
+    position: relative !important;
+    z-index: 2 !important;
   }
   
   // Fix responsive layout issues
   @media (max-width: 768px) {
-    // Mobile: ensure proper spacing
-    padding: 1rem;
-    
+    // Mobile: proper container sizing
     img {
-      max-height: 200px !important;
+      min-height: 200px !important;
     }
   }
   
   @media (min-width: 769px) and (max-width: 1024px) {
-    // Tablet: ensure image doesn't disappear and content doesn't overlap
-    position: relative;
-    
+    // Tablet: ensure proper container fill
     img {
-      max-height: 250px !important;
-      margin-bottom: 1rem !important;
+      min-height: 250px !important;
     }
-    
-    // Prevent overlapping with subsequent content
-    margin-bottom: 2rem !important;
   }
   
   @media (min-width: 1025px) {
-    // Desktop: full size
+    // Desktop: full container fill
     img {
-      max-height: 300px !important;
+      min-height: 300px !important;
     }
   }
 }
