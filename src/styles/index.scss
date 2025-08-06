@@ -187,25 +187,35 @@ elvt-menu {
 
 // Note: Typography is now handled by ELEVATE Design Tokens in elevate-typography.scss
 
-// Clean FeatureCard styling with proper 16:9 aspect ratio
+// Clean FeatureCard styling - container hugs image content
 .homepage-feature {
-  // Force 16:9 aspect ratio like ResourceCard components
+  // Remove forced aspect ratio - let image determine container height
   .cds--aspect-ratio--1x1 {
-    padding-bottom: 56.25%; // 16:9 ratio (9/16 = 0.5625)
+    padding-bottom: 0; // Remove aspect ratio forcing
+    height: auto; // Let content determine height
   }
   
-  // Ensure image fills the container properly
+  .cds--aspect-ratio--object {
+    position: relative; // Change from absolute to allow natural height
+    height: auto; // Natural height based on image
+  }
+  
+  // Image determines container size naturally
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; // Natural height based on aspect ratio
+    display: block;
+    object-fit: contain; // Don't crop the image
     object-position: center;
   }
   
-  // Ensure content remains visible and properly positioned
+  // Getting started button overlays bottom corner of image
   .cds--tile {
-    position: relative;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
     z-index: 2;
+    max-width: calc(100% - 2rem); // Prevent overflow
   }
 }
 
