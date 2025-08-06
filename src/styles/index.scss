@@ -189,16 +189,18 @@ elvt-menu {
 
 // Custom brand styling
 .homepage-feature {
-  background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-secondary) 100%);
+  // Remove background gradient to prevent showing through image
+  background: transparent !important;
   
   // Constrain container height to prevent excessive vertical space
   min-height: 220px !important;
   
-  // Ensure image fills the entire feature card container
+  // Ensure image fills the entire feature card container completely
   img {
     width: 100% !important;
     height: 100% !important;
-    min-height: 220px !important; // Reduced default height
+    min-width: 100% !important; // Force full width coverage
+    min-height: 100% !important; // Force full height coverage
     object-fit: cover !important;
     object-position: center !important;
     display: block !important;
@@ -207,6 +209,8 @@ elvt-menu {
     top: 0 !important;
     left: 0 !important;
     z-index: 1 !important;
+    // Ensure no gaps or transparency
+    transform: scale(1.01) !important; // Slight scale to eliminate edge gaps
   }
   
   // Make sure the feature card has proper positioning for the absolute image
@@ -221,29 +225,37 @@ elvt-menu {
     z-index: 2 !important;
   }
   
-  // Fix responsive layout issues
+  // Fix responsive layout issues - ensure full coverage at all breakpoints
   @media (max-width: 768px) {
     // Mobile: reduce container height to prevent excessive vertical space
     min-height: 180px !important;
     max-height: 180px !important;
     
     img {
-      min-height: 180px !important;
-      max-height: 180px !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
     }
   }
   
   @media (min-width: 769px) and (max-width: 1024px) {
-    // Tablet: ensure proper container fill
+    // Tablet: ensure complete container fill
     img {
-      min-height: 250px !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
     }
   }
   
   @media (min-width: 1025px) {
-    // Desktop: full container fill
+    // Desktop: ensure complete container fill
     img {
-      min-height: 300px !important;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
     }
   }
 }
