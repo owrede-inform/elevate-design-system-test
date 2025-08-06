@@ -190,6 +190,47 @@ elvt-menu {
 // Custom brand styling
 .homepage-feature {
   background: linear-gradient(135deg, var(--elevate-primary) 0%, var(--elevate-secondary) 100%);
+  
+  // Ensure proper image display across all breakpoints
+  img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+  
+  // Fix responsive layout issues
+  @media (max-width: 768px) {
+    // Mobile: ensure proper spacing
+    padding: 1rem;
+    
+    img {
+      max-height: 200px !important;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    // Tablet: ensure image doesn't disappear and content doesn't overlap
+    position: relative;
+    
+    img {
+      max-height: 250px !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    // Prevent overlapping with subsequent content
+    margin-bottom: 2rem !important;
+  }
+  
+  @media (min-width: 1025px) {
+    // Desktop: full size
+    img {
+      max-height: 300px !important;
+    }
+  }
 }
 
 // Header customization
