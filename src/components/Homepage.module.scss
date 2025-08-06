@@ -7,10 +7,11 @@
 
 // Homepage banner adjustments for cloud background
 :global(.cds--homepage-banner) {
-  // Ensure the banner has enough height and proper positioning
-  min-height: 70vh;
+  // Ensure the banner has proper height and positioning
+  min-height: 60vh; // Reduced height
+  max-height: 60vh; // Limit maximum height
   display: flex;
-  align-items: center;
+  align-items: flex-end; // Position content lower
   justify-content: center;
   position: relative;
   
@@ -34,15 +35,13 @@
     // Ensure proper positioning within banner - CONSISTENT ACROSS ENVIRONMENTS
     position: relative !important;
     z-index: 10 !important;
-    height: 100% !important;
+    height: 60vh !important; // Reduce overall height
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-end !important; // Position in lower two thirds
+    justify-content: flex-end !important; // Position content at bottom
     align-items: flex-start !important;
     padding: 2rem !important;
-    // Force positioning to be identical in dev and prod - lower two thirds
-    min-height: 70vh !important;
-    padding-bottom: 4rem !important; // Move content further down
+    padding-bottom: 2rem !important; // Content positioned in lower section
     box-sizing: border-box !important;
   }
   
@@ -170,17 +169,17 @@
     align-items: flex-start !important;
     position: relative !important;
     z-index: 15 !important;
-    height: 100% !important;
+    height: 60vh !important; // Match reduced height
     min-height: 60vh !important;
     padding: 2rem !important;
     box-sizing: border-box !important;
     color: #262626 !important;
     
-    // Override any inherited flexbox properties - position in lower two thirds
+    // Override any inherited flexbox properties - position content at bottom
     justify-content: flex-end !important;
     align-content: flex-end !important;
     align-self: flex-end !important;
-    padding-bottom: 4rem !important;
+    padding-bottom: 2rem !important;
   }
   
   // Force visibility and positioning for all homepage banner content
@@ -218,27 +217,25 @@
   body[class*="production"] :global(.cds--homepage-banner),
   :global(.cds--homepage-banner) {
     // Force consistent banner height
-    min-height: 75vh !important;
-    max-height: 90vh !important;
+    min-height: 60vh !important;
+    max-height: 60vh !important;
     
-    // Ensure proper content positioning within banner - lower two thirds
+    // Ensure proper content positioning within banner
     display: flex !important;
     align-items: flex-end !important;
     justify-content: flex-start !important;
-    padding-bottom: 3rem !important;
   }
   
   // Development server: Override any CSS that might position content incorrectly
   body[data-env="development"] :global(.cds--homepage-banner),
   body[class*="development"] :global(.cds--homepage-banner),
   :global(.cds--homepage-banner) {
-    // Force identical positioning to production - lower two thirds
-    min-height: 75vh !important;
-    max-height: 90vh !important;
+    // Force identical positioning to production
+    min-height: 60vh !important;
+    max-height: 60vh !important;
     display: flex !important;
     align-items: flex-end !important;
     justify-content: flex-start !important;
-    padding-bottom: 3rem !important;
     
     // Override any development-specific CSS that might conflict
     position: relative !important;
