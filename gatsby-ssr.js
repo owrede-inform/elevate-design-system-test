@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Import our fixed wrap-root-element to override theme version
+export { default as wrapRootElement } from './src/gatsby-theme-carbon/util/wrap-root-element';
+
 export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
   // Ensure we have the correct path prefix - fallback for production
   const actualPathPrefix = pathPrefix || (process.env.NODE_ENV === 'production' ? '/elevate-design-system-test' : '');
@@ -8,20 +11,27 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
   const isProduction = process.env.NODE_ENV === 'production';
   const isDevelopment = process.env.NODE_ENV === 'development';
   
-  // Preload critical fonts for better performance
+  // Use local Inter fonts from static/fonts/Inter directory
   const fontPreloads = [
     {
       rel: 'preload',
-      href: `${actualPathPrefix}/fonts/Inter-Variable.woff2`,
+      href: `${actualPathPrefix}/fonts/Inter/Inter_18pt-Regular.ttf`,
       as: 'font',
-      type: 'font/woff2',
+      type: 'font/ttf',
       crossOrigin: 'anonymous',
     },
     {
       rel: 'preload',
-      href: `${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2`,
+      href: `${actualPathPrefix}/fonts/Inter/Inter_18pt-Medium.ttf`,
       as: 'font',
-      type: 'font/woff2',
+      type: 'font/ttf',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      href: `${actualPathPrefix}/fonts/Inter/Inter_18pt-SemiBold.ttf`,
+      as: 'font',
+      type: 'font/ttf',
       crossOrigin: 'anonymous',
     },
   ];
@@ -55,20 +65,20 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
           [class*="cds-"], [class*="bx-"], 
           .cds--body, .cds--body-compact-01, .cds--body-compact-02,
           .cds--body-01, .cds--body-02,
-          .cds--caption-01, .cds--caption-02,
-          .cds--label-01, .cds--label-02,
-          .cds--helper-text-01, .cds--helper-text-02,
-          .cds--legal-01, .cds--legal-02,
-          .cds--productive-heading-01, .cds--productive-heading-02,
-          .cds--productive-heading-03, .cds--productive-heading-04,
-          .cds--productive-heading-05, .cds--productive-heading-06,
-          .cds--productive-heading-07,
-          .cds--expressive-heading-01, .cds--expressive-heading-02,
-          .cds--expressive-heading-03, .cds--expressive-heading-04,
-          .cds--expressive-heading-05, .cds--expressive-heading-06,
-          .cds--expressive-paragraph-01,
-          .cds--quotation-01, .cds--quotation-02,
-          .cds--display-01, .cds--display-02, .cds--display-03, .cds--display-04,
+          .esds-caption-01, .esds-caption-02,
+          .esds-label-01, .esds-label-02,
+          .esds-helper-text-01, .esds-helper-text-02,
+          .esds-legal-01, .esds-legal-02,
+          .esds-productive-heading-01, .esds-productive-heading-02,
+          .esds-productive-heading-03, .esds-productive-heading-04,
+          .esds-productive-heading-05, .esds-productive-heading-06,
+          .esds-productive-heading-07,
+          .esds-expressive-heading-01, .esds-expressive-heading-02,
+          .esds-expressive-heading-03, .esds-expressive-heading-04,
+          .esds-expressive-heading-05, .esds-expressive-heading-06,
+          .esds-expressive-paragraph-01,
+          .esds-quotation-01, .esds-quotation-02,
+          .esds-display-01, .esds-display-02, .esds-display-03, .esds-display-04,
           h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, select, textarea {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
           }
@@ -78,13 +88,13 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
           .cds--code-01, .cds--code-02 {
             font-family: 'Source Code Pro', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
           }
-          /* Standard Inter font face declarations for consistency */
+          /* Inter font face declarations using local static TTF files */
           @font-face {
             font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
             font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter/Inter_18pt-Regular.ttf') format('truetype');
           }
           
           @font-face {
@@ -92,7 +102,7 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: normal;
             font-weight: 500;
             font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter/Inter_18pt-Medium.ttf') format('truetype');
           }
           
           @font-face {
@@ -100,47 +110,35 @@ export const onRenderBody = ({ setHeadComponents, pathPrefix }) => {
             font-style: normal;
             font-weight: 600;
             font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            src: url('${actualPathPrefix}/fonts/Inter/Inter_18pt-SemiBold.ttf') format('truetype');
+          }
+          
+          /* CRITICAL: Block ALL IBM Plex font loading attempts */
+          /* Prevent any @font-face rules from loading IBM Plex fonts */
+          @font-face {
+            font-family: 'IBM Plex Sans';
+            src: none !important;
           }
           
           @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            font-family: 'IBM Plex Sans Var';
+            src: none !important;
           }
           
           @font-face {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Variable.woff2') format('woff2');
+            font-family: 'IBM Plex Mono';
+            src: none !important;
           }
           
-          @font-face {
-            font-family: 'Inter';
-            font-style: italic;
-            font-weight: 400;
-            font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2');
+          /* Override any remaining IBM font references with Inter */
+          * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
           }
           
-          @font-face {
-            font-family: 'Inter';
-            font-style: italic;
-            font-weight: 500;
-            font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2');
-          }
-          
-          @font-face {
-            font-family: 'Inter';
-            font-style: italic;
-            font-weight: 700;
-            font-display: swap;
-            src: url('${actualPathPrefix}/fonts/Inter-Italic-Variable.woff2') format('woff2');
+          /* Specifically target code elements to prevent IBM Plex Mono */
+          code, pre, kbd, samp, var,
+          .cds--code-01, .cds--code-02 {
+            font-family: 'Source Code Pro', 'Roboto Mono', 'JetBrains Mono', Monaco, 'Cascadia Code', 'Courier New', monospace !important;
           }
         `
       }}

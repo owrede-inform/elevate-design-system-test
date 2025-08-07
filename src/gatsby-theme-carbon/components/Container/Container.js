@@ -3,11 +3,10 @@ import cx from 'classnames';
 import NavContext from '../../util/context/NavContext';
 import useWindowSize from '../../util/hooks/useWindowSize';
 import useMetadata from '../../util/hooks/useMetadata';
-import { overlay, visible } from './Container.module.scss';
+// Removed unused imports: overlay, visible
 
 const Container = ({ children, homepage, theme }) => {
-  const { leftNavIsOpen, switcherIsOpen, toggleNavState } =
-    useContext(NavContext);
+  const { toggleNavState } = useContext(NavContext);
   const windowSize = useWindowSize();
   const lastWindowSize = useRef(windowSize);
   const { navigationStyle } = useMetadata();
@@ -27,10 +26,7 @@ const Container = ({ children, homepage, theme }) => {
     lastWindowSize.current = windowSize;
   }, [closeNavs, windowSize, windowSize.innerWidth]);
 
-  const overlayVisible = (() => {
-    const navOpen = leftNavIsOpen || switcherIsOpen;
-    return navOpen && windowSize.innerWidth && windowSize.innerWidth < 1056;
-  })();
+  // Removed unused overlayVisible variable
 
   const containerClassNames = cx('container', {
     'container--homepage': homepage,

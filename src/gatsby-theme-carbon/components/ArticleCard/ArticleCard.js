@@ -62,10 +62,10 @@ export default class ArticleCard extends React.Component {
         <div className={aspectRatioClassNames}>
           <div className="cds--aspect-ratio--object cds--article-card__tile">
             {subTitle ? (
-              <h5 className="cds--article-card__subtitle">{subTitle}</h5>
+              <h5 className="esds-article-card__subtitle">{subTitle}</h5>
             ) : null}
             {title ? (
-              <h4 className="cds--article-card__title">{title}</h4>
+              <h4 className="esds-article-card__title">{title}</h4>
             ) : null}
             <div className="cds--article-card__info">
               {author ? (

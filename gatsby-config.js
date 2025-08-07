@@ -17,7 +17,7 @@ module.exports = {
     navigationStyle: '',
     lang: 'en',
   },
-  pathPrefix: process.env.NODE_ENV === 'production' ? `/elevate-design-system-test` : '',
+  // pathPrefix: process.env.NODE_ENV === 'production' ? `/elevate-design-system-test` : '',
   flags: {
     FAST_DEV: true,
     DEV_SSR: false,

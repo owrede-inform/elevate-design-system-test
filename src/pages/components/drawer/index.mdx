@@ -9,6 +9,7 @@ import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
 import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
 import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
 import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+import ChangeLog from '../../../components/ChangeLog';
 
 <PageDescription>
 
@@ -48,13 +49,108 @@ Drawers expand interface real estate without navigating away from the current co
 
 ### Positioning Options
 
-<InlineNotification kind="info">
-Drawer components are currently in development. Examples shown represent planned functionality.
-</InlineNotification>
-
 **Left Drawer** slides in from the left edge, commonly used for navigation menus and primary actions.
 
+<LiveExample 
+  title="Left Navigation Drawer Pattern" 
+  htmlCode={`<div style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f4f4f4;">
+  <!-- Main Content Area -->
+  <div style="display: flex; height: 100%;">
+    <!-- Simulated Left Drawer -->
+    <div style="width: 280px; background: white; border-right: 1px solid #e0e0e0; padding: 1rem; display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e0e0e0;">
+        <h3 style="margin: 0; font-size: 1.125rem;">Navigation</h3>
+        <elvt-button size="small" tone="subtle">
+          <elvt-icon icon="mdi:close"></elvt-icon>
+        </elvt-button>
+      </div>
+      
+      <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <elvt-button align="left" size="medium" tone="subtle">
+          <elvt-icon slot="prefix" icon="mdi:view-dashboard"></elvt-icon>
+          Dashboard
+        </elvt-button>
+        <elvt-button align="left" size="medium" tone="subtle">
+          <elvt-icon slot="prefix" icon="mdi:chart-line"></elvt-icon>
+          Analytics
+        </elvt-button>
+        <elvt-button align="left" size="medium" tone="subtle">
+          <elvt-icon slot="prefix" icon="mdi:account-group"></elvt-icon>
+          Team
+        </elvt-button>
+        <elvt-button align="left" size="medium" tone="subtle">
+          <elvt-icon slot="prefix" icon="mdi:cog"></elvt-icon>
+          Settings
+        </elvt-button>
+      </nav>
+    </div>
+    
+    <!-- Main Content -->
+    <div style="flex: 1; padding: 2rem; display: flex; align-items: center; justify-content: center;">
+      <div style="text-align: center;">
+        <h4 style="margin: 0 0 0.5rem 0;">Main Content Area</h4>
+        <p style="margin: 0; color: #6f6f6f;">Content remains accessible while drawer is open</p>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
+
 **Right Drawer** slides in from the right edge, ideal for secondary content and supplementary information.
+
+<LiveExample 
+  title="Right Filter Drawer Pattern" 
+  htmlCode={`<div style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f4f4f4;">
+  <div style="display: flex; height: 100%;">
+    <!-- Main Content -->
+    <div style="flex: 1; padding: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h3 style="margin: 0;">Product List</h3>
+        <elvt-button size="small">
+          <elvt-icon slot="prefix" icon="mdi:filter"></elvt-icon>
+          Filters
+        </elvt-button>
+      </div>
+      <div style="text-align: center; padding-top: 4rem;">
+        <elvt-icon icon="mdi:package-variant" style="font-size: 3rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+        <p style="margin: 0; color: #6f6f6f;">Product results would appear here</p>
+      </div>
+    </div>
+    
+    <!-- Simulated Right Drawer -->
+    <div style="width: 300px; background: white; border-left: 1px solid #e0e0e0; padding: 1rem; display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e0e0e0;">
+        <h4 style="margin: 0; font-size: 1.125rem;">Filter Products</h4>
+        <elvt-button size="small" tone="subtle">
+          <elvt-icon icon="mdi:close"></elvt-icon>
+        </elvt-button>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Category</label>
+          <elvt-chip dismissible>Electronics</elvt-chip>
+          <elvt-chip dismissible>Books</elvt-chip>
+        </div>
+        
+        <div>
+          <label style="display: block; margin-bottom: 0.75rem; font-weight: 500; font-size: 0.875rem;">Price Range</label>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <elvt-checkbox>Under $25</elvt-checkbox>
+            <elvt-checkbox checked>$25 - $100</elvt-checkbox>
+            <elvt-checkbox>Over $100</elvt-checkbox>
+          </div>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #e0e0e0; display: flex; gap: 0.5rem;">
+          <elvt-button tone="primary" size="small">Apply Filters</elvt-button>
+          <elvt-button tone="subtle" size="small">Clear All</elvt-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
 
 **Bottom Drawer** slides up from the bottom, perfect for mobile interfaces and contextual actions.
 
@@ -108,11 +204,6 @@ Drawer components are currently in development. Examples shown represent planned
 
 ## Implementation
 
-
-<InlineNotification kind="warning">
-Drawer component is currently in development. Implementation details will be available in future releases.
-</InlineNotification>
-
 ### Getting Started
 
 ```bash
@@ -124,64 +215,280 @@ npm install @inform-elevate/elevate-core-ui
 import '@inform-elevate/elevate-core-ui';
 
 // Or import specific components  
-import '@inform-elevate/elevate-core-ui/dist/components/drawer/drawer.js';
+import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
+import '@inform-elevate/elevate-core-ui/dist/components/icon/icon.js';
+import '@inform-elevate/elevate-core-ui/dist/components/checkbox/checkbox.js';
+import '@inform-elevate/elevate-core-ui/dist/components/chip/chip.js';
 ```
 
-### Planned Usage Patterns
+### Common Drawer Patterns
+
+Drawer patterns can be created using existing ELEVATE components and CSS:
 
 ```html
-<!-- Navigation drawer -->
-<elvt-drawer position="left" size="standard">
-  <nav slot="content">
-    <elvt-link href="/dashboard">Dashboard</elvt-link>
-    <elvt-link href="/reports">Reports</elvt-link>
-    <elvt-link href="/settings">Settings</elvt-link>
-  </nav>
-</elvt-drawer>
+<!-- Navigation drawer layout -->
+<div class="drawer-layout">
+  <div class="drawer drawer-left">
+    <div class="drawer-header">
+      <h3>Navigation</h3>
+      <elvt-button size="small" tone="subtle">
+        <elvt-icon icon="mdi:close"></elvt-icon>
+      </elvt-button>
+    </div>
+    
+    <nav class="drawer-content">
+      <elvt-button align="left" size="medium" tone="subtle">
+        <elvt-icon slot="prefix" icon="mdi:view-dashboard"></elvt-icon>
+        Dashboard
+      </elvt-button>
+      <elvt-button align="left" size="medium" tone="subtle">
+        <elvt-icon slot="prefix" icon="mdi:chart-line"></elvt-icon>
+        Analytics
+      </elvt-button>
+      <elvt-button align="left" size="medium" tone="subtle">
+        <elvt-icon slot="prefix" icon="mdi:cog"></elvt-icon>
+        Settings
+      </elvt-button>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <!-- Main application content -->
+  </div>
+</div>
 
-<!-- Filter drawer -->
-<elvt-drawer position="right" modal="false">
-  <div slot="header">
-    <h3>Filters</h3>
+<!-- Filter drawer layout -->
+<div class="drawer-layout">
+  <div class="main-content">
+    <!-- Main content -->
   </div>
-  <div slot="content">
-    <!-- Filter controls -->
+  
+  <div class="drawer drawer-right">
+    <div class="drawer-header">
+      <h4>Filters</h4>
+      <elvt-button size="small" tone="subtle">
+        <elvt-icon icon="mdi:close"></elvt-icon>
+      </elvt-button>
+    </div>
+    
+    <div class="drawer-content">
+      <div class="filter-section">
+        <label>Categories</label>
+        <elvt-chip dismissible>Electronics</elvt-chip>
+        <elvt-chip dismissible>Books</elvt-chip>
+      </div>
+      
+      <div class="filter-section">
+        <label>Price Range</label>
+        <elvt-checkbox>Under $25</elvt-checkbox>
+        <elvt-checkbox checked>$25 - $100</elvt-checkbox>
+        <elvt-checkbox>Over $100</elvt-checkbox>
+      </div>
+    </div>
   </div>
-</elvt-drawer>
-
-<!-- Mobile bottom drawer -->
-<elvt-drawer position="bottom" trigger="mobile-menu-button">
-  <div slot="content">
-    <!-- Mobile actions -->
-  </div>
-</elvt-drawer>
+</div>
 ```
 
-### Key Properties
+### CSS Styling
 
-The most commonly planned properties for design and development:
+```css
+.drawer-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.drawer {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e0e0e0;
+}
+
+.drawer-left {
+  width: 280px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.drawer-right {
+  width: 300px;
+  border-left: 1px solid #e0e0e0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.drawer-content {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+```
+
+### Key Components Used
+
+Components commonly used to create drawer patterns:
 
 <PageTable>
 
-| Property | Options | Description |
+| Component | Usage | Description |
 |----------|---------|-------------|
-| `position` | `left`, `right`, `top`, `bottom` | Where drawer slides in from |
-| `size` | `compact`, `standard` (default), `wide` | Drawer width or height |  
-| `modal` | `true` (default), `false` | Whether drawer blocks background interaction |
-| `overlay` | `true` (default), `false` | Whether to show background overlay |
-| `push-content` | `true`, `false` (default) | Whether to push main content aside |
-| `trigger` | Element ID | Element that opens the drawer |
+| `elvt-button` | Navigation items, actions | Interactive buttons with icon support |
+| `elvt-icon` | Visual elements, close buttons | MDI icons for navigation and actions |  
+| `elvt-checkbox` | Filter controls | Selection controls for drawer filters |
+| `elvt-chip` | Active filters, tags | Dismissible tags showing applied filters |
+| Standard HTML | Layout structure | Containers, headers, and content organization |
+| CSS Flexbox | Positioning | Layout control for drawer positioning and sizing |
 
 </PageTable>
 
-*For complete API reference including all properties, events, and methods, see the [Storybook documentation](https://elevate-core-ui.inform-cloud.io/?path=/docs/components-drawer--docs).*
+*For complete examples and styling patterns, see the LiveExample demonstrations above.*
 
 ## Interactive Examples
 
+### Mobile-Friendly Bottom Drawer Pattern
 
-<InlineNotification kind="info">
-Interactive examples will be available when the Drawer component is implemented. Check back in future releases for live demonstrations.
-</InlineNotification>
+<LiveExample 
+  title="Mobile Bottom Drawer Pattern" 
+  htmlCode={`<div style="position: relative; height: 500px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f4f4f4;">
+  <!-- Simulated Mobile Interface -->
+  <div style="width: 375px; margin: 0 auto; height: 100%; background: white; position: relative;">
+    <!-- Top Bar -->
+    <div style="padding: 1rem; border-bottom: 1px solid #e0e0e0; background: white;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0; font-size: 1.125rem;">Mobile App</h3>
+        <elvt-button size="small" tone="subtle">
+          <elvt-icon icon="mdi:menu"></elvt-icon>
+        </elvt-button>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div style="flex: 1; padding: 2rem; text-align: center; padding-top: 4rem;">
+      <elvt-icon icon="mdi:cellphone" style="font-size: 3rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+      <p style="margin: 0; color: #6f6f6f;">Main app content</p>
+    </div>
+    
+    <!-- Bottom Drawer -->
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #e0e0e0; border-radius: 12px 12px 0 0; padding: 1rem;">
+      <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+        <div style="width: 40px; height: 4px; background: #e0e0e0; border-radius: 2px;"></div>
+      </div>
+      
+      <h4 style="margin: 0 0 1rem 0; font-size: 1.125rem; text-align: center;">Quick Actions</h4>
+      
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <elvt-button align="center" tone="subtle" style="flex-direction: column; height: 80px;">
+          <elvt-icon icon="mdi:camera" style="font-size: 1.5rem; margin-bottom: 0.25rem;"></elvt-icon>
+          <span style="font-size: 0.75rem;">Camera</span>
+        </elvt-button>
+        
+        <elvt-button align="center" tone="subtle" style="flex-direction: column; height: 80px;">
+          <elvt-icon icon="mdi:file-document" style="font-size: 1.5rem; margin-bottom: 0.25rem;"></elvt-icon>
+          <span style="font-size: 0.75rem;">Documents</span>
+        </elvt-button>
+        
+        <elvt-button align="center" tone="subtle" style="flex-direction: column; height: 80px;">
+          <elvt-icon icon="mdi:share" style="font-size: 1.5rem; margin-bottom: 0.25rem;"></elvt-icon>
+          <span style="font-size: 0.75rem;">Share</span>
+        </elvt-button>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
+
+### Settings Drawer Pattern
+
+<LiveExample 
+  title="Settings Drawer Pattern" 
+  htmlCode={`<div style="position: relative; height: 450px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #f4f4f4;">
+  <div style="display: flex; height: 100%;">
+    <!-- Main Content -->
+    <div style="flex: 1; padding: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h3 style="margin: 0;">Dashboard</h3>
+        <elvt-button size="small" tone="subtle">
+          <elvt-icon slot="prefix" icon="mdi:cog"></elvt-icon>
+          Settings
+        </elvt-button>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #e0e0e0;">
+          <h4 style="margin: 0 0 0.5rem 0;">Active Users</h4>
+          <div style="font-size: 2rem; font-weight: 600; color: #161616;">1,234</div>
+        </div>
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #e0e0e0;">
+          <h4 style="margin: 0 0 0.5rem 0;">Revenue</h4>
+          <div style="font-size: 2rem; font-weight: 600; color: #161616;">$45,678</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Settings Drawer -->
+    <div style="width: 320px; background: white; border-left: 1px solid #e0e0e0; display: flex; flex-direction: column;">
+      <div style="padding: 1rem; border-bottom: 1px solid #e0e0e0;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h4 style="margin: 0; font-size: 1.125rem;">Settings</h4>
+          <elvt-button size="small" tone="subtle">
+            <elvt-icon icon="mdi:close"></elvt-icon>
+          </elvt-button>
+        </div>
+      </div>
+      
+      <div style="flex: 1; padding: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+          <h5 style="margin: 0 0 0.75rem 0; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; color: #6f6f6f;">Notifications</h5>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <elvt-switch checked>
+              <label slot="label">Email notifications</label>
+              <span slot="help-text">Receive email alerts</span>
+            </elvt-switch>
+            <elvt-switch>
+              <label slot="label">Push notifications</label>
+              <span slot="help-text">Browser notifications</span>
+            </elvt-switch>
+            <elvt-switch checked>
+              <label slot="label">SMS alerts</label>
+              <span slot="help-text">Text message alerts</span>
+            </elvt-switch>
+          </div>
+        </div>
+        
+        <div>
+          <h5 style="margin: 0 0 0.75rem 0; font-size: 0.875rem; font-weight: 600; text-transform: uppercase; color: #6f6f6f;">Preferences</h5>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <elvt-switch>
+              <label slot="label">Dark mode</label>
+              <span slot="help-text">Use dark theme</span>
+            </elvt-switch>
+            <elvt-switch checked>
+              <label slot="label">Auto-save</label>
+              <span slot="help-text">Save changes automatically</span>
+            </elvt-switch>
+          </div>
+        </div>
+        
+        <div style="margin-top: auto; border-top: 1px solid #e0e0e0; padding-top: 1rem;">
+          <elvt-button tone="primary" style="width: 100%;">Save Changes</elvt-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
 
 ## Accessibility
 
@@ -214,14 +521,4 @@ Interactive examples will be available when the Drawer component is implemented.
 
 ## Changelog
 
-
-### Planned Releases
-
-**Version 0.1.0 (Planned)**
-- **New**: Initial Drawer component implementation
-- **New**: Multi-position support (left, right, top, bottom)
-- **New**: Modal and non-modal variants
-- **New**: Responsive behavior and mobile optimization
-
-**Version 0.0.26-alpha (July 16, 2025)**
-- Current version - Drawer component in development planning phase
+<ChangeLog component="drawer" />

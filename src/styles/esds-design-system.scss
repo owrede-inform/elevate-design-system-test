@@ -1,0 +1,499 @@
+// ESDS (ELEVATE System Design System) - Color System & Components
+// Clean, modern design system without Carbon dependencies
+
+// VISUAL DEBUGGING: To quickly identify ESDS components on the page,
+// change "$esds-radius-card: $esds-radius-none;" to "$esds-radius-card: $esds-radius-m;" 
+// This will add rounded corners to all ESDS components for easy identification
+
+// =============================================================================
+// GLOBAL DESIGN CONSTANTS
+// =============================================================================
+
+// SPACING CONSTANTS
+$esds-spacing-xs: 0.25rem;      // 4px - Minimal spacing, icon gaps
+$esds-spacing-s: 0.5rem;        // 8px - Small spacing, close elements
+$esds-spacing-m: 0.75rem;       // 12px - Medium spacing, related elements
+$esds-spacing-l: 1rem;          // 16px - Large spacing, section gaps
+$esds-spacing-xl: 1.5rem;       // 24px - Extra large spacing, card padding
+$esds-spacing-xxl: 2rem;        // 32px - Double spacing, major section gaps
+$esds-spacing-xxxl: 3rem;       // 48px - Triple spacing, page sections
+
+// BORDER RADIUS CONSTANTS
+$esds-radius-none: 0;           // No radius - Debug mode, sharp corners
+$esds-radius-s: 4px;            // Small radius - Buttons, small elements
+$esds-radius-m: 8px;            // Medium radius - Cards, modals, standard UI
+$esds-radius-l: 12px;           // Large radius - Featured elements
+$esds-radius-xl: 16px;          // Extra large radius - Hero elements
+$esds-radius-full: 50%;         // Full radius - Circular elements
+$esds-radius-card: $esds-radius-none; // Card radius - Currently no radius for debugging
+
+// TYPOGRAPHY CONSTANTS
+$esds-font-size-xs: 0.75rem;    // 12px - Captions, labels
+$esds-font-size-s: 0.875rem;    // 14px - Small text, descriptions
+$esds-font-size-m: 1rem;        // 16px - Base body text
+$esds-font-size-l: 1.25rem;     // 20px - Large text, card titles
+$esds-font-size-xl: 1.5rem;     // 24px - Headings, important text
+$esds-font-size-xxl: 2rem;      // 32px - Page titles, hero text
+
+$esds-font-weight-regular: 400;  // Regular text weight
+$esds-font-weight-medium: 500;   // Medium text weight
+$esds-font-weight-semibold: 600; // Semi-bold text weight
+$esds-font-weight-bold: 700;     // Bold text weight
+
+$esds-line-height-tight: 1.2;   // Tight line height - Headings
+$esds-line-height-normal: 1.4;  // Normal line height - Body text, cards
+$esds-line-height-loose: 1.6;   // Loose line height - Reading text
+
+// Z-INDEX CONSTANTS
+$esds-z-index-base: 1;          // Base layer
+$esds-z-index-overlay: 10;      // Overlays, feature cards
+$esds-z-index-modal: 100;       // Modals, dropdowns
+$esds-z-index-tooltip: 200;     // Tooltips, popovers
+$esds-z-index-debug: 9999;      // Debug overlays
+
+// TRANSITION CONSTANTS
+$esds-transition-fast: 0.1s ease;    // Fast transitions - Micro interactions
+$esds-transition-normal: 0.2s ease;  // Normal transitions - Hover states, buttons
+$esds-transition-slow: 0.3s ease;    // Slow transitions - Complex animations
+
+// BREAKPOINT CONSTANTS
+$esds-breakpoint-xs: 480px;     // Extra small screens - Mobile portrait
+$esds-breakpoint-s: 768px;      // Small screens - Mobile landscape, tablet
+$esds-breakpoint-m: 1055px;     // Medium screens - Tablet landscape, small desktop (sidebar collapse point)
+$esds-breakpoint-l: 1200px;     // Large screens - Desktop
+$esds-breakpoint-xl: 1440px;    // Extra large screens - Wide desktop
+
+// BOX SHADOW CONSTANTS
+$esds-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);     // Extra small shadow - Subtle elevation
+$esds-shadow-s: 0 2px 4px rgba(0, 0, 0, 0.1);       // Small shadow - Cards at rest
+$esds-shadow-m: 0 4px 12px rgba(0, 0, 0, 0.15);     // Medium shadow - Hover states
+$esds-shadow-l: 0 8px 24px rgba(0, 0, 0, 0.1);      // Large shadow - Featured elements
+$esds-shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.25);   // Extra large shadow - Modals, overlays
+
+// =============================================================================
+// GLOBAL COLOR CONSTANTS
+// =============================================================================
+
+// INFORM Brand Colors (Primary Palette)
+$esds-primary: #0090a7;           // INFORM Petrol - Primary brand color, buttons, links, focus states
+$esds-primary-hover: #007a8f;    // INFORM Petrol Dark - Hover states, active elements
+$esds-secondary: #004759;        // INFORM Dark Green - Secondary brand color, dark themes
+$esds-accent: #0090a7;           // Same as primary - Accent highlights, indicators
+
+// Semantic Colors
+$esds-success: #10b981;          // Success states, confirmations, positive feedback
+$esds-warning: #f59e0b;          // Warning states, cautions, attention needed
+$esds-error: #ef4444;            // Error states, validation failures, critical alerts
+$esds-info: #3b82f6;            // Information states, tips, neutral notifications
+
+// Text Colors
+$esds-text-primary: #000000;     // Primary text - Headlines, body text, high emphasis
+$esds-text-secondary: #4e5355;   // Secondary text - Subtitles, descriptions, medium emphasis
+$esds-text-tertiary: #6b7280;    // Tertiary text - Captions, labels, low emphasis
+$esds-text-disabled: #9ca3af;    // Disabled text - Inactive elements
+
+// Background Colors (Light Theme)
+$esds-background-primary: #ffffff;    // Main background - Page backgrounds, card surfaces
+$esds-background-secondary: #f9fafb;  // Secondary background - Section backgrounds, subtle surfaces
+$esds-background-tertiary: #f3f4f6;   // Tertiary background - Input fields, disabled states
+
+// Background Colors (Dark Theme)
+$esds-background-dark: #161616;       // Dark background - Dark theme main background
+$esds-background-dark-secondary: #262626; // Dark secondary - Card backgrounds in dark theme
+$esds-background-dark-tertiary: #393939;  // Dark tertiary - Hover states in dark theme
+
+// Border Colors
+$esds-border-light: #e5e7eb;      // Light borders - Subtle dividers, card borders
+$esds-border-medium: #d1d5db;     // Medium borders - Form elements, active borders
+$esds-border-strong: #9ca3af;     // Strong borders - Focus states, emphasized dividers
+
+// Surface Colors (for cards, modals, overlays)
+$esds-surface-light: #ffffff;     // Light surface - Cards, modals, tooltips
+$esds-surface-dark: #1f2937;      // Dark surface - Dark theme cards, modals
+$esds-surface-elevated: #ffffff;  // Elevated surface - Dropdowns, floating elements
+
+// Shadow Colors
+$esds-shadow-light: rgba(0, 0, 0, 0.1);    // Light shadows - Subtle elevation
+$esds-shadow-medium: rgba(0, 0, 0, 0.15);  // Medium shadows - Card hover states
+$esds-shadow-strong: rgba(0, 0, 0, 0.25);  // Strong shadows - Modal overlays, high elevation
+
+// Carbon Design System Equivalent Colors (for compatibility)
+$esds-ui-01: #f4f4f4;           // Carbon $ui-01 equivalent - Light card backgrounds
+$esds-ui-background: #ffffff;    // Carbon $ui-background equivalent - Main backgrounds
+$esds-hover-ui: #e8e8e8;        // Carbon $hover-ui equivalent - Light hover states
+$esds-gray-90: #262626;         // Carbon $gray-90 equivalent - Dark card backgrounds
+$esds-gray-80: #393939;         // Carbon $gray-80 equivalent - Dark hover states
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES (for runtime theme switching)
+// =============================================================================
+
+:root {
+  // Brand colors
+  --esds-primary: #{$esds-primary};
+  --esds-primary-hover: #{$esds-primary-hover};
+  --esds-secondary: #{$esds-secondary};
+  --esds-accent: #{$esds-accent};
+  
+  // Semantic colors
+  --esds-success: #{$esds-success};
+  --esds-warning: #{$esds-warning};
+  --esds-error: #{$esds-error};
+  --esds-info: #{$esds-info};
+  
+  // Text colors
+  --esds-text-primary: #{$esds-text-primary};
+  --esds-text-secondary: #{$esds-text-secondary};
+  --esds-text-tertiary: #{$esds-text-tertiary};
+  --esds-text-disabled: #{$esds-text-disabled};
+  
+  // Background colors
+  --esds-background-primary: #{$esds-background-primary};
+  --esds-background-secondary: #{$esds-background-secondary};
+  --esds-background-tertiary: #{$esds-background-tertiary};
+  
+  // Surface colors
+  --esds-surface-light: #{$esds-surface-light};
+  --esds-surface-dark: #{$esds-surface-dark};
+  --esds-surface-elevated: #{$esds-surface-elevated};
+  
+  // Border colors
+  --esds-border-light: #{$esds-border-light};
+  --esds-border-medium: #{$esds-border-medium};
+  --esds-border-strong: #{$esds-border-strong};
+  
+  // Shadow colors
+  --esds-shadow-light: #{$esds-shadow-light};
+  --esds-shadow-medium: #{$esds-shadow-medium};
+  --esds-shadow-strong: #{$esds-shadow-strong};
+  
+  // Carbon compatibility
+  --esds-ui-01: #{$esds-ui-01};
+  --esds-ui-background: #{$esds-ui-background};
+  --esds-hover-ui: #{$esds-hover-ui};
+  --esds-gray-90: #{$esds-gray-90};
+  --esds-gray-80: #{$esds-gray-80};
+
+  // Radius constants
+  --esds-radius-card: #{$esds-radius-card};
+}
+
+// =============================================================================
+// TYPOGRAPHY CLASSES (ESDS Replacements for Carbon Typography)
+// =============================================================================
+
+// Display Typography (replaces cds--display-*)
+.esds-display-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xxl; font-weight: $esds-font-weight-bold; line-height: $esds-line-height-tight; }
+.esds-display-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 2.5rem; font-weight: $esds-font-weight-bold; line-height: $esds-line-height-tight; }
+.esds-display-03 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 3rem; font-weight: $esds-font-weight-bold; line-height: $esds-line-height-tight; }
+.esds-display-04 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 3.75rem; font-weight: $esds-font-weight-bold; line-height: $esds-line-height-tight; }
+
+// Productive Headings (replaces cds--productive-heading-*)
+.esds-productive-heading-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-productive-heading-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-m; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-productive-heading-03 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-l; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-productive-heading-04 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xl; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-productive-heading-05 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xxl; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-productive-heading-06 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 2.5rem; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-tight; }
+.esds-productive-heading-07 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 3rem; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-tight; }
+
+// Expressive Headings (replaces cds--expressive-heading-*)
+.esds-expressive-heading-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+.esds-expressive-heading-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-m; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+.esds-expressive-heading-03 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-l; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+.esds-expressive-heading-04 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xl; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+.esds-expressive-heading-05 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xxl; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+.esds-expressive-heading-06 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: 2.5rem; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-loose; }
+
+// Expressive Paragraph (replaces cds--expressive-paragraph-01)
+.esds-expressive-paragraph-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-m; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-loose; }
+
+// Component-Specific Typography (replaces component cds-- classes)
+.esds-article-card__title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-l; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-article-card__subtitle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-secondary; }
+.esds-resource-card__title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-l; font-weight: $esds-font-weight-semibold; line-height: $esds-line-height-normal; }
+.esds-resource-card__subtitle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-secondary; }
+
+// Text Utility Classes
+.esds-caption-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xs; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; }
+.esds-caption-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; }
+.esds-label-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xs; font-weight: $esds-font-weight-medium; line-height: $esds-line-height-normal; }
+.esds-label-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-medium; line-height: $esds-line-height-normal; }
+.esds-helper-text-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xs; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-secondary; }
+.esds-helper-text-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-secondary; }
+.esds-legal-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xs; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-tertiary; }
+.esds-legal-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-s; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-normal; color: $esds-text-tertiary; }
+.esds-quotation-01 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-l; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-loose; font-style: italic; }
+.esds-quotation-02 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-size: $esds-font-size-xl; font-weight: $esds-font-weight-regular; line-height: $esds-line-height-loose; font-style: italic; }
+
+// =============================================================================
+// COMPONENT STYLES
+// =============================================================================
+
+// ResourceCard2 - Clean card component matching Carbon ResourceCard2 colors
+.esds-resource-card {
+  display: flex;
+  flex-direction: column;
+  background: $esds-ui-01 !important;   // Force Carbon $ui-01 (#f4f4f4) - override any inherited colors
+  border: 1px solid $esds-border-light;
+  border-radius: $esds-radius-card; // No rounded corners - easy to change for debugging component boundaries
+  padding: $esds-spacing-xl;
+  margin: 0; // Ensure no margin interferes with flush positioning
+  text-decoration: none;
+  color: inherit;
+  transition: all $esds-transition-normal;
+  box-sizing: border-box;
+  
+  &:hover {
+    background: $esds-hover-ui !important; // Force Carbon $hover-ui (#e8e8e8) - override any inherited colors
+    border-color: $esds-primary;
+    box-shadow: $esds-shadow-m;
+    transform: translateY(-1px);
+  }
+  
+  &:focus {
+    outline: 2px solid $esds-primary;
+    outline-offset: 2px;
+  }
+}
+
+.esds-resource-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 0;
+}
+
+.esds-resource-card__text {
+  flex-grow: 1;
+  margin-bottom: $esds-spacing-l;
+}
+
+.esds-resource-card__title {
+  font-size: $esds-font-size-l;
+  font-weight: $esds-font-weight-semibold;
+  line-height: $esds-line-height-normal;
+  margin: 0 0 $esds-spacing-s 0;
+  color: $esds-text-primary;
+}
+
+.esds-resource-card__subtitle {
+  font-size: $esds-font-size-s;
+  line-height: $esds-line-height-normal;
+  margin: 0;
+  color: $esds-text-secondary;
+}
+
+.esds-resource-card__action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.esds-resource-card__icon {
+  color: $esds-primary;
+  transition: transform $esds-transition-normal;
+}
+
+.esds-resource-card:hover .esds-resource-card__icon {
+  transform: translateX(2px);
+}
+
+// Dark theme variant - Matches Carbon ResourceCard dark colors
+.esds-resource-card--dark {
+  background: $esds-gray-90 !important; // Force $gray-90 (#262626) - override any inherited colors
+  border-color: rgba(255, 255, 255, 0.1);
+  
+  .esds-resource-card__title {
+    color: #ffffff;
+  }
+  
+  .esds-resource-card__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .esds-resource-card__icon {
+    color: #ffffff;
+  }
+  
+  &:hover {
+    background: $esds-gray-80 !important; // Force $gray-80 (#393939) - override any inherited colors
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: $esds-shadow-xl;
+  }
+}
+
+// Aspect ratio variants
+.esds-resource-card--2x1 {
+  aspect-ratio: 2 / 1;
+}
+
+.esds-resource-card--1x1 {
+  aspect-ratio: 1 / 1;
+}
+
+.esds-resource-card--4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+.esds-resource-card--16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+// Disabled state
+.esds-resource-card--disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  
+  &:hover {
+    transform: none;
+    box-shadow: none;
+    background: $esds-ui-01;             // Keep original background when disabled
+    border-color: $esds-border-light;
+  }
+  
+  &.esds-resource-card--dark:hover {
+    background: $esds-gray-90;           // Keep dark background when disabled
+  }
+}
+
+// FeatureCard2 - Image with overlaid ResourceCard2
+.esds-feature-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform $esds-transition-normal, box-shadow $esds-transition-normal;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $esds-shadow-l;
+  }
+  
+  &:focus {
+    outline: 2px solid $esds-primary;
+    outline-offset: 2px;
+  }
+}
+
+.esds-feature-card__container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $esds-radius-card; // No rounded corners - easy to change for debugging component boundaries
+}
+
+.esds-feature-card__image {
+  position: relative;
+  width: 100%;
+  
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $esds-radius-card; // No rounded corners - easy to change for debugging component boundaries
+  }
+}
+
+.esds-feature-card__overlay {
+  position: absolute;
+  bottom: 0; // Flush to bottom edge - no padding/margin
+  right: 0;  // Flush to right edge - no padding/margin
+  z-index: $esds-z-index-overlay;
+  
+  // Ensure ResourceCard2 maintains stable sizing and visibility at ALL breakpoints
+  .esds-resource-card {
+    width: 280px;
+    height: 157.5px; // 16:9 aspect ratio (280 * 9/16)
+    display: flex !important;           // Force visibility at all breakpoints
+    visibility: visible !important;     // Override any hidden states
+    opacity: 1 !important;             // Ensure full opacity
+    
+    // Responsive sizing while maintaining aspect ratio
+    @media (max-width: #{$esds-breakpoint-s}) {
+      width: 200px;
+      height: 112.5px; // 16:9 aspect ratio (200 * 9/16)
+    }
+    
+    @media (max-width: #{$esds-breakpoint-xs}) {
+      width: 160px;
+      height: 90px; // 16:9 aspect ratio (160 * 9/16)
+    }
+    
+    // Mobile breakpoint fix - ensure card is visible when sidebar becomes burger menu
+    @media (max-width: #{$esds-breakpoint-m}) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+    }
+    
+    // Ensure it never goes outside the viewport
+    max-width: calc(100vw - #{$esds-spacing-xxl});
+    max-height: calc(100vh - #{$esds-spacing-xxl});
+  }
+  
+  // Keep flush positioning at all breakpoints
+  @media (max-width: #{$esds-breakpoint-s}) {
+    bottom: 0; // Stay flush to bottom edge
+    right: 0;  // Stay flush to right edge
+  }
+  
+  @media (max-width: #{$esds-breakpoint-xs}) {
+    bottom: 0; // Stay flush to bottom edge
+    right: 0;  // Stay flush to right edge
+  }
+  
+  // Mobile breakpoint positioning fix
+  @media (max-width: #{$esds-breakpoint-m}) {
+    position: absolute !important;
+    z-index: 20 !important;
+  }
+}
+
+// Disabled state
+.esds-feature-card[disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+  
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// Override any potential interference from existing CSS and CSS variables
+.esds-feature-card {
+  .esds-resource-card {
+    // Nuclear override: Force correct background colors and ignore any inherited CSS variables
+    background: $esds-ui-01 !important;
+    background-color: $esds-ui-01 !important;
+    
+    // Override any CSS custom properties that might be inherited
+    --elevate-background: #{$esds-ui-01} !important;
+    --elevate-secondary: #{$esds-ui-01} !important;  // Override the #004759 color
+    
+    transition: all $esds-transition-normal;
+    
+    &:hover {
+      background: $esds-hover-ui !important;
+      background-color: $esds-hover-ui !important;
+      transform: translateY(-1px);
+      box-shadow: $esds-shadow-m;
+    }
+    
+    // Dark variant overrides
+    &.esds-resource-card--dark {
+      background: $esds-gray-90 !important;
+      background-color: $esds-gray-90 !important;
+      --elevate-background: #{$esds-gray-90} !important;
+      --elevate-secondary: #{$esds-gray-90} !important;
+      
+      &:hover {
+        background: $esds-gray-80 !important;
+        background-color: $esds-gray-80 !important;
+      }
+    }
+  }
+}

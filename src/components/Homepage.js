@@ -4,7 +4,6 @@ import HomepageTemplate from 'gatsby-theme-carbon/src/components/Layouts/Homepag
 import { calloutLink } from './Homepage.module.scss';
 
 import CloudsBackground from '../../static/images/clouds-notype-gray.png';
-import InformLogo from '../../static/images/inform-brand.svg';
 import InformLogoBlack from '../../static/images/svg-logo-black.svg';
 
 const FirstLeftText = () => <p>Built on Principles</p>;

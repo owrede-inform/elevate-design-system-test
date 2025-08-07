@@ -185,23 +185,22 @@ npm install @inform-elevate/elevate-core-ui
 
 | Event | Description |
 |-------|-------------|
-| `click` | Fired when chip is clicked (if clickable) |
-| `dismiss` | Fired when chip is dismissed/removed |
-| `selection-change` | Fired when chip selection state changes |
+| `request-remove` | Fired when the removable chip's remove button is clicked |
+| `request-edit` | Fired when the editable chip's content area is clicked |
 
 ## Accessibility
 
 ### Keyboard Support
 - **Tab**: Moves focus to interactive chips
-- **Enter/Space**: Activates clickable chips or toggles selection
-- **Delete/Backspace**: Removes dismissible chips when focused
+- **Enter/Space**: Activates editable chips or removes removable chips when focused
+- **Delete/Backspace**: Removes chips when `removable` is enabled
 - **Arrow keys**: Navigate between chips in groups
 
 ### Screen Reader Support
 - Chips announce their content and state clearly
 - Interactive chips have proper button or option semantics
-- Selected state is communicated for filter/choice chips
-- Dismissible action is clearly described
+- Editable action is clearly described for editable chips
+- Removable action is clearly described for removable chips
 
 ### Focus Management
 - Clear focus indicators on interactive chips
@@ -210,9 +209,9 @@ npm install @inform-elevate/elevate-core-ui
 - Initial focus placement follows expected patterns
 
 ### ARIA Support
-- Uses appropriate roles (`button`, `option`, etc.) based on function
-- Selected states use `aria-selected` or `aria-pressed`
-- Dismissible chips have accessible remove actions
+- Uses appropriate roles (`button`, etc.) based on function
+- Editable chips announce their editable state clearly
+- Removable chips have accessible remove actions with custom labels
 - Groups use proper `role="group"` when needed
 
 ### Best Practices

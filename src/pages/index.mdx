@@ -1,4 +1,6 @@
 import HomepageTemplate from '../components/Homepage.js';
+import FeatureCard2 from '../components/FeatureCard2.js';
+import ResourceCard2 from '../components/ResourceCard2.js';
 export default HomepageTemplate;
 
 ## A new design system for us
@@ -12,17 +14,16 @@ export default HomepageTemplate;
 
 </PageDescription>
 
-<FeatureCard
+<FeatureCard2
     color="dark"
     href="/getting-started"
     title="Getting started"
     actionIcon="arrowRight"
-    className="homepage-feature"
     >
 
 ![blue vertical stripes](../images/blue-stripes.jpg)
 
-</FeatureCard>
+</FeatureCard2>
 
 ## The ELEVATE Ecosystem
 
@@ -30,30 +31,30 @@ export default HomepageTemplate;
 
 <Row className="resource-card-group">
   <Column colMd={4} colLg={4} noGutterSm>
-    <ResourceCard
+    <ResourceCard2
       href="https://github.com/inform-elevate/elevate-core-ui"
       title="Core UI Library"
-      subtitle="40+ Web Components, Storybook documentation"
+      subTitle="40+ Web Components, Storybook documentation"
       actionIcon="launch"
       aspectRatio="2:1"
       color="dark"
     />
   </Column>
   <Column colMd={4} colLg={4} noGutterSm>
-    <ResourceCard
+    <ResourceCard2
       href="https://github.com/inform-elevate/elevate-design-tokens"
       title="Design Tokens"
-      subtitle="3-tier architecture: Primitive → Alias → Component"
+      subTitle="3-tier architecture: Primitive → Alias → Component"
       actionIcon="launch"
       aspectRatio="2:1"
       color="dark"
     />
   </Column>
   <Column colMd={4} colLg={4} noGutterSm>
-    <ResourceCard
+    <ResourceCard2
       href="https://github.com/inform-elevate/elevate-icons"
       title="Custom Icons"
-      subtitle="SVG icons with TypeScript constants"
+      subTitle="SVG icons with TypeScript constants"
       actionIcon="launch"
       aspectRatio="2:1"
       color="dark"
@@ -67,20 +68,20 @@ export default HomepageTemplate;
 
 <Row>
   <Column colMd={6} colLg={6}>
-    <ResourceCard
+    <ResourceCard2
       href="https://confluence.inform-software.com/x/5dM6D"
       title="Current Status"
-      subtitle="Alpha 1 releases throughout 2025, 1.0 production ready November 2025"
+      subTitle="Alpha 1 releases throughout 2025, 1.0 production ready November 2025"
       actionIcon="launch"
       aspectRatio="2:1"
       color="light"
     />
   </Column>
   <Column colMd={6} colLg={6}>
-    <ResourceCard
+    <ResourceCard2
       href="https://www.inform-software.design/"
       title="INFORM Corporate Design"
-      subtitle="Brand guidelines and design principles for enterprise software"
+      subTitle="Brand guidelines and design principles for enterprise software"
       actionIcon="launch"
       aspectRatio="2:1"
       color="light"

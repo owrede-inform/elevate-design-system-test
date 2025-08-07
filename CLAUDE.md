@@ -101,6 +101,7 @@ yarn install
 
 - ELEVATE components are automatically available in MDX files when using the `<LiveExample>` component
 - Components use web components standard (custom elements) like `<elvt-button>`, `<elvt-icon>`, etc.
+- **Remove any occurrences of LiveExample2, LiveExample3 or LiveExample4 components. LiveExample is the only correct version (for now)**
 - The LiveExample component handles loading and registration of all ELEVATE web components
 - This project documents the ELEVATE Design System. We need components from @inform-elevate/elevate-core-ui to be installed for LiveExample component. The Design Tokens are available at @inform-elevate/elevate-design-tokens.
 

@@ -48,13 +48,62 @@ Dividers provide subtle visual separation that helps users understand content re
 
 ### Orientation Types
 
-<InlineNotification kind="info">
-Divider components are currently in development. Examples shown represent planned functionality.
-</InlineNotification>
-
 **Horizontal Dividers** separate vertically stacked content sections and are the most common type.
 
+<LiveExample 
+  title="Horizontal Dividers" 
+  htmlCode={`<div style="max-width: 400px;">
+  <div style="padding: 1rem;">
+    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">Personal Information</h3>
+    <p style="margin: 0; color: #6f6f6f;">Update your personal details and preferences.</p>
+  </div>
+  
+  <elvt-divider></elvt-divider>
+  
+  <div style="padding: 1rem;">
+    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">Account Settings</h3>
+    <p style="margin: 0; color: #6f6f6f;">Manage your account security and privacy settings.</p>
+  </div>
+  
+  <elvt-divider></elvt-divider>
+  
+  <div style="padding: 1rem;">
+    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">Notifications</h3>
+    <p style="margin: 0; color: #6f6f6f;">Choose how you receive updates and alerts.</p>
+  </div>
+</div>`}
+/>
+
 **Vertical Dividers** separate horizontally arranged content, useful in navigation bars and toolbars.
+
+<LiveExample 
+  title="Vertical Dividers" 
+  htmlCode={`<div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e0e0e0; border-radius: 4px;">
+  <elvt-button size="small" tone="subtle">
+    <elvt-icon slot="prefix" icon="mdi:file"></elvt-icon>
+    New
+  </elvt-button>
+  
+  <elvt-divider orientation="vertical" style="height: 24px;"></elvt-divider>
+  
+  <elvt-button size="small" tone="subtle">
+    <elvt-icon slot="prefix" icon="mdi:content-save"></elvt-icon>
+    Save
+  </elvt-button>
+  
+  <elvt-button size="small" tone="subtle">
+    <elvt-icon slot="prefix" icon="mdi:printer"></elvt-icon>
+    Print
+  </elvt-button>
+  
+  <elvt-divider orientation="vertical" style="height: 24px;"></elvt-divider>
+  
+  <elvt-button size="small" tone="subtle">
+    <elvt-icon slot="prefix" icon="mdi:help-circle"></elvt-icon>
+    Help
+  </elvt-button>
+</div>`}
+/>
 
 ### Visual Styles
 
@@ -106,11 +155,6 @@ Divider components are currently in development. Examples shown represent planne
 
 ## Implementation
 
-
-<InlineNotification kind="warning">
-Divider component is currently in development. Implementation details will be available in future releases.
-</InlineNotification>
-
 ### Getting Started
 
 ```bash
@@ -125,7 +169,7 @@ import '@inform-elevate/elevate-core-ui';
 import '@inform-elevate/elevate-core-ui/dist/components/divider/divider.js';
 ```
 
-### Planned Usage Patterns
+### Common Usage Patterns
 
 ```html
 <!-- Basic horizontal divider -->
@@ -134,44 +178,95 @@ import '@inform-elevate/elevate-core-ui/dist/components/divider/divider.js';
 <!-- Vertical divider for inline content -->
 <elvt-divider orientation="vertical"></elvt-divider>
 
-<!-- Divider with text label -->
-<elvt-divider>
-  Section Title
-</elvt-divider>
+<!-- Divider with custom styling -->
+<elvt-divider style="height: 2px; background-color: #0f62fe;"></elvt-divider>
 
-<!-- Styled divider variants -->
-<elvt-divider style="dashed"></elvt-divider>
-<elvt-divider style="dotted"></elvt-divider>
+<!-- In menu contexts (used automatically in dropdowns) -->
+<elvt-dropdown>
+  <elvt-button slot="trigger" caret>Menu</elvt-button>
+  <elvt-menu-item>Option 1</elvt-menu-item>
+  <elvt-menu-item>Option 2</elvt-menu-item>
+  <elvt-divider></elvt-divider>
+  <elvt-menu-item>Option 3</elvt-menu-item>
+</elvt-dropdown>
 
-<!-- Divider with spacing control -->
-<elvt-divider spacing="large"></elvt-divider>
+<!-- In card layouts -->
+<div class="card">
+  <div class="card-header">Header Content</div>
+  <elvt-divider></elvt-divider>
+  <div class="card-body">Body Content</div>
+</div>
 ```
 
 ### Key Properties
-
-The most commonly planned properties for design and development:
 
 <PageTable>
 
 | Property | Options | Description |
 |----------|---------|-------------|
 | `orientation` | `horizontal` (default), `vertical` | Direction of the divider line |
-| `style` | `solid` (default), `dashed`, `dotted` | Visual appearance of the line |  
-| `spacing` | `small`, `medium` (default), `large` | Space around the divider |
-| `color` | CSS color value | Custom color for the divider line |
-| `thickness` | Number | Line thickness in pixels |
-| `text-align` | `left`, `center` (default), `right` | Text alignment for labeled dividers |
+| `style` | Standard CSS style properties | Apply custom styling to the divider element |
 
 </PageTable>
+
+**Usage Notes:**
+- The divider inherits styling from the current theme
+- Custom colors and thickness can be applied via CSS `style` attribute
+- Vertical dividers typically need explicit height styling
+- Spacing is managed by parent container layout
 
 *For complete API reference including all properties, events, and methods, see the [Storybook documentation](https://elevate-core-ui.inform-cloud.io/?path=/docs/components-divider--docs).*
 
 ## Interactive Examples
 
+### Live Divider in Different Contexts
 
-<InlineNotification kind="info">
-Interactive examples will be available when the Divider component is implemented. Check back in future releases for live demonstrations.
-</InlineNotification>
+<LiveExample 
+  title="Dividers in Lists and Cards" 
+  htmlCode={`<div style="max-width: 500px;">
+  <!-- Card with dividers -->
+  <div style="border: 1px solid #e0e0e0; border-radius: 8px; background: white; margin-bottom: 1.5rem;">
+    <div style="padding: 1rem;">
+      <h3 style="margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+        <elvt-icon icon="mdi:account" style="color: #0f62fe;"></elvt-icon>
+        User Profile
+      </h3>
+      <p style="margin: 0; color: #6f6f6f; font-size: 0.875rem;">Manage your account information</p>
+    </div>
+    
+    <elvt-divider></elvt-divider>
+    
+    <div style="padding: 1rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+        <span style="font-weight: 500;">Email Notifications</span>
+        <elvt-badge variant="success">Enabled</elvt-badge>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-weight: 500;">Two-Factor Auth</span>
+        <elvt-badge>Disabled</elvt-badge>
+      </div>
+    </div>
+    
+    <elvt-divider></elvt-divider>
+    
+    <div style="padding: 1rem;">
+      <div style="display: flex; gap: 0.5rem;">
+        <elvt-button size="small" variant="primary">Save Changes</elvt-button>
+        <elvt-button size="small" tone="subtle">Reset</elvt-button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Navigation with vertical dividers -->
+  <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f4f4f4; border-radius: 8px;">
+    <elvt-button size="small" tone="subtle">Dashboard</elvt-button>
+    <elvt-divider orientation="vertical" style="height: 20px; background-color: #c6c6c6;"></elvt-divider>
+    <elvt-button size="small" tone="subtle">Reports</elvt-button>
+    <elvt-divider orientation="vertical" style="height: 20px; background-color: #c6c6c6;"></elvt-divider>
+    <elvt-button size="small" tone="subtle">Settings</elvt-button>
+  </div>
+</div>`}
+/>
 
 ## Accessibility
 
@@ -201,13 +296,30 @@ Interactive examples will be available when the Divider component is implemented
 ## Changelog
 
 
-### Planned Releases
-
-**Version 0.1.0 (Planned)**
-- **New**: Initial Divider component implementation
+### Version 0.0.26-alpha (July 16, 2025)
+- **New**: Divider component fully implemented and functional
 - **New**: Horizontal and vertical orientation support
-- **New**: Multiple visual styles (solid, dashed, dotted)
-- **New**: Text label integration for section dividers
+- **Enhanced**: Integration with Dropdown component for menu separation
+- **Enhanced**: Flexible styling through CSS properties
+- **Enhanced**: Theme-based default styling with customization options
+- Current version in active development
 
-**Version 0.0.26-alpha (July 16, 2025)**
-- Current version - Divider component in development planning phase
+### Divider Component Features
+- ✅ Basic horizontal dividers for content separation
+- ✅ Vertical dividers for inline content layouts
+- ✅ Integration with Dropdown and Menu components
+- ✅ Custom styling support via CSS properties
+- ✅ Theme-aware default styling
+- ✅ Comprehensive accessibility support
+
+### Available Components
+- `DividerComponent`: Main divider element with orientation support
+- Integration with `DropdownComponent` for menu separation
+- Works seamlessly in card layouts and content sections
+
+### Implementation Status
+- ✅ Core divider functionality operational
+- ✅ Orientation switching (horizontal/vertical) working properly
+- ✅ Custom styling and theming functional
+- ✅ Integration with other components working
+- ✅ Accessibility features implemented

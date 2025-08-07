@@ -48,94 +48,40 @@ Buttons are the primary interface for user actions in digital products. The ELEV
 
 Each tone communicates a different type of action and creates visual hierarchy in your interface.
 
-<Tabs>
-
-<Tab label="Primary & Secondary">
-
-**Primary buttons** represent the main action users should take. Use only one per view to maintain clear hierarchy.
-**Neutral buttons** serve as secondary actions that support the primary flow.
-
-<LiveExample 
-  title="Primary and Secondary Actions" 
-  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
-  <elvt-button tone="primary">Save Changes</elvt-button>
-  <elvt-button>Cancel</elvt-button>
+<LiveExample
+    title="Tone"
+    htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
+    <elvt-button tone="primary">Primary</elvt-button>
+    <elvt-button tone="neutral">Neutral</elvt-button>
+    <elvt-button tone="success">Success</elvt-button>
+    <elvt-button tone="warning">Warning</elvt-button>
+    <elvt-button tone="danger">Danger</elvt-button>
+    <elvt-button tone="subtle">Subtle</elvt-button>
+    <elvt-button tone="emphasized">Emphasized</elvt-button>
 </div>`}
 />
 
-</Tab>
-
-<Tab label="Success & Warning">
-
-**Success buttons** confirm positive outcomes or completions.
-**Warning buttons** indicate caution or actions that need attention but aren't destructive.
-
-<LiveExample 
-  title="Success and Warning Actions" 
-  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
-  <elvt-button tone="success">Confirm Order</elvt-button>
-  <elvt-button tone="warning">Save Draft</elvt-button>
-</div>`}
-/>
-
-</Tab>
-
-<Tab label="Danger & Emphasized">
-
-**Danger buttons** are for destructive actions that can't be easily undone.
-**Emphasized buttons** create high-contrast actions for special situations.
-
-<LiveExample 
-  title="Danger and Emphasized Actions" 
-  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
-  <elvt-button tone="danger">Delete Account</elvt-button>
-  <elvt-button tone="emphasized">Upgrade Now</elvt-button>
-</div>`}
-/>
-
-</Tab>
-
-<Tab label="Subtle">
-
-**Subtle buttons** provide low-prominence actions that don't compete with primary content.
-
-<LiveExample 
-  title="Subtle Actions" 
-  htmlCode={`<div style="display: flex; gap: 0.75rem; align-items: center;">
-  <elvt-button tone="subtle">View Details</elvt-button>
-  <elvt-button tone="subtle">Learn More</elvt-button>
-</div>`}
-/>
-
-</Tab>
-
-</Tabs>
-
-### Shape Variations
+### State Variations
 
 <Row>
 <Column colMd={4} colLg={6}>
 
-<Title>Box Shape (Default)</Title>
-
-Standard rectangular button with square corners for professional interfaces.
+Buttons can be disabled when an action is temporarily unavailable.
 
 <LiveExample 
-  title="Box Shape Button" 
-  htmlCode={`<elvt-button shape="box">Box Button</elvt-button>`}
+  title="Disabled Button" 
+  htmlCode={`<elvt-button tone="primary" disabled>Disabled Button</elvt-button>`}
   showCode={false}
 />
 
 </Column>
 <Column colMd={4} colLg={6}>
 
-<Title>Pill Shape</Title>
-
-Rounded button with full corner radius for softer, more modern interfaces.
+Selected state for buttons that toggle or represent current selection.
 
 <LiveExample 
-  title="Pill Shape Button" 
-  htmlCode={`<elvt-button shape="pill">Pill Button</elvt-button>`}
+  title="Selected Button" 
+  htmlCode={`<elvt-button tone="primary" selected>Selected Button</elvt-button>`}
   showCode={false}
 />
 
@@ -357,29 +303,29 @@ import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
 
 ```html
 <!-- Primary action with secondary support -->
-<elevate-button tone="primary">Save Changes</elevate-button>
-<elevate-button>Cancel</elevate-button>
+<elvt-button tone="primary">Save Changes</elvt-button>
+<elvt-button>Cancel</elvt-button>
 
 <!-- Action with prefix icon -->
-<elevate-button tone="primary">
-  <elevate-icon slot="prefix" icon="mdi:plus"></elevate-icon>
+<elvt-button tone="primary">
+  <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
   Add Item
-</elevate-button>
+</elvt-button>
 
 <!-- Navigation with suffix icon -->
-<elevate-button>
+<elvt-button>
   Continue
-  <elevate-icon slot="suffix" icon="mdi:chevron-right"></elevate-icon>
-</elevate-button>
+  <elvt-icon slot="suffix" icon="mdi:chevron-right"></elvt-icon>
+</elvt-button>
 
 <!-- Destructive action -->
-<elevate-button tone="danger">Delete Account</elevate-button>
+<elvt-button tone="danger">Delete Account</elvt-button>
 
 <!-- Link button -->
-<elevate-button href="/dashboard">Go to Dashboard</elevate-button>
+<elvt-button href="/dashboard">Go to Dashboard</elvt-button>
 
 <!-- Form submission -->
-<elevate-button type="submit" tone="primary">Submit Form</elevate-button>
+<elvt-button type="submit" tone="primary">Submit Form</elvt-button>
 ```
 
 ### Key Properties
@@ -392,10 +338,14 @@ The most commonly used properties for design and development:
 |----------|---------|-------------|
 | `tone` | `neutral` (default), `primary`, `success`, `warning`, `danger`, `emphasized`, `subtle` | Visual style that communicates action type |
 | `size` | `small`, `medium` (default), `large` | Physical size of the button |  
-| `shape` | `box` (default), `pill` | Corner radius style |
 | `disabled` | `true`, `false` (default) | Whether the button can be interacted with |
+| `selected` | `true`, `false` (default) | Whether the button appears selected/active |
 | `href` | URL string | Makes button behave as a link |
+| `target` | `_blank`, `_parent`, `_self`, `_top` | Where to open the link (when href is set) |
 | `type` | `button` (default), `submit`, `reset` | Form behavior when used in forms |
+| `name` | String | Form field name when used in forms |
+| `value` | String | Form field value when used in forms |
+| `padding` | Padding string or object | Custom padding using design tokens |
 
 </PageTable>
 
@@ -418,7 +368,8 @@ Test buttons in a realistic form to understand hierarchy and interaction pattern
 
 <LiveExample 
   title="Form with Button Hierarchy" 
-  htmlCode={`<form style="max-width: 400px; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 8px;" onsubmit="event.preventDefault(); alert('Form submitted! (prevented for demo)');">
+  htmlCode={`<form style="min-width: 300px; padding: 2rem; border: 1px solid
+  #e0e0e0; border-radius: 8px;" onsubmit="event.preventDefault(); alert('Form submitted! (prevented for demo)');">
   <h3 style="margin-top: 0;">Contact Form</h3>
   
   <div style="margin-bottom: 1rem;">
@@ -426,7 +377,7 @@ Test buttons in a realistic form to understand hierarchy and interaction pattern
     <input type="text" id="demo-name" name="name" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
   </div>
   
-  <div style="margin-bottom: 1rem;">
+  <div style="margin-bottom: 1rem; margin-left: 0.5rem;">
     <label for="demo-email" style="display: block; margin-bottom: 0.25rem; font-weight: 500;">Email:</label>
     <input type="email" id="demo-email" name="email" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
   </div>
@@ -482,14 +433,14 @@ See how different button combinations work together:
 **Icon-only buttons require labels:**
 ```html
 <!-- Good: Screen readers can announce the action -->
-<elevate-button aria-label="Delete item" title="Delete item">
-  <elevate-icon icon="mdi:delete"></elevate-icon>
-</elevate-button>
+<elvt-button aria-label="Delete item" title="Delete item">
+  <elvt-icon icon="mdi:delete"></elvt-icon>
+</elvt-button>
 
 <!-- Bad: Screen readers can't identify the action -->
-<elevate-button>
-  <elevate-icon icon="mdi:delete"></elevate-icon>
-</elevate-button>
+<elvt-button>
+  <elvt-icon icon="mdi:delete"></elvt-icon>
+</elvt-button>
 ```
 
 **Use clear, descriptive labels:**

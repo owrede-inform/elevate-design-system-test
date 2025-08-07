@@ -9,6 +9,7 @@ import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
 import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
 import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
 import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+import ChangeLog from '../../../components/ChangeLog';
 
 <PageDescription>
 
@@ -48,17 +49,65 @@ Empty states transform potentially confusing moments into helpful guidance. The 
 
 ### Context Types
 
-<InlineNotification kind="info">
-Empty State components are currently in development. Examples shown represent planned functionality.
-</InlineNotification>
-
 **First Use** welcomes new users and guides them toward creating their first content.
+
+<LiveExample 
+  title="First Use Empty State" 
+  htmlCode={`<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:plus-circle" style="font-size: 4rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">Get started with your first project</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">Create your first project to start organizing your work and collaborating with your team.</p>
+  <elvt-button tone="primary">
+    <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+    Create Project
+  </elvt-button>
+</div>`}
+/>
 
 **No Results** explains when searches or filters return empty results with suggestions for refinement.
 
+<LiveExample 
+  title="No Results Empty State" 
+  htmlCode={`<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:magnify" style="font-size: 4rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">No results found</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">Try adjusting your search terms or filters to find what you're looking for.</p>
+  <div style="display: flex; gap: 0.75rem; justify-content: center;">
+    <elvt-button>Clear Filters</elvt-button>
+    <elvt-button tone="subtle">Browse All</elvt-button>
+  </div>
+</div>`}
+/>
+
 **Error State** communicates when content is unavailable due to problems with helpful recovery actions.
 
+<LiveExample 
+  title="Error State Empty State" 
+  htmlCode={`<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:alert-circle" style="font-size: 4rem; color: #da1e28; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">Unable to load content</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">We're having trouble connecting to our servers. Please check your internet connection and try again.</p>
+  <elvt-button tone="primary">
+    <elvt-icon slot="prefix" icon="mdi:refresh"></elvt-icon>
+    Try Again
+  </elvt-button>
+</div>`}
+/>
+
 **Completed** celebrates when users have finished all tasks or processed all items.
+
+<LiveExample 
+  title="Completed State Empty State" 
+  htmlCode={`<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:check-circle" style="font-size: 4rem; color: #24a148; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">All caught up!</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">You've completed all your tasks. Great work! Take a break or start something new.</p>
+  <div style="display: flex; gap: 0.75rem; justify-content: center;">
+    <elvt-button tone="primary">New Task</elvt-button>
+    <elvt-button tone="subtle">View Archive</elvt-button>
+  </div>
+</div>`}
+/>
 
 ### Visual Elements
 
@@ -102,11 +151,6 @@ Empty State components are currently in development. Examples shown represent pl
 
 ## Implementation
 
-
-<InlineNotification kind="warning">
-Empty State component is currently in development. Implementation details will be available in future releases.
-</InlineNotification>
-
 ### Getting Started
 
 ```bash
@@ -118,61 +162,101 @@ npm install @inform-elevate/elevate-core-ui
 import '@inform-elevate/elevate-core-ui';
 
 // Or import specific components  
-import '@inform-elevate/elevate-core-ui/dist/components/empty-state/empty-state.js';
+import '@inform-elevate/elevate-core-ui/dist/components/icon/icon.js';
+import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
 ```
 
-### Planned Usage Patterns
+### Common Usage Patterns
+
+Empty states can be created using a combination of ELEVATE components and styling:
 
 ```html
 <!-- First use state -->
-<elvt-empty-state type="first-use">
-  <elvt-icon slot="illustration" icon="mdi:folder-plus"></elvt-icon>
-  <h3 slot="title">Create your first project</h3>
-  <p slot="description">Projects help you organize your work and collaborate with your team.</p>
-  <elvt-button slot="action" tone="primary">Create Project</elvt-button>
-</elvt-empty-state>
+<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:folder-plus" style="font-size: 4rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">Create your first project</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">Projects help you organize your work and collaborate with your team.</p>
+  <elvt-button tone="primary">
+    <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+    Create Project
+  </elvt-button>
+</div>
 
 <!-- No results state -->
-<elvt-empty-state type="no-results">
-  <elvt-icon slot="illustration" icon="mdi:magnify"></elvt-icon>
-  <h3 slot="title">No results found</h3>
-  <p slot="description">Try adjusting your search terms or filters.</p>
-  <elvt-button slot="action">Clear Filters</elvt-button>
-</elvt-empty-state>
+<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:magnify" style="font-size: 4rem; color: #6f6f6f; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">No results found</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">Try adjusting your search terms or filters.</p>
+  <div style="display: flex; gap: 0.75rem; justify-content: center;">
+    <elvt-button>Clear Filters</elvt-button>
+    <elvt-button tone="subtle">Browse All</elvt-button>
+  </div>
+</div>
 
 <!-- Error state -->
-<elvt-empty-state type="error">
-  <elvt-icon slot="illustration" icon="mdi:cloud-off"></elvt-icon>
-  <h3 slot="title">Unable to load content</h3>
-  <p slot="description">Check your connection and try again.</p>
-  <elvt-button slot="action" tone="primary">Retry</elvt-button>
-</elvt-empty-state>
+<div style="text-align: center; padding: 3rem 1rem; max-width: 400px; margin: 0 auto;">
+  <elvt-icon icon="mdi:cloud-off" style="font-size: 4rem; color: #da1e28; margin-bottom: 1rem;"></elvt-icon>
+  <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #161616;">Unable to load content</h3>
+  <p style="margin: 0 0 1.5rem 0; color: #6f6f6f;">Check your connection and try again.</p>
+  <elvt-button tone="primary">
+    <elvt-icon slot="prefix" icon="mdi:refresh"></elvt-icon>
+    Retry
+  </elvt-button>
+</div>
 ```
 
 ### Key Properties
 
-The most commonly planned properties for design and development:
+The most commonly used patterns for empty state implementations:
 
 <PageTable>
 
-| Property | Options | Description |
+| Component | Usage | Description |
 |----------|---------|-------------|
-| `type` | `first-use`, `no-results`, `error`, `completed` | Context-specific styling and behavior |
-| `size` | `compact`, `standard` (default), `large` | Overall size of the empty state |  
-| `alignment` | `left`, `center` (default), `right` | Text and content alignment |
-| `show-illustration` | `true` (default), `false` | Whether to display illustration slot |
-| `show-action` | `true` (default), `false` | Whether to display action slot |
+| `elvt-icon` | Icons with MDI library | Visual illustrations using Material Design Icons |
+| `elvt-button` | Primary actions | Call-to-action buttons with tone variants |  
+| Standard HTML | Content structure | Headings, paragraphs, and containers for layout |
+| CSS Styling | Visual presentation | Text alignment, spacing, colors, and positioning |
 
 </PageTable>
 
-*For complete API reference including all properties, events, and methods, see the [Storybook documentation](https://elevate-core-ui.inform-cloud.io/?path=/docs/components-empty-state--docs).*
+*Empty states are currently implemented using a combination of ELEVATE components and custom styling until a dedicated empty state component is available.*
 
 ## Interactive Examples
 
+### Empty State Patterns in Context
 
-<InlineNotification kind="info">
-Interactive examples will be available when the Empty State component is implemented. Check back in future releases for live demonstrations.
-</InlineNotification>
+<LiveExample 
+  title="Dashboard Empty State Example" 
+  htmlCode={`<div style="background: #f4f4f4; padding: 2rem; border-radius: 8px;">
+  <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e0e0e0;">
+      <h2 style="margin: 0; font-size: 1.5rem;">Project Dashboard</h2>
+      <div style="display: flex; gap: 0.5rem;">
+        <elvt-button size="small">Filter</elvt-button>
+        <elvt-button tone="primary" size="small">
+          <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+          New Project
+        </elvt-button>
+      </div>
+    </div>
+    
+    <!-- Empty state -->
+    <div style="text-align: center; padding: 4rem 2rem;">
+      <elvt-icon icon="mdi:folder-plus-outline" style="font-size: 5rem; color: #6f6f6f; margin-bottom: 1.5rem;"></elvt-icon>
+      <h3 style="margin: 0 0 0.75rem 0; font-size: 1.75rem; color: #161616;">Start your first project</h3>
+      <p style="margin: 0 0 2rem 0; color: #6f6f6f; font-size: 1.125rem; max-width: 480px; margin-left: auto; margin-right: auto;">Create projects to organize your work, collaborate with your team, and track progress toward your goals.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <elvt-button tone="primary">
+          <elvt-icon slot="prefix" icon="mdi:plus"></elvt-icon>
+          Create Project
+        </elvt-button>
+        <elvt-button tone="subtle">Browse Templates</elvt-button>
+      </div>
+    </div>
+  </div>
+</div>`}
+/>
 
 ## Accessibility
 
@@ -205,14 +289,4 @@ Interactive examples will be available when the Empty State component is impleme
 
 ## Changelog
 
-
-### Planned Releases
-
-**Version 0.1.0 (Planned)**
-- **New**: Initial Empty State component implementation
-- **New**: Context-aware types (first-use, no-results, error, completed)
-- **New**: Flexible content slots for illustrations and actions
-- **New**: Responsive sizing and alignment options
-
-**Version 0.0.26-alpha (July 16, 2025)**
-- Current version - Empty State component in development planning phase
+<ChangeLog component="empty-state" />

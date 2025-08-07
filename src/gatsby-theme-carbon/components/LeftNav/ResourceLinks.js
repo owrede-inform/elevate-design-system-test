@@ -1,5 +1,5 @@
 import React from 'react';
-import ResourceLinks from 'gatsby-theme-carbon/src/components/LeftNav/ResourceLinks';
+import LeftNavResourceLinks from './LeftNavResourceLinks';
 
 const links = [
   {
@@ -21,6 +21,6 @@ const links = [
 ];
 
 // shouldOpenNewTabs: true if outbound links should open in a new tab
-const CustomResources = () => <ResourceLinks shouldOpenNewTabs links={links} />;
+const CustomResources = () => <LeftNavResourceLinks shouldOpenNewTabs links={links} />;
 
 export default CustomResources;

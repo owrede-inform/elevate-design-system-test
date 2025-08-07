@@ -9,10 +9,10 @@ import DoDontExample from '../DoDontExample';
 import DoDont from '../DoDontRow/DoDont';
 import DoDontRow from '../DoDontRow/DoDontRow';
 import Caption from '../Caption';
-import ResourceCard from '../ResourceCard';
+import ResourceCard2 from '../../../components/ResourceCard2';
 import ArticleCard from '../ArticleCard';
 import Aside from '../Aside';
-import FeatureCard from '../FeatureCard';
+import FeatureCard2 from '../../../components/FeatureCard2';
 import ImageCard from '../ImageCard';
 import ImageGallery from '../ImageGallery';
 import ImageGalleryImage from '../ImageGallery/ImageGalleryImage';
@@ -64,10 +64,12 @@ const components = {
   GifPlayer,
   Grid,
   Caption,
-  ResourceCard,
+  ResourceCard: ResourceCard2, // Map old ResourceCard to new ResourceCard2
+  ResourceCard2,
   ArticleCard,
   Aside,
-  FeatureCard,
+  FeatureCard: FeatureCard2, // Map old FeatureCard to new FeatureCard2
+  FeatureCard2,
   ImageCard,
   ImageGallery,
   ImageGalleryImage,

@@ -8,6 +8,9 @@
 // Import ELEVATE Design System Typography
 @import './elevate-typography.scss';
 
+// Import ESDS (ELEVATE System Design System) - Complete design system with colors and components
+@import './esds-design-system.scss';
+
 // UNIFIED THEME CONTROL - OVERRIDE EXTERNAL COMPONENT THEMES
 // Prevent ELEVATE/Shoelace components from overriding our design system
 :root,
@@ -142,17 +145,43 @@ elvt-menu {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
-// LiveExample container typography override
+// LiveExample container - ELEVATE Components Isolation Zone
+// CRITICAL: This container must ONLY use official ELEVATE Design Tokens
 .live-example-container {
-  // Force Inter font on all content within LiveExample
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  // Reset all site-specific styles to prevent interference with ELEVATE components
+  all: initial;
   
-  // Target all elements within the live example
+  // Only allow ELEVATE Design Tokens to style the content
+  // Remove all custom font overrides - let ELEVATE use its official typography
+  font-family: initial;
+  
+  // Create isolated styling context for ELEVATE components
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  
+  // CRITICAL: Prevent any ESDS or site styles from affecting ELEVATE components
   * {
-    font-family: inherit !important;
+    // Reset font inheritance - let ELEVATE Design Tokens handle typography
+    font-family: initial !important;
+    
+    // Reset any color/spacing overrides that might interfere
+    color: initial;
+    margin: initial;
+    padding: initial;
+    
+    // Let ELEVATE components use their own design tokens
+    --font-family: initial;
+    --button-font-family: initial;
+    --input-font-family: initial;
+    --text-font-family: initial;
+    --heading-font-family: initial;
   }
   
-  // Specifically target ELEVATE web components within live examples
+  // Ensure ELEVATE web components are not affected by site CSS
   elvt-button,
   elvt-input,
   elvt-select,
@@ -163,9 +192,61 @@ elvt-menu {
   elvt-badge,
   elvt-tab,
   elvt-menu,
+  elvt-icon,
+  elvt-checkbox,
+  elvt-radio,
+  elvt-switch,
+  elvt-dropdown,
+  elvt-dialog,
+  elvt-drawer,
+  elvt-expansion-panel,
+  elvt-table,
+  elvt-notification,
+  elvt-link,
+  elvt-divider,
+  elvt-empty-state,
+  elvt-avatar,
+  elvt-breadcrumb,
+  elvt-breadcrumb-item,
+  elvt-button-group,
+  elvt-card,
+  elvt-charts,
+  elvt-chip,
+  elvt-date-picker,
   [class*="elvt-"],
   [class*="elevate-"] {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segue UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    // CRITICAL: Complete style isolation for ELEVATE components
+    all: initial !important;
+    
+    // Reset any custom CSS variables that might interfere
+    --font-family: initial !important;
+    --button-font-family: initial !important;
+    --input-font-family: initial !important;
+    --text-font-family: initial !important;
+    --heading-font-family: initial !important;
+    
+    // Reset INFORM brand colors to let ELEVATE use its own tokens
+    --elevate-primary: initial !important;
+    --elevate-primary-hover: initial !important;
+    --elevate-secondary: initial !important;
+    --elevate-background: initial !important;
+    --elevate-text-primary: initial !important;
+    --elevate-text-secondary: initial !important;
+    
+    // Reset ESDS constants that might interfere
+    --esds-primary: initial !important;
+    --esds-font-size-m: initial !important;
+    --esds-spacing-l: initial !important;
+    --esds-radius-card: initial !important;
+    
+    // Allow ELEVATE components to display properly
+    display: initial !important;
+    position: initial !important;
+    
+    // Reset any box model interference
+    box-sizing: initial !important;
+    margin: initial !important;
+    padding: initial !important;
   }
 }
 
@@ -187,35 +268,136 @@ elvt-menu {
 
 // Note: Typography is now handled by ELEVATE Design Tokens in elevate-typography.scss
 
-// Clean FeatureCard styling - container hugs image content
+// FeatureCard with ResourceCard properly overlaying image across all screen sizes
 .homepage-feature {
-  // Remove forced aspect ratio - let image determine container height
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  
+  // Image container serves as the positioning context
+  .cds--feature-card__img {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: hidden;
+    
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  // CRITICAL FIX: Override Carbon's breakpoint-dependent positioning
+  // Force absolute positioning across ALL screen sizes, not just md+
+  .cds--feature-card__row {
+    // Override Carbon's conditional absolute positioning
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10;
+    pointer-events: none;
+    
+    // Force absolute positioning on ALL breakpoints (override Carbon's md+ only rule)
+    @media (max-width: 671px) {
+      position: absolute !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+    }
+    
+    // Column positioning within the overlay
+    .cds--feature-card__column {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+      height: 100%;
+      margin: 0 !important;
+      padding: 1rem;
+      pointer-events: none;
+      
+      // Override Carbon's offset positioning that interferes with overlay
+      left: auto !important;
+      margin-left: 0 !important;
+      
+      // Responsive padding with viewport constraints
+      @media (max-width: 768px) {
+        padding: 0.75rem;
+      }
+      
+      @media (max-width: 480px) {
+        padding: 0.5rem;
+      }
+      
+      @media (min-width: 1200px) {
+        padding: 1.5rem;
+      }
+    }
+  }
+  
+  // ResourceCard with stable 16:9 aspect ratio and safe boundaries
+  .cds--tile {
+    position: relative !important;
+    margin: 0 !important;
+    pointer-events: auto;
+    flex-shrink: 0;
+    
+    // Fixed 16:9 aspect ratio with responsive sizing
+    width: 280px;
+    height: 157.5px;
+    max-width: calc(100% - 2rem);
+    max-height: calc(100% - 2rem);
+    
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 112.5px;
+      max-width: calc(100% - 1.5rem);
+      max-height: calc(100% - 1.5rem);
+    }
+    
+    @media (max-width: 480px) {
+      width: 160px;
+      height: 90px;
+      max-width: calc(100% - 1rem);
+      max-height: calc(100% - 1rem);
+    }
+    
+    @media (min-width: 1200px) {
+      width: 320px;
+      height: 180px;
+      max-width: calc(100% - 3rem);
+      max-height: calc(100% - 3rem);
+    }
+    
+    * {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  
+  // Override Carbon's aspect ratio system that interferes with overlay
   .cds--aspect-ratio--1x1 {
-    padding-bottom: 0; // Remove aspect ratio forcing
-    height: auto; // Let content determine height
+    position: relative;
+    
+    &::before {
+      @media (max-width: 672px) {
+        padding-top: 0 !important;
+      }
+    }
   }
   
   .cds--aspect-ratio--object {
-    position: relative; // Change from absolute to allow natural height
-    height: auto; // Natural height based on image
-  }
-  
-  // Image determines container size naturally
-  img {
-    width: 100%;
-    height: auto; // Natural height based on aspect ratio
-    display: block;
-    object-fit: contain; // Don't crop the image
-    object-position: center;
-  }
-  
-  // Getting started button overlays bottom corner of image
-  .cds--tile {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    z-index: 2;
-    max-width: calc(100% - 2rem); // Prevent overflow
+    @media (max-width: 672px) {
+      position: static !important;
+    }
   }
 }
 
@@ -485,7 +667,25 @@ a {
 }
 
 // NUCLEAR APPROACH: Remove ALL semi-transparent overlays on mobile
+// EXCEPTION: Preserve ESDS feature card overlays - they are intentional UI components
 @media (max-width: 1055px) {
+  // CRITICAL: Preserve ESDS FeatureCard2 overlays from being removed
+  .esds-feature-card__overlay {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 20 !important;
+    
+    // Ensure ResourceCard2 inside remains visible
+    .esds-resource-card {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+  }
+  
   // Target ANY element that could be creating the overlay with maximum specificity
   body * {
     // Remove any element with semi-transparent background
@@ -512,18 +712,19 @@ a {
   }
   
   // Remove ALL overlays regardless of class with maximum specificity
-  body .overlay,
-  body [class*="overlay"],
-  body [class*="backdrop"],
-  body [class*="modal"],
-  body [id*="overlay"],
-  body [data-overlay],
-  .overlay,
-  [class*="overlay"],
-  [class*="backdrop"],
-  [class*="modal"],
-  [id*="overlay"],
-  [data-overlay] {
+  // EXCEPTION: Do not remove ESDS feature card overlays
+  body .overlay:not(.esds-feature-card__overlay),
+  body [class*="overlay"]:not(.esds-feature-card__overlay):not([class*="esds-feature-card__overlay"]),
+  body [class*="backdrop"]:not(.esds-feature-card__overlay),
+  body [class*="modal"]:not(.esds-feature-card__overlay),
+  body [id*="overlay"]:not(.esds-feature-card__overlay),
+  body [data-overlay]:not(.esds-feature-card__overlay),
+  .overlay:not(.esds-feature-card__overlay),
+  [class*="overlay"]:not(.esds-feature-card__overlay):not([class*="esds-feature-card__overlay"]),
+  [class*="backdrop"]:not(.esds-feature-card__overlay),
+  [class*="modal"]:not(.esds-feature-card__overlay),
+  [id*="overlay"]:not(.esds-feature-card__overlay),
+  [data-overlay]:not(.esds-feature-card__overlay) {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -555,8 +756,9 @@ a {
   }
   
   // Nuclear option: Remove ALL fixed positioned elements completely
-  body *[style*="position: fixed"],
-  *[style*="position: fixed"] {
+  // EXCEPTION: Preserve ESDS components
+  body *[style*="position: fixed"]:not(.esds-feature-card__overlay):not(.esds-resource-card),
+  *[style*="position: fixed"]:not(.esds-feature-card__overlay):not(.esds-resource-card) {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;

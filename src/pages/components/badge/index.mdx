@@ -54,44 +54,37 @@ Status badges communicate states using semantic colors and clear language.
   title="Status Badge Variations" 
   htmlCode={`<div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
   <elvt-badge>Default</elvt-badge>
-  <elvt-badge variant="success">Active</elvt-badge>
-  <elvt-badge variant="warning">Pending</elvt-badge>
-  <elvt-badge variant="error">Failed</elvt-badge>
-  <elvt-badge variant="info">New</elvt-badge>
+  <elvt-badge tone="success">Active</elvt-badge>
+  <elvt-badge tone="warning">Pending</elvt-badge>
+  <elvt-badge tone="danger">Failed</elvt-badge>
+  <elvt-badge tone="primary">New</elvt-badge>
 </div>`}
 />
 
-### Count Badges  
+### Shape Variations
 
-Count badges display numeric values with proper formatting for large numbers.
+Badge shape controls the corner radius - pill for rounded edges or box for square corners.
 
 <LiveExample 
-  title="Count Badge Examples" 
+  title="Badge Shape Examples" 
   htmlCode={`<div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-  <div style="position: relative; display: inline-block;">
-    <elvt-icon icon="mdi:bell" style="font-size: 1.5rem;"></elvt-icon>
-    <elvt-badge variant="error" count="3" style="position: absolute; top: -8px; right: -8px;"></elvt-badge>
-  </div>
-  <div style="position: relative; display: inline-block;">
-    <elvt-icon icon="mdi:email" style="font-size: 1.5rem;"></elvt-icon>
-    <elvt-badge variant="info" count="127" style="position: absolute; top: -8px; right: -8px;"></elvt-badge>
-  </div>
-  <elvt-badge count="5">Messages</elvt-badge>
+  <elvt-badge tone="primary" shape="pill">Pill Shape</elvt-badge>
+  <elvt-badge tone="success" shape="box">Box Shape</elvt-badge>
+  <elvt-badge tone="warning" shape="pill">Default</elvt-badge>
 </div>`}
 />
 
-### Category Badges
+### Pulse Animation
 
-Category badges help organize and filter content with dismissible options.
+Pulse animation draws attention to important badges.
 
 <LiveExample 
-  title="Category Badge Examples" 
+  title="Badge Pulse Animation" 
   htmlCode={`<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-  <elvt-badge dismissible>JavaScript</elvt-badge>
-  <elvt-badge dismissible>React</elvt-badge>
-  <elvt-badge dismissible>Design System</elvt-badge>
-  <elvt-badge outline>Draft</elvt-badge>
-  <elvt-badge outline variant="success">Published</elvt-badge>
+  <elvt-badge>Normal Badge</elvt-badge>
+  <elvt-badge pulse tone="danger">Alert</elvt-badge>
+  <elvt-badge pulse tone="success">New</elvt-badge>
+  <elvt-badge pulse tone="primary">Important</elvt-badge>
 </div>`}
 />
 
@@ -194,24 +187,24 @@ import '@inform-elevate/elevate-core-ui/dist/components/badge/badge.js';
 
 ```html
 <!-- Status indicators -->
-<elvt-badge variant="success">Active</elvt-badge>
-<elvt-badge variant="warning">Pending</elvt-badge>
-<elvt-badge variant="error">Failed</elvt-badge>
+<elvt-badge tone="success">Active</elvt-badge>
+<elvt-badge tone="warning">Pending</elvt-badge>
+<elvt-badge tone="danger">Failed</elvt-badge>
 
-<!-- Notification counts -->
-<elvt-badge variant="error" count="3">Alerts</elvt-badge>
-<elvt-badge count="127">Unread</elvt-badge>
+<!-- Different shapes -->
+<elvt-badge shape="pill" tone="primary">Rounded</elvt-badge>
+<elvt-badge shape="box" tone="neutral">Square</elvt-badge>
 
 <!-- Category tags -->
-<elvt-badge dismissible>JavaScript</elvt-badge>
-<elvt-badge dismissible>React</elvt-badge>
+<elvt-badge>JavaScript</elvt-badge>
+<elvt-badge>React</elvt-badge>
 
 <!-- Metadata -->
-<elvt-badge outline>v2.1.0</elvt-badge>
+<elvt-badge tone="neutral">v2.1.0</elvt-badge>
 <elvt-badge>Beta</elvt-badge>
 
-<!-- Dot indicators -->
-<elvt-badge dot variant="success"></elvt-badge>
+<!-- Attention-getting badges -->
+<elvt-badge pulse tone="danger">Alert</elvt-badge>
 ```
 
 ### Key Properties
@@ -222,12 +215,10 @@ The most commonly used properties for design and development:
 
 | Property | Options | Description |
 |----------|---------|-------------|
-| `variant` | `default`, `success`, `warning`, `error`, `info` | Visual style that communicates meaning |
-| `size` | `small`, `medium` (default), `large` | Physical size of the badge |  
-| `count` | Number | Displays numeric value with proper formatting |
-| `dismissible` | `true`, `false` (default) | Whether the badge can be removed |
-| `outline` | `true`, `false` (default) | Use outline style instead of filled |
-| `dot` | `true`, `false` (default) | Show as minimal dot indicator |
+| `tone` | `neutral` (default), `primary`, `success`, `warning`, `danger` | Visual style that communicates meaning |
+| `shape` | `pill` (default), `box` | Shape of the badge - pill (rounded) or box (square corners) |  
+| `padding` | Padding string or object | Custom padding using design tokens (e.g., "s", "m l", etc.) |
+| `pulse` | `true`, `false` (default) | Adds pulsing animation to draw attention |
 
 </PageTable>
 
@@ -248,7 +239,7 @@ Experience how badges behave in realistic contexts. All examples use actual ELEV
     <div style="width: 48px; height: 48px; border-radius: 50%; background: #0066cc; display: flex; align-items: center; justify-content: center; color: white; font-weight: 500;">JD</div>
     <div>
       <h4 style="margin: 0; font-size: 1rem;">John Doe</h4>
-      <elvt-badge variant="success" size="small">Online</elvt-badge>
+      <elvt-badge tone="success">Online</elvt-badge>
     </div>
   </div>
   
@@ -256,11 +247,11 @@ Experience how badges behave in realistic contexts. All examples use actual ELEV
   <div style="display: flex; gap: 2rem; padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px;">
     <div style="position: relative; cursor: pointer;">
       <span>Messages</span>
-      <elvt-badge variant="error" count="5" size="small" style="margin-left: 0.5rem;"></elvt-badge>
+      <elvt-badge tone="danger" style="margin-left: 0.5rem;">5</elvt-badge>
     </div>
     <div style="position: relative; cursor: pointer;">
       <span>Notifications</span>
-      <elvt-badge variant="info" count="12" size="small" style="margin-left: 0.5rem;"></elvt-badge>
+      <elvt-badge tone="primary" style="margin-left: 0.5rem;">12</elvt-badge>
     </div>
   </div>
   
@@ -269,10 +260,10 @@ Experience how badges behave in realistic contexts. All examples use actual ELEV
     <h4 style="margin-top: 0;">Component Library Guide</h4>
     <p style="margin: 0.5rem 0; color: #6f6f6f;">Learn how to use ELEVATE components in your projects</p>
     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-      <elvt-badge dismissible>Tutorial</elvt-badge>
-      <elvt-badge dismissible>React</elvt-badge>
-      <elvt-badge dismissible>Design System</elvt-badge>
-      <elvt-badge variant="info" size="small">New</elvt-badge>
+      <elvt-badge>Tutorial</elvt-badge>
+      <elvt-badge>React</elvt-badge>
+      <elvt-badge>Design System</elvt-badge>
+      <elvt-badge tone="primary">New</elvt-badge>
     </div>
   </div>
 </div>`}
@@ -283,13 +274,13 @@ Experience how badges behave in realistic contexts. All examples use actual ELEV
 
 ### Essential Accessibility Practices
 
-**Count badges need descriptive context:**
+**Number badges need descriptive context:**
 ```html
-<!-- Good: Screen readers understand what the count represents -->
-<elvt-badge count="5" aria-label="5 unread messages">Messages</elvt-badge>
+<!-- Good: Screen readers understand what the number represents -->
+<elvt-badge aria-label="5 unread messages">5</elvt-badge>
 
-<!-- Bad: Screen readers can't identify what the number means -->
-<elvt-badge count="5"></elvt-badge>
+<!-- Better: Provide context with surrounding text -->
+<span>Unread messages: <elvt-badge tone="danger">5</elvt-badge></span>
 ```
 
 **Status badges should include text, not just color:**

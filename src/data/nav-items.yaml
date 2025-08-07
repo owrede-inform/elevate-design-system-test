@@ -43,6 +43,8 @@
       path: /contributions
 - title: Components
   pages:
+    - title: Application
+      path: /components/application
     - title: Avatar
       path: /components/avatar
     - title: Badge
@@ -57,6 +59,8 @@
       path: /components/button-group
     - title: Card
       path: /components/card
+    - title: Charts
+      path: /components/charts
     - title: Checkbox
       path: /components/checkbox
     - title: Chip
@@ -75,61 +79,61 @@
       path: /components/empty-state
     - title: Expansion Panel
       path: /components/expansion-panel
-    - title: File Dropzone
-      path: /components/file-dropzone
+    - title: Expansion Panel Group
+      path: /components/expansion-panel-group
+    - title: Field
+      path: /components/field
     - title: Icon
       path: /components/icon
     - title: Icon Button
       path: /components/icon-button
+    - title: Indicator
+      path: /components/indicator
     - title: Input
       path: /components/input
-    - title: Link
-      path: /components/link
     - title: Lightbox
       path: /components/lightbox
-    - title: List
-      path: /components/list
+    - title: Link
+      path: /components/link
     - title: Menu
       path: /components/menu
     - title: Menu Item
       path: /components/menu-item
     - title: Notification
       path: /components/notification
-    - title: Pagination
-      path: /components/pagination
-    - title: Progress Bar
-      path: /components/progress-bar
-    - title: Progress Stepper
-      path: /components/progress-stepper
+    - title: Paginator
+      path: /components/paginator
+    - title: Progress
+      path: /components/progress
     - title: Radio
       path: /components/radio
     - title: Radio Group
       path: /components/radio-group
-    - title: Range Input
-      path: /components/range-input
     - title: Select
       path: /components/select
-    - title: Side Navigation
-      path: /components/side-navigation
     - title: Skeleton
       path: /components/skeleton
-    - title: Slider
-      path: /components/slider
+    - title: Stack
+      path: /components/stack
     - title: Switch
       path: /components/switch
     - title: Tab
       path: /components/tab
     - title: Tab Group
       path: /components/tab-group
+    - title: Tab Panel
+      path: /components/tab-panel
     - title: Table
       path: /components/table
+    - title: Table Cell
+      path: /components/table-cell
+    - title: Table Column
+      path: /components/table-column
+    - title: Table Row
+      path: /components/table-row
     - title: Textarea
       path: /components/textarea
-    - title: Toast
-      path: /components/toast
     - title: Toolbar
       path: /components/toolbar
     - title: Tooltip
       path: /components/tooltip
-    - title: Top Navigation
-      path: /components/top-navigation

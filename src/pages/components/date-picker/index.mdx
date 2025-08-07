@@ -9,6 +9,7 @@ import PageTable from 'gatsby-theme-carbon/src/components/PageTable';
 import DoDontRow from 'gatsby-theme-carbon/src/components/DoDontRow';
 import DoDontExample from 'gatsby-theme-carbon/src/components/DoDontExample';
 import InlineNotification from 'gatsby-theme-carbon/src/components/InlineNotification';
+import ChangeLog from '../../../components/ChangeLog';
 
 <PageDescription>
 
@@ -48,17 +49,142 @@ Date Picker simplifies date selection for users while ensuring proper formatting
 
 ### Input Methods
 
-<InlineNotification kind="info">
-Date Picker components are currently in development. Examples shown represent planned functionality.
-</InlineNotification>
-
-**Calendar Popup** provides visual date selection with month/year navigation and date highlighting.
-
-**Inline Calendar** displays the calendar directly in the interface without a popup trigger.
-
 **Text Input with Validation** allows typed dates with format hints and error checking.
 
-**Date Range Picker** enables selection of start and end dates with visual range indication.
+<LiveExample 
+  title="Date Input Field Pattern" 
+  htmlCode={`<div style="max-width: 400px; padding: 2rem; background: white; border: 1px solid #e0e0e0; border-radius: 8px;">
+  <form style="display: flex; flex-direction: column; gap: 1.5rem;" onsubmit="event.preventDefault(); alert('Date submitted: ' + document.getElementById('event-date').value);">
+    <div>
+      <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Event Date</label>
+      <div style="position: relative;">
+        <input 
+          id="event-date" 
+          type="date" 
+          style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+          placeholder="MM/DD/YYYY"
+        />
+        <elvt-icon 
+          icon="mdi:calendar" 
+          style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); color: #6f6f6f; pointer-events: none; font-size: 1rem;">
+        </elvt-icon>
+      </div>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #6f6f6f;">Format: MM/DD/YYYY</p>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Birth Date</label>
+      <div style="position: relative;">
+        <input 
+          type="date" 
+          max="2007-01-01" 
+          style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+        />
+        <elvt-icon 
+          icon="mdi:calendar" 
+          style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); color: #6f6f6f; pointer-events: none; font-size: 1rem;">
+        </elvt-icon>
+      </div>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #6f6f6f;">Must be 18 years or older</p>
+    </div>
+    
+    <elvt-button type="submit" tone="primary">Save Dates</elvt-button>
+  </form>
+</div>`}
+/>
+
+**Calendar-style Interface** provides visual date selection with month/year navigation.
+
+<LiveExample 
+  title="Calendar Interface Pattern" 
+  htmlCode={`<div style="max-width: 350px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+  <!-- Calendar Header -->
+  <div style="padding: 1rem; background: #f4f4f4; border-bottom: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <elvt-button size="small" tone="subtle">
+        <elvt-icon icon="mdi:chevron-left"></elvt-icon>
+      </elvt-button>
+      
+      <h4 style="margin: 0; font-size: 1rem; font-weight: 500;">January 2025</h4>
+      
+      <elvt-button size="small" tone="subtle">
+        <elvt-icon icon="mdi:chevron-right"></elvt-icon>
+      </elvt-button>
+    </div>
+  </div>
+  
+  <!-- Calendar Grid -->
+  <div style="padding: 1rem;">
+    <!-- Days of Week Headers -->
+    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; margin-bottom: 0.5rem;">
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Sun</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Mon</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Tue</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Wed</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Thu</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Fri</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #6f6f6f; font-weight: 500;">Sat</div>
+    </div>
+    
+    <!-- Calendar Days -->
+    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem;">
+      <!-- Previous month dates -->
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.875rem; color: #c6c6c6;">29</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.875rem; color: #c6c6c6;">30</div>
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.875rem; color: #c6c6c6;">31</div>
+      
+      <!-- Current month dates -->
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">1</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">2</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">3</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">4</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">5</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">6</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">7</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">8</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">9</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">10</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">11</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">12</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">13</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">14</elvt-button>
+      
+      <!-- Today (highlighted) -->
+      <elvt-button size="small" tone="primary" style="min-height: 2rem; font-size: 0.875rem;">15</elvt-button>
+      
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">16</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">17</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">18</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">19</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">20</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">21</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">22</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">23</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">24</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">25</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">26</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">27</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">28</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">29</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">30</elvt-button>
+      <elvt-button size="small" tone="subtle" style="min-height: 2rem; font-size: 0.875rem;">31</elvt-button>
+      
+      <!-- Next month dates -->
+      <div style="padding: 0.5rem; text-align: center; font-size: 0.875rem; color: #c6c6c6;">1</div>
+    </div>
+    
+    <!-- Calendar Footer -->
+    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e0e0; display: flex; justify-content: space-between;">
+      <elvt-button size="small" tone="subtle">Today</elvt-button>
+      <elvt-button size="small" tone="subtle">Clear</elvt-button>
+    </div>
+  </div>
+</div>`}
+/>
+
+**Date Range Selection** enables selection of start and end dates with visual range indication.
+
+**Multiple Date Selection** for choosing several individual dates like availability calendars.
 
 ### Display Formats
 
@@ -100,11 +226,6 @@ Date Picker components are currently in development. Examples shown represent pl
 
 ## Implementation
 
-
-<InlineNotification kind="warning">
-Date Picker component is currently in development. Implementation details will be available in future releases.
-</InlineNotification>
-
 ### Getting Started
 
 ```bash
@@ -116,60 +237,309 @@ npm install @inform-elevate/elevate-core-ui
 import '@inform-elevate/elevate-core-ui';
 
 // Or import specific components  
-import '@inform-elevate/elevate-core-ui/dist/components/date-picker/date-picker.js';
+import '@inform-elevate/elevate-core-ui/dist/components/button/button.js';
+import '@inform-elevate/elevate-core-ui/dist/components/icon/icon.js';
 ```
 
-### Planned Usage Patterns
+### Common Date Picker Patterns
+
+Date picker interfaces can be created using existing HTML inputs with ELEVATE components:
 
 ```html
-<!-- Single date selection -->
-<elvt-date-picker 
-  label="Event Date" 
-  placeholder="Select date"
-  format="MM/DD/YYYY">
-</elvt-date-picker>
+<!-- Simple date input with icon -->
+<div class="date-input-field">
+  <label for="event-date">Event Date</label>
+  <div class="input-with-icon">
+    <input 
+      id="event-date" 
+      type="date" 
+      class="date-input"
+      placeholder="MM/DD/YYYY"
+    />
+    <elvt-icon icon="mdi:calendar" class="input-icon"></elvt-icon>
+  </div>
+  <small class="input-hint">Format: MM/DD/YYYY</small>
+</div>
 
-<!-- Date range selection -->
-<elvt-date-picker 
-  type="range"
-  label="Travel Dates"
-  start-placeholder="Departure"
-  end-placeholder="Return">
-</elvt-date-picker>
+<!-- Date range inputs -->
+<div class="date-range-picker">
+  <div class="date-input-field">
+    <label for="start-date">Start Date</label>
+    <input id="start-date" type="date" class="date-input" />
+  </div>
+  
+  <div class="date-input-field">
+    <label for="end-date">End Date</label>
+    <input id="end-date" type="date" class="date-input" />
+  </div>
+</div>
 
-<!-- Inline calendar -->
-<elvt-date-picker 
-  display="inline"
-  min-date="2025-01-01"
-  max-date="2025-12-31">
-</elvt-date-picker>
+<!-- Calendar interface using buttons -->
+<div class="calendar-widget">
+  <div class="calendar-header">
+    <elvt-button size="small" tone="subtle" class="nav-button">
+      <elvt-icon icon="mdi:chevron-left"></elvt-icon>
+    </elvt-button>
+    
+    <h4 class="month-year">January 2025</h4>
+    
+    <elvt-button size="small" tone="subtle" class="nav-button">
+      <elvt-icon icon="mdi:chevron-right"></elvt-icon>
+    </elvt-button>
+  </div>
+  
+  <div class="calendar-grid">
+    <!-- Days of week headers -->
+    <div class="day-header">Sun</div>
+    <div class="day-header">Mon</div>
+    <div class="day-header">Tue</div>
+    <div class="day-header">Wed</div>
+    <div class="day-header">Thu</div>
+    <div class="day-header">Fri</div>
+    <div class="day-header">Sat</div>
+    
+    <!-- Calendar days using buttons -->
+    <elvt-button size="small" tone="subtle" class="calendar-day">1</elvt-button>
+    <elvt-button size="small" tone="subtle" class="calendar-day">2</elvt-button>
+    <!-- ... more days ... -->
+    <elvt-button size="small" tone="primary" class="calendar-day today">15</elvt-button>
+    <!-- ... more days ... -->
+  </div>
+  
+  <div class="calendar-footer">
+    <elvt-button size="small" tone="subtle">Today</elvt-button>
+    <elvt-button size="small" tone="subtle">Clear</elvt-button>
+  </div>
+</div>
 ```
 
-### Key Properties
+### CSS Styling
 
-The most commonly planned properties for design and development:
+```css
+.date-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.date-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background: white;
+}
+
+.input-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6f6f6f;
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+.input-hint {
+  font-size: 0.75rem;
+  color: #6f6f6f;
+  margin: 0;
+}
+
+.date-range-picker {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+
+.calendar-widget {
+  max-width: 350px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  padding: 1rem;
+  background: #f4f4f4;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  padding: 1rem;
+}
+
+.day-header {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #6f6f6f;
+  font-weight: 500;
+}
+
+.calendar-day {
+  min-height: 2rem;
+  font-size: 0.875rem;
+}
+
+.calendar-footer {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+### Key Components Used
+
+Components commonly used to create date picker interfaces:
 
 <PageTable>
 
-| Property | Options | Description |
+| Component | Usage | Description |
 |----------|---------|-------------|
-| `type` | `single` (default), `range`, `multiple` | Date selection mode |
-| `display` | `popup` (default), `inline` | How calendar is presented |  
-| `format` | String | Date format pattern (e.g., "MM/DD/YYYY") |
-| `min-date` | Date string | Earliest selectable date |
-| `max-date` | Date string | Latest selectable date |
-| `disabled-dates` | Array | Specific dates to disable |
+| `elvt-button` | Calendar navigation, date selection | Interactive buttons for month navigation and date selection |
+| `elvt-icon` | Visual indicators | MDI icons for calendar, navigation arrows |  
+| HTML `input[type="date"]` | Native date input | Browser-native date picker with validation |
+| Standard HTML | Layout structure | Labels, containers, and form organization |
+| CSS Grid | Calendar layout | Grid system for organizing calendar days |
 
 </PageTable>
 
-*For complete API reference including all properties, events, and methods, see the [Storybook documentation](https://elevate-core-ui.inform-cloud.io/?path=/docs/components-date-picker--docs).*
+*For complete examples and styling patterns, see the LiveExample demonstrations above.*
 
 ## Interactive Examples
 
+### Date Range Selection Pattern
 
-<InlineNotification kind="info">
-Interactive examples will be available when the Date Picker component is implemented. Check back in future releases for live demonstrations.
-</InlineNotification>
+<LiveExample 
+  title="Date Range Picker for Booking" 
+  htmlCode={`<div style="max-width: 500px; padding: 2rem; background: white; border: 1px solid #e0e0e0; border-radius: 8px;">
+  <h3 style="margin-top: 0;">Book Your Stay</h3>
+  
+  <form style="display: flex; flex-direction: column; gap: 1.5rem;" onsubmit="event.preventDefault(); alert('Booking submitted!');">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Check-in Date</label>
+        <div style="position: relative;">
+          <input 
+            type="date" 
+            min="2025-01-15" 
+            style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+          />
+          <elvt-icon 
+            icon="mdi:calendar-check" 
+            style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); color: #6f6f6f; pointer-events: none; font-size: 1rem;">
+          </elvt-icon>
+        </div>
+      </div>
+      
+      <div>
+        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Check-out Date</label>
+        <div style="position: relative;">
+          <input 
+            type="date" 
+            min="2025-01-16" 
+            style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+          />
+          <elvt-icon 
+            icon="mdi:calendar-export" 
+            style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); color: #6f6f6f; pointer-events: none; font-size: 1rem;">
+          </elvt-icon>
+        </div>
+      </div>
+    </div>
+    
+    <div style="background: #f4f4f4; padding: 1rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 0.875rem; color: #6f6f6f;">
+        <elvt-icon icon="mdi:information-outline" style="margin-right: 0.5rem; color: #0066cc;"></elvt-icon>
+        Available dates only
+      </span>
+      <span style="font-size: 0.875rem; font-weight: 500;">$120/night</span>
+    </div>
+    
+    <div style="display: flex; gap: 1rem;">
+      <elvt-button tone="primary" type="submit" style="flex: 1;">Book Now</elvt-button>
+      <elvt-button tone="subtle">Check Availability</elvt-button>
+    </div>
+  </form>
+</div>`}
+/>
+
+### Event Scheduling Pattern
+
+<LiveExample 
+  title="Event Scheduling with Time Constraints" 
+  htmlCode={`<div style="max-width: 450px; padding: 2rem; background: white; border: 1px solid #e0e0e0; border-radius: 8px;">
+  <h3 style="margin-top: 0;">Schedule Meeting</h3>
+  
+  <form style="display: flex; flex-direction: column; gap: 1.5rem;" onsubmit="event.preventDefault(); alert('Meeting scheduled!');">
+    <div>
+      <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Meeting Date</label>
+      <div style="position: relative;">
+        <input 
+          type="date" 
+          min="2025-01-15" 
+          max="2025-03-15" 
+          value="2025-01-20"
+          style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+        />
+        <elvt-icon 
+          icon="mdi:calendar-clock" 
+          style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); color: #6f6f6f; pointer-events: none; font-size: 1rem;">
+        </elvt-icon>
+      </div>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.75rem; color: #6f6f6f;">Next 60 days only</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>
+        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Start Time</label>
+        <input 
+          type="time" 
+          value="14:00"
+          style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;"
+        />
+      </div>
+      
+      <div>
+        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.875rem;">Duration</label>
+        <select style="width: 100%; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 4px; font-size: 0.875rem; background: white;">
+          <option>30 minutes</option>
+          <option selected>1 hour</option>
+          <option>2 hours</option>
+          <option>3 hours</option>
+        </select>
+      </div>
+    </div>
+    
+    <div style="background: #fff5f5; border: 1px solid #fecaca; padding: 1rem; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
+      <elvt-icon icon="mdi:calendar-remove" style="color: #dc2626; font-size: 1rem;"></elvt-icon>
+      <span style="font-size: 0.875rem; color: #991b1b;">Jan 18-19 unavailable (holiday)</span>
+    </div>
+    
+    <div style="display: flex; gap: 1rem;">
+      <elvt-button tone="primary" type="submit" style="flex: 1;">Schedule Meeting</elvt-button>
+      <elvt-button tone="subtle">
+        <elvt-icon slot="prefix" icon="mdi:calendar-search"></elvt-icon>
+        Find Slots
+      </elvt-button>
+    </div>
+  </form>
+</div>`}
+/>
 
 ## Accessibility
 
@@ -202,14 +572,4 @@ Interactive examples will be available when the Date Picker component is impleme
 
 ## Changelog
 
-
-### Planned Releases
-
-**Version 0.1.0 (Planned)**
-- **New**: Initial Date Picker component implementation
-- **New**: Single date and date range selection
-- **New**: Calendar popup and inline display modes
-- **New**: Internationalization and localization support
-
-**Version 0.0.26-alpha (July 16, 2025)**
-- Current version - Date Picker component in development planning phase
+<ChangeLog component="date-picker" />
